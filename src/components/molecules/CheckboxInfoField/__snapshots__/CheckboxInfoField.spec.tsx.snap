@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxField renders correctly 1`] = `
+.c0 {
+  line-height: 1.25rem;
+  border-bottom: 1px solid #4E606A;
+  padding-bottom: 40px;
+}
+
+.c0 .checkbox-info-field__error-msg {
+  padding-right: 50px;
+  font-size: 0.875rem;
+  color: #EB4820;
+}
+
+.c0 .checkbox-info-field__selected {
+  color: #00a5b5;
+}
+
+.c0 .checkbox-info-field__privacy-title {
+  margin-bottom: 30px;
+  font-weight: 500;
+  max-width: 315px;
+}
+
+.c0 .checkbox-info-field__privacy-body {
+  margin-bottom: 20px;
+  display: block;
+  padding: 0 28px 0 0;
+  font-size: 0.875rem;
+}
+
+.c0.checkbox-info-field__no-border {
+  border-bottom: none;
+}
+
+.c1 {
+  position: relative;
+  cursor: pointer;
+  min-height: 20px;
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: initial;
+  -webkit-justify-content: initial;
+  -ms-flex-pack: initial;
+  justify-content: initial;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 > input {
+  display: none;
+}
+
+.c1:before {
+  content: '';
+  display: inline-block;
+  box-sizing: border-box;
+  border: #4E606A solid 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.c1 > span {
+  line-height: 20px;
+}
+
+.c1.checked:after {
+  background: url('assets/icons/checkmark.svg') 100% no-repeat;
+  content: '';
+  width: 13px;
+  height: 9px;
+  position: absolute;
+  top: 5.5px;
+  left: 3px;
+}
+
+.c1.label--has-label-text {
+  padding-left: 28px;
+}
+
+.c1.label--has-error > input {
+  color: #EB4820;
+}
+
+.c1.label--has-error:before {
+  border: #EB4820 solid 1px;
+}
+
+.c1.label--left {
+  padding: 0 28px 0 0;
+}
+
+.c1.label--left:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+}
+
+.c1.label--left.checked:after {
+  position: absolute;
+  top: 5.5px;
+  right: 4px;
+  left: auto;
+}
+
+.c2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #4E606A;
+  font-weight: 300;
+  white-space: pre-wrap;
+}
+
+<div
+  className="c0 checkbox-info-field undefined"
+>
+  <label
+    className="c1 label--has-label-text "
+  >
+    <input
+      checked={false}
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="c2 checkbox-info-field__privacy-title false"
+      color="#4E606A"
+      fontSize="16px"
+    >
+      Hello
+    </span>
+  </label>
+  <span
+    className="c2 checkbox-info-field__privacy-body"
+    color="#4E606A"
+    fontSize="16px"
+  >
+    Test
+  </span>
+  
+</div>
+`;

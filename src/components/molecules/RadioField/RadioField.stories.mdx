@@ -1,0 +1,35 @@
+
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import RadioField from "./"
+
+<Meta title="Core|Molecules/RadioField" />
+
+# RadioField Component
+
+This is an implementation of the Radio button
+
+## Implementation
+
+#### Default
+<Preview>
+  <Story name="default">
+    <RadioField name="default1" value="1" label="Default radio button" />
+  </Story>
+</Preview>
+
+#### Large size
+<Preview>
+  <Story name="With large size">
+    <RadioField name="default2" value="1" label="Large radio button" size="lg"/>
+  </Story>
+</Preview>
+
+##### Medium size
+<Preview>
+  <Story name="With medium size">
+    <RadioField name="default3" value="1" label="Medium radio button" size="md" />
+  </Story>
+</Preview>
+
+## Props  
+<Props of={RadioField} />

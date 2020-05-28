@@ -1,0 +1,72 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import Input from './';
+
+<Meta title="Core|Atoms/Input" />
+
+# Input Component
+
+Straithforward input component. It can be simple, or with placeholder.
+When an error occurs its border changes color
+
+## Implementation
+
+#### Default
+
+<Preview>
+  <Story name="default" decorators={[withKnobs]}>
+    <Input
+      error={boolean('Error', false)}
+      placeholder={text('Placeholder text', '')}
+    />
+  </Story>
+</Preview>
+
+#### With Error
+
+<Preview>
+  <Story name="With error">
+    <Input error={true} />
+  </Story>
+</Preview>
+
+#### With Placeholder
+
+<Preview>
+  <Story name="With a placeholder">
+    <Input placeholder="Type value here" error={false} />
+  </Story>
+</Preview>
+
+#### With Label
+
+<Preview>
+  <Story name="With a label">
+    <Input label="With label" name="labeled input" error={false} />
+  </Story>
+</Preview>
+
+#### With Both Placeholder & Label
+
+<Preview>
+  <Story name="With placeholder & label">
+    <Input
+      label="With label"
+      placeholder="and also placeholder"
+      name="test input"
+      error={false}
+    />
+  </Story>
+</Preview>
+
+## Input Props
+
+<Props of={Input} />
+
+## Notes
+
+- Default error value is set to false, so if omitted the field will render without error border
+
+- With onChange prop you can set the state to the inputField from parent components.
+
+- onnHandleCapslook prop is used for the password molecule, to inform component when caps-lock is pressed.

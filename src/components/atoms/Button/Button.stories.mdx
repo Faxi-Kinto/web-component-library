@@ -1,0 +1,33 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { action } from '@storybook/addon-actions';
+import Button from "./";
+import Icon from "../Icon"
+
+<Meta title="Core|Atoms/Button" />
+
+# Button Component
+This is a fundemental atom used to indicate a call to action for the user. It can take two forms that emphasize its hierarchy. 
+
+## Implementation
+
+#### Default
+<Preview>
+  <Story name="default">
+    <Button onClick={action('button-click')}>
+      <p>Hello from Button</p>
+    </Button>
+  </Story>
+</Preview>
+
+#### Secondary
+<Preview>
+  <Story name="secondary">
+    <Button secondary>
+      <p>Exit without saving</p><Icon name="times" color="#00708D"/>
+    </Button>
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={Button} />

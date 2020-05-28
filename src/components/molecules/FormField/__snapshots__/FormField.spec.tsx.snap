@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormField renders correctly 1`] = `
+.c0 > * {
+  margin: 0 0 0.625rem 0;
+}
+
+.c0 > :last-child {
+  margin: 0;
+}
+
+.c0 .input__description-msg {
+  color: #95A1A6;
+  line-height: 1.25rem;
+}
+
+.c0 .input__error-msg {
+  font-size: 0.875rem;
+  color: #EB4820;
+}
+
+.c1 {
+  width: 100%;
+}
+
+.c1 > * {
+  margin: 0 0 0.625rem 0;
+}
+
+.c1 > :last-child {
+  margin: 0;
+}
+
+.c1 > label {
+  color: #4E606A;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 24px;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  line-height: 16px;
+}
+
+.c1 > input {
+  width: 100%;
+  height: 2.8125rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 8px 8px 20px #00000029;
+  border: 1px solid #95A1A6;
+  outline: none;
+}
+
+.c1 > input.input--error {
+  border: 1px solid #EB4820;
+}
+
+.c1 > input:focus,
+.c1 > input.input--error {
+  box-shadow: none;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <input
+      className=""
+      id="test"
+      name="test"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  
+  
+</div>
+`;

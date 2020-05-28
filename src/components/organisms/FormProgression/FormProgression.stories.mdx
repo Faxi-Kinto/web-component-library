@@ -1,0 +1,71 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import FormProgression from './';
+import { FormProgressionProps } from './FormProgression.component';
+import { withKnobs, number } from '@storybook/addon-knobs';
+
+<Meta title="Core|Organisms/FormProgression" />
+
+# FormProgression component
+
+## Implementation
+
+#### Default
+
+<Preview>
+  <Story name="default" decorators={[withKnobs]}>
+    <FormProgression
+      stages={[
+        { name: 'Your Details' },
+        { name: 'Create a password' },
+        { name: 'Your Community Details' },
+        { name: 'Community Address' },
+        { name: 'Your Role' },
+        { name: 'Privacy Settings' },
+      ]}
+      labelName="Step"
+      currentStage={number('currentStage', 2)}
+    />
+  </Story>
+</Preview>
+
+#### Made Progress
+
+<Preview>
+  <Story name="madeProgress">
+    <FormProgression
+      stages={[
+        { name: 'Your Details' },
+        { name: 'Create a password' },
+        { name: 'Your Community Details' },
+        { name: 'Community Address' },
+        { name: 'Your Role' },
+        { name: 'Privacy Settings' },
+      ]}
+      labelName="Step"
+      currentStage={3}
+    />
+  </Story>
+</Preview>
+
+#### Full
+
+<Preview>
+  <Story name="full">
+    <FormProgression
+      stages={[
+        { name: 'Your Details' },
+        { name: 'Create a password' },
+        { name: 'Your Community Details' },
+        { name: 'Community Address' },
+        { name: 'Your Role' },
+        { name: 'Privacy Settings' },
+      ]}
+      labelName="Step"
+      currentStage={6}
+    />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={FormProgression} />

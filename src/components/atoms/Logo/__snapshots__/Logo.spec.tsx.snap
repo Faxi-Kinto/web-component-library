@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo check 1`] = `
+<img
+  alt="Logo"
+  src="images/logo.svg"
+  width="102px"
+/>
+`;

@@ -1,0 +1,293 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionSelector renders correctly 1`] = `
+.c0 {
+  width: 26.875rem;
+  background-color: #FFF;
+  border: 1px solid #95A1A6;
+}
+
+.c0 >:nth-child(n + 2) {
+  border-top: 1px solid #95A1A6;
+}
+
+.c0 .option {
+  cursor: pointer;
+  padding: 1.25rem 2.5rem 2.1875rem;
+  min-height: 6.25rem;
+}
+
+.c0 .option__radio-button {
+  border: none;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  height: 2.5rem;
+}
+
+.c0 .option__radio-button span {
+  color: #00a5b5;
+  font-weight: 500;
+}
+
+.c0 .option__radio-button svg {
+  margin-right: 0.75rem;
+  margin-left: 0;
+}
+
+.c0 .option__description {
+  display: block;
+  padding-left: 28px;
+}
+
+.c0 .option--selected .option__child-container {
+  max-height: 100rem;
+  -webkit-transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.c0 .option--selected .option__child-container > * {
+  opacity: 1;
+  -webkit-transition: opacity 0.2s ease-in-out 0.3s;
+  transition: opacity 0.2s ease-in-out 0.3s;
+}
+
+.c0 .option--selected .option__child-container > *:first-child {
+  margin-top: 25px;
+}
+
+.c0 .option--not-selected .option__radio-button span {
+  font-weight: 200;
+}
+
+.c0 .option--not-selected .option__description {
+  color: #95A1A6;
+}
+
+.c0 .option--not-selected .option__child-container {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.1s linear;
+  transition: max-height 0.1s linear;
+}
+
+.c0 .option--not-selected .option__child-container > * {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.c1 {
+  position: relative;
+  background: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: initial;
+  -webkit-justify-content: initial;
+  -ms-flex-pack: initial;
+  justify-content: initial;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1rem;
+  height: 2.8125rem;
+  width: 100%;
+  border: 0.03125rem solid #95A1A6;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.c1 input {
+  display: none;
+}
+
+.c1 input:checked + svg .inner {
+  display: block;
+}
+
+.c1 input:checked + svg + span {
+  font-weight: 600;
+}
+
+.c1 > svg {
+  color: #81c8d1;
+  margin: 0 1rem;
+}
+
+.c1 > svg.lg {
+  width: 1.5625rem;
+  height: 1.5625rem;
+}
+
+.c1 > svg.md {
+  width: 1rem;
+  height: 1rem;
+}
+
+.c1 > svg .inner {
+  display: none;
+  -webkit-animation-name: animation-inner;
+  animation-name: animation-inner;
+  -webkit-animation-duration: 0.35s;
+  animation-duration: 0.35s;
+}
+
+.c2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #4E606A;
+  font-weight: 300;
+  white-space: pre-wrap;
+}
+
+@media (max-width:767px) {
+  .c0 {
+    width: 100%;
+    border: none;
+  }
+
+  .c0 >:nth-child(n + 1) {
+    border-top: 1px solid #95A1A6;
+  }
+
+  .c0 > .option {
+    padding: 1.5625rem 0;
+  }
+
+  .c0 > .option > * {
+    padding-left: 1.875rem;
+    padding-right: 2.5rem;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="option option--selected"
+    onClick={[Function]}
+  >
+    <label
+      className="c1 option__radio-button"
+    >
+      <input
+        checked={true}
+        className="radio-input"
+        disabled={false}
+        name="test"
+        onChange={[Function]}
+        type="radio"
+        value="0"
+      />
+      <svg
+        className="md"
+        height="25"
+        viewBox="0 0 25 25"
+        width="25"
+      >
+        <circle
+          cx="12.5"
+          cy="12.5"
+          fill="none"
+          r="11.5"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+        <circle
+          className="inner"
+          cx="12.5"
+          cy="12.5"
+          fill="currentColor"
+          r="30%"
+        />
+      </svg>
+      <span
+        className="c2"
+        color="#4E606A"
+        fontSize="16px"
+      >
+        Admin
+      </span>
+    </label>
+    <span
+      className="c2 option__description"
+      color="#4E606A"
+      fontSize="16px"
+    >
+      Choose this option if you don’t intend to carpool yourself. Don’t worry, you can change your mind later.
+    </span>
+    <div
+      className="option__child-container"
+    >
+      <div>
+        Admin 
+        <button>
+          Ok
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="option option--not-selected"
+    onClick={[Function]}
+  >
+    <label
+      className="c1 option__radio-button"
+    >
+      <input
+        checked={false}
+        className="radio-input"
+        disabled={false}
+        name="test"
+        onChange={[Function]}
+        type="radio"
+        value="1"
+      />
+      <svg
+        className="md"
+        height="25"
+        viewBox="0 0 25 25"
+        width="25"
+      >
+        <circle
+          cx="12.5"
+          cy="12.5"
+          fill="none"
+          r="11.5"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+        <circle
+          className="inner"
+          cx="12.5"
+          cy="12.5"
+          fill="currentColor"
+          r="30%"
+        />
+      </svg>
+      <span
+        className="c2"
+        color="#4E606A"
+        fontSize="16px"
+      >
+        Carpooler
+      </span>
+    </label>
+    <span
+      className="c2 option__description"
+      color="#4E606A"
+      fontSize="16px"
+    >
+      Choose this option if you intend to carpool as well.
+    </span>
+  </div>
+</div>
+`;
