@@ -1,0 +1,30 @@
+@font-face {
+  font-family: ToyotaType;
+  src: url(/assets/fonts/ToyotaType-Light.ttf);
+  font-weight: 100, 200, 300, 400;
+}
+
+@font-face {
+  font-family: ToyotaType;
+  src: url(/assets/fonts/ToyotaType-Regular.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: ToyotaType;
+  src: url(/assets/fonts/ToyotaType-Semibold.ttf);
+  font-weight: bold;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family: ToyotaType;
+  display: grid;
+}

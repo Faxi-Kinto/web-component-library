@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownList renders correctly 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1rem;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+
+.c0 > * {
+  margin: 0 0 0.3125rem 0;
+}
+
+.c0 > :last-child {
+  margin: 0;
+}
+
+.c0 .dropdown__label {
+  color: #4E606A;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 1.5rem;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  font-size: 1rem;
+  line-height: 16px;
+}
+
+.c0 .dropdown__select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.c0 .dropdown__select-wrapper__select {
+  width: 100%;
+  height: 2.8125rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  opacity: 1;
+  outline: none;
+  background-color: #FFF;
+  font-size: 0.875rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: 0.5rem 0.5rem 1.25rem #00000029;
+  border: 0.03125rem solid #95A1A6;
+  border-radius: 0;
+}
+
+.c0 .dropdown__select-wrapper__select.select--error {
+  border: 0.03125rem solid #EB4820;
+}
+
+.c0 .dropdown__select-wrapper__select:focus,
+.c0 .dropdown__select-wrapper__select.select--error {
+  box-shadow: none;
+}
+
+.c0 .dropdown__icon {
+  position: absolute;
+  right: 1.75rem;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  pointer-events: none;
+  color: #00a5b5;
+}
+
+.c0 .dropdown__description-msg,
+.c0 .dropdown__error-msg {
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  color: #95A1A6;
+  line-height: 1.25rem;
+}
+
+.c0 .dropdown__error-msg {
+  font-size: 0.875rem;
+  color: #EB4820;
+}
+
+.c0.dropdown--small .dropdown__icon {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 50%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 0.625rem;
+  line-height: 10px;
+  color: #4E606A;
+}
+
+<div
+  className="c0 dropdown"
+>
+  <div
+    className="dropdown__select-wrapper"
+  >
+    <select
+      className="dropdown__select-wrapper__select"
+      onChange={[Function]}
+      value="DEFAULT"
+    >
+      
+      <option
+        value="test1"
+      >
+        Test value 1
+      </option>
+      <option
+        value="test2"
+      >
+        Test value 2
+      </option>
+      <option
+        value="test3"
+      >
+        Test value 3
+      </option>
+      <option
+        value="test4"
+      >
+        Test value 4
+      </option>
+      <option
+        value="test5"
+      >
+        Test value 5
+      </option>
+    </select>
+    <div
+      className="c1 dropdown__icon"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-chevron-down fa-w-14 fa-1x "
+        data-icon="chevron-down"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 448 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+  
+  
+</div>
+`;
