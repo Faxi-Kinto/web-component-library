@@ -62,7 +62,7 @@ const AccordionSelector: React.FC<AccordionSelectorProps> = (
               value={`${index}`}
               name={name}
               size="md"
-              onChange={(event) => {
+              onChange={event => {
                 setCurrentSelected(`${index}`);
                 onChange && onChange(event.target.value);
               }}
@@ -82,6 +82,6 @@ const AccordionSelector: React.FC<AccordionSelectorProps> = (
 
 AccordionSelector.defaultProps = {
   defaultSelected: '0',
-} as Partial<AccordionSelectorProps>;
+};
 
 export default AccordionSelector;

@@ -49,7 +49,7 @@ export const StepsProvider = (props: Props): JSX.Element => {
 
   const stepName = match?.params.stepName;
 
-  const stepPaths = useMemo(() => steps.map((step) => step.path), [steps]);
+  const stepPaths = useMemo(() => steps.map(step => step.path), [steps]);
 
   const clearFormStorage = useCallback(() => {
     StorageService.removeItem(FORM_STORAGE_KEY);
@@ -60,7 +60,7 @@ export const StepsProvider = (props: Props): JSX.Element => {
     isSwitchingSteps.current = true;
     setCurrentStep(stepNumber);
     if (data) {
-      setFormData((old) => {
+      setFormData(old => {
         const newData = { ...old, ...data };
         return newData;
       });
@@ -69,8 +69,8 @@ export const StepsProvider = (props: Props): JSX.Element => {
 
   const submit = useCallback(
     async (additionalData: DataState) => {
-      const data: Record<string, any> = await new Promise((resolve) =>
-        setFormData(async (old) => {
+      const data: Record<string, any> = await new Promise(resolve =>
+        setFormData(async old => {
           const newData = { ...old, ...additionalData };
           resolve(newData);
           return newData;
@@ -117,7 +117,7 @@ export const StepsProvider = (props: Props): JSX.Element => {
      */
     if (!initialized) {
       setInitialized(true);
-      const newStep = stepPaths.findIndex((sName) => sName === `/${stepName}`);
+      const newStep = stepPaths.findIndex(sName => sName === `/${stepName}`);
 
       const completedSteps = numberOfCompletedSteps();
       if (newStep > -1 && newStep <= completedSteps) {

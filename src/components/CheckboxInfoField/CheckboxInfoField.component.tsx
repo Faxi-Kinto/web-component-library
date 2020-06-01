@@ -37,23 +37,21 @@ const CheckboxInfoField: React.FC<CheckboxInfoFieldProps> = (
   const showError = useField(props);
   return (
     <Styled.Container
-      className={`checkbox-info-field ${
-        lastElement && 'checkbox-info-field__no-border'
-      }`}
+      className={`checkbox-info-field ${lastElement &&
+        'checkbox-info-field__no-border'}`}
     >
       <Checkbox
         {...rest}
         label={
           <Text.Body
-            className={`checkbox-info-field__privacy-title ${
-              selected && 'checkbox-info-field__selected'
-            }`}
+            className={`checkbox-info-field__privacy-title ${selected &&
+              'checkbox-info-field__selected'}`}
           >
             {label}
           </Text.Body>
         }
         checked={value}
-        onChange={(ev) => {
+        onChange={ev => {
           setSelected(!selected);
           onChange && onChange(ev.target.checked);
         }}

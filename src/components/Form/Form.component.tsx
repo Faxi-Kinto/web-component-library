@@ -71,7 +71,7 @@ const Form: React.RefForwardingComponent<FormRef, FormProps> = (
     [fields]
   );
 
-  const handleSubmit: React.FormEventHandler = (ev) => {
+  const handleSubmit: React.FormEventHandler = ev => {
     ev.preventDefault();
 
     markAllAsDirtyAndTouched();
@@ -82,7 +82,7 @@ const Form: React.RefForwardingComponent<FormRef, FormProps> = (
     } else {
       /** find first invalid field and focus it */
       const firstInvalidField = Object.values(fields).find(
-        (field) => !field.valid
+        field => !field.valid
       );
 
       if (firstInvalidField) {

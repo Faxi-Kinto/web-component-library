@@ -2,11 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "src",
     "allowJs": true,
     "skipLibCheck": true,
@@ -27,14 +23,6 @@
     "importHelpers": true,
     "noEmitHelpers": false
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "example",
-    "rollup.config.js"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "dist", "example"]
 }

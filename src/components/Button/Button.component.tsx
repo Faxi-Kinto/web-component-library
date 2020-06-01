@@ -36,6 +36,6 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
 
 Button.defaultProps = {
   type: 'button',
-} as Partial<ButtonProps>;
+};
 
 export default Button;

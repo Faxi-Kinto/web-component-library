@@ -24,7 +24,7 @@ const createField = (name: string, value: any = ''): FormField => ({
   asyncError: '',
 });
 
-const FormProvider: React.FC = (props) => {
+const FormProvider: React.FC = props => {
   const { children } = props;
 
   const isFirstRun = useRef(true);
@@ -59,7 +59,7 @@ const FormProvider: React.FC = (props) => {
   useEffect(() => {
     const fieldArray = Object.values(fields);
     if (fieldArray.length) {
-      const newFormValid = fieldArray.every((f) => f.valid);
+      const newFormValid = fieldArray.every(f => f.valid);
       setFormValid(newFormValid);
     }
   }, [fields]);

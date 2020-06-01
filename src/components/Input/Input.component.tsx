@@ -34,7 +34,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     autoFocus,
     ...rest
   } = props;
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState('');
 
   const currentValue = onHandleCapsLock ? value?.replace(/\s/g, '') : value;
 

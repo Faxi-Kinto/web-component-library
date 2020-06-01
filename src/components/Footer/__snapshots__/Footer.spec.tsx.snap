@@ -76,20 +76,6 @@ exports[`Footer renders correctly 1`] = `
   font-size: 0.875rem;
 }
 
-.c3 {
-  padding: 0;
-  margin: 0;
-  color: #00a5b5;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 1.1875rem;
-}
-
 .c1 > a {
   color: #cdd5d8;
   font-weight: 500;
@@ -163,6 +149,20 @@ exports[`Footer renders correctly 1`] = `
 .c1.nav--secondary a span {
   font-size: 0.875rem;
   color: #cdd5d8;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.1875rem;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  color: #00a5b5;
 }
 
 .c2 {

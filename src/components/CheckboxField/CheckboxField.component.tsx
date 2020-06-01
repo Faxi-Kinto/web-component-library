@@ -43,7 +43,7 @@ const CheckboxField: React.FC<CheckboxFieldProps> = (
       <Checkbox
         {...rest}
         checked={value}
-        onChange={onChange ? (ev) => onChange(ev.target.checked) : undefined}
+        onChange={onChange ? ev => onChange(ev.target.checked) : undefined}
         error={showError}
       />
       {descriptION}

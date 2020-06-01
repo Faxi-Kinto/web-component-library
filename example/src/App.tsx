@@ -5,7 +5,6 @@ import {
   Form,
   FormField,
   InputField,
-  Button,
 } from 'web-component-library';
 import { Step } from 'web-component-library/components/StepsProvider/context';
 

@@ -59,6 +59,21 @@ exports[`Form renders correctly 1`] = `
   text-decoration: underline;
 }
 
+.c2 {
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  color: #00a5b5;
+  font-weight: 300;
+  white-space: pre-wrap;
+}
+
+.c3 {
+  font-size: 14px;
+  color: #00a5b5;
+  font-weight: bold;
+}
+
 .c0 {
   height: 100%;
   display: -webkit-box;
@@ -94,21 +109,6 @@ exports[`Form renders correctly 1`] = `
 
 .c0 .continue-button {
   margin-top: 1.5rem;
-}
-
-.c2 {
-  padding: 0;
-  margin: 0;
-  font-size: 0.875rem;
-  color: #00a5b5;
-  font-weight: 300;
-  white-space: pre-wrap;
-}
-
-.c3 {
-  font-size: 14px;
-  color: #00a5b5;
-  font-weight: bold;
 }
 
 <form

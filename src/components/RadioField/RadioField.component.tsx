@@ -54,6 +54,6 @@ const RadioField: React.FC<RadioFieldProps> = (
 RadioField.defaultProps = {
   disabled: false,
   size: 'lg',
-} as Partial<RadioFieldProps>;
+};
 
 export default RadioField;
