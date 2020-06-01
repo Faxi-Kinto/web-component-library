@@ -20,10 +20,10 @@ export const numberOfCompletedSteps = () =>
   StorageService.getItem<number>(FORM_STEPS_COMPLETED_STORAGE_KEY) || 0;
 
 type Props = {
-  defaultData: DataState;
+  defaultData?: DataState;
   steps: Step[];
   children: React.ReactNode;
-  onStepsCompleted: (data: DataState) => void;
+  onStepsCompleted?: (data: DataState) => void;
 };
 
 /**
@@ -76,7 +76,7 @@ export const StepsProvider = (props: Props): JSX.Element => {
           return newData;
         })
       );
-      onStepsCompleted(data);
+      onStepsCompleted!(data);
     },
     [onStepsCompleted]
   );
@@ -148,6 +148,11 @@ export const StepsProvider = (props: Props): JSX.Element => {
       {currentStep > 0 ? children : <Spinner />}
     </StepsContext.Provider>
   );
+};
+
+StepsProvider.defaultProps = {
+  defaultData: {},
+  onStepsCompleted: () => {},
 };
 
 export default StepsProvider;

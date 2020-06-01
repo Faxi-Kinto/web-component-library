@@ -26,11 +26,7 @@ export const stepConfig: Step[] = [
 const App = () => {
   return (
     <BrowserRouter>
-      <StepProvider
-        defaultData={{}}
-        onStepsCompleted={() => {}}
-        steps={stepConfig}
-      >
+      <StepProvider steps={stepConfig}>
         <Switch>
           {stepConfig.map(({ handle, path, component, exact }) => (
             <Route
