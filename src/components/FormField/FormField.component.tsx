@@ -51,8 +51,8 @@ function FormField<T extends FieldProps>(props: FormFieldProps<T>) {
     };
   }, [registerField, unregisterField, name]);
 
-  const field = useMemo(() => fields[name] || {}, [fields, name]);
-  const { value = '', dirty, touched, asyncError } = field;
+  const field = useMemo(() => fields[name], [fields, name]);
+  const { value = '', dirty, touched, asyncError } = field || {};
 
   const error = useMemo(() => {
     if (validate) {

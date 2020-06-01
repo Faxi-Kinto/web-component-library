@@ -5,12 +5,14 @@ import {
   Form,
   FormField,
   InputField,
+  Button,
 } from 'web-component-library';
 import { Step } from 'web-component-library/components/StepsProvider/context';
 
 const TestForm = () => (
   <Form onSubmit={(data) => console.log(data)}>
     <FormField name="test" component={InputField} />
+    <h1>some text</h1>
   </Form>
 );
 

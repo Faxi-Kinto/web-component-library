@@ -8,10 +8,11 @@ import { FormState } from '../FormProvider/reducer';
 import { StepsContext } from '../StepsProvider/context';
 import FormContext from '../FormProvider/context';
 import Button from '../Button';
-import { Spinner, Icon } from '../..';
 import { theme } from '../../config';
 import Text from '../Text';
 import * as Styled from './Form.styles';
+import Icon from '../Icon';
+import Spinner from '../Spinner';
 
 /**
  * @name Form

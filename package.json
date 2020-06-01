@@ -12,7 +12,10 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsc && cp src/index.css dist/index.css",
+    "build:css": "NODE_ENV=production webpack --mode production",
+    "start": "concurrently --kill-others \"webpack --mode development --watch\" \"tsc -w\"",
+    "build:rollup": "rollup -c",
+    "build": "NODE_ENV=production webpack --mode production && tsc",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
     "test:lint": "eslint .",
@@ -25,6 +28,12 @@
     "react-gtm-module": "^2.0.8"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-syntax-flow": "^7.10.1",
+    "@babel/plugin-transform-flow-strip-types": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
@@ -32,7 +41,11 @@
     "@fortawesome/pro-light-svg-icons": "^5.13.0",
     "@fortawesome/pro-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
-    "@rollup/plugin-typescript": "^4.1.2",
+    "@rollup/plugin-babel": "^5.0.2",
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-json": "^4.0.3",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-typescript": "4.1.2",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-backgrounds": "^5.3.19",
     "@storybook/addon-docs": "^5.3.19",
@@ -60,8 +73,10 @@
     "@types/xregexp": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
+    "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-react": "^1.1.7",
@@ -74,12 +89,14 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-watch": "^6.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-react-parser": "^0.10.5",
     "i18next": "^19.4.5",
     "i18next-browser-languagedetector": "^4.2.0",
     "i18next-http-backend": "^1.0.12",
     "jest-styled-components": "^7.0.2",
     "lodash.clonedeep": "^4.5.0",
+    "path": "^0.12.7",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -87,15 +104,26 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "react-test-renderer": "^16.13.1",
+    "rollup-plugin-css-only": "^2.0.0",
+    "rollup-plugin-node-externals": "^2.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
+    "style-loader": "^1.2.1",
     "styled-components": "^5.1.1",
     "ts-jest": "^25.5.1",
     "typescript": "~3.7.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
     "xregexp": "^4.3.0"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "rollup": "^2.12.0"
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "concurrently": "^5.2.0",
+    "copy-webpack-plugin": "^6.0.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "rollup": "^2.12.0",
+    "ts-declaration-webpack-plugin": "^1.2.3"
   }
 }

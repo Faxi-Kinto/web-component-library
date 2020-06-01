@@ -27,7 +27,7 @@
   },
   "overrides": [
     {
-      "excludedFiles": "",
+      "excludedFiles": "*.config.js",
       "files": "*.styles.tsx"
     }
   ],
