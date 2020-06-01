@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import NumberField from './NumberField.component';
-import { DropdownItem } from 'components/DropdownList';
+import { DropdownItem } from '../DropdownList';
 
 const listArray = [
   { value: '00381', label: '+381' },

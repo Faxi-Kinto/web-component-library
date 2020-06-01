@@ -2,7 +2,7 @@ import React from 'react';
 import FormProgression from '.';
 import renderer from 'react-test-renderer';
 import { FormProgressionProps } from './FormProgression.component';
-import Icon from 'components/Icon';
+import Icon from '../Icon';
 
 let wrapper: renderer.ReactTestRenderer;
 
