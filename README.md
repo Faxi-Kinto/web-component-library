@@ -41,6 +41,26 @@ The package knows its types, meaning that IntelliSense aids you when using packa
 
 Every component is provided with its test file. Run `yarn test` within the package to run tests.
 
+### Note
+
+If your project uses `Jest` for testing, you must add
+
+```js
+moduleNameMapper: {
+  '\\.(css|less|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
+}
+```
+
+and a dummy:
+
+`__mocks__/styleMock.js`
+
+that just exports a dummy object:
+
+`module.exports = {};`
+
+This is due to the fact that this package provides a plain `styles.css` file for global package styling configuration and `Jest` gets confused when importing css in ts.
+
 ## License
 
 MIT © [](https://github.com/deltafixer)
