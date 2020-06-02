@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+}
+
+.c0 > :first-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 > * {
+  margin: 0 0 2.25rem 0;
+}
+
+.c0 > :last-child {
+  margin: 0;
+}
+
+.c0 .error__logo {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0 .error__message > * {
+  margin: 0 0 0.9375rem 0;
+}
+
+.c0 .error__message > :last-child {
+  margin: 0;
+}
+
+.c0 .error__message__description {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.c0 .error__links {
+  font-weight: 200;
+}
+
+.c0 .error__links > * {
+  margin: 0 0 0.9375rem 0;
+}
+
+.c0 .error__links > :last-child {
+  margin: 0;
+}
+
+.c0 .error__links__message {
+  font-size: 1.125rem;
+}
+
+.c2 {
+  padding: 0;
+  margin: 0;
+  color: #00708D;
+  font-size: 2.125rem;
+  line-height: 2.9375rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  font-weight: bold;
+}
+
+.c3 > a {
+  color: #cdd5d8;
+  font-weight: 500;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 > a span:first-child {
+  padding-right: 6px;
+}
+
+.c3 > a:not(:last-child) {
+  margin-right: 6px;
+}
+
+.c3.nav--light > a {
+  color: #FFF;
+}
+
+.c3.nav--dark > a {
+  color: #4E606A;
+}
+
+.c3.nav--vertical {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  font-size: 1.125rem;
+}
+
+.c3.nav--vertical > :first-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+.c3.nav--vertical > * {
+  margin: 0 0 0.9375rem 0;
+}
+
+.c3.nav--vertical > :last-child {
+  margin: 0;
+}
+
+.c3.nav--vertical > a {
+  font-weight: inherit;
+}
+
+.c3.nav--vertical .nav__delimiter {
+  display: none;
+}
+
+.c3.nav--secondary a {
+  font-weight: normal;
+}
+
+.c3.nav--secondary a span {
+  font-size: 0.875rem;
+  color: #cdd5d8;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 6.25rem;
+}
+
+@media (max-width:767px) {
+  .c3 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+
+  .c3 > * {
+    margin: 0 0 1.5rem 0;
+  }
+
+  .c3 > :last-child {
+    margin: 0;
+  }
+}
+
+@media (max-width:767px) {
+  .c3 .nav__delimiter {
+    display: none;
+  }
+}
+
+<div
+  className="c0 error"
+>
+  <div
+    className="c1 error__logo"
+    size="6.25rem"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-frown fa-w-16 fa-1x "
+      color="#00708D"
+      data-icon="frown"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 496 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+  </div>
+  <div
+    className="error__message"
+  >
+    <h1
+      className="c2"
+    >
+      Oops!
+    </h1>
+    <span
+      className="error__message__description"
+    >
+      We can't seem to find the page you're looking for.
+    </span>
+  </div>
+  <div
+    className="error__links"
+  >
+    <div
+      className="error__links__message"
+    >
+      Here are some helpful links instead
+    </div>
+    <nav
+      className="c3 nav nav--vertical nav--dark"
+    >
+      <a
+        href=""
+      >
+        <span>
+          Home
+        </span>
+        <span
+          className="nav__delimiter"
+        >
+          |
+        </span>
+      </a>
+      <a
+        href=""
+      >
+        <span>
+          About
+        </span>
+        <span
+          className="nav__delimiter"
+        >
+          |
+        </span>
+      </a>
+      <a
+        href=""
+      >
+        <span>
+          Enterprise
+        </span>
+        <span
+          className="nav__delimiter"
+        >
+          |
+        </span>
+      </a>
+      <a
+        href=""
+      >
+        <span>
+          FAQ
+        </span>
+      </a>
+    </nav>
+  </div>
+</div>
+`;

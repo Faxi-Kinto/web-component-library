@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders correctly 1`] = `
+.c1 {
+  background-image: linear-gradient( to right, #003847, #00708D );
+  width: 21.875rem;
+  height: 2.8125rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.c1 p {
+  margin: 0;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1.button--secondary {
+  background: transparent;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0;
+}
+
+.c1.button--secondary > * {
+  margin: 0 0.75rem 0 0;
+}
+
+.c1.button--secondary > :last-child {
+  margin: 0;
+}
+
+.c1.button--secondary p {
+  color: #4E606A;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c2 {
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  color: #00a5b5;
+  font-weight: 300;
+  white-space: pre-wrap;
+}
+
+.c3 {
+  font-size: 14px;
+  color: #00a5b5;
+  font-weight: bold;
+}
+
+.c0 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: initial;
+  -webkit-justify-content: initial;
+  -ms-flex-pack: initial;
+  justify-content: initial;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+}
+
+.c0 > :first-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 > * {
+  margin: 0 0 1.5rem 0;
+}
+
+.c0 > :last-child {
+  margin: 0;
+}
+
+.c0 .continue-button {
+  margin-top: 1.5rem;
+}
+
+<form
+  className="c0"
+  onSubmit={[Function]}
+>
+  <button
+    className="c1 button continue-button"
+    type="submit"
+  >
+    Continue
+  </button>
+  <span
+    className="c2"
+    color="#00a5b5"
+    fontSize="14px"
+  >
+    <span
+      className="c3"
+      color="#00a5b5"
+    >
+      We’re here to help.
+    </span>
+      Call 
+    <span
+      className="c3"
+      color="#00a5b5"
+    >
+      0207 387 1133
+    </span>
+      or email 
+    <span
+      className="c3"
+      color="#00a5b5"
+    >
+      help@kinto-join.com
+    </span>
+  </span>
+</form>
+`;
