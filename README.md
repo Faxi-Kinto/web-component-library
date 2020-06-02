@@ -1,9 +1,6 @@
-# web-component-library
+# Faxi-Kinto web component library
 
->
-
-<!-- TODO: add npm reference -->
-<!-- [![NPM](https://img.shields.io/npm/v/web-component-library.svg)](https://www.npmjs.com/package/web-component-library) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) -->
+[![NPM](https://img.shields.io/npm/v/@deltafixer/faxi-kinto-component-library.svg)](https://www.npmjs.com/package/@deltafixer/faxi-kinto-component-library)
 
 ## Intro
 
@@ -20,17 +17,16 @@ Transpiled files are located in the `/dist` folder.
 
 ## Install
 
-<!-- TODO:  -->
-<!-- ```bash
-npm install --save web-component-library
-``` -->
+```bash
+npm i @deltafixer/faxi-kinto-component-library
+```
 
 ## Usage
 
 ```tsx
 import React from 'react';
 
-import { Button } from 'web-component-library';
+import { Button } from '@deltafixer/faxi-kinto-component-library';
 
 const MyClass: React.FC = (): JSX.Element => {
   render() {
@@ -41,14 +37,10 @@ const MyClass: React.FC = (): JSX.Element => {
 
 The package knows its types, meaning that IntelliSense aids you when using package's components and shows all of the possible props and their definitions.
 
-## Example
-
-The package provides an `example` project, generated with `create-react-app`, which shows basic usage of this package.
-
 ## Tests
 
-Every component is provided with its test file. Run `yarn test` to run tests.
+Every component is provided with its test file. Run `yarn test` within the package to run tests.
 
 ## License
 
-MIT © [](https://github.com/)
+MIT © [](https://github.com/deltafixer)

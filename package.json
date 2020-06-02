@@ -4,7 +4,10 @@
   "description": "",
   "author": "",
   "license": "MIT",
-  "repository": "/web-component-library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Faxi-Kinto/web-component-library"
+  },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.tsx",
