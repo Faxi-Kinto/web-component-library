@@ -21,7 +21,9 @@
     "test:coverage": "jest --verbose --coverage",
     "test:ci": "cross-env CI=true jest --env=jsdom",
     "lint": "eslint --ext .tsx --ext .ts src/ --max-warnings=0",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "storybook": "start-storybook -s ./public -p 9009",
+    "build-storybook": "build-storybook -s public"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -43,13 +45,13 @@
     "@fortawesome/pro-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-backgrounds": "^5.3.19",
     "@storybook/addon-docs": "^5.3.19",
-    "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^2.1.2",
     "@storybook/react": "^5.3.19",
+    "@storybook/addon-backgrounds": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/react-hooks": "^3.2.1",
