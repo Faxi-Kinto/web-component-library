@@ -43,6 +43,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
       return {
         htmlFor: name,
       };
+    return {};
   }, [name]);
 
   const id = useMemo(() => {
@@ -51,6 +52,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
         id: name,
         name,
       };
+    return {};
   }, [name]);
 
   const checkCapsLockStatus = (
