@@ -4,6 +4,7 @@ import external from 'rollup-plugin-peer-deps-external';
 import resolve from 'rollup-plugin-node-resolve';
 import json from 'rollup-plugin-json';
 import pkg from './package.json';
+import postcss from 'rollup-plugin-postcss';
 
 export default {
   input: 'src/index.ts',
@@ -69,6 +70,9 @@ export default {
 
       // generate a named export for every property of the JSON object
       namedExports: true, // Default: true
+    }),
+    postcss({
+      plugins: [],
     }),
   ],
   external: ['util', 'events'],
