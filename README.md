@@ -1,6 +1,6 @@
 # Faxi-Kinto web component library
 
-[![NPM](https://img.shields.io/npm/v/@deltafixer/faxi-kinto-component-library.svg)](https://www.npmjs.com/package/@deltafixer/faxi-kinto-component-library)
+[![NPM](https://img.shields.io/npm/v/faxi-kinto-component-library.svg)](https://www.npmjs.com/package/faxi-kinto-component-library)
 
 ## Intro
 
@@ -18,7 +18,7 @@ Transpiled files are located in the `/dist` folder.
 ## Install
 
 ```bash
-npm i @deltafixer/faxi-kinto-component-library
+npm i faxi-kinto-component-library
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ npm i @deltafixer/faxi-kinto-component-library
 ```tsx
 import React from 'react';
 
-import { Button } from '@deltafixer/faxi-kinto-component-library';
+import { Button } from 'faxi-kinto-component-library';
 
 const MyClass: React.FC = (): JSX.Element => {
   render() {
@@ -63,4 +63,4 @@ This is due to the fact that this package provides a plain `styles.css` file for
 
 ## License
 
-MIT © [](https://github.com/deltafixer)
+MIT ©
