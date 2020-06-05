@@ -1,24 +1,22 @@
 # Faxi-Kinto web component library
 
-[![NPM](https://img.shields.io/npm/v/faxi-kinto-component-library.svg)](https://www.npmjs.com/package/faxi-kinto-component-library)
+[![NPM](https://img.shields.io/npm/v/faxi-kinto-web-component-library.svg)](https://www.npmjs.com/package/faxi-kinto-web-component-library)
 
 ## Intro
 
 Before you is a React component library based on the components used in the `Create a Community - Kinto-Join` app.
 
-The package is generated using `tsc` and `webpack`.
+The package is generated using `rollup`.
 
-Webpack is purely used to handle `*.css` files. Tsc transpiles all of the `*.ts/*.tsx` files.
+- Run `npm build` to build the package.
+- Run `npm start` to run the package in watch mode.
 
-- Run `yarn build` to consecutively run webpack and tsc.
-- Run `yarn start` to run (concurrently) both webpack and tsc in watch mode.
-
-Transpiled files are located in the `/dist` folder.
+Transpiled files are located in the `/build` folder.
 
 ## Install
 
 ```bash
-npm i faxi-kinto-component-library
+npm i faxi-kinto-web-component-library
 ```
 
 ## Usage
@@ -26,7 +24,7 @@ npm i faxi-kinto-component-library
 ```tsx
 import React from 'react';
 
-import { Button } from 'faxi-kinto-component-library';
+import { Button } from 'faxi-kinto-web-component-library';
 
 const MyClass: React.FC = (): JSX.Element => {
   render() {
@@ -39,27 +37,13 @@ The package knows its types, meaning that IntelliSense aids you when using packa
 
 ## Tests
 
-Every component is provided with its test file. Run `yarn test` within the package to run tests.
+Every component is provided with its test file. Run `npm run test` within the package to run tests.
 
-### Note
+## Storybook
 
-If your project uses `Jest` for testing, you must add
+Every component can be previewed (in isolation) within the `Storybook` UI.
 
-```js
-moduleNameMapper: {
-  '\\.(css|less|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
-}
-```
-
-and a dummy:
-
-`__mocks__/styleMock.js`
-
-that just exports a dummy object:
-
-`module.exports = {};`
-
-This is due to the fact that this package provides a plain `styles.css` file for global package styling configuration and `Jest` gets confused when importing css in ts.
+Run `npm run storybook` to build the storybook.
 
 ## License
 

@@ -84,14 +84,6 @@ exports[`Error renders correctly 1`] = `
   font-weight: bold;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 6.25rem;
-}
-
 .c3 > a {
   color: #cdd5d8;
   font-weight: 500;
@@ -165,6 +157,14 @@ exports[`Error renders correctly 1`] = `
 .c3.nav--secondary a span {
   font-size: 0.875rem;
   color: #cdd5d8;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 6.25rem;
 }
 
 @media (max-width:767px) {

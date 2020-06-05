@@ -1,8 +1,13 @@
 import React from 'react';
-import { Button } from 'web-component-library';
+import { Button, Input } from 'web-component-library';
 
 const App = () => {
-  return <Button />;
+  return (
+    <div>
+      <Input />
+      <div>asdsdasd</div>
+    </div>
+  );
 };
 
 export default App;
