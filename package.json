@@ -1,6 +1,6 @@
 {
   "name": "faxi-kinto-web-component-library",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -16,7 +16,7 @@
   "scripts": {
     "start": "rollup -c -w",
     "build": "rollup -c",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest --verbose",
     "test:watch": "jest --watchAll --verbose --env=jsdom",
     "test:coverage": "jest --verbose --coverage",
