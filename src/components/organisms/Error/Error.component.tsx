@@ -71,4 +71,8 @@ const Error: React.FC<ErrorProps> = (props: ErrorProps): JSX.Element => {
   );
 };
 
+Error.defaultProps = {
+  errorType: '404',
+};
+
 export default Error;
