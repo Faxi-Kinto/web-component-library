@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '../../../config';
 import {
   size,
   positionAbsolute,
@@ -19,6 +18,7 @@ export const Container = styled.div`
   & + div {
     opacity: 1;
   }
+
   .modal-wrapper {
     position: fixed;
     top: 0;
@@ -29,11 +29,9 @@ export const Container = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
-    background-color: ${theme.pallet.GRAY_SHADOW};
 
     &__content {
       position: relative;
-      background-color: ${theme.pallet.WHITE};
       ${size('725px', '310px')};
       top: 50%;
       left: 50%;
@@ -42,7 +40,6 @@ export const Container = styled.div`
 
       &__header {
         height: ${pxToRem('55px')};
-        background-color: ${theme.pallet.LIGHT_BLUE};
         font-size: ${pxToRem('20px')};
         color: white;
         padding-left: ${pxToRem('45px')};
@@ -56,11 +53,9 @@ export const Container = styled.div`
         ${fontSize('16px', '20px')};
         font-weight: lighter;
         letter-spacing: 0;
-        color: ${theme.pallet.GRAY_BLUE_2};
       }
 
       &__line {
-        background-color: ${theme.pallet.GRAY_BLUE_2};
         height: ${pxToRem('0.25px')};
         margin: 0;
         width: 100%;
