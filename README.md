@@ -13,6 +13,8 @@ The package is generated using `rollup`.
 
 Transpiled files are located in the `/build` folder.
 
+You can access demo/storybooks [here](https://faxi-kinto.github.io/web-component-library/storybook-static).
+
 ## Install
 
 ```bash
