@@ -1,5 +1,5 @@
 {
-  "name": "probica11",
+  "name": "faxi-kinto-web-component-library",
   "version": "0.1.0",
   "description": "",
   "author": "",
@@ -17,6 +17,7 @@
     "start": "npm run copy-files && tsc -w",
     "build": "npm run copy-files && tsc",
     "copy-files": "copyfiles -u 1 \"src/**/*.css\" build",
+    "prepare": "npm run build",
     "test": "jest --verbose",
     "test:watch": "jest --watchAll --verbose --env=jsdom",
     "test:coverage": "jest --verbose --coverage",
@@ -26,11 +27,7 @@
     "storybook": "start-storybook -s ./public -p 9009",
     "build-storybook": "build-storybook -s public"
   },
-  "peerDependencies": {
-    "react": "^16.0.0",
-    "react-ga": "^2.7.0",
-    "react-gtm-module": "^2.0.8"
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "@types/node": "^12.12.42",

@@ -35,6 +35,12 @@ const MyClass: React.FC = (): JSX.Element => {
 
 The package knows its types, meaning that IntelliSense aids you when using package's components and shows all of the possible props and their definitions.
 
+## Dependecies
+
+This package depends on the `@fortawesome/pro-solid-svg-icons` which requires an `authToken`.
+
+Add Your token in an `.npmrc` file in the root of Your project.
+
 ## Tests
 
 Every component is provided with its test file. Run `npm run test` within the package to run tests.

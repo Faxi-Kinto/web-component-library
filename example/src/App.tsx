@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input, Icon } from 'probica10';
+import { Button, Input, Icon } from 'probica13';
 
 const App = () => {
   return (
