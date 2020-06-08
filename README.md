@@ -1,6 +1,6 @@
 # Faxi-Kinto web component library
 
-[![NPM](https://img.shields.io/npm/v/faxi-kinto-web-component-library.svg)](https://www.npmjs.com/package/faxi-kinto-web-component-library)
+[![NPM](https://img.shields.io/npm/v/@faxi/web-component-library.svg)](https://www.npmjs.com/package/@faxi/web-component-library)
 
 ## Intro
 
@@ -16,7 +16,7 @@ Transpiled files are located in the `/build` folder.
 ## Install
 
 ```bash
-npm i faxi-kinto-web-component-library
+npm i @faxi/web-component-library
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ npm i faxi-kinto-web-component-library
 ```tsx
 import React from 'react';
 
-import { Button } from 'faxi-kinto-web-component-library';
+import { Button } from '@faxi/web-component-library';
 
 const MyClass: React.FC = (): JSX.Element => {
   render() {
