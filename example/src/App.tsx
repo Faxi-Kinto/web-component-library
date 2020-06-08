@@ -1,10 +1,13 @@
 import React from 'react';
-import { Button, Input } from 'web-component-library';
+import { Button, Input, Icon } from 'probica10';
 
 const App = () => {
   return (
     <div>
       <Input />
+      <Button />
+      <Icon name="caps-lock" size={'14px'} />
+
       <div>asdsdasd</div>
     </div>
   );
