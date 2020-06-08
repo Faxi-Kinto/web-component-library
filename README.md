@@ -1,6 +1,6 @@
 # Faxi-Kinto web component library
 
-[![NPM](https://img.shields.io/npm/v/faxi-kinto-web-component-library.svg)](https://www.npmjs.com/package/faxi-kinto-web-component-library)
+[![NPM](https://img.shields.io/npm/v/@faxi/web-component-library.svg)](https://www.npmjs.com/package/@faxi/web-component-library)
 
 ## Intro
 
@@ -18,7 +18,7 @@ You can access demo/storybooks [here](https://faxi-kinto.github.io/web-component
 ## Install
 
 ```bash
-npm i faxi-kinto-web-component-library
+npm i @faxi/web-component-library
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ npm i faxi-kinto-web-component-library
 ```tsx
 import React from 'react';
 
-import { Button } from 'faxi-kinto-web-component-library';
+import { Button } from '@faxi/web-component-library';
 
 const MyClass: React.FC = (): JSX.Element => {
   render() {
@@ -36,6 +36,12 @@ const MyClass: React.FC = (): JSX.Element => {
 ```
 
 The package knows its types, meaning that IntelliSense aids you when using package's components and shows all of the possible props and their definitions.
+
+## Dependecies
+
+This package depends on the `@fortawesome/pro-solid-svg-icons` which requires an `authToken`.
+
+Add Your token in an `.npmrc` file in the root of Your project.
 
 ## Tests
 
