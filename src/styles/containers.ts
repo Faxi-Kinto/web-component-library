@@ -8,7 +8,6 @@ import { flexRow, flexColumn } from './flex';
 import { marginChildren } from './spacings';
 import styled, { css } from 'styled-components';
 import { phablet } from './breakpoints';
-import { theme } from '../config';
 import { padding, pxToRem } from './basics';
 
 export const contentContainer = (
@@ -133,7 +132,6 @@ export const TemplateGrid = styled.div`
 
     &__footer-background {
       grid-area: 3 / 1 / 3 / 4;
-      background-color: ${theme.pallet.LIGHT_BLUE};
       ${phablet(
         css`
           margin-top: ${pxToRem('60px')};
