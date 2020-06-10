@@ -1,6 +1,10 @@
 import styled from 'styled-components';
-import { size, positionAbsolute, padding } from '../../../styles/basics';
-import { pxToRem } from '../../../styles/basics';
+import {
+  padding,
+  pxToRem,
+  size,
+  positionAbsolute,
+} from '@faxi/web-css-utilities';
 
 export const Container = styled.div`
   position: relative;

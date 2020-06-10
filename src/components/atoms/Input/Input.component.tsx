@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, useMemo } from 'react';
 import * as Styled from './Input.styles';
+import Label from '../Label';
 
 /**
  * @name Input
@@ -75,7 +76,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
 
   return (
     <Styled.InputContainer>
-      {label && <label {...htmlFor}>{label}</label>}
+      {label && <Label {...htmlFor}>{label}</Label>}
       <input
         {...id}
         {...rest}
