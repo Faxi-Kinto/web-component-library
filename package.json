@@ -1,6 +1,6 @@
 {
-  "name": "@faxi/web-component-library",
-  "version": "0.2.0",
+  "name": "probica15",
+  "version": "0.2.9",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -47,7 +47,10 @@
     "build"
   ],
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@faxi/web-css-utilities": "^1.0.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/react-fontawesome": "^0.1.10",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-backgrounds": "^5.3.19",
     "@storybook/addon-docs": "^5.3.19",
