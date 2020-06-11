@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { size } from '../../../styles/basics';
-import { pxToRem } from '../../../styles/basics';
+import { size, pxToRem } from '@faxi/web-css-utilities';
 
 export const Spinner = styled.div`
   margin: auto;

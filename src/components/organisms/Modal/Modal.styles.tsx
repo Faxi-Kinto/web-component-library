@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 import {
-  size,
   positionAbsolute,
-  padding,
+  size,
+  flexColumn,
   pxToRem,
+  flexRow,
+  padding,
   fontSize,
-} from '../../../styles/basics';
-import { zindexModal } from '../../../styles/constants';
-import { flexRow, flexColumn } from '../../../styles/flex';
+} from '@faxi/web-css-utilities';
+import { modalZIndex } from '@faxi/web-css-utilities/constants';
 
 export const Container = styled.div`
   ${positionAbsolute('0', '', '', '0')};
-  z-index: ${zindexModal};
+  z-index: ${modalZIndex};
   width: 100vw;
   height: 100vh;
   /* In case we have nested modals */

@@ -1,16 +1,9 @@
 import styled from 'styled-components';
-import { pxToRem } from '../../../styles/basics';
-import { marginChildren } from '../../../styles/spacings';
-import { label } from '../../../styles/input';
-import { boxShadow, padding } from '../../../styles/basics';
+import { marginChildren, pxToRem, padding } from '@faxi/web-css-utilities';
 
 export const InputContainer = styled.div`
   width: 100%;
   ${marginChildren(`0 0 ${pxToRem('10px')} 0`)};
-
-  > label {
-    ${label}
-  }
 
   > input {
     width: 100%;

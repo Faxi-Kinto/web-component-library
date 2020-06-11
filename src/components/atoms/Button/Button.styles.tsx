@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { size } from '../../../styles/basics';
-import { flexRow } from '../../../styles/flex';
-import { marginChildren } from '../../../styles/spacings';
-import { pxToRem } from '../../../styles/basics';
+import {
+  size,
+  pxToRem,
+  flexRow,
+  marginChildren,
+} from '@faxi/web-css-utilities';
 
 export const Button = styled.button`
   ${size(pxToRem('350px'), pxToRem('45px'))};
