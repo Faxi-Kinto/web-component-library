@@ -9,7 +9,6 @@ import {
 export const Button = styled.button`
   ${size(pxToRem('350px'), pxToRem('45px'))};
   border: none;
-  color: white;
   cursor: pointer;
 
   p {

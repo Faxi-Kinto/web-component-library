@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Input from './Input.component';
+import Input from './';
 
 test('Input renders correctly', () => {
   const component = renderer.create(
