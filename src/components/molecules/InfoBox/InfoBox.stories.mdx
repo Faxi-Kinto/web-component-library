@@ -1,7 +1,5 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import InfoBox from './';
-import Icon from '../../atoms/Icon';
-import Text from '../../atoms/Text';
 
 <Meta title="Core|Molecules/InfoBox" />
 
@@ -15,11 +13,9 @@ Component used to brief user with the information.
 
 <Preview>
   <Story name="default">
-    <InfoBox icon="user-tie">
-      <Text.Body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </Text.Body>
+    <InfoBox>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
     </InfoBox>
   </Story>
 </Preview>
@@ -29,10 +25,8 @@ Component used to brief user with the information.
 <Preview>
   <Story name="Without icon">
     <InfoBox>
-      <Text.Body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </Text.Body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
     </InfoBox>
   </Story>
 </Preview>

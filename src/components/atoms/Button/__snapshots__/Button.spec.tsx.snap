@@ -2,7 +2,6 @@
 
 exports[`Button renders correctly 1`] = `
 .c0 {
-  background-image: linear-gradient( to right, #003847, #00708D );
   width: 21.875rem;
   height: 2.8125rem;
   border: none;
@@ -54,7 +53,6 @@ exports[`Button renders correctly 1`] = `
 }
 
 .c0.button--secondary p {
-  color: #4E606A;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
