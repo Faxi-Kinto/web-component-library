@@ -5,7 +5,6 @@ exports[`Button renders correctly 1`] = `
   width: 21.875rem;
   height: 2.8125rem;
   border: none;
-  color: white;
   cursor: pointer;
 }
 
