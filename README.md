@@ -37,11 +37,64 @@ const MyClass: React.FC = (): JSX.Element => {
 
 The package knows its types, meaning that IntelliSense aids you when using package's components and shows all of the possible props and their definitions.
 
-## Dependecies
+## Icons (Font Awesome)
 
-This package depends on the `@fortawesome/pro-solid-svg-icons` which requires an `authToken`.
+This package provides an `Icon` component which wraps [Fort Awesome](https://fortawesome.com/)'s instance `FontAwesomeIcon` from `@fortawesome/react-fontawesome`.
 
-Add Your token in an `.npmrc` file in the root of Your project.
+Up to the user is to define which libraries should be added and how the name-mapping function behaves.
+
+Let's look at an example:
+
+Create a: `fontAwesomeConfig.ts` file in the `src` folder of your project.
+
+```ts
+import { setLibraries } from '@faxi/web-component-library';
+import { fad } from '@fortawesome/pro-duotone-svg-icons';
+
+setLibraries([fad]);
+```
+
+You should install the `@fortawesome/...` family package of your choice in your project and then add it to the array of the `setLibraries` function exported by this package.
+
+Next, define your type of possible icons (this will be a subset of `IconProp` exported by `@fortawesome/fontawesome-svg-core`).
+
+```ts
+export type MyIcons = 'sort-up' | 'sort-down';
+```
+
+Next, you have to define your own name-mapping function and override the package's one.
+
+```ts
+import {
+  setLibraries,
+  setMapNamePropToFaNames,
+} from '@faxi/web-component-library';
+
+...
+
+const customMapNameToFa = (iconName: MyIcons): IconProp => {
+  switch (iconName) {
+    case 'sort-up':
+      return ['fad', 'sort-up'];
+
+    case 'sort-down':
+      return ['fad', 'sort-down'];
+
+    default:
+      return ['fad', 'sort-up'];
+  }
+};
+
+setMapNamePropToFaNames(customMapNameToFa);
+```
+
+Finally, export the package's Icon, wrapped in your type:
+
+```ts
+...
+
+export default Icon as React.FC<IconProps<MyIcons>>;
+```
 
 ## Tests
 

@@ -20,3 +20,5 @@ export { default as Modal } from './components/organisms/Modal';
 export { IconProps } from './components/atoms/Icon/Icon.component';
 
 export { IconProp as IconTouple } from '@fortawesome/fontawesome-svg-core';
+
+export * from './setupFontAwesome';
