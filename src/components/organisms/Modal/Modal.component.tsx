@@ -8,11 +8,20 @@ export type ModalProps = {
   toggled: boolean;
   footer?: JSX.Element;
   className?: string;
+  parent?: HTMLElement;
   onClickOutOfModal?: () => void;
 };
 
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
-  const { title, toggled, onClickOutOfModal, body, footer, className } = props;
+  const {
+    title,
+    toggled,
+    onClickOutOfModal,
+    body,
+    footer,
+    className,
+    parent,
+  } = props;
   const myRef = useRef<HTMLDivElement>(null);
 
   const [isShown, setIsShown] = useState(toggled);
@@ -47,7 +56,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
           </div>
         </div>
       </Styled.Container>,
-      document.body
+      parent ? parent : document.body
     )
   ) : (
     <></>
