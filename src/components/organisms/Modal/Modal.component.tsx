@@ -7,11 +7,12 @@ export type ModalProps = {
   body?: string;
   toggled: boolean;
   footer?: JSX.Element;
+  className?: string;
   onClickOutOfModal?: () => void;
 };
 
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
-  const { title, toggled, onClickOutOfModal, body, footer } = props;
+  const { title, toggled, onClickOutOfModal, body, footer, className } = props;
   const myRef = useRef<HTMLDivElement>(null);
 
   const [isShown, setIsShown] = useState(toggled);
@@ -36,7 +37,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
 
   return isShown ? (
     ReactDOM.createPortal(
-      <Styled.Container>
+      <Styled.Container className={className}>
         <div className="modal-wrapper">
           <div className="modal-wrapper__content" ref={myRef}>
             <div className="modal-wrapper__content__header">{title}</div>
