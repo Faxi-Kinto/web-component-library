@@ -1,4 +1,4 @@
-import './styles.css';
+import { createGlobalStyle } from 'styled-components';
 /*
  * Atoms
  */
@@ -20,5 +20,9 @@ export { default as Modal } from './components/organisms/Modal';
 export { IconProps } from './components/atoms/Icon/Icon.component';
 
 export { IconProp as IconTouple } from '@fortawesome/fontawesome-svg-core';
+
+export const GlobalStyle = createGlobalStyle`
+    @import url('./styles.css');
+`;
 
 export * from './setupFontAwesome';
