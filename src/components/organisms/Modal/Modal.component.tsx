@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 export type ModalProps = {
   header?: JSX.Element;
-  body?: string;
+  body?: JSX.Element;
   toggled: boolean;
   footer?: JSX.Element;
   className?: string;
