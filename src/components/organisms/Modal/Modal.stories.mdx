@@ -24,7 +24,7 @@ This is an implementation of the Modal Component
        <Button onClick={()=>{setIsShowing(true); action('modal-open') }}>Open Modal</Button>
        <Modal
         toggled={isShowing}  
-        title="Confirmation"
+        title={<span>Confirmation</span>}
         body="Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community."
         footer={<Button type="submit" onClick={()=>{isShowing===true ? setIsShowing(false) : null}}>Ok</Button>}
         onClickOutOfModal={()=>{setIsShowing(false)}}

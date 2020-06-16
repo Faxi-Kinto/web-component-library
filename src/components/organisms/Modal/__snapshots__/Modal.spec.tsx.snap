@@ -13,7 +13,9 @@ Object {
         <div
           className="modal-wrapper__content__header"
         >
-          Test
+          <span>
+            Test
+          </span>
         </div>
         <div
           className="modal-wrapper__content__body"
