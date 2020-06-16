@@ -9,7 +9,7 @@ test('Modal renders correctly', () => {
     <Modal
       toggled={true}
       header={<span>Test</span>}
-      body="test body"
+      body={<span>test body</span>}
       footer={<button>test</button>}
     />
   );

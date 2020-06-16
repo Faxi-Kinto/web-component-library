@@ -20,7 +20,9 @@ Object {
         <div
           className="modal-wrapper__content__body"
         >
-          test body
+          <span>
+            test body
+          </span>
         </div>
         <hr
           className="modal-wrapper__content__line"
