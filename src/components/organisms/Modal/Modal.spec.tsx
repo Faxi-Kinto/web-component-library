@@ -8,7 +8,7 @@ test('Modal renders correctly', () => {
   const component = renderer.render(
     <Modal
       toggled={true}
-      title="Test"
+      header={<span>Test</span>}
       body="test body"
       footer={<button>test</button>}
     />
