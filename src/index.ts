@@ -6,6 +6,7 @@ export { default as Button } from './components/atoms/Button';
 export { default as Icon } from './components/atoms/Icon';
 export { default as Image } from './components/atoms/Image';
 export { default as Input } from './components/atoms/Input';
+export { InputProps } from './components/atoms/Input/Input.component';
 export { default as Spinner } from './components/atoms/Spinner';
 
 /*
