@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders correctly 1`] = `
+.c0 {
+  width: 5.9375rem;
+  height: 5.9375rem;
+}
+
+<img
+  alt="avatar"
+  className="c0"
+  height="5.9375rem"
+  src="/assets/images/albert.jpg"
+  style={
+    Object {
+      "objectFit": undefined,
+    }
+  }
+  width="5.9375rem"
+/>
+`;
