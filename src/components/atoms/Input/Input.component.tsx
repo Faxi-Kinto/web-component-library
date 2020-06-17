@@ -80,7 +80,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
       <input
         {...id}
         {...rest}
-        className={error ? 'input--error' : ''}
+        className={`input${error ? ' input--error' : ''}`}
         type={type}
         value={currentValue || inputValue}
         placeholder={placeholder}

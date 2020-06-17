@@ -29,7 +29,7 @@ exports[`Input renders correctly 1`] = `
   className="c0"
 >
   <input
-    className="input--error"
+    className="input input--error"
     onChange={[Function]}
     onKeyPress={[Function]}
     type="text"
