@@ -2,10 +2,11 @@ import { createGlobalStyle } from 'styled-components';
 /*
  * Atoms
  */
-export { default as Spinner } from './components/atoms/Spinner';
 export { default as Button } from './components/atoms/Button';
-export { default as Input } from './components/atoms/Input';
 export { default as Icon } from './components/atoms/Icon';
+export { default as Image } from './components/atoms/Image';
+export { default as Input } from './components/atoms/Input';
+export { default as Spinner } from './components/atoms/Spinner';
 
 /*
  * Molecules
