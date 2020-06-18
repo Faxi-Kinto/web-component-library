@@ -1,11 +1,21 @@
 import styled from 'styled-components';
-import { size, pxToRem } from '@faxi/web-css-utilities';
+import { size } from '@faxi/web-css-utilities';
+import { pxToRem } from '@faxi/web-css-utilities';
+
+type SpinnerStylingProps = {
+  color: string;
+  backgroundColor?: string;
+};
 
 export const Spinner = styled.div`
   margin: auto;
   ${size(pxToRem('36px'))};
-  border: ${pxToRem('4px')} gray solid;
-  border-left: ${pxToRem('4px')} white solid;
+  border: ${(props: SpinnerStylingProps) =>
+    `${pxToRem('4px')} ${props.color} solid`};
+  border-left: ${(props: SpinnerStylingProps) =>
+    `${pxToRem('4px')} ${
+      props.backgroundColor ? props.backgroundColor : 'transparent'
+    } solid`};
   border-radius: 50%;
   animation: spin 1s infinite linear;
 
