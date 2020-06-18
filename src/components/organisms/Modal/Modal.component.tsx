@@ -3,10 +3,10 @@ import * as Styled from './Modal.styles';
 import ReactDOM from 'react-dom';
 
 export type ModalProps = {
-  header?: JSX.Element;
-  body?: JSX.Element;
+  header?: React.ReactNode;
+  body?: React.ReactNode;
   toggled: boolean;
-  footer?: JSX.Element;
+  footer?: React.ReactNode;
   onClickOutOfModal?: () => void;
 };
 
