@@ -1,32 +1,20 @@
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
-import { action } from '@storybook/addon-actions';
-import Button from "./";
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Label from './';
 
-<Meta title="Core|Atoms/Button" />
+<Meta title="Core|Atoms/Label" />
 
-# Button Component
-This is a fundemental atom used to indicate a call to action for the user. It can take two forms that emphasize its hierarchy. 
+# Label Component
 
 ## Implementation
 
 #### Default
+
 <Preview>
   <Story name="default">
-    <Button onClick={action('button-click')}>
-      <p>Hello from Button</p>
-    </Button>
-  </Story>
-</Preview>
-
-#### Secondary
-<Preview>
-  <Story name="secondary">
-    <Button secondary>
-      <p>Exit without saving</p>
-    </Button>
+    <Label>Random label</Label>
   </Story>
 </Preview>
 
 # Props
 
-<Props of={Button} />
+<Props of={Label} />
