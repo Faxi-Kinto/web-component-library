@@ -11,10 +11,10 @@ export const Spinner = styled.div`
   margin: auto;
   ${size(pxToRem('36px'))};
   border: ${(props: SpinnerStylingProps) =>
-    `${pxToRem('4px')} ${props.color} solid`};
+    `${pxToRem('4px')} ${props.backgroundColor} solid`};
   border-left: ${(props: SpinnerStylingProps) =>
     `${pxToRem('4px')} ${
-      props.backgroundColor ? props.backgroundColor : 'transparent'
+      props.backgroundColor ? props.color : 'transparent'
     } solid`};
   border-radius: 50%;
   animation: spin 1s infinite linear;
