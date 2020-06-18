@@ -3,10 +3,10 @@ import * as Styled from './Modal.styles';
 import ReactDOM from 'react-dom';
 
 export type ModalProps = {
-  header?: JSX.Element;
-  body?: JSX.Element;
+  header?: React.ReactNode;
+  body?: React.ReactNode;
+  footer?: React.ReactNode;
   toggled: boolean;
-  footer?: JSX.Element;
   className?: string;
   parent?: HTMLElement;
   onClickOutOfModal?: () => void;
@@ -15,12 +15,12 @@ export type ModalProps = {
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
   const {
     header,
-    toggled,
-    onClickOutOfModal,
     body,
     footer,
+    toggled,
     className,
     parent,
+    onClickOutOfModal,
   } = props;
   const myRef = useRef<HTMLDivElement>(null);
 
