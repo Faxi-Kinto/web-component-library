@@ -1,0 +1,121 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+import Text from './';
+
+<Meta title="Core|Atoms/Text" />
+
+# Text Component
+
+This componet is responsible for all app typography. Its broken down into subcomponents
+and is used as per the examples below.
+
+## Body Text
+
+This subcomponent is responsible for rendering body text.
+
+#### Implementation
+
+<Preview>
+  <Story name="body text">
+    <Text.Body>This is some body text.</Text.Body>
+  </Story>
+</Preview>
+
+#### Props
+
+<Props of={Text.Body} />
+
+## Headings
+
+This subcomponent is responsible for endering all headings
+
+### Implementations
+
+#### Heading level 1
+
+<Preview>
+  <Story name="level 1 heading">
+    <Text.Heading level="1">This is a level 1 heading</Text.Heading>
+  </Story>
+</Preview>
+
+#### Heading level 2
+
+<Preview>
+  <Story name="level 2 heading">
+    <Text.Heading level="2">This is a level 2 heading</Text.Heading>
+  </Story>
+</Preview>
+
+#### Heading level 3
+
+<Preview>
+  <Story name="level 3 heading">
+    <Text.Heading level="3">This is a level 3 heading</Text.Heading>
+  </Story>
+</Preview>
+
+#### Heading level 4
+
+<Preview>
+  <Story name="level 4 heading">
+    <Text.Heading level="4">This is a level 4 heading</Text.Heading>
+  </Story>
+</Preview>
+
+#### Heading level 5
+
+<Preview>
+  <Story name="level 5 heading">
+    <Text.Heading level="5">This is a level 5 heading</Text.Heading>
+  </Story>
+</Preview>
+
+#### Heading level 6
+
+<Preview>
+  <Story name="level 6 heading">
+    <Text.Heading level="6">This is a level 6 heading</Text.Heading>
+  </Story>
+</Preview>
+
+#### Props
+
+<Props of={Text.Heading} />
+
+## Paragraph
+
+#### Implementations
+
+<Preview>
+  <Story name="paragraph 1">
+    <Text.Paragraph level="1">This is Paragraph 1</Text.Paragraph>
+  </Story>
+  <Story name="paragraph 2">
+    <Text.Paragraph level="2">This is Paragraph 2</Text.Paragraph>
+  </Story>
+</Preview>
+
+## Link
+
+This subcomponent is responsible for rendering links.
+
+#### Implementations
+
+<Preview>
+  <Story name="link">
+    <Text.Link href="/">This is a simple link</Text.Link>
+  </Story>
+  <Story name="inline link">
+    <Text.Body>
+      This is some body text with&nbsp;
+      <Text.Link href="https://www.google.com" target="_blank">
+        External Link
+      </Text.Link>&nbsp;that opens in new tab.
+    </Text.Body>
+  </Story>
+</Preview>
+
+#### Props
+
+<Props of={Text.Link} />
