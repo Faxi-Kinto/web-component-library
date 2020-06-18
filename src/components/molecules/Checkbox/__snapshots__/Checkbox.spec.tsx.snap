@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly 1`] = `
+.c0 {
+  position: relative;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 1.625rem;
+}
+
+.c0 > span {
+  line-height: 1.625rem;
+}
+
+.c0:before {
+  content: '';
+  display: inline-block;
+  box-sizing: border-box;
+  border: undefined solid 0.0625rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
+.c0.checkbox--has-label > :last-child {
+  margin-left: 1.625rem;
+  padding-left: 0.3125rem;
+}
+
+.c0.checkbox--has-error {
+  color: undefined;
+}
+
+.c0.checkbox--has-error:before {
+  border: undefined solid 0.0625rem;
+}
+
+.c0.checkbox--left > :last-child {
+  margin-left: unset;
+  padding-left: unset;
+  margin-right: 1.625rem;
+  padding-right: 0.3125rem;
+}
+
+.c0.checkbox--left:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+}
+
+.c0.checkbox--left .checkbox__input-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+}
+
+.c0 .checkbox__input-wrapper {
+  position: absolute;
+  width: 1.625rem;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 .checkbox__input-wrapper__input {
+  display: none;
+}
+
+<label
+  className="c0 checkbox"
+>
+  <div
+    className="checkbox__input-wrapper"
+  >
+    <input
+      checked={false}
+      className="checkbox__input-wrapper__input"
+      onChange={[Function]}
+      type="checkbox"
+      value="false"
+    />
+  </div>
+</label>
+`;

@@ -1,0 +1,63 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+
+import Checkbox from "./";
+import Text from '../../atoms/Text'
+
+<Meta title="Core|Molecules/Checkbox" />
+
+# Checkbox Component
+
+Simple checkbox component. It can be simple, or with label
+
+## Implementation
+
+#### Default
+<Preview>
+  <Story name="default">
+    <Checkbox />
+  </Story>
+</Preview>
+
+
+#### With Label
+<Preview>
+  <Story name="With label">
+    <Checkbox label="Click me!" />
+  </Story>
+</Preview>
+
+#### With link
+<Preview>
+  <Story name="With link">
+    <Checkbox label={
+      <Text.Body>I accept&nbsp;
+        <Text.Link href="https://google.com">terms</Text.Link>
+      </Text.Body>} />
+  </Story>
+</Preview>
+
+#### With error
+<Preview>
+  <Story name="With error">
+    <Checkbox error label={'This won\'t work'} />
+  </Story>
+</Preview>
+
+
+#### Label left
+<Preview>
+  <Story name="Label left">
+    <Checkbox label={'This is left'} labelPosition={'left'} />
+  </Story>
+</Preview>
+
+## Props
+
+
+
+<Props of={Checkbox} />
+
+
+## Notes
+- onChange prop passes Event Object through callback. Reason for not passing only check 
+property is having full control over the event **_e.g._** `event.preventDefault() || event.stopPropagation()`
