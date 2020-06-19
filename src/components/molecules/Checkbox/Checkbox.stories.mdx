@@ -7,14 +7,16 @@ import Text from '../../atoms/Text'
 
 # Checkbox Component
 
-Simple checkbox component. It can be simple, or with label
+You can provide your own checked state icon
 
 ## Implementation
 
 #### Default
 <Preview>
   <Story name="default">
-    <Checkbox />
+    <Checkbox icon={
+      <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
+      } />
   </Story>
 </Preview>
 
@@ -22,7 +24,9 @@ Simple checkbox component. It can be simple, or with label
 #### With Label
 <Preview>
   <Story name="With label">
-    <Checkbox label="Click me!" />
+    <Checkbox label="Click me!" icon={
+      <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
+      }  />
   </Story>
 </Preview>
 
@@ -32,14 +36,18 @@ Simple checkbox component. It can be simple, or with label
     <Checkbox label={
       <Text.Body>I accept&nbsp;
         <Text.Link href="https://google.com">terms</Text.Link>
-      </Text.Body>} />
+      </Text.Body>} icon={
+      <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
+      } />
   </Story>
 </Preview>
 
 #### With error
 <Preview>
   <Story name="With error">
-    <Checkbox error label={'This won\'t work'} />
+    <Checkbox error label={'This won\'t work'} icon={
+      <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
+      }  />
   </Story>
 </Preview>
 
@@ -47,16 +55,15 @@ Simple checkbox component. It can be simple, or with label
 #### Label left
 <Preview>
   <Story name="Label left">
-    <Checkbox label={'This is left'} labelPosition={'left'} />
+    <Checkbox label={'This is left'} labelPosition={'left'} icon={
+      <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
+      }  />
   </Story>
 </Preview>
 
 ## Props
 
-
-
 <Props of={Checkbox} />
-
 
 ## Notes
 - onChange prop passes Event Object through callback. Reason for not passing only check 
