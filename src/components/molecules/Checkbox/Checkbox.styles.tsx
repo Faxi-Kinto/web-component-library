@@ -88,10 +88,10 @@ export const Container = styled.label`
       ${(props: CheckboxStylingProps) =>
         props.size
           ? `
-      ${size(props.size, '100%')};
+      ${size(props.size)};
       `
           : `
-      ${size(defaultSize, '100%')};
+      ${size(defaultSize)};
       `};
       ${flexRow('center', 'center')};
 
