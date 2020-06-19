@@ -7,7 +7,7 @@ exports[`Button renders correctly 1`] = `
   font: inherit;
   width: 21.875rem;
   height: 2.8125rem;
-  background-color: white;
+  background: white;
   color: black;
 }
 

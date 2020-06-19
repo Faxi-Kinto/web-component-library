@@ -19,7 +19,7 @@ export interface ButtonProps {
   className?: string;
   width: string;
   height: string;
-  backgroundColor?: string;
+  background?: string;
   fontColor?: string;
 }
 
@@ -32,14 +32,14 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
     className,
     width,
     height,
-    backgroundColor = 'white',
+    background = 'white',
     fontColor = 'black',
   } = props;
   return (
     <Styled.Button
       width={width}
       height={height}
-      backgroundColor={backgroundColor}
+      background={background}
       fontColor={fontColor}
       className={`button${secondary ? ' button--secondary' : ''}${
         className ? ' ' + className : ''

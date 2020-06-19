@@ -9,7 +9,7 @@ import {
 type ButtonStylingProps = {
   width: string;
   height: string;
-  backgroundColor?: string;
+  background?: string;
   fontColor?: string;
 };
 
@@ -21,8 +21,8 @@ export const Button = styled.button`
     `
     ${size(props.width, props.height)};
   `};
-  background-color: ${(props: ButtonStylingProps) =>
-    props.backgroundColor ? props.backgroundColor : 'white'};
+  background: ${(props: ButtonStylingProps) =>
+    props.background ? props.background : 'white'};
   color: ${(props: ButtonStylingProps) =>
     props.fontColor ? props.fontColor : 'black'};
 
