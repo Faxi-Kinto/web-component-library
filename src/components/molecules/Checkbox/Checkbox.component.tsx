@@ -22,6 +22,7 @@ export type CheckboxProps = {
   borderColor?: string;
   errorColor?: string;
   icon: ReactNode;
+  size?: string;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (
@@ -37,6 +38,7 @@ const Checkbox: React.FC<CheckboxProps> = (
     errorColor = 'red',
     borderColor = 'black',
     icon,
+    size,
   } = props;
   const [stateChecked, setChecked] = useState(Boolean(value));
 
@@ -59,8 +61,9 @@ const Checkbox: React.FC<CheckboxProps> = (
     <Styled.Container
       borderColor={borderColor}
       errorColor={errorColor}
-      className={`checkbox${label ? ' checkbox--has-label ' : ''}${
-        value || stateChecked ? ' checkbox--checked ' : ''
+      size={size}
+      className={`checkbox${label ? ' checkbox--has-label' : ''}${
+        value || stateChecked ? ' checkbox--checked' : ''
       }${error ? ' checkbox--has-error ' : ''}${
         label && labelPosition === 'left' ? ' checkbox--left' : ''
       }`}
