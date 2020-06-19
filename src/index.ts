@@ -13,7 +13,7 @@ export { default as Text } from './components/atoms/Text';
 /*
  * Molecules
  */
-export { default as InfoBox } from './components/molecules/InfoBox';
+export { default as Checkbox } from './components/molecules/Checkbox';
 
 /*
  * Organisms

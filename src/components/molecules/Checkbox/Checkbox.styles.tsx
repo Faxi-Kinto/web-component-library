@@ -7,7 +7,7 @@ import {
 } from '@faxi/web-css-utilities';
 
 type CheckboxStylingProps = {
-  borderColor: string;
+  borderColor?: string;
   errorColor?: string;
 };
 

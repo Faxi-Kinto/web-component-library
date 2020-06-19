@@ -20,12 +20,23 @@ export type CheckboxProps = {
   label?: React.ReactNode;
   labelPosition?: LabelPosition;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  borderColor?: string;
+  errorColor?: string;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (
   props: CheckboxProps
 ): JSX.Element => {
-  const { value, onChange, name, label, error, labelPosition } = props;
+  const {
+    value,
+    onChange,
+    name,
+    label,
+    error,
+    labelPosition,
+    errorColor = 'red',
+    borderColor = 'black',
+  } = props;
   const [stateChecked, setChecked] = useState(Boolean(value));
 
   const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -45,6 +56,8 @@ const Checkbox: React.FC<CheckboxProps> = (
 
   return (
     <Styled.Container
+      borderColor={borderColor}
+      errorColor={errorColor}
       className={`checkbox${label ? ' checkbox--has-label ' : ''}${
         value || stateChecked ? ' checkbox--checked ' : ''
       }${error ? ' checkbox--has-error ' : ''}${

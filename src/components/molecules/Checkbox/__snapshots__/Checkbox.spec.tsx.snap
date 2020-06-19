@@ -22,7 +22,7 @@ exports[`Checkbox renders correctly 1`] = `
   content: '';
   display: inline-block;
   box-sizing: border-box;
-  border: undefined solid 0.0625rem;
+  border: black solid 0.0625rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -36,11 +36,11 @@ exports[`Checkbox renders correctly 1`] = `
 }
 
 .c0.checkbox--has-error {
-  color: undefined;
+  color: red;
 }
 
 .c0.checkbox--has-error:before {
-  border: undefined solid 0.0625rem;
+  border: red solid 0.0625rem;
 }
 
 .c0.checkbox--left > :last-child {
