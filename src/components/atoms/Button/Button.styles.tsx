@@ -10,6 +10,7 @@ export const Button = styled.button`
   ${size(pxToRem('350px'), pxToRem('45px'))};
   border: none;
   cursor: pointer;
+  font: inherit;
 
   p {
     margin: 0;
