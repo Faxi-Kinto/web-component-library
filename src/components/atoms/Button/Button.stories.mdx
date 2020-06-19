@@ -1,6 +1,7 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import { action } from '@storybook/addon-actions';
 import Button from "./";
+import { pxToRem } from '@faxi/web-css-utilities';
 
 <Meta title="Core|Atoms/Button" />
 
@@ -12,7 +13,7 @@ This is a fundemental atom used to indicate a call to action for the user. It ca
 #### Default
 <Preview>
   <Story name="default">
-    <Button onClick={action('button-click')}>
+    <Button height={pxToRem('45px')} width={pxToRem('350px')} onClick={action('button-click')} backgroundColor="#00708D" fontColor="white">
       <p>Hello from Button</p>
     </Button>
   </Story>
@@ -21,7 +22,7 @@ This is a fundemental atom used to indicate a call to action for the user. It ca
 #### Secondary
 <Preview>
   <Story name="secondary">
-    <Button secondary>
+    <Button secondary height={pxToRem('45px')} width={pxToRem('350px')} onClick={action('button-click')}>
       <p>Exit without saving</p>
       <img width="13px" src="assets/icons/checkmark.svg" />
     </Button>

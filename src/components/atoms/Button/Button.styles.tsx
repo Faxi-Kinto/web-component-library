@@ -6,11 +6,25 @@ import {
   marginChildren,
 } from '@faxi/web-css-utilities';
 
+type ButtonStylingProps = {
+  width: string;
+  height: string;
+  backgroundColor?: string;
+  fontColor?: string;
+};
+
 export const Button = styled.button`
-  ${size(pxToRem('350px'), pxToRem('45px'))};
   border: none;
   cursor: pointer;
   font: inherit;
+  ${(props: ButtonStylingProps) =>
+    `
+    ${size(props.width, props.height)};
+  `};
+  background-color: ${(props: ButtonStylingProps) =>
+    props.backgroundColor ? props.backgroundColor : 'white'};
+  color: ${(props: ButtonStylingProps) =>
+    props.fontColor ? props.fontColor : 'black'};
 
   p {
     margin: 0;
