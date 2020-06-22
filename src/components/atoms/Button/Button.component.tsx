@@ -17,8 +17,8 @@ export interface ButtonProps {
   secondary?: boolean;
   type?: ButtonType;
   className?: string;
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
   background?: string;
   fontColor?: string;
 }
@@ -30,8 +30,8 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
     onClick,
     type,
     className,
-    width,
-    height,
+    width = 'fit-content',
+    height = 'fit-content',
     background = 'white',
     fontColor = 'black',
   } = props;
