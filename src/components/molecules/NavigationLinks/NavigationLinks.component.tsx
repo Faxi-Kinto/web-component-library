@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './NavigationLinks.styles';
-import { NavLink } from '.';
 
 /**
  * @name NavigationLinks
@@ -15,6 +14,11 @@ export type NavigationLinksProps = {
   color: string;
   lightColor?: string;
   darkColor?: string;
+};
+
+export type NavLink = {
+  name: string;
+  route: string;
 };
 
 const NavigationLinks: React.FC<NavigationLinksProps> = (

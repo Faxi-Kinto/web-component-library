@@ -24,10 +24,14 @@ export { default as Modal } from './components/organisms/Modal';
 /*
  * Prop Types
  */
-export { IconProp as IconTouple } from '@fortawesome/fontawesome-svg-core';
 export { IconProps } from './components/atoms/Icon/Icon.component';
 export { InputProps } from './components/atoms/Input/Input.component';
 export { CheckboxProps } from './components/molecules/Checkbox/Checkbox.component';
+
+/*
+ * Types
+ */
+export { NavLink } from './components/molecules/NavigationLinks/NavigationLinks.component';
 
 export const GlobalStyle = createGlobalStyle`
     @import url('./styles.css');
