@@ -14,6 +14,7 @@ export { default as Text } from './components/atoms/Text';
  * Molecules
  */
 export { default as Checkbox } from './components/molecules/Checkbox';
+export { default as NavigationLinks } from './components/molecules/NavigationLinks';
 
 /*
  * Organisms

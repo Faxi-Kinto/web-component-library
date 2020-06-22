@@ -1,0 +1,75 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import NavigationLinks from './';
+
+<Meta title="Core|Molecules/NavigationLinks" />
+
+# NavigationLinks Component
+
+It contains links, each follows you to the desired route.
+
+<!-- TODO ADD STORYBOOK ACTIONS INSTEAD OF ROUTING HERE -->
+
+## Implementation
+
+#### Primary
+
+<Preview>
+  <Story name="primary">
+    <div style={{backgroundColor: '#00708D', width: 'fit-content' }}>
+      <NavigationLinks
+        links={[
+          { name: 'About', route: '' },
+          { name: 'Pricing', route: '' },
+          { name: 'FAQs', route: '' },
+          { name: 'News', route: '' },
+          { name: 'Contact us', route: '' },
+        ]}
+        color="#cdd5d8"
+        lightColor='white'
+      />
+    </div>
+  </Story>
+</Preview>
+
+#### Secondary
+
+<Preview>
+  <Story name="secondary">
+    <div style={{backgroundColor: '#00708D', width: 'fit-content' }}>
+      <NavigationLinks
+        secondary
+        links={[
+          { name: 'Privacy Policy', route: '' },
+          { name: 'Terms & Conditions', route: '' },
+          { name: 'Cookie Policy', route: '' },
+        ]}
+        color="#cdd5d8"
+        lightColor='white'
+      />
+    </div>
+  </Story>
+</Preview>
+
+
+#### Dark
+
+<Preview>
+  <Story name="dark">
+    <div style={{backgroundColor: 'white', width: 'fit-content' }}>
+      <NavigationLinks
+        links={[
+          { name: 'About', route: '' },
+          { name: 'Pricing', route: '' },
+          { name: 'FAQs', route: '' },
+          { name: 'News', route: '' },
+          { name: 'Contact us', route: '' },
+        ]}
+        colorType='dark'
+      />
+    </div>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={NavigationLinks} />
