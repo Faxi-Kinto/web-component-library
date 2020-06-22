@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import NavigationLinks from './NavigationLinks.component';
-import { NavLink } from '.';
+import { NavLink } from './NavigationLinks.component';
 
 test('NavigationLinks renders correctly', () => {
   const data = [
