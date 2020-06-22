@@ -6,8 +6,6 @@ import { marginChildren } from '@faxi/web-css-utilities';
 
 type NavigationLinksStylingProps = {
   color: string;
-  lightColor?: string;
-  darkColor?: string;
 };
 
 export const Nav = styled.nav`
@@ -31,20 +29,6 @@ export const Nav = styled.nav`
   }
 
   &.nav {
-    &--light {
-      > a {
-        color: ${(props: NavigationLinksStylingProps) =>
-          props.lightColor || 'white'};
-      }
-    }
-
-    &--dark {
-      > a {
-        color: ${(props: NavigationLinksStylingProps) =>
-          props.darkColor || 'black'};
-      }
-    }
-
     &--vertical {
       ${marginChildren(`0 0 ${pxToRem('15px')} 0`)};
       ${flexColumn('center', 'center')};
@@ -65,7 +49,6 @@ export const Nav = styled.nav`
       > a {
         font-weight: normal;
         font-size: ${pxToRem('14px')};
-        color: ${(props: NavigationLinksStylingProps) => props.color};
       }
     }
   }

@@ -10,10 +10,7 @@ export type NavigationLinksProps = {
   links: NavLink[];
   secondary?: boolean;
   vertical?: boolean;
-  colorType?: 'light' | 'dark';
   color: string;
-  lightColor?: string;
-  darkColor?: string;
 };
 
 export type NavLink = {
@@ -24,23 +21,13 @@ export type NavLink = {
 const NavigationLinks: React.FC<NavigationLinksProps> = (
   props: NavigationLinksProps
 ): JSX.Element => {
-  const {
-    links,
-    secondary,
-    vertical,
-    colorType = 'light',
-    color,
-    lightColor,
-    darkColor,
-  } = props;
+  const { links, secondary, vertical, color } = props;
   return (
     <Styled.Nav
       className={`nav${secondary ? ' nav--secondary' : ''}${
         vertical ? ' nav--vertical' : ''
-      }${` nav--${colorType}`}`}
+      }`}
       color={color}
-      lightColor={lightColor}
-      darkColor={darkColor}
     >
       {links.map((link, index) => (
         <a key={index} href={link.route}>

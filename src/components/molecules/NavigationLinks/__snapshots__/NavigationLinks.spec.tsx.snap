@@ -16,14 +16,6 @@ exports[`NavigationLinks renders correctly 1`] = `
   margin-right: 0.375rem;
 }
 
-.c0.nav--light > a {
-  color: white;
-}
-
-.c0.nav--dark > a {
-  color: black;
-}
-
 .c0.nav--vertical {
   display: -webkit-box;
   display: -webkit-flex;
@@ -64,7 +56,6 @@ exports[`NavigationLinks renders correctly 1`] = `
 .c0.nav--secondary > a {
   font-weight: normal;
   font-size: 0.875rem;
-  color: black;
 }
 
 @media (max-width:767px) {
@@ -102,7 +93,7 @@ exports[`NavigationLinks renders correctly 1`] = `
 }
 
 <nav
-  className="c0 nav nav--light"
+  className="c0 nav"
   color="black"
 >
   <a
