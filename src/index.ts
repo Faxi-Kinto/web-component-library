@@ -7,6 +7,7 @@ export { default as Icon } from './components/atoms/Icon';
 export { default as Image } from './components/atoms/Image';
 export { default as Input } from './components/atoms/Input';
 export { default as Label } from './components/atoms/Label';
+export { default as ParallaxBackground } from './components/atoms/ParallaxBackground';
 export { default as Spinner } from './components/atoms/Spinner';
 export { default as Text } from './components/atoms/Text';
 
