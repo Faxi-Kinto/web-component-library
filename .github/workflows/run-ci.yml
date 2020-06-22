@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+
+  ci-cd:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+        npm config set //npm.fontawesome.com/:_authToken=$FA_TOKEN
+        npm ci
+      env: 
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        FA_TOKEN: ${{ secrets.FA_TOKEN }}
+      
+    - name: Run code linters
+      run: npm run lint
+      
+    - name: Run test suite
+      run: npm run test
