@@ -101,7 +101,17 @@ export const Paragraph = (props: ParagraphTextProps): JSX.Element => {
 export const Link = (
   props: React.HTMLProps<HTMLAnchorElement>
 ): JSX.Element => {
-  const { children, href, target, download, media, rel, type, color } = props;
+  const {
+    children,
+    href,
+    target,
+    download,
+    media,
+    rel,
+    type,
+    color,
+    className,
+  } = props;
 
   return (
     <Styled.Link
@@ -112,6 +122,7 @@ export const Link = (
       rel={rel}
       type={type}
       color={color}
+      className={className}
     >
       {children}
     </Styled.Link>
