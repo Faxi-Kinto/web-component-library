@@ -7,8 +7,7 @@ on:
       - develop 
 
 jobs:
-  deploy-storybook:
-
+  run:
     runs-on: ubuntu-latest
     
     steps:
@@ -18,37 +17,33 @@ jobs:
       with:
         node-version: 14
 
-    - name: setup
+    - name: base-setup
       run: |
-        npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-        npm config set "@fortawesome:registry" https://npm.fontawesome.com/
-        npm config set //npm.fontawesome.com/:_authToken=$FA_TOKEN
-        npm ci
-      env: 
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        FA_TOKEN: ${{ secrets.FA_TOKEN }}
-
-    - name: npm install
-      run: |
-        npm ci
-    
-    - name: Prepare Artifact
-      run: |
-        npm run build-storybook
-        rm -rf .git
-        git clone https://github.com/Faxi-Kinto/web-react-deployment-wrapper deploy
-        cd deploy
-        rm -rf .git
-        mv ../storybook-static build
-        git init
         git config --global user.email "me@jonjoe.io"
         git config --global user.name "Jonjoe Whitfield"
+        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+        npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+        npm config set //npm.fontawesome.com/:_authToken=${{ secrets.FA_TOKEN }}
+        npm ci
+     
+    - name: setup-storybook
+      run: |
+        git clone https://github.com/Faxi-Kinto/web-react-deployment-wrapper storybook
+        cd ./storybook 
+        rm -rf ./.git
+        git init
         git add .
         git commit -m "deployment"
-        git remote add heroku https://heroku:1e7cfe01-5561-45e8-aee9-44d21efbafcb@git.heroku.com/faxi-cl-storybook-develop.git
+        git remote add heroku https://heroku:${{ secrets.HEROKU_TOKEN }}@git.heroku.com/faxi-cl-storybook-develop.git
     
-    - name: Deploy to Heroku
+    - name: build-storybook
       run: |
-        cd deploy
+        npm run build-storybook
+        mv ./storybook-static ./storybook/build
+
+    - name: deploy-storybook
+      run: |
+        cd storybook
         git push heroku HEAD:master -f
+    
     
