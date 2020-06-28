@@ -31,23 +31,51 @@ interface HeadingTextProps extends TextProps {
 }
 
 export const Heading = (props: HeadingTextProps): JSX.Element => {
-  const { children, level, color = 'black' } = props;
+  const { children, level, className, color = 'black' } = props;
 
   switch (level) {
     case '1':
-      return <Styled.Heading1 color={color}>{children}</Styled.Heading1>;
+      return (
+        <Styled.Heading1 color={color} className={className}>
+          {children}
+        </Styled.Heading1>
+      );
     case '2':
-      return <Styled.Heading2 color={color}>{children}</Styled.Heading2>;
+      return (
+        <Styled.Heading2 color={color} className={className}>
+          {children}
+        </Styled.Heading2>
+      );
     case '3':
-      return <Styled.Heading3 color={color}>{children}</Styled.Heading3>;
+      return (
+        <Styled.Heading3 color={color} className={className}>
+          {children}
+        </Styled.Heading3>
+      );
     case '4':
-      return <Styled.Heading4 color={color}>{children}</Styled.Heading4>;
+      return (
+        <Styled.Heading4 color={color} className={className}>
+          {children}
+        </Styled.Heading4>
+      );
     case '5':
-      return <Styled.Heading5 color={color}>{children}</Styled.Heading5>;
+      return (
+        <Styled.Heading5 color={color} className={className}>
+          {children}
+        </Styled.Heading5>
+      );
     case '6':
-      return <Styled.Heading6 color={color}>{children}</Styled.Heading6>;
+      return (
+        <Styled.Heading6 color={color} className={className}>
+          {children}
+        </Styled.Heading6>
+      );
     default:
-      return <Styled.Heading1 color={color}>{children}</Styled.Heading1>;
+      return (
+        <Styled.Heading1 color={color} className={className}>
+          {children}
+        </Styled.Heading1>
+      );
   }
 };
 
