@@ -1,6 +1,9 @@
 # Faxi-Kinto web component library
 
-[![NPM](https://img.shields.io/npm/v/@faxi/web-component-library.svg)](https://www.npmjs.com/package/@faxi/web-component-library)
+![CI](https://github.com/Faxi-Kinto/web-component-library/workflows/CI/badge.svg)
+
+## Overview
+[Storybook URL](https://faxi-cl-storybook-develop.herokuapp.com)
 
 ## Intro
 
@@ -12,8 +15,6 @@ The package is generated using `rollup`.
 - Run `npm start` to run the package in watch mode.
 
 Transpiled files are located in the `/build` folder.
-
-You can access demo/storybooks [here](https://faxi-kinto.github.io/web-component-library/storybook-static).
 
 ## Install
 
