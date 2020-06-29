@@ -19,6 +19,8 @@ jobs:
 
     - name: base-setup
       run: |
+        rm -rf ./.git
+        rm -rf ./.gitignore
         git config --global user.email "me@jonjoe.io"
         git config --global user.name "Jonjoe Whitfield"
         npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
@@ -32,8 +34,6 @@ jobs:
         cd ./storybook 
         rm -rf ./.git
         git init
-        git add .
-        git commit -m "deployment"
         git remote add heroku https://heroku:${{ secrets.HEROKU_TOKEN }}@git.heroku.com/faxi-cl-storybook-develop.git
     
     - name: build-storybook
@@ -44,6 +44,8 @@ jobs:
     - name: deploy-storybook
       run: |
         cd storybook
+        git add .
+        git commit -m "deployment"
         git push heroku HEAD:master -f
     
     
