@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './Image.styles';
-import { pxToRem } from '@faxi/web-css-utilities';
 
 /**
  * @name Image
@@ -10,8 +9,8 @@ import { pxToRem } from '@faxi/web-css-utilities';
  * @returns {JSX}
  */
 
-const defaultWidth = pxToRem('95px');
-const defaultHeight = pxToRem('95px');
+const defaultWidth = 'auto';
+const defaultHeight = 'auto';
 
 type ImageObjectFit =
   | 'contain'
