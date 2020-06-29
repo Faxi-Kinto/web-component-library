@@ -10,8 +10,6 @@ import { pxToRem } from '@faxi/web-css-utilities';
  * @returns {JSX}
  */
 
-// TODO: this is same as Logo from CCF...
-
 const defaultWidth = pxToRem('95px');
 const defaultHeight = pxToRem('95px');
 
@@ -25,7 +23,7 @@ type ImageObjectFit =
   | 'scale-down'
   | 'unset';
 
-export type AvatarProps = {
+export type ImageProps = {
   src: string;
   alt: string;
   width?: string;
@@ -34,7 +32,7 @@ export type AvatarProps = {
   className?: string;
 };
 
-const Image: React.FC<AvatarProps> = (props: AvatarProps): JSX.Element => {
+const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
   const { src, alt, width, height, objectFit, className } = props;
 
   return (
