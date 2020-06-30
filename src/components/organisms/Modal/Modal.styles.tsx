@@ -1,13 +1,5 @@
 import styled from 'styled-components';
-import {
-  positionAbsolute,
-  size,
-  flexColumn,
-  pxToRem,
-  flexRow,
-  padding,
-  fontSize,
-} from '@faxi/web-css-utilities';
+import { positionAbsolute, size, flexColumn } from '@faxi/web-css-utilities';
 import { modalZIndex } from '@faxi/web-css-utilities/constants';
 
 export const Container = styled.div`
@@ -30,48 +22,22 @@ export const Container = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
+    background-color: #00000050;
 
     &__content {
       position: relative;
       ${size('725px', '310px')};
+      ${flexColumn()};
+      background-color: white;
+    }
+    .center {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      ${flexColumn()};
-
-      &__header {
-        height: ${pxToRem('55px')};
-        font-size: ${pxToRem('20px')};
-        color: white;
-        padding-left: ${pxToRem('45px')};
-        ${flexRow('initial', 'center')};
-      }
-
-      &__body {
-        flex-grow: 1;
-        text-align: left;
-        ${padding(pxToRem('27px'), pxToRem('60px'), '0', pxToRem('45px'))};
-        ${fontSize('16px', '20px')};
-        font-weight: lighter;
-        letter-spacing: 0;
-      }
-
-      &__line {
-        height: ${pxToRem('0.25px')};
-        margin: 0;
-        width: 100%;
-        border-width: 0.02em;
-        border-right: 0;
-      }
-
-      &__footer {
-        height: ${pxToRem('102px')};
-        ${flexRow('flex-end', 'center')};
-        padding-right: ${pxToRem('35px')};
-        button {
-          width: ${pxToRem('205px')};
-        }
-      }
+    }
+    .top-center {
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 `;
