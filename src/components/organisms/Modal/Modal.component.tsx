@@ -10,6 +10,10 @@ export type ModalProps = {
   className?: string;
   parent?: HTMLElement;
   onClickOutOfModal?: () => void;
+  headerClassName?: string;
+  bodyClassName?: string;
+  footerClassName?: string;
+  position?: 'center' | 'top-center';
 };
 
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
@@ -20,7 +24,11 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     toggled,
     className,
     parent,
+    headerClassName,
+    bodyClassName,
+    footerClassName,
     onClickOutOfModal,
+    position,
   } = props;
   const myRef = useRef<HTMLDivElement>(null);
 
@@ -46,13 +54,17 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
 
   return isShown ? (
     ReactDOM.createPortal(
-      <Styled.Container className={className}>
+      <Styled.Container>
         <div className="modal-wrapper">
-          <div className="modal-wrapper__content" ref={myRef}>
-            <div className="modal-wrapper__content__header">{header}</div>
-            <div className="modal-wrapper__content__body">{body}</div>
-            <hr className="modal-wrapper__content__line" />
-            <div className="modal-wrapper__content__footer">{footer}</div>
+          <div
+            className={`modal-wrapper__content ${className ? className : ''} ${
+              position ? position : ''
+            }`}
+            ref={myRef}
+          >
+            <div className={headerClassName}>{header}</div>
+            <div className={bodyClassName}>{body}</div>
+            <div className={footerClassName}>{footer}</div>
           </div>
         </div>
       </Styled.Container>,

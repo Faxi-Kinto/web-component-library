@@ -8,28 +8,19 @@ Object {
       className="modal-wrapper"
     >
       <div
-        className="modal-wrapper__content"
+        className="modal-wrapper__content  "
       >
-        <div
-          className="modal-wrapper__content__header"
-        >
+        <div>
           <span>
             Test
           </span>
         </div>
-        <div
-          className="modal-wrapper__content__body"
-        >
+        <div>
           <span>
             test body
           </span>
         </div>
-        <hr
-          className="modal-wrapper__content__line"
-        />
-        <div
-          className="modal-wrapper__content__footer"
-        >
+        <div>
           <button>
             test
           </button>
