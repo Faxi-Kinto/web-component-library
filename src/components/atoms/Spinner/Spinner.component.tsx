@@ -12,11 +12,18 @@ import * as Styled from './Spinner.styles';
 export type SpinnerProps = {
   color: string;
   backgroundColor?: string;
+  className?: string;
 };
 
 const Spinner: React.FC<SpinnerProps> = (props: SpinnerProps): JSX.Element => {
-  const { color, backgroundColor = 'transparent' } = props;
-  return <Styled.Spinner color={color} backgroundColor={backgroundColor} />;
+  const { color, backgroundColor = 'transparent', className } = props;
+  return (
+    <Styled.Spinner
+      color={color}
+      backgroundColor={backgroundColor}
+      className={className}
+    />
+  );
 };
 
 Spinner.defaultProps = {
