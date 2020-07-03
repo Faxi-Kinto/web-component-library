@@ -1,12 +1,16 @@
 import styled from 'styled-components';
-import { positionAbsolute, size, flexColumn } from '@faxi/web-css-utilities';
+import {
+  positionAbsolute,
+  size,
+  flexColumn,
+  pxToRem,
+} from '@faxi/web-css-utilities';
 import { modalZIndex } from '@faxi/web-css-utilities/constants';
 
 export const Container = styled.div`
   ${positionAbsolute('0', '', '', '0')};
   z-index: ${modalZIndex};
-  width: 100vw;
-  height: 100vh;
+  ${size('100%')};
   /* In case we have nested modals */
   & + div {
     opacity: 1;
@@ -26,7 +30,7 @@ export const Container = styled.div`
 
     &__content {
       position: relative;
-      ${size('725px', '310px')};
+      ${size(pxToRem('725px'), pxToRem('310px'))};
       ${flexColumn()};
       background-color: white;
     }
