@@ -38,4 +38,4 @@ export const GlobalStyle = createGlobalStyle`
     @import url('./styles.css');
 `;
 
-export * from './setupFontAwesome';
+export * from './components/Icon';
