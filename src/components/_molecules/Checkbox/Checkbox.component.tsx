@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, useMemo, ReactNode } from 'react';
 import * as Styled from './Checkbox.styles';
-import Text from '../../atoms/Text';
+import Text from '../../_atoms/Text';
 
 /**
  * @name Checkbox
