@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CookiePolicy renders correctly 1`] = `
+.c0 .cookie-policy {
+  padding: 1.25rem 3.125rem 1.25rem 3.125rem;
+  background-color: #00708d;
+}
+
+.c0 .cookie-policy__title,
+.c0 .cookie-policy__text {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: #fff;
+}
+
+.c0 .cookie-policy__btnF,
+.c0 .cookie-policy__btnS {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0.625rem 2.1875rem 0.625rem 2.1875rem;
+  margin-right: 1.25rem;
+  background-color: #fff;
+  color: #00708d;
+}
+
+.c2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  color: black;
+  font-weight: 300;
+  white-space: pre-wrap;
+}
+
+.c1 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2.125rem;
+  font-weight: 500;
+  color: black;
+}
+
+.c3 {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: white;
+  color: black;
+}
+
+.c3 p {
+  margin: 0;
+}
+
+.c3:focus {
+  outline: none;
+}
+
+.c3.button--secondary {
+  background: transparent;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0;
+}
+
+.c3.button--secondary > * {
+  margin: 0 0.75rem 0 0;
+}
+
+.c3.button--secondary > :last-child {
+  margin: 0;
+}
+
+.c3.button--secondary p {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="cookie-policy"
+  >
+    <h3
+      className="c1 cookie-policy__title"
+      color="black"
+    >
+      Cookie Policy
+    </h3>
+    <span
+      className="c2 cookie-policy__text"
+      color="black"
+      fontSize="16px"
+    >
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+    </span>
+    <button
+      className="c3 button cookie-policy__btnF"
+      height="fit-content"
+      onClick={[Function]}
+      type="button"
+      width="fit-content"
+    >
+      <p>
+        Accept
+      </p>
+    </button>
+    <button
+      className="c3 button cookie-policy__btnS"
+      height="fit-content"
+      onClick={[Function]}
+      type="button"
+      width="fit-content"
+    >
+      <p>
+        Reject
+      </p>
+    </button>
+  </div>
+</div>
+`;
