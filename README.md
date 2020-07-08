@@ -3,6 +3,7 @@
 ![CI](https://github.com/Faxi-Kinto/web-component-library/workflows/CI/badge.svg)
 
 ## Overview
+
 [Storybook URL](https://faxi-cl-storybook-develop.herokuapp.com)
 
 ## Intro
@@ -46,7 +47,7 @@ Up to the user is to define which libraries should be added and how the name-map
 
 Let's look at an example:
 
-Create a: `fontAwesomeConfig.ts` file in the `src` folder of your project.
+Create a: `fontAwesomeConfig.ts` file in your project (or, name it however You wish).
 
 ```ts
 import { setLibraries } from '@faxi/web-component-library';

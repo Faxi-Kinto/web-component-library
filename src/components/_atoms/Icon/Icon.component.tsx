@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Styled from './Icon.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { mapNamePropToFaNames } from '../../../setupFontAwesome';
+import { mapNamePropToFaNames } from '../../Icon';
 /**
  * @name Icon
  *
