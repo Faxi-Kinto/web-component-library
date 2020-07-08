@@ -1,0 +1,29 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Button from '../../_atoms/Button';
+import Icon from '../../_atoms/Icon';
+import Text from '../../_atoms/Text';
+
+import CookiePolicy from "./CookiePolicy.component.tsx";
+
+<Meta title="Core|Organisms/CookiePolicy" />
+
+
+## CookiePolicy Component
+
+
+#### Default
+<Preview>
+  <Story name="default">
+      <CookiePolicy
+      title={'Cookie Policy'}
+      text={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.`}
+      buttonContentF={<p>Accept</p>}
+      buttonContentS={<p>Reject</p>}
+    />
+  </Story>
+</Preview>
+
+
+# Props
+
+<Props of={CookiePolicy} />
