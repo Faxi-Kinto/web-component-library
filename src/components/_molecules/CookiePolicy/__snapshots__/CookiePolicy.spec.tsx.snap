@@ -13,23 +13,8 @@ exports[`CookiePolicy renders correctly 1`] = `
   color: #fff;
 }
 
-.c0 .cookie-policy__btnF,
-.c0 .cookie-policy__btnS {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.c0 .cookie-policy__accept-button,
+.c0 .cookie-policy__decline-button {
   padding: 0.625rem 2.1875rem 0.625rem 2.1875rem;
   margin-right: 1.25rem;
   background-color: #fff;
@@ -136,7 +121,7 @@ exports[`CookiePolicy renders correctly 1`] = `
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
     </span>
     <button
-      className="c3 button cookie-policy__btnF"
+      className="c3 button cookie-policy__accept-button"
       height="fit-content"
       onClick={[Function]}
       type="button"
@@ -147,7 +132,7 @@ exports[`CookiePolicy renders correctly 1`] = `
       </p>
     </button>
     <button
-      className="c3 button cookie-policy__btnS"
+      className="c3 button cookie-policy__decline-button"
       height="fit-content"
       onClick={[Function]}
       type="button"
