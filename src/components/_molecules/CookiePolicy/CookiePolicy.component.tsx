@@ -3,17 +3,21 @@ import * as Styled from './CookiePolicy.styles';
 import Text from '../../_atoms/Text';
 import Button from '../../_atoms/Button';
 
+export type CookieStatus = {
+  acceptedCookies: boolean;
+};
+
 export type CookiePolicyProps = {
   title?: string;
   text?: React.ReactNode;
-  bgColor?: string;
+  backgroundColor?: string;
   textColor?: string;
   buttonBackground?: string;
   buttonColor?: string;
   acceptedCookies?: boolean;
   acceptButtonContent?: React.ReactNode;
   declineButtonContent?: React.ReactNode;
-  userAction?: (cookie: any) => void;
+  userAction?: (cookieStatus: CookieStatus) => {};
 };
 
 const CookiePolicy: React.FC<CookiePolicyProps> = (
@@ -24,7 +28,7 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
     text,
     acceptButtonContent,
     declineButtonContent,
-    bgColor = '#00708d',
+    backgroundColor = '#00708d',
     textColor = '#fff',
     buttonBackground = '#fff',
     buttonColor = '#00708d',
@@ -51,7 +55,7 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
   };
 
   const acceptCookies = () => {
-    userAction && userAction({ acceptedCookes: true });
+    userAction && userAction({ acceptedCookies: true });
     if (isShowing) {
       setIsShowing(!isShowing);
       localStorage.setItem('showBanner', 'accepted');
@@ -60,7 +64,7 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
 
   return (
     <Styled.Container
-      bgColor={bgColor}
+      backgroundColor={backgroundColor}
       textColor={textColor}
       buttonBackground={buttonBackground}
       buttonColor={buttonColor}

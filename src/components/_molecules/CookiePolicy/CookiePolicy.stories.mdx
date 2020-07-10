@@ -1,28 +1,27 @@
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import Button from '../../_atoms/Button';
 import Icon from '../../_atoms/Icon';
 import Text from '../../_atoms/Text';
-
-import CookiePolicy from "./CookiePolicy.component.tsx";
+import { action } from '@storybook/addon-actions';
+import CookiePolicy from './CookiePolicy.component.tsx';
 
 <Meta title="Core|Molecules/CookiePolicy" />
 
-
 ## CookiePolicy Component
 
-
 #### Default
+
 <Preview>
   <Story name="default">
-      <CookiePolicy
+    <CookiePolicy
       title={'Cookie Policy'}
       text={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.`}
       acceptButtonContent={<p>Accept</p>}
       declineButtonContent={<p>Reject</p>}
+      userAction={action('cookie-click')}
     />
   </Story>
 </Preview>
-
 
 # Props
 

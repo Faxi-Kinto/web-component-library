@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { pxToRem, padding } from '@faxi/web-css-utilities';
 
 type CookiePolicyStylingProps = {
-  bgColor?: string;
+  backgroundColor?: string;
   textColor?: string;
   buttonColor?: string;
   buttonBackground?: string;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   .cookie-policy {
     ${padding(pxToRem('20px'), pxToRem('50px'))};
     background-color: ${(props: CookiePolicyStylingProps) =>
-      `${props.bgColor}`};
+      `${props.backgroundColor}`};
 
     &__title,
     &__text {
