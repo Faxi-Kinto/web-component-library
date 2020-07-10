@@ -16,6 +16,7 @@ export { default as Text } from './components/_atoms/Text';
  */
 export { default as Checkbox } from './components/_molecules/Checkbox';
 export { default as NavigationLinks } from './components/_molecules/NavigationLinks';
+export { default as CookiePolicy } from './components/_molecules/CookiePolicy';
 
 /*
  * Organisms
