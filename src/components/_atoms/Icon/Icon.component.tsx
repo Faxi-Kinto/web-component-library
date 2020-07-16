@@ -15,15 +15,20 @@ export type IconProps<T> = {
   size?: string;
   color?: string;
   className?: string;
+  onClick?: Function;
 };
 
 const Icon = <T,>(props: IconProps<T>): JSX.Element => {
-  const { size, color, name, className } = props;
+  const { size, color, name, className, onClick } = props;
 
   const iconName = mapNamePropToFaNames<T>(name);
 
   return (
-    <Styled.Container size={size} className={className}>
+    <Styled.Container
+      size={size}
+      className={className}
+      onClick={onClick && onClick()}
+    >
       <FontAwesomeIcon color={color} size={'1x'} icon={iconName} />
     </Styled.Container>
   );
