@@ -145,6 +145,14 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
           enabled: false,
         },
       },
+      legend: {
+        show: true,
+        markers: {
+          width: 35,
+          height: 2,
+          radius: 10,
+        },
+      },
     },
   };
 

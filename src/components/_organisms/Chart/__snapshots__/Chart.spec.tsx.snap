@@ -50,6 +50,14 @@ exports[`Chart renders correctly 1`] = `
           },
         },
       },
+      "legend": Object {
+        "markers": Object {
+          "height": 2,
+          "radius": 10,
+          "width": 35,
+        },
+        "show": true,
+      },
       "markers": Object {
         "colors": Array [
           "white",
