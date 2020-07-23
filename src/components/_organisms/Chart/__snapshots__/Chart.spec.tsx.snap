@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chart renders correctly 1`] = `
+<r
+  height="auto"
+  options={
+    Object {
+      "chart": Object {
+        "height": "100%",
+        "toolbar": Object {
+          "show": false,
+        },
+        "type": "line",
+        "zoom": Object {
+          "enabled": false,
+        },
+      },
+      "colors": Array [
+        "#81C8D1",
+      ],
+      "fill": Object {
+        "gradient": Object {
+          "gradientToColors": Array [
+            "#00708D",
+          ],
+          "inverseColors": false,
+          "opacityFrom": 1,
+          "opacityTo": 1,
+          "shadeIntensity": 1,
+          "stops": Array [
+            20,
+            100,
+            100,
+            100,
+          ],
+        },
+        "type": "gradient",
+      },
+      "grid": Object {
+        "borderColor": "#C6CDCF",
+        "strokeDashArray": 1,
+        "xaxis": Object {
+          "lines": Object {
+            "show": true,
+          },
+        },
+        "yaxis": Object {
+          "lines": Object {
+            "show": true,
+          },
+        },
+      },
+      "markers": Object {
+        "colors": Array [
+          "white",
+        ],
+        "hover": Object {
+          "size": 4,
+        },
+        "size": 3,
+        "strokeColors": Array [
+          "#00A5B5",
+        ],
+        "strokeWidth": 2,
+      },
+      "series": Array [
+        Object {
+          "data": Array [
+            Object {
+              "x": 1591315200000,
+              "y": 2,
+            },
+            Object {
+              "x": 1592179200000,
+              "y": 5,
+            },
+            Object {
+              "x": 1593475200000,
+              "y": 7,
+            },
+          ],
+          "name": "Messages",
+        },
+      ],
+      "stroke": Object {
+        "curve": "smooth",
+        "width": Array [
+          2,
+        ],
+      },
+      "title": Object {
+        "align": "left",
+        "style": Object {},
+        "text": "Number of messages",
+      },
+      "xaxis": Object {
+        "axisBorder": Object {
+          "color": "#C6CDCF",
+          "height": 1,
+          "show": true,
+        },
+        "labels": Object {
+          "formatter": [Function],
+          "rotateAlways": true,
+          "style": Object {
+            "cssClass": "",
+          },
+        },
+        "max": 1593554400000,
+        "min": 1590962400000,
+        "tickAmount": 2,
+        "tooltip": Object {
+          "enabled": false,
+        },
+        "type": "datetime",
+      },
+      "yaxis": Object {
+        "axisBorder": Object {
+          "color": "#C6CDCF",
+          "show": true,
+          "width": 1,
+        },
+        "labels": Object {
+          "formatter": [Function],
+          "offsetX": 0,
+          "style": Object {
+            "cssClass": "",
+          },
+        },
+      },
+    }
+  }
+  series={
+    Array [
+      Object {
+        "data": Array [
+          Object {
+            "x": 1591315200000,
+            "y": 2,
+          },
+          Object {
+            "x": 1592179200000,
+            "y": 5,
+          },
+          Object {
+            "x": 1593475200000,
+            "y": 7,
+          },
+        ],
+        "name": "Messages",
+      },
+    ]
+  }
+  type="line"
+  width="100%"
+/>
+`;

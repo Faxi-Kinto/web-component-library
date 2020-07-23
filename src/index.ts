@@ -21,6 +21,7 @@ export { default as CookiePolicy } from './components/_molecules/CookiePolicy';
 /*
  * Organisms
  */
+export { default as Chart } from './components/_organisms/Chart';
 export { default as Modal } from './components/_organisms/Modal';
 
 /*

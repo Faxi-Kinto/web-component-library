@@ -5,3 +5,8 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
+
+.chart-class {
+  font-size: 12px;
+  transform: translate3d(10px, 10px, 0);
+}
