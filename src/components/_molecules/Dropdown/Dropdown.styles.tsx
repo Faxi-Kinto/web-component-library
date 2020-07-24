@@ -89,6 +89,7 @@ export const Container = styled.div<DropdownStylingProps>`
             : 'gray'};
       cursor: pointer;
       padding: ${pxToRem('10px')} ${pxToRem('30px')};
+      ${flexRow('space-between', 'center')};
 
       &:hover {
         background: ${(props: DropdownStylingProps) =>

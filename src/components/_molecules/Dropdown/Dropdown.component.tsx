@@ -14,6 +14,7 @@ export type DropdownProps = {
   value?: DropdownOption | string;
   toggleIcon?: JSX.Element;
   onChange?: (value: string) => void;
+  className?: string;
   dropdownRef?: HTMLDivElement;
   parentRef?: (element: HTMLDivElement) => void;
   borderColor?: string;
@@ -37,6 +38,7 @@ const Dropdown: React.FC<DropdownProps> = (
     value,
     toggleIcon,
     onChange,
+    className,
     dropdownRef,
     parentRef,
     borderColor,
@@ -129,7 +131,7 @@ const Dropdown: React.FC<DropdownProps> = (
       onClick={() => handleOpenDropdown()}
       className={`dropdown-container${
         isOpen ? ' dropdown-container--open' : ' dropdown-container--close'
-      }`}
+      }${className ? ' ' + className : ''}`}
       tabIndex={-1}
       onBlur={() => setIsOpen(false)}
       borderColor={borderColor}
