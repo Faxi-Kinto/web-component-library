@@ -15,8 +15,9 @@ export { default as Text } from './components/_atoms/Text';
  * Molecules
  */
 export { default as Checkbox } from './components/_molecules/Checkbox';
-export { default as NavigationLinks } from './components/_molecules/NavigationLinks';
 export { default as CookiePolicy } from './components/_molecules/CookiePolicy';
+export { default as Dropdown } from './components/_molecules/Dropdown';
+export { default as NavigationLinks } from './components/_molecules/NavigationLinks';
 
 /*
  * Organisms
@@ -34,6 +35,7 @@ export { CheckboxProps } from './components/_molecules/Checkbox/Checkbox.compone
 /*
  * Types
  */
+export { DropdownOption } from './components/_molecules/Dropdown/Dropdown.component';
 export { NavLink } from './components/_molecules/NavigationLinks/NavigationLinks.component';
 
 export const GlobalStyle = createGlobalStyle`
