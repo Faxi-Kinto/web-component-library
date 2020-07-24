@@ -1,4 +1,4 @@
-import React, { useState, useEffect, RefObject, ReactNode } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import * as Styled from './Dropdown.styles';
 
 export type DropdownOption = {
@@ -15,7 +15,7 @@ export type DropdownProps = {
   toggleIcon?: JSX.Element;
   onChange?: (value: string) => void;
   dropdownRef?: HTMLDivElement;
-  parentRef?: RefObject<HTMLDivElement>;
+  parentRef?: (element: HTMLDivElement) => void;
   borderColor?: string;
   dropdownOpenBorderColor?: string;
   placeholderColor?: string;
