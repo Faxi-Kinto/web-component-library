@@ -1,0 +1,48 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Dropdown from './';
+
+<Meta title="Core|Molecules/Dropdown" />
+
+# Dropdown Component
+
+## Implementation
+
+#### Default
+
+<Preview>
+  <Story name="default">
+    <Dropdown
+      optionList={[
+        { text: 'Show all members', value: 'o1' },
+        { text: 'option2option2option2option2option2', value: 'o2' },
+        { text: 'option3', value: 'op3' },
+      ]}
+      toggleIcon={
+        <Icon
+          name="chevron-down"
+          className="dropdown-container__arrow"
+          color="#00A5B5"
+        />
+      }
+    />
+  </Story>
+</Preview>
+
+#### With Placeholder
+
+<Preview>
+  <Story name="with placeholder">
+    <Dropdown
+      optionList={[
+        { text: 'Show all members', value: 'o1' },
+        { text: 'option2option2option2option2option2', value: 'o2' },
+        { text: 'option3', value: 'op3' },
+      ]}
+      placeholder="Placeholder"
+    />
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Dropdown} />
