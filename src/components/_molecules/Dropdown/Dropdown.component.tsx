@@ -19,8 +19,8 @@ export type DropdownProps = {
   borderColor?: string;
   dropdownOpenBorderColor?: string;
   placeholderColor?: string;
-  optionBackgroundColor?: string;
-  optionBorderBottomColor?: string;
+  optionsBackgroundColor?: string;
+  optionBorderTopBottomColor?: string;
   optionHoverColor?: string;
   optionSelectedBorderColor?: string;
   optionSelectedBackgroundColor?: string;
@@ -42,15 +42,15 @@ const Dropdown: React.FC<DropdownProps> = (
     borderColor,
     dropdownOpenBorderColor,
     placeholderColor,
-    optionBackgroundColor,
-    optionBorderBottomColor,
+    optionsBackgroundColor,
+    optionBorderTopBottomColor,
     optionHoverColor,
     optionSelectedBorderColor,
     optionSelectedBackgroundColor,
     optionSelectedHoverBackgroundColor,
   } = props;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [upwards, setUpwards] = useState(false);
 
   const [currentSelected, setCurrentSelected] = useState(
@@ -107,8 +107,11 @@ const Dropdown: React.FC<DropdownProps> = (
           setCurrentSelected({ text: option.text, value: option.value });
           onChange && onChange(option.value);
         }}
-        className={`dropdown-container__option${option.value ===
-          currentSelected.value && ' dropdown-container__option--selected'}`}
+        className={`dropdown-container__option${
+          option.value === currentSelected.value
+            ? ' dropdown-container__option--selected'
+            : ''
+        }`}
         role="listitem"
       >
         {option.icon}
@@ -132,8 +135,8 @@ const Dropdown: React.FC<DropdownProps> = (
       borderColor={borderColor}
       dropdownOpenBorderColor={dropdownOpenBorderColor}
       placeholderColor={placeholderColor}
-      optionBackgroundColor={optionBackgroundColor}
-      optionBorderBottomColor={optionBorderBottomColor}
+      optionsBackgroundColor={optionsBackgroundColor}
+      optionBorderTopBottomColor={optionBorderTopBottomColor}
       optionHoverColor={optionHoverColor}
       optionSelectedBorderColor={optionSelectedBorderColor}
       optionSelectedBackgroundColor={optionSelectedBackgroundColor}

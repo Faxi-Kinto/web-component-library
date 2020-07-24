@@ -10,8 +10,8 @@ export type DropdownStylingProps = {
   borderColor?: string;
   dropdownOpenBorderColor?: string;
   placeholderColor?: string;
-  optionBackgroundColor?: string;
-  optionBorderBottomColor?: string;
+  optionsBackgroundColor?: string;
+  optionBorderTopBottomColor?: string;
   optionHoverColor?: string;
   optionSelectedBorderColor?: string;
   optionSelectedBackgroundColor?: string;
@@ -58,16 +58,22 @@ export const Container = styled.div<DropdownStylingProps>`
         ${(props: DropdownStylingProps) =>
           props.borderColor ? props.borderColor : 'black'};
       background: ${(props: DropdownStylingProps) =>
-        props.optionBackgroundColor ? props.optionBackgroundColor : 'white'};
+        props.optionsBackgroundColor ? props.optionsBackgroundColor : 'white'};
       width: 100%;
       ${flexColumn()};
 
       &--upwards {
         ${positionAbsolute('inherit', '0', pxToRem('44px'), '0')};
+
         > div:first-child {
-          border-top: ${pxToRem('1px')} solid grey;
+          border-top: ${pxToRem('1px')} solid
+            ${(props: DropdownStylingProps) =>
+              props.optionBorderTopBottomColor
+                ? props.optionBorderTopBottomColor
+                : 'gray'};
         }
       }
+
       &--overflow-auto {
         height: ${pxToRem('282px')};
         overflow-y: auto;
@@ -78,8 +84,8 @@ export const Container = styled.div<DropdownStylingProps>`
     &__option {
       border-bottom: ${pxToRem('1px')} solid
         ${(props: DropdownStylingProps) =>
-          props.optionBorderBottomColor
-            ? props.optionBorderBottomColor
+          props.optionBorderTopBottomColor
+            ? props.optionBorderTopBottomColor
             : 'gray'};
       cursor: pointer;
       padding: ${pxToRem('10px')} ${pxToRem('30px')};
