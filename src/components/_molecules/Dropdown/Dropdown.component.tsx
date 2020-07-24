@@ -50,7 +50,7 @@ const Dropdown: React.FC<DropdownProps> = (
     optionSelectedHoverBackgroundColor,
   } = props;
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
 
   const [currentSelected, setCurrentSelected] = useState(
