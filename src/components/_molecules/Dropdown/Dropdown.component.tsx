@@ -15,6 +15,7 @@ export type DropdownProps = {
   toggleIcon?: JSX.Element;
   onChange?: (value: string) => void;
   className?: string;
+  optionClassName?: string;
   dropdownRef?: HTMLDivElement;
   parentRef?: (element: HTMLDivElement) => void;
   borderColor?: string;
@@ -39,6 +40,7 @@ const Dropdown: React.FC<DropdownProps> = (
     toggleIcon,
     onChange,
     className,
+    optionClassName,
     dropdownRef,
     parentRef,
     borderColor,
@@ -113,7 +115,7 @@ const Dropdown: React.FC<DropdownProps> = (
           option.value === currentSelected.value
             ? ' dropdown-container__option--selected'
             : ''
-        }`}
+        }${optionClassName ? ' ' + optionClassName : ''}`}
         role="listitem"
       >
         {option.icon}
