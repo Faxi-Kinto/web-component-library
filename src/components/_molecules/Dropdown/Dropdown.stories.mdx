@@ -13,22 +13,18 @@ import Dropdown from './';
   <Story name="default">
     <Dropdown
       optionList={[
-        { text: 'Show all members', value: 'o1' },
+        {
+          text: 'Show all members',
+          value: 'o1',
+        },
         { text: 'option2option2option2option2option2', value: 'o2' },
         { text: 'option3', value: 'op3' },
       ]}
-      toggleIcon={
-        <Icon
-          name="chevron-down"
-          className="dropdown-container__arrow"
-          color="#00A5B5"
-        />
-      }
     />
   </Story>
 </Preview>
 
-#### With Placeholder
+#### With placeholder
 
 <Preview>
   <Story name="with placeholder">
@@ -39,6 +35,40 @@ import Dropdown from './';
         { text: 'option3', value: 'op3' },
       ]}
       placeholder="Placeholder"
+    />
+  </Story>
+</Preview>
+
+#### Icon mode, with label
+
+<Preview>
+  <Story name="icon mode, with label">
+    <Dropdown
+      optionList={[
+        {
+          text: 'Option 1',
+          value: 'o1',
+          icon: (
+            <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
+          ),
+        },
+        {
+          text: 'Option 2',
+          value: 'o2',
+          icon: (
+            <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
+          ),
+        },
+        {
+          text: 'Option 3',
+          value: 'op3',
+          icon: (
+            <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
+          ),
+        },
+      ]}
+      label="Icon mode here"
+      iconMode
     />
   </Story>
 </Preview>

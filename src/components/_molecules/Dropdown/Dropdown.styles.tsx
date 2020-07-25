@@ -54,9 +54,6 @@ export const Container = styled.div<DropdownStylingProps>`
       border-right: ${pxToRem('1px')} solid
         ${(props: DropdownStylingProps) =>
           props.borderColor ? props.borderColor : 'black'};
-      border-bottom: ${pxToRem('1px')} solid
-        ${(props: DropdownStylingProps) =>
-          props.borderColor ? props.borderColor : 'black'};
       background: ${(props: DropdownStylingProps) =>
         props.optionsBackgroundColor ? props.optionsBackgroundColor : 'white'};
       width: 100%;
@@ -90,6 +87,7 @@ export const Container = styled.div<DropdownStylingProps>`
       cursor: pointer;
       padding: ${pxToRem('10px')} ${pxToRem('30px')};
       ${flexRow('space-between', 'center')};
+      word-break: break-all;
 
       &:hover {
         background: ${(props: DropdownStylingProps) =>
@@ -116,14 +114,38 @@ export const Container = styled.div<DropdownStylingProps>`
         }
       }
     }
+
+    &__arrow {
+      transform: rotate(180deg);
+    }
   }
 
-  &.dropdown-container--open {
-    border: ${pxToRem('1px')} solid
-      ${(props: DropdownStylingProps) =>
-        props.dropdownOpenBorderColor ? props.dropdownOpenBorderColor : 'gray'};
-    .dropdown-container__arrow {
-      transform: rotate(180deg);
+  &.dropdown-container {
+    &--open {
+      border: ${pxToRem('1px')} solid
+        ${(props: DropdownStylingProps) =>
+          props.dropdownOpenBorderColor
+            ? props.dropdownOpenBorderColor
+            : 'gray'};
+    }
+
+    &--icon-mode {
+      border: none;
+      width: fit-content;
+
+      .dropdown-container__options {
+        > div:first-child {
+          border-top: ${pxToRem('1px')} solid
+            ${(props: DropdownStylingProps) =>
+              props.optionBorderTopBottomColor
+                ? props.optionBorderTopBottomColor
+                : 'gray'};
+        }
+      }
+    }
+
+    &--unset-min-width {
+      min-width: unset;
     }
   }
 `;

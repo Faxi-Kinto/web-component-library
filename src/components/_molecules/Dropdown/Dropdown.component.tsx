@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect, ReactNode, Fragment } from 'react';
 import * as Styled from './Dropdown.styles';
 
 export type DropdownOption = {
@@ -16,6 +16,7 @@ export type DropdownProps = {
   onChange?: (value: string) => void;
   className?: string;
   optionClassName?: string;
+  labelClassName?: string;
   dropdownRef?: HTMLDivElement;
   parentRef?: (element: HTMLDivElement) => void;
   borderColor?: string;
@@ -27,6 +28,7 @@ export type DropdownProps = {
   optionSelectedBorderColor?: string;
   optionSelectedBackgroundColor?: string;
   optionSelectedHoverBackgroundColor?: string;
+  iconMode?: boolean;
 };
 
 const Dropdown: React.FC<DropdownProps> = (
@@ -41,6 +43,7 @@ const Dropdown: React.FC<DropdownProps> = (
     onChange,
     className,
     optionClassName,
+    labelClassName,
     dropdownRef,
     parentRef,
     borderColor,
@@ -52,6 +55,7 @@ const Dropdown: React.FC<DropdownProps> = (
     optionSelectedBorderColor,
     optionSelectedBackgroundColor,
     optionSelectedHoverBackgroundColor,
+    iconMode = false,
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -108,7 +112,7 @@ const Dropdown: React.FC<DropdownProps> = (
       <div
         key={index}
         onClick={() => {
-          setCurrentSelected({ text: option.text, value: option.value });
+          setCurrentSelected({ ...option });
           onChange && onChange(option.value);
         }}
         className={`dropdown-container__option${
@@ -129,40 +133,52 @@ const Dropdown: React.FC<DropdownProps> = (
   };
 
   return (
-    <Styled.Container
-      onClick={() => handleOpenDropdown()}
-      className={`dropdown-container${
-        isOpen ? ' dropdown-container--open' : ' dropdown-container--close'
-      }${className ? ' ' + className : ''}`}
-      tabIndex={-1}
-      onBlur={() => setIsOpen(false)}
-      borderColor={borderColor}
-      dropdownOpenBorderColor={dropdownOpenBorderColor}
-      placeholderColor={placeholderColor}
-      optionsBackgroundColor={optionsBackgroundColor}
-      optionBorderTopBottomColor={optionBorderTopBottomColor}
-      optionHoverColor={optionHoverColor}
-      optionSelectedBorderColor={optionSelectedBorderColor}
-      optionSelectedBackgroundColor={optionSelectedBackgroundColor}
-      optionSelectedHoverBackgroundColor={optionSelectedHoverBackgroundColor}
-    >
-      <label>{label && label}</label>
-      {currentSelected.text === '' ? (
-        placeholder ? (
-          <div className="dropdown-container__placeholder">{placeholder}</div>
+    <Fragment>
+      {label && <label className={labelClassName}>{label}</label>}
+      <Styled.Container
+        onClick={() => handleOpenDropdown()}
+        className={`dropdown-container${
+          iconMode ? ' dropdown-container--icon-mode' : ''
+        }${
+          isOpen ? ' dropdown-container--open' : ' dropdown-container--close'
+        }${!isOpen && iconMode ? ' dropdown-container--unset-min-width' : ''}${
+          className ? ' ' + className : ''
+        }`}
+        tabIndex={-1}
+        onBlur={() => setIsOpen(false)}
+        borderColor={borderColor}
+        dropdownOpenBorderColor={dropdownOpenBorderColor}
+        placeholderColor={placeholderColor}
+        optionsBackgroundColor={optionsBackgroundColor}
+        optionBorderTopBottomColor={optionBorderTopBottomColor}
+        optionHoverColor={optionHoverColor}
+        optionSelectedBorderColor={optionSelectedBorderColor}
+        optionSelectedBackgroundColor={optionSelectedBackgroundColor}
+        optionSelectedHoverBackgroundColor={optionSelectedHoverBackgroundColor}
+      >
+        {currentSelected.text === '' ? (
+          placeholder ? (
+            <div className="dropdown-container__placeholder">{placeholder}</div>
+          ) : (
+            <Fragment>
+              {optionList[0].icon}
+              {!iconMode && <div>{optionList[0].text}</div>}
+            </Fragment>
+          )
         ) : (
-          <div>{optionList[0].text}</div>
-        )
-      ) : (
-        <div>{currentSelected.text}</div>
-      )}
-      {toggleIcon &&
-        React.cloneElement(toggleIcon, {
-          className: 'dropdown-container__arrow',
-          color: '#00A5B5',
-        })}
-      {renderOptions()}
-    </Styled.Container>
+          <Fragment>
+            {currentSelected.icon}
+            {!iconMode && <div>{currentSelected.text}</div>}
+          </Fragment>
+        )}
+        {toggleIcon &&
+          React.cloneElement(toggleIcon, {
+            className: 'dropdown-container__arrow',
+            color: '#00A5B5',
+          })}
+        {renderOptions()}
+      </Styled.Container>
+    </Fragment>
   );
 };
 
