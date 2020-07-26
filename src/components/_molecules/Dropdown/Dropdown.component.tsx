@@ -35,9 +35,7 @@ export type DropdownProps<T = {}> = T & {
   errorState?: boolean;
 };
 
-const Dropdown: React.FC<DropdownProps<{}>> = <T,>(
-  props: DropdownProps<T>
-): JSX.Element => {
+const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const {
     optionList,
     label,
