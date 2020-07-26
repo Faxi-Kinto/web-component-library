@@ -48,12 +48,10 @@ export const Container = styled.div<DropdownStylingProps>`
       position: absolute;
       top: ${pxToRem('44px')};
       right: 0;
-      border-left: ${pxToRem('1px')} solid
+      border: ${pxToRem('1px')} solid
         ${(props: DropdownStylingProps) =>
           props.borderColor ? props.borderColor : 'black'};
-      border-right: ${pxToRem('1px')} solid
-        ${(props: DropdownStylingProps) =>
-          props.borderColor ? props.borderColor : 'black'};
+      border-top: none;
       background: ${(props: DropdownStylingProps) =>
         props.optionsBackgroundColor ? props.optionsBackgroundColor : 'white'};
       width: 100%;
@@ -61,14 +59,9 @@ export const Container = styled.div<DropdownStylingProps>`
 
       &--upwards {
         ${positionAbsolute('inherit', '0', pxToRem('44px'), '0')};
-
-        > div:first-child {
-          border-top: ${pxToRem('1px')} solid
-            ${(props: DropdownStylingProps) =>
-              props.optionBorderTopBottomColor
-                ? props.optionBorderTopBottomColor
-                : 'gray'};
-        }
+        border-top: ${(props: DropdownStylingProps) =>
+          props.borderColor ? props.borderColor : 'black'};
+        border-bottom: none;
       }
 
       &--overflow-auto {
@@ -76,41 +69,46 @@ export const Container = styled.div<DropdownStylingProps>`
         overflow-y: auto;
         overflow-x: hidden;
       }
-    }
 
-    &__option {
-      border-bottom: ${pxToRem('1px')} solid
-        ${(props: DropdownStylingProps) =>
-          props.optionBorderTopBottomColor
-            ? props.optionBorderTopBottomColor
-            : 'gray'};
-      cursor: pointer;
-      padding: ${pxToRem('10px')} ${pxToRem('30px')};
-      ${flexRow('space-between', 'center')};
-      word-break: break-all;
-
-      &:hover {
-        background: ${(props: DropdownStylingProps) =>
-          props.optionHoverColor ? props.optionHoverColor : 'gray'};
-      }
-
-      &--selected {
-        border: ${pxToRem('1px')} solid
+      &__option {
+        border-bottom: ${pxToRem('1px')} solid
           ${(props: DropdownStylingProps) =>
-            props.optionSelectedBorderColor
-              ? props.optionSelectedBorderColor
-              : 'black'};
-        margin: ${pxToRem('-1px')} ${pxToRem('-1px')} 0;
-        background: ${(props: DropdownStylingProps) =>
-          props.optionSelectedBackgroundColor
-            ? props.optionSelectedBackgroundColor
-            : 'lightgray'};
+            props.optionBorderTopBottomColor
+              ? props.optionBorderTopBottomColor
+              : 'gray'};
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+
+        cursor: pointer;
+        padding: ${pxToRem('10px')} ${pxToRem('30px')};
+        ${flexRow('space-between', 'center')};
+        word-break: break-all;
 
         &:hover {
           background: ${(props: DropdownStylingProps) =>
-            props.optionSelectedHoverBackgroundColor
-              ? props.optionSelectedHoverBackgroundColor
-              : 'gray'};
+            props.optionHoverColor ? props.optionHoverColor : 'gray'};
+        }
+
+        &--selected {
+          border: ${pxToRem('1px')} solid
+            ${(props: DropdownStylingProps) =>
+              props.optionSelectedBorderColor
+                ? props.optionSelectedBorderColor
+                : 'black'};
+          margin: ${pxToRem('-1px')} ${pxToRem('-1px')} 0;
+          background: ${(props: DropdownStylingProps) =>
+            props.optionSelectedBackgroundColor
+              ? props.optionSelectedBackgroundColor
+              : 'lightgray'};
+
+          &:hover {
+            background: ${(props: DropdownStylingProps) =>
+              props.optionSelectedHoverBackgroundColor
+                ? props.optionSelectedHoverBackgroundColor
+                : 'gray'};
+          }
         }
       }
     }

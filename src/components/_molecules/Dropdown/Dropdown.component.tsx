@@ -124,9 +124,9 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           setCurrentSelected({ ...option });
           onChange && onChange(option.value);
         }}
-        className={`dropdown-container__option${
+        className={`dropdown-container__options__option${
           option.value === currentSelected.value
-            ? ' dropdown-container__option--selected'
+            ? ' dropdown-container__options__option--selected'
             : ''
         }${optionClassName ? ' ' + optionClassName : ''}`}
         role="listitem"
