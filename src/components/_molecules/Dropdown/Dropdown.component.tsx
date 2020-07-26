@@ -13,7 +13,7 @@ export type DropdownProps<T = {}> = T & {
   description?: string;
   placeholder?: string;
   value?: DropdownOption | string;
-  toggleIcon?: JSX.Element;
+  toggleIcon?: ReactNode;
   onChange?: (value: string) => void;
   className?: string;
   optionClassName?: string;
@@ -178,11 +178,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
             {!iconMode && <div>{currentSelected.text}</div>}
           </Fragment>
         )}
-        {toggleIcon &&
-          React.cloneElement(toggleIcon, {
-            className: 'dropdown-container__arrow',
-            color: '#00A5B5',
-          })}
+        {toggleIcon}
         {renderOptions()}
       </Styled.Container>
       {description && <div className={descriptionClassName}>{description}</div>}
