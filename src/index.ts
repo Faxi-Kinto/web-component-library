@@ -36,6 +36,7 @@ export { CheckboxProps } from './components/_molecules/Checkbox/Checkbox.compone
  * Types
  */
 export { DropdownOption } from './components/_molecules/Dropdown/Dropdown.component';
+export { DropdownProps } from './components/_molecules/Dropdown/Dropdown.component';
 export { NavLink } from './components/_molecules/NavigationLinks/NavigationLinks.component';
 
 export const GlobalStyle = createGlobalStyle`
