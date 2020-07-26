@@ -7,9 +7,10 @@ export type DropdownOption = {
   icon?: ReactNode;
 };
 
-export type DropdownProps = {
+export type DropdownProps<T = {}> = T & {
   optionList: DropdownOption[];
   label?: string;
+  description?: string;
   placeholder?: string;
   value?: DropdownOption | string;
   toggleIcon?: JSX.Element;
@@ -17,6 +18,8 @@ export type DropdownProps = {
   className?: string;
   optionClassName?: string;
   labelClassName?: string;
+  descriptionClassName?: string;
+  errorClassName?: string;
   dropdownRef?: HTMLDivElement;
   parentRef?: (element: HTMLDivElement) => void;
   borderColor?: string;
@@ -29,14 +32,16 @@ export type DropdownProps = {
   optionSelectedBackgroundColor?: string;
   optionSelectedHoverBackgroundColor?: string;
   iconMode?: boolean;
+  errorState?: boolean;
 };
 
-const Dropdown: React.FC<DropdownProps> = (
-  props: DropdownProps
+const Dropdown: React.FC<DropdownProps<{}>> = <T,>(
+  props: DropdownProps<T>
 ): JSX.Element => {
   const {
     optionList,
     label,
+    description,
     placeholder,
     value,
     toggleIcon,
@@ -44,6 +49,8 @@ const Dropdown: React.FC<DropdownProps> = (
     className,
     optionClassName,
     labelClassName,
+    descriptionClassName,
+    errorClassName,
     dropdownRef,
     parentRef,
     borderColor,
@@ -56,7 +63,9 @@ const Dropdown: React.FC<DropdownProps> = (
     optionSelectedBackgroundColor,
     optionSelectedHoverBackgroundColor,
     iconMode = false,
+    errorState,
   } = props;
+  const { error } = (props as any) || { error: '' };
 
   const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
@@ -141,9 +150,9 @@ const Dropdown: React.FC<DropdownProps> = (
           iconMode ? ' dropdown-container--icon-mode' : ''
         }${
           isOpen ? ' dropdown-container--open' : ' dropdown-container--close'
-        }${!isOpen && iconMode ? ' dropdown-container--unset-min-width' : ''}${
-          className ? ' ' + className : ''
-        }`}
+        }${errorState ? ' dropdown-container--error' : ''}${
+          !isOpen && iconMode ? ' dropdown-container--unset-min-width' : ''
+        }${className ? ' ' + className : ''}`}
         tabIndex={-1}
         onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
@@ -178,6 +187,8 @@ const Dropdown: React.FC<DropdownProps> = (
           })}
         {renderOptions()}
       </Styled.Container>
+      {description && <div className={descriptionClassName}>{description}</div>}
+      {errorState && <div className={errorClassName}>{error}</div>}
     </Fragment>
   );
 };
