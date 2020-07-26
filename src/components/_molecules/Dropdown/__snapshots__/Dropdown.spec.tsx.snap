@@ -117,14 +117,14 @@ exports[`Dropdown renders correctly 1`] = `
   background: gray;
 }
 
-.c0 .dropdown-container__arrow {
+.c0.dropdown-container--open {
+  border: 0.0625rem solid gray;
+}
+
+.c0.dropdown-container--open .dropdown-container__arrow {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-
-.c0.dropdown-container--open {
-  border: 0.0625rem solid gray;
 }
 
 .c0.dropdown-container--icon-mode {

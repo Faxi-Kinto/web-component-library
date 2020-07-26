@@ -114,10 +114,6 @@ export const Container = styled.div<DropdownStylingProps>`
         }
       }
     }
-
-    &__arrow {
-      transform: rotate(180deg);
-    }
   }
 
   &.dropdown-container {
@@ -127,6 +123,10 @@ export const Container = styled.div<DropdownStylingProps>`
           props.dropdownOpenBorderColor
             ? props.dropdownOpenBorderColor
             : 'gray'};
+
+      .dropdown-container__arrow {
+        transform: rotate(180deg);
+      }
     }
 
     &--icon-mode {
