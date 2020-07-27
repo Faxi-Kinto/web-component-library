@@ -1,0 +1,22 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import CapturePDFButton from './';
+
+<Meta title="Core|Molecules/CapturePDFButton" />
+
+## Default
+
+<Preview mdxSource="<CapturePDFButton />">
+  <Story name="default" decorators={[withKnobs]}>
+    <div style={{width: '100%s'}}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices nibh sit amet arcu sagittis gravida. Nam pharetra risus mi, eu consequat quam finibus eget. Proin dui mauris, sodales a justo in, finibus consequat sem. Sed auctor nulla non ornare fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin interdum pretium sapien, eget ullamcorper augue malesuada at. Pellentesque feugiat enim est. Duis in mi in libero tincidunt vestibulum. Cras eleifend nunc nec accumsan sagittis. Nulla euismod, nisi sed eleifend imperdiet, velit risus viverra massa, sit amet ultrices nisi nunc vitae nunc. Fusce malesuada facilisis mi malesuada faucibus. Duis commodo purus augue, sed efficitur leo ultricies non. Interdum et malesuada fames ac ante ipsum primis in faucibus. In ac luctus ex. Nulla ornare vulputate justo, eget tincidunt augue elementum ut.
+    <CapturePDFButton 
+      useWindowPrint={boolean('Use window.print():', true)}
+      noPrintClass={text('Class name for hidden elements', 'no-print')} />
+    </div>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={CapturePDFButton} />
