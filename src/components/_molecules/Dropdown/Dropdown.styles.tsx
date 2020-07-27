@@ -59,8 +59,9 @@ export const Container = styled.div<DropdownStylingProps>`
 
       &--upwards {
         ${positionAbsolute('inherit', '0', pxToRem('44px'), '0')};
-        border-top: ${(props: DropdownStylingProps) =>
-          props.borderColor ? props.borderColor : 'black'};
+        border-top: ${pxToRem('1px')} solid
+          ${(props: DropdownStylingProps) =>
+            props.borderColor ? props.borderColor : 'black'};
         border-bottom: none;
       }
 
