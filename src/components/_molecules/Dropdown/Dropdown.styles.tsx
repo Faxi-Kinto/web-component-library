@@ -40,10 +40,6 @@ export const Container = styled.div<DropdownStylingProps>`
         props.placeholderColor ? props.placeholderColor : 'black'};
     }
 
-    &__arrow {
-      margin-left: ${pxToRem('15px')};
-    }
-
     &__options {
       position: absolute;
       top: ${pxToRem('44px')};

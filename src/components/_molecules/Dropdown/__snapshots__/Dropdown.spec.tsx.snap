@@ -34,10 +34,6 @@ exports[`Dropdown renders correctly 1`] = `
   color: black;
 }
 
-.c0 .dropdown-container__arrow {
-  margin-left: 0.9375rem;
-}
-
 .c0 .dropdown-container__options {
   position: absolute;
   top: 2.75rem;

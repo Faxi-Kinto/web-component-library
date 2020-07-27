@@ -21,8 +21,6 @@ export type DropdownProps<T = {}> = T & {
   labelClassName?: string;
   descriptionClassName?: string;
   errorClassName?: string;
-  dropdownRef?: HTMLDivElement;
-  parentRef?: (element: HTMLDivElement) => void;
   borderColor?: string;
   dropdownOpenBorderColor?: string;
   placeholderColor?: string;
@@ -51,8 +49,6 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     labelClassName,
     descriptionClassName,
     errorClassName,
-    dropdownRef,
-    parentRef,
     borderColor,
     dropdownOpenBorderColor,
     placeholderColor,
@@ -70,6 +66,9 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
 
+  const [containerRef, setContainerRef] = useState<HTMLDivElement>();
+  const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
+
   const [currentSelected, setCurrentSelected] = useState(
     (typeof value === 'string'
       ? {
@@ -83,16 +82,18 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   );
 
   useEffect(() => {
-    if (dropdownRef) {
-      const rootSize = window.outerHeight;
-      const dropdownSize = dropdownRef?.getBoundingClientRect();
-      if (dropdownSize?.bottom! + dropdownSize?.height > rootSize!) {
+    if (optionsRef && containerRef) {
+      if (
+        containerRef.getBoundingClientRect()?.bottom! +
+          optionsRef?.getBoundingClientRect()?.height >
+        window.outerHeight!
+      ) {
         setUpwards(true);
       } else {
         setUpwards(false);
       }
     }
-  }, [dropdownRef]);
+  }, [containerRef, optionsRef]);
 
   const renderOptions = () => {
     if (isOpen) {
@@ -106,7 +107,11 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
               : ''
           }`}
           role="list"
-          ref={parentRef}
+          ref={reference => {
+            if (reference) {
+              setOptionsRef(reference);
+            }
+          }}
         >
           {optionList.map((option: DropdownOption, index: number) =>
             renderOption(option, index)
@@ -145,6 +150,11 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     <Fragment>
       {label && <label className={labelClassName}>{label}</label>}
       <Styled.Container
+        ref={reference => {
+          if (reference) {
+            setContainerRef(reference);
+          }
+        }}
         onClick={() => handleOpenDropdown()}
         className={`dropdown-container${
           iconMode ? ' dropdown-container--icon-mode' : ''
