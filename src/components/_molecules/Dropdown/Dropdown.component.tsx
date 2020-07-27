@@ -86,7 +86,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
       if (
         containerRef.getBoundingClientRect()?.bottom! +
           optionsRef?.getBoundingClientRect()?.height >
-        window.outerHeight!
+        window.innerHeight!
       ) {
         setUpwards(true);
       } else {
