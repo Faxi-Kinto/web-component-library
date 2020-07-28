@@ -10,6 +10,7 @@ export type DropdownStylingProps = {
   borderColor?: string;
   backgroundColor?: string;
   dropdownOpenBorderColor?: string;
+  dropdownErrorBorderColor?: string;
   placeholderColor?: string;
   optionsBackgroundColor?: string;
   optionBorderTopBottomColor?: string;
@@ -125,6 +126,14 @@ export const Container = styled.div<DropdownStylingProps>`
       .dropdown-container__arrow {
         transform: rotate(180deg);
       }
+    }
+
+    &--error {
+      border: ${pxToRem('1px')} solid
+        ${(props: DropdownStylingProps) =>
+          props.dropdownErrorBorderColor
+            ? props.dropdownErrorBorderColor
+            : 'gray'};
     }
 
     &--icon-mode {

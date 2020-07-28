@@ -126,6 +126,10 @@ exports[`Dropdown renders correctly 1`] = `
   transform: rotate(180deg);
 }
 
+.c0.dropdown-container--error {
+  border: 0.0625rem solid gray;
+}
+
 .c0.dropdown-container--icon-mode {
   border: none;
   width: -webkit-fit-content;
