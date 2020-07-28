@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, ReactNode } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import Button from '../../_atoms/Button';
@@ -12,6 +12,7 @@ import classNames from 'classnames';
  *  Set `useWindowPrint` to false to use libraries `html2canvas` & `jsPDF`.
  *  With `useWindowPrint` set to `true`(which is default) use media queries
  *  to style the printed UI. Otherwise, when `useWindowPrint` is `false`, use
+ *  `printContainerClass` to setup the class and style the content within it.
  *
  * @returns {JSX}
  */
@@ -19,12 +20,18 @@ import classNames from 'classnames';
 type Props = {
   useWindowPrint?: boolean;
   noPrintClass?: string;
+  printContainerClass?: string;
+  exportTitlePrefix?: string;
+  children?: ReactNode;
 } & ButtonProps;
 
-const CapturePDFButton = (props: Props) => {
+const CapturePDFButton: React.FC<Props> = (props: Props): JSX.Element => {
   const {
-    noPrintClass = 'no-print',
-    useWindowPrint = true,
+    noPrintClass,
+    useWindowPrint,
+    printContainerClass,
+    exportTitlePrefix,
+    children,
     ...buttonProps
   } = props;
 
@@ -52,26 +59,28 @@ const CapturePDFButton = (props: Props) => {
 
   const customPrint = useCallback(async () => {
     const element = document.body;
-    if (element) {
-      const pdf = new jsPDF('p', 'px');
-      const width = pdf.internal.pageSize.getWidth();
-      const ratio = element.clientWidth / width;
-      const height = element.clientHeight / ratio;
+    const pdf = new jsPDF('p', 'px');
+    const width = pdf.internal.pageSize.getWidth();
+    const ratio = element.clientWidth / width;
+    const height = element.clientHeight / ratio;
 
-      const canvas = await html2canvas(element, {
-        scrollY: 0,
-        useCORS: true,
-        allowTaint: true,
-        ignoreElements: el => el.classList.contains(noPrintClass),
-      });
+    const canvas = await html2canvas(element, {
+      scrollY: 0,
+      useCORS: true,
+      allowTaint: true,
+      ...(printContainerClass && {
+        onclone: doc => doc.body.classList.add(printContainerClass),
+      }),
+      ignoreElements: el =>
+        noPrintClass ? el.classList.contains(noPrintClass) : false,
+    });
 
-      const imgData = canvas.toDataURL('image/jpeg', 1.0);
+    const imgData = canvas.toDataURL('image/jpeg', 1.0);
 
-      pdf.addImage(imgData, 'JPEg', 0, 0, width, height);
-      pdf.save(`kinto-platform-screen-capture-${new Date().toLocaleString()}`);
-      URL.revokeObjectURL(imgData);
-    }
-  }, [noPrintClass]);
+    pdf.addImage(imgData, 'JPEG', 0, 0, width, height);
+    pdf.save(`${exportTitlePrefix}-${new Date().toLocaleString()}`);
+    URL.revokeObjectURL(imgData);
+  }, [exportTitlePrefix, printContainerClass, noPrintClass]);
 
   const capturePDF = useCallback(() => {
     if (useWindowPrint) window.print();
@@ -82,9 +91,16 @@ const CapturePDFButton = (props: Props) => {
 
   return (
     <Button {...buttonProps} className={classes} onClick={capturePDF}>
-      Export to pdf
+      {children}
     </Button>
   );
+};
+
+CapturePDFButton.defaultProps = {
+  useWindowPrint: true,
+  noPrintClass: 'no-print',
+  exportTitlePrefix: 'faxi-screen-capture',
+  children: 'Export to PDF',
 };
 
 export default CapturePDFButton;

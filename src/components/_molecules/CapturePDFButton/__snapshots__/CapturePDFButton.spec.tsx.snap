@@ -70,6 +70,6 @@ exports[`CapturePDFButton renders correctly 1`] = `
   type="button"
   width="fit-content"
 >
-  Export to pdf
+  Export to PDF
 </button>
 `;
