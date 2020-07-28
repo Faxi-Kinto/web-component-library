@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ReactNode, Fragment } from 'react';
 import * as Styled from './Dropdown.styles';
 import classNames from 'classnames';
+import Label from '../../_atoms/Label/Label.component';
 
 export type DropdownOption = {
   text: string;
@@ -155,7 +156,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
 
   return (
     <div className={className}>
-      {label && <label className={labelClassName}>{label}</label>}
+      {label && <Label className={labelClassName}>{label}</Label>}
       <Styled.Container
         ref={reference => {
           if (reference) {
