@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ReactNode, Fragment } from 'react';
 import * as Styled from './Dropdown.styles';
+import classNames from 'classnames';
 
 export type DropdownOption = {
   text: string;
@@ -99,13 +100,14 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     if (isOpen) {
       return (
         <div
-          className={`dropdown-container__options${
-            upwards ? ' dropdown-container__options--upwards' : ''
-          } ${
-            optionList.length > 5
-              ? ' dropdown-container__options--overflow-auto'
-              : ''
-          }`}
+          className={classNames([
+            'dropdown-container__options',
+            { 'dropdown-container__options--upwards': upwards },
+            {
+              'dropdown-container__options--overflow-auto':
+                optionList.length > 5,
+            },
+          ])}
           role="list"
           ref={reference => {
             if (reference) {
@@ -129,11 +131,14 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           setCurrentSelected({ ...option });
           onChange && onChange(option.value);
         }}
-        className={`dropdown-container__options__option${
-          option.value === currentSelected.value
-            ? ' dropdown-container__options__option--selected'
-            : ''
-        }${optionClassName ? ' ' + optionClassName : ''}`}
+        className={classNames([
+          'dropdown-container__options__option',
+          {
+            'dropdown-container__options__option--selected':
+              option.value === currentSelected.value,
+          },
+          optionClassName,
+        ])}
         role="listitem"
       >
         {option.icon}
@@ -147,7 +152,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   };
 
   return (
-    <Fragment>
+    <div className={className}>
       {label && <label className={labelClassName}>{label}</label>}
       <Styled.Container
         ref={reference => {
@@ -156,13 +161,22 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           }
         }}
         onClick={() => handleOpenDropdown()}
-        className={`dropdown-container${
-          iconMode ? ' dropdown-container--icon-mode' : ''
-        }${
-          isOpen ? ' dropdown-container--open' : ' dropdown-container--close'
-        }${errorState ? ' dropdown-container--error' : ''}${
-          !isOpen && iconMode ? ' dropdown-container--unset-min-width' : ''
-        }${className ? ' ' + className : ''}`}
+        className={classNames([
+          'dropdown-container',
+          {
+            'dropdown-container--icon-mode': iconMode,
+          },
+          {
+            'dropdown-container--open': isOpen,
+            'dropdown-container--close': !isOpen,
+          },
+          {
+            'dropdown-container--error': errorState,
+          },
+          {
+            'dropdown-container--unset-min-width': !isOpen && iconMode,
+          },
+        ])}
         tabIndex={-1}
         onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
@@ -193,13 +207,16 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
 
         {toggleIcon &&
           React.cloneElement(toggleIcon, {
-            className: `dropdown-container__arrow ${toggleIconClassName}`,
+            className: classNames([
+              'dropdown-container__arrow',
+              toggleIconClassName,
+            ]),
           })}
         {renderOptions()}
       </Styled.Container>
       {description && <div className={descriptionClassName}>{description}</div>}
       {errorState && <div className={errorClassName}>{error}</div>}
-    </Fragment>
+    </div>
   );
 };
 

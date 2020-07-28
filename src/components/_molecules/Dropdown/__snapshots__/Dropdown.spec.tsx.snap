@@ -140,16 +140,18 @@ exports[`Dropdown renders correctly 1`] = `
   min-width: unset;
 }
 
-<div
-  className="c0 dropdown-container dropdown-container--close"
-  onBlur={[Function]}
-  onClick={[Function]}
-  tabIndex={-1}
->
+<div>
   <div
-    className="dropdown-container__placeholder"
+    className="c0 dropdown-container dropdown-container--close"
+    onBlur={[Function]}
+    onClick={[Function]}
+    tabIndex={-1}
   >
-    Placeholder
+    <div
+      className="dropdown-container__placeholder"
+    >
+      Placeholder
+    </div>
   </div>
 </div>
 `;
