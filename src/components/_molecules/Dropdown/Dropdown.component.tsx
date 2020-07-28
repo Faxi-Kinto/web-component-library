@@ -23,6 +23,7 @@ export type DropdownProps<T = {}> = T & {
   descriptionClassName?: string;
   errorClassName?: string;
   borderColor?: string;
+  backgroundColor?: string;
   dropdownOpenBorderColor?: string;
   placeholderColor?: string;
   optionsBackgroundColor?: string;
@@ -51,6 +52,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     descriptionClassName,
     errorClassName,
     borderColor,
+    backgroundColor,
     dropdownOpenBorderColor,
     placeholderColor,
     optionsBackgroundColor,
@@ -180,6 +182,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
         tabIndex={-1}
         onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
+        backgroundColor={backgroundColor}
         dropdownOpenBorderColor={dropdownOpenBorderColor}
         placeholderColor={placeholderColor}
         optionsBackgroundColor={optionsBackgroundColor}

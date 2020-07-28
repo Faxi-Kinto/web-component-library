@@ -21,6 +21,7 @@ exports[`Dropdown renders correctly 1`] = `
   position: relative;
   min-width: 15.625rem;
   border: 0.0625rem solid black;
+  background: white;
   padding: 0.625rem 1.875rem;
   cursor: pointer;
   font-size: 1.125rem;
