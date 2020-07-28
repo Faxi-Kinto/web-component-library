@@ -19,6 +19,7 @@ export type DropdownProps<T = {}> = T & {
   toggleIconClassName?: string;
   onChange?: (value: string) => void;
   className?: string;
+  containerClassName?: string;
   optionClassName?: string;
   labelClassName?: string;
   descriptionClassName?: string;
@@ -48,6 +49,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     toggleIconClassName,
     onChange,
     className,
+    containerClassName,
     optionClassName,
     labelClassName,
     descriptionClassName,
@@ -155,7 +157,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   };
 
   return (
-    <div className={className}>
+    <div className={containerClassName}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <Styled.Container
         ref={reference => {
@@ -179,6 +181,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           {
             'dropdown-container--unset-min-width': !isOpen && iconMode,
           },
+          className,
         ])}
         tabIndex={-1}
         onBlur={() => setIsOpen(false)}
