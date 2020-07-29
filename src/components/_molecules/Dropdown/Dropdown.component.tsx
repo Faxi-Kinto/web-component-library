@@ -75,7 +75,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     iconMode = false,
     errorState,
   } = props;
-  const { error } = (props as any) || { error: '' };
+  const { error } = props as any;
 
   const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
@@ -84,18 +84,15 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
 
   const propSelected = useMemo(() => {
+    const existingOption = optionList.find(el => el.value === value);
+
     return (
-      (typeof value === 'string'
-        ? {
-            text: value,
-            value: value,
-          }
-        : value) || {
+      existingOption || {
         text: '',
         value: '',
       }
     );
-  }, [value]);
+  }, [optionList, value]);
 
   const [currentSelected, setCurrentSelected] = useState(propSelected);
 
