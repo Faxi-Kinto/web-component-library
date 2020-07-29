@@ -1,4 +1,10 @@
-import React, { useState, useEffect, ReactNode, Fragment } from 'react';
+import React, {
+  useState,
+  useEffect,
+  ReactNode,
+  Fragment,
+  useMemo,
+} from 'react';
 import * as Styled from './Dropdown.styles';
 import classNames from 'classnames';
 import Label from '../../_atoms/Label/Label.component';
@@ -77,17 +83,26 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const [containerRef, setContainerRef] = useState<HTMLDivElement>();
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
 
-  const [currentSelected, setCurrentSelected] = useState(
-    (typeof value === 'string'
-      ? {
-          text: value,
-          value: value,
-        }
-      : value) || {
-      text: '',
-      value: '',
-    }
-  );
+  const propSelected = useMemo(() => {
+    return (
+      (typeof value === 'string'
+        ? {
+            text: value,
+            value: value,
+          }
+        : value) || {
+        text: '',
+        value: '',
+      }
+    );
+  }, [value]);
+
+  const [currentSelected, setCurrentSelected] = useState(propSelected);
+
+  const actualSelected = useMemo(() => propSelected || currentSelected, [
+    currentSelected,
+    propSelected,
+  ]);
 
   useEffect(() => {
     if (optionsRef && containerRef) {
@@ -142,7 +157,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           'dropdown-container__options__option',
           {
             'dropdown-container__options__option--selected':
-              option.value === currentSelected.value,
+              option.value === actualSelected.value,
           },
           optionClassName,
         ])}
@@ -199,7 +214,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
         optionSelectedBackgroundColor={optionSelectedBackgroundColor}
         optionSelectedHoverBackgroundColor={optionSelectedHoverBackgroundColor}
       >
-        {currentSelected.text === '' ? (
+        {actualSelected.text === '' ? (
           placeholder ? (
             <div className="dropdown-container__placeholder">{placeholder}</div>
           ) : (
@@ -210,8 +225,8 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           )
         ) : (
           <Fragment>
-            {currentSelected.icon}
-            {!iconMode && <div>{currentSelected.text}</div>}
+            {actualSelected.icon}
+            {!iconMode && <div>{actualSelected.text}</div>}
           </Fragment>
         )}
 
