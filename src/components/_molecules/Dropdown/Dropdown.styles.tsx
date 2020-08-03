@@ -45,6 +45,7 @@ export const Container = styled.div<DropdownStylingProps>`
     }
 
     &__options {
+      z-index: 1;
       position: absolute;
       top: ${pxToRem('44px')};
       right: 0;
