@@ -1,36 +1,31 @@
 import styled from 'styled-components';
 import { pxToRem, padding } from '@faxi/web-css-utilities';
 
-type ExpanderStylingProps = {
+export type ExpanderStylingProps = {
   headerColor?: string;
   headerSize?: string;
   textColor?: string;
 };
 
-const defaultTextColor = '#4E606A';
-const defaultheaderSize = '18px';
-
-export const Container = styled.div`
+export const Container = styled.div<ExpanderStylingProps>`
   max-width: ${pxToRem('500px')};
   width: 100%;
-  .collapse-card {
+  .expander-card {
     &__header {
       &__button {
-        font-size: ${(props: ExpanderStylingProps) =>
-          props.headerSize ? props.headerSize : defaultheaderSize};
-        color: ${(props: ExpanderStylingProps) =>
-          props.headerColor ? props.headerColor : defaultTextColor};
+        span {
+          font-size: ${(props: ExpanderStylingProps) => props.headerSize};
+          color: ${(props: ExpanderStylingProps) =>
+            props.headerColor ? props.headerColor : 'black'};
+        }
       }
-      &__icon {
+      &__wrapper {
         position: relative;
-        & > :last-child {
+        &__icon {
           position: absolute;
           top: ${pxToRem('-3px')};
           transition: all 400ms linear;
-        }
-
-        &--open {
-          & > :last-child {
+          &--open {
             transform: rotate(180deg);
           }
         }
@@ -50,7 +45,7 @@ export const Container = styled.div`
       &__body {
         ${padding(pxToRem('35px'), '0')};
         color: ${(props: ExpanderStylingProps) =>
-          props.textColor ? props.textColor : defaultTextColor};
+          props.textColor ? props.textColor : 'black'};
         transition: 300ms;
       }
     }
