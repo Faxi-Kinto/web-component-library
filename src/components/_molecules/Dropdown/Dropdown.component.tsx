@@ -217,16 +217,23 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           ) : (
             <Fragment>
               {optionList[0].icon}
-              {!iconMode && <div>{optionList[0].text}</div>}
+              {!iconMode && (
+                <div className="dropdown-container__selected-main">
+                  {optionList[0].text}
+                </div>
+              )}
             </Fragment>
           )
         ) : (
           <Fragment>
             {actualSelected.icon}
-            {!iconMode && <div>{actualSelected.text}</div>}
+            {!iconMode && (
+              <div className="dropdown-container__selected-main">
+                {actualSelected.text}
+              </div>
+            )}
           </Fragment>
         )}
-
         {toggleIcon &&
           React.cloneElement(toggleIcon, {
             className: classNames([

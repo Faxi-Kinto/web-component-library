@@ -42,6 +42,11 @@ export const Container = styled.div<DropdownStylingProps>`
     &__placeholder {
       color: ${(props: DropdownStylingProps) =>
         props.placeholderColor ? props.placeholderColor : 'black'};
+      padding-right: ${pxToRem('12px')};
+    }
+
+    &__selected-main {
+      padding-right: ${pxToRem('12px')};
     }
 
     &__options {

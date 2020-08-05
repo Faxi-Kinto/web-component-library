@@ -33,6 +33,11 @@ exports[`Dropdown renders correctly 1`] = `
 
 .c0 .dropdown-container__placeholder {
   color: black;
+  padding-right: 0.75rem;
+}
+
+.c0 .dropdown-container__selected-main {
+  padding-right: 0.75rem;
 }
 
 .c0 .dropdown-container__options {
