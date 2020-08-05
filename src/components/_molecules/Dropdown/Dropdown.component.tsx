@@ -96,7 +96,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
 
   const [currentSelected, setCurrentSelected] = useState(propSelected);
 
-  const actualSelected = useMemo(() => currentSelected || propSelected, [
+  const actualSelected = useMemo(() => propSelected || currentSelected, [
     currentSelected,
     propSelected,
   ]);
