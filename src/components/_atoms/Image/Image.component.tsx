@@ -21,7 +21,7 @@ type ImageObjectFit =
   | 'unset';
 
 export type ImageProps = {
-  src: string;
+  src?: string;
   alt: string;
   width?: string;
   height?: string;
