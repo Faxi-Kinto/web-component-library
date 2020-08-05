@@ -4,8 +4,6 @@ import * as Styled from './Image.styles';
 /**
  * @name Image
  *
- * [Insert Component Description]
- *
  * @returns {JSX}
  */
 
@@ -29,11 +27,21 @@ export type ImageProps = {
   height?: string;
   objectFit?: ImageObjectFit;
   className?: string;
-  onClick?: Function;
+  onClick?: (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => void;
+  onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 };
 
 const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
-  const { src, alt, width, height, objectFit, className, onClick } = props;
+  const {
+    src,
+    alt,
+    width,
+    height,
+    objectFit,
+    className,
+    onClick,
+    onError,
+  } = props;
 
   return (
     <Styled.Image
@@ -43,7 +51,8 @@ const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
       height={height || defaultHeight}
       className={className}
       style={{ objectFit }}
-      onClick={onClick && onClick()}
+      onClick={onClick}
+      onError={onError}
     />
   );
 };
