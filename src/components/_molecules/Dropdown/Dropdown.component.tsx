@@ -84,22 +84,15 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
 
   const propSelected = useMemo(() => {
-    const existingOption = optionList.find(el => el.value === value);
-
-    return (
-      existingOption || {
-        text: '',
-        value: '',
-      }
-    );
+    return optionList.find(el => el.value === value);
   }, [optionList, value]);
 
   const [currentSelected, setCurrentSelected] = useState(propSelected);
 
-  const actualSelected = useMemo(() => propSelected || currentSelected, [
-    currentSelected,
-    propSelected,
-  ]);
+  const actualSelected = useMemo(
+    () => propSelected || currentSelected || { text: '', value: '' },
+    [currentSelected, propSelected]
+  );
 
   useEffect(() => {
     if (optionsRef && containerRef) {
