@@ -19,6 +19,7 @@ export { default as CookiePolicy } from './components/_molecules/CookiePolicy';
 export { default as Dropdown } from './components/_molecules/Dropdown';
 export { default as NavigationLinks } from './components/_molecules/NavigationLinks';
 export { default as CapturePDFButton } from './components/_molecules/CapturePDFButton';
+export { default as Expander } from './components/_molecules/Expander';
 
 /*
  * Organisms
