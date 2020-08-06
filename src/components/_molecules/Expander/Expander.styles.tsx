@@ -10,6 +10,7 @@ export type ExpanderStylingProps = {
 export const Container = styled.div<ExpanderStylingProps>`
   max-width: ${pxToRem('500px')};
   width: 100%;
+
   .expander-card {
     &__header {
       &__button {
@@ -19,6 +20,7 @@ export const Container = styled.div<ExpanderStylingProps>`
             props.headerColor ? props.headerColor : 'black'};
         }
       }
+
       &__wrapper {
         position: relative;
         &__icon {

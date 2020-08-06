@@ -1,11 +1,12 @@
 import React, { ReactNode, useState } from 'react';
 import * as Styled from './Expander.styles';
-import { Button } from '../../..';
+import Button from '../../_atoms/Button';
+import classNames from 'classnames';
 
 export type ExpanderProps = {
-  title?: string;
-  body?: React.ReactNode;
-  icon: JSX.Element;
+  title: string;
+  body: ReactNode;
+  icon?: JSX.Element;
   iconClassName?: string;
   headerClassName?: string;
   buttonClassName?: string;
@@ -25,15 +26,15 @@ const Expander: React.FC<ExpanderProps> = (
     iconClassName,
     headerClassName,
     buttonClassName,
-    headerColor = '#4E606A',
-    headerSize = '18px',
-    textColor = '#4E606A',
+    headerColor,
+    headerSize,
+    textColor,
   } = props;
 
-  const [isShown, setShowHide] = useState(false);
+  const [isShown, setIsShown] = useState(false);
 
   const handleExpander = () => {
-    setShowHide(!isShown);
+    setIsShown(!isShown);
   };
 
   return (
@@ -43,35 +44,33 @@ const Expander: React.FC<ExpanderProps> = (
       headerSize={headerSize}
       textColor={textColor}
     >
-      <div
-        className={`expander-card__header${
-          headerClassName ? ' ' + headerClassName : ''
-        }`}
-      >
+      <div className={classNames(['expander-card__header', headerClassName])}>
         <Button
           secondary
-          className={`expander-card__header__button${
-            buttonClassName ? ' ' + buttonClassName : ''
-          }`}
+          className={classNames([
+            'expander-card__header__button',
+            buttonClassName,
+          ])}
           onClick={handleExpander}
         >
           <span>{title}</span>
           <div className="expander-card__header__wrapper">
             {icon &&
               React.cloneElement(icon, {
-                className: `expander-card__header__wrapper__icon ${iconClassName}${
-                  isShown ? ' expander-card__header__wrapper__icon--open' : ''
-                }`,
+                className: classNames([
+                  'expander-card__header__wrapper__icon',
+                  iconClassName,
+                  { 'expander-card__header__wrapper__icon--open': isShown },
+                ]),
               })}
           </div>
         </Button>
       </div>
       <div
-        className={`expander-card__box${
-          isShown
-            ? ' expander-card__box--open'
-            : ' expander__card-header__body--close'
-        }`}
+        className={classNames([
+          'expander-card__box',
+          { 'expander-card__box--open': isShown },
+        ])}
       >
         <div className="expander-card__box__body">{body}</div>
       </div>

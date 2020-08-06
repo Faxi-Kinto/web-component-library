@@ -7,8 +7,7 @@ exports[`Expander renders correctly 1`] = `
 }
 
 .c0 .expander-card__header__button span {
-  font-size: 18px;
-  color: #4E606A;
+  color: black;
 }
 
 .c0 .expander-card__header__wrapper {
@@ -42,7 +41,7 @@ exports[`Expander renders correctly 1`] = `
 
 .c0 .expander-card__box__body {
   padding: 2.1875rem 0 2.1875rem 0;
-  color: #4E606A;
+  color: black;
   -webkit-transition: 300ms;
   transition: 300ms;
 }
@@ -130,7 +129,7 @@ exports[`Expander renders correctly 1`] = `
       >
         <img
           alt=""
-          className="expander-card__header__wrapper__icon undefined"
+          className="expander-card__header__wrapper__icon"
           src="assets/icons/angle-down.svg"
           style={
             Object {
@@ -142,7 +141,7 @@ exports[`Expander renders correctly 1`] = `
     </button>
   </div>
   <div
-    className="expander-card__box expander__card-header__body--close"
+    className="expander-card__box"
   >
     <div
       className="expander-card__box__body"
