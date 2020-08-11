@@ -21,6 +21,7 @@ exports[`Dropdown renders correctly 1`] = `
   position: relative;
   min-width: 15.625rem;
   border: 0.0625rem solid black;
+  background: white;
   padding: 0.625rem 1.875rem;
   cursor: pointer;
   font-size: 1.125rem;
@@ -32,9 +33,15 @@ exports[`Dropdown renders correctly 1`] = `
 
 .c0 .dropdown-container__placeholder {
   color: black;
+  padding-right: 0.75rem;
+}
+
+.c0 .dropdown-container__selected-main {
+  padding-right: 0.75rem;
 }
 
 .c0 .dropdown-container__options {
+  z-index: 1;
   position: absolute;
   top: 2.75rem;
   right: 0;
@@ -125,6 +132,10 @@ exports[`Dropdown renders correctly 1`] = `
   transform: rotate(180deg);
 }
 
+.c0.dropdown-container--error {
+  border: 0.0625rem solid gray;
+}
+
 .c0.dropdown-container--icon-mode {
   border: none;
   width: -webkit-fit-content;
@@ -140,16 +151,18 @@ exports[`Dropdown renders correctly 1`] = `
   min-width: unset;
 }
 
-<div
-  className="c0 dropdown-container dropdown-container--close"
-  onBlur={[Function]}
-  onClick={[Function]}
-  tabIndex={-1}
->
+<div>
   <div
-    className="dropdown-container__placeholder"
+    className="c0 dropdown-container dropdown-container--close"
+    onBlur={[Function]}
+    onClick={[Function]}
+    tabIndex={-1}
   >
-    Placeholder
+    <div
+      className="dropdown-container__placeholder"
+    >
+      Placeholder
+    </div>
   </div>
 </div>
 `;

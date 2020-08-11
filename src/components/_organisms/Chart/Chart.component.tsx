@@ -29,6 +29,7 @@ export type ChartProps = {
   xAxisMinMiliseconds: number;
   xAxisMaxMiliseconds: number;
   markerStrokeColors: string[];
+  yAxisTickAmount?: number;
 };
 
 const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
@@ -47,6 +48,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     xAxisMinMiliseconds,
     xAxisMaxMiliseconds,
     markerStrokeColors,
+    yAxisTickAmount = 3,
   } = props;
 
   const state = {
@@ -107,6 +109,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
         curve: 'smooth',
       },
       yaxis: {
+        tickAmount: yAxisTickAmount,
         labels: {
           offsetX: 0,
           formatter: (num: number) => {

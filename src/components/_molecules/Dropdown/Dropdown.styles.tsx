@@ -8,7 +8,9 @@ import {
 
 export type DropdownStylingProps = {
   borderColor?: string;
+  backgroundColor?: string;
   dropdownOpenBorderColor?: string;
+  dropdownErrorBorderColor?: string;
   placeholderColor?: string;
   optionsBackgroundColor?: string;
   optionBorderTopBottomColor?: string;
@@ -26,6 +28,8 @@ export const Container = styled.div<DropdownStylingProps>`
   border: ${pxToRem('1px')} solid
     ${(props: DropdownStylingProps) =>
       props.borderColor ? props.borderColor : 'black'};
+  background: ${(props: DropdownStylingProps) =>
+    props.backgroundColor ? props.backgroundColor : 'white'};
   padding: ${pxToRem('10px')} ${pxToRem('30px')};
   cursor: pointer;
   font-size: ${pxToRem('18px')};
@@ -38,9 +42,15 @@ export const Container = styled.div<DropdownStylingProps>`
     &__placeholder {
       color: ${(props: DropdownStylingProps) =>
         props.placeholderColor ? props.placeholderColor : 'black'};
+      padding-right: ${pxToRem('12px')};
+    }
+
+    &__selected-main {
+      padding-right: ${pxToRem('12px')};
     }
 
     &__options {
+      z-index: 1;
       position: absolute;
       top: ${pxToRem('44px')};
       right: 0;
@@ -122,6 +132,14 @@ export const Container = styled.div<DropdownStylingProps>`
       .dropdown-container__arrow {
         transform: rotate(180deg);
       }
+    }
+
+    &--error {
+      border: ${pxToRem('1px')} solid
+        ${(props: DropdownStylingProps) =>
+          props.dropdownErrorBorderColor
+            ? props.dropdownErrorBorderColor
+            : 'gray'};
     }
 
     &--icon-mode {

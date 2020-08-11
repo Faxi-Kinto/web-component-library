@@ -1,5 +1,13 @@
-import React, { useState, useEffect, ReactNode, Fragment } from 'react';
+import React, {
+  useState,
+  useEffect,
+  ReactNode,
+  Fragment,
+  useMemo,
+} from 'react';
 import * as Styled from './Dropdown.styles';
+import classNames from 'classnames';
+import Label from '../../_atoms/Label/Label.component';
 
 export type DropdownOption = {
   text: string;
@@ -17,12 +25,15 @@ export type DropdownProps<T = {}> = T & {
   toggleIconClassName?: string;
   onChange?: (value: string) => void;
   className?: string;
+  containerClassName?: string;
   optionClassName?: string;
   labelClassName?: string;
   descriptionClassName?: string;
   errorClassName?: string;
   borderColor?: string;
+  backgroundColor?: string;
   dropdownOpenBorderColor?: string;
+  dropdownErrorBorderColor?: string;
   placeholderColor?: string;
   optionsBackgroundColor?: string;
   optionBorderTopBottomColor?: string;
@@ -45,12 +56,15 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     toggleIconClassName,
     onChange,
     className,
+    containerClassName,
     optionClassName,
     labelClassName,
     descriptionClassName,
     errorClassName,
     borderColor,
+    backgroundColor,
     dropdownOpenBorderColor,
+    dropdownErrorBorderColor,
     placeholderColor,
     optionsBackgroundColor,
     optionBorderTopBottomColor,
@@ -61,7 +75,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     iconMode = false,
     errorState,
   } = props;
-  const { error } = (props as any) || { error: '' };
+  const { error } = props as any;
 
   const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
@@ -69,16 +83,15 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const [containerRef, setContainerRef] = useState<HTMLDivElement>();
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
 
-  const [currentSelected, setCurrentSelected] = useState(
-    (typeof value === 'string'
-      ? {
-          text: value,
-          value: value,
-        }
-      : value) || {
-      text: '',
-      value: '',
-    }
+  const propSelected = useMemo(() => {
+    return optionList.find(el => el.value === value);
+  }, [optionList, value]);
+
+  const [currentSelected, setCurrentSelected] = useState(propSelected);
+
+  const actualSelected = useMemo(
+    () => propSelected || currentSelected || { text: '', value: '' },
+    [currentSelected, propSelected]
   );
 
   useEffect(() => {
@@ -99,13 +112,14 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     if (isOpen) {
       return (
         <div
-          className={`dropdown-container__options${
-            upwards ? ' dropdown-container__options--upwards' : ''
-          } ${
-            optionList.length > 5
-              ? ' dropdown-container__options--overflow-auto'
-              : ''
-          }`}
+          className={classNames([
+            'dropdown-container__options',
+            { 'dropdown-container__options--upwards': upwards },
+            {
+              'dropdown-container__options--overflow-auto':
+                optionList.length > 5,
+            },
+          ])}
           role="list"
           ref={reference => {
             if (reference) {
@@ -129,11 +143,14 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           setCurrentSelected({ ...option });
           onChange && onChange(option.value);
         }}
-        className={`dropdown-container__options__option${
-          option.value === currentSelected.value
-            ? ' dropdown-container__options__option--selected'
-            : ''
-        }${optionClassName ? ' ' + optionClassName : ''}`}
+        className={classNames([
+          'dropdown-container__options__option',
+          {
+            'dropdown-container__options__option--selected':
+              option.value === actualSelected.value,
+          },
+          optionClassName,
+        ])}
         role="listitem"
       >
         {option.icon}
@@ -147,8 +164,8 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   };
 
   return (
-    <Fragment>
-      {label && <label className={labelClassName}>{label}</label>}
+    <div className={containerClassName}>
+      {label && <Label className={labelClassName}>{label}</Label>}
       <Styled.Container
         ref={reference => {
           if (reference) {
@@ -156,17 +173,29 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           }
         }}
         onClick={() => handleOpenDropdown()}
-        className={`dropdown-container${
-          iconMode ? ' dropdown-container--icon-mode' : ''
-        }${
-          isOpen ? ' dropdown-container--open' : ' dropdown-container--close'
-        }${errorState ? ' dropdown-container--error' : ''}${
-          !isOpen && iconMode ? ' dropdown-container--unset-min-width' : ''
-        }${className ? ' ' + className : ''}`}
+        className={classNames([
+          'dropdown-container',
+          {
+            'dropdown-container--icon-mode': iconMode,
+          },
+          {
+            'dropdown-container--open': isOpen,
+            'dropdown-container--close': !isOpen,
+          },
+          {
+            'dropdown-container--error': errorState,
+          },
+          {
+            'dropdown-container--unset-min-width': !isOpen && iconMode,
+          },
+          className,
+        ])}
         tabIndex={-1}
         onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
+        backgroundColor={backgroundColor}
         dropdownOpenBorderColor={dropdownOpenBorderColor}
+        dropdownErrorBorderColor={dropdownErrorBorderColor}
         placeholderColor={placeholderColor}
         optionsBackgroundColor={optionsBackgroundColor}
         optionBorderTopBottomColor={optionBorderTopBottomColor}
@@ -175,31 +204,41 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
         optionSelectedBackgroundColor={optionSelectedBackgroundColor}
         optionSelectedHoverBackgroundColor={optionSelectedHoverBackgroundColor}
       >
-        {currentSelected.text === '' ? (
+        {actualSelected.text === '' ? (
           placeholder ? (
             <div className="dropdown-container__placeholder">{placeholder}</div>
           ) : (
             <Fragment>
               {optionList[0].icon}
-              {!iconMode && <div>{optionList[0].text}</div>}
+              {!iconMode && (
+                <div className="dropdown-container__selected-main">
+                  {optionList[0].text}
+                </div>
+              )}
             </Fragment>
           )
         ) : (
           <Fragment>
-            {currentSelected.icon}
-            {!iconMode && <div>{currentSelected.text}</div>}
+            {actualSelected.icon}
+            {!iconMode && (
+              <div className="dropdown-container__selected-main">
+                {actualSelected.text}
+              </div>
+            )}
           </Fragment>
         )}
-
         {toggleIcon &&
           React.cloneElement(toggleIcon, {
-            className: `dropdown-container__arrow ${toggleIconClassName}`,
+            className: classNames([
+              'dropdown-container__arrow',
+              toggleIconClassName,
+            ]),
           })}
         {renderOptions()}
       </Styled.Container>
       {description && <div className={descriptionClassName}>{description}</div>}
       {errorState && <div className={errorClassName}>{error}</div>}
-    </Fragment>
+    </div>
   );
 };
 
