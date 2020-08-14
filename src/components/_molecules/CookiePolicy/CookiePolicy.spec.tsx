@@ -1,12 +1,21 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import Text from '../../_atoms/Text';
 import CookiePolicy from '.';
 
 test('CookiePolicy renders correctly', () => {
   const component = renderer.create(
     <CookiePolicy
-      title={'Cookie Policy'}
-      text={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.`}
+      text={
+        <Text.Body>
+          We use cookies to ensure that we give you the best experience on our
+          website.{' '}
+          <Text.Link href="#" target="_blank">
+            Read our privacy policy
+          </Text.Link>{' '}
+          and let us know that you agree to cookies.
+        </Text.Body>
+      }
       acceptButtonContent={<p>Accept</p>}
       declineButtonContent={<p>Reject</p>}
     />

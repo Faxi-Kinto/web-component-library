@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Styled from './CookiePolicy.styles';
-import Text from '../../_atoms/Text';
 import Button from '../../_atoms/Button';
+import classNames from 'classnames';
 
 export type CookieStatus = {
   acceptedCookies: boolean;
@@ -9,11 +9,12 @@ export type CookieStatus = {
 
 export type CookiePolicyProps = {
   title?: string;
-  text?: React.ReactNode;
+  text?: JSX.Element;
   backgroundColor?: string;
   textColor?: string;
   buttonBackground?: string;
   buttonColor?: string;
+  textClassName?: string;
   acceptedCookies?: boolean;
   acceptButtonContent?: React.ReactNode;
   declineButtonContent?: React.ReactNode;
@@ -24,14 +25,14 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
   props: CookiePolicyProps
 ): JSX.Element => {
   const {
-    title,
     text,
     acceptButtonContent,
     declineButtonContent,
     backgroundColor = '#00708d',
     textColor = '#fff',
-    buttonBackground = '#fff',
-    buttonColor = '#00708d',
+    buttonBackground = 'transparent',
+    buttonColor = '#fff',
+    textClassName,
     userAction,
   } = props;
 
@@ -71,10 +72,15 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
     >
       {isShowing ? (
         <div className="cookie-policy">
-          <Text.Heading level="3" className="cookie-policy__title">
-            {title}
-          </Text.Heading>
-          <Text.Body className="cookie-policy__text">{text}</Text.Body>
+          <div className="cookie-policy__body">
+            {text &&
+              React.cloneElement(text, {
+                className: classNames([
+                  'cookie-policy__body__text',
+                  textClassName,
+                ]),
+              })}
+          </div>
           <Button
             className="cookie-policy__accept-button"
             onClick={acceptCookies}
