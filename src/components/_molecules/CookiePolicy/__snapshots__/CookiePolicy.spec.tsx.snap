@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CookiePolicy renders correctly 1`] = `
-.c1 {
+.c2 {
   padding: 0;
   margin: 0;
   font-size: 1rem;
@@ -10,48 +10,48 @@ exports[`CookiePolicy renders correctly 1`] = `
   white-space: pre-wrap;
 }
 
-.c2 {
+.c1 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2.125rem;
+  font-weight: 500;
+  color: black;
+}
+
+.c3 {
   padding: 0;
   margin: 0;
 }
 
 .c0 .cookie-policy {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   padding: 1.25rem 3.125rem 1.25rem 3.125rem;
   background-color: #00708d;
 }
 
-.c0 .cookie-policy__body {
-  margin-right: 2.1875rem;
+.c0 .cookie-policy__title,
+.c0 .cookie-policy__text {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: #fff;
 }
 
-.c0 .cookie-policy__body__text,
-.c0 .cookie-policy__body__text > * {
+.c0 .cookie-policy__title > *,
+.c0 .cookie-policy__text > *,
+.c0 .cookie-policy__title a,
+.c0 .cookie-policy__text a {
   color: #fff;
 }
 
 .c0 .cookie-policy__accept-button,
 .c0 .cookie-policy__decline-button {
-  white-space: nowrap;
-  background-color: transparent;
-  color: #fff;
+  padding: 0.625rem 2.1875rem 0.625rem 2.1875rem;
+  margin-right: 1.25rem;
+  background-color: #fff;
+  color: #00708d;
 }
 
-.c3 {
+.c4 {
   border: none;
   cursor: pointer;
   font: inherit;
@@ -65,15 +65,15 @@ exports[`CookiePolicy renders correctly 1`] = `
   color: black;
 }
 
-.c3 p {
+.c4 p {
   margin: 0;
 }
 
-.c3:focus {
+.c4:focus {
   outline: none;
 }
 
-.c3.button--secondary {
+.c4.button--secondary {
   background: transparent;
   font-size: 0.875rem;
   display: -webkit-box;
@@ -100,15 +100,15 @@ exports[`CookiePolicy renders correctly 1`] = `
   padding: 0;
 }
 
-.c3.button--secondary > * {
+.c4.button--secondary > * {
   margin: 0 0.75rem 0 0;
 }
 
-.c3.button--secondary > :last-child {
+.c4.button--secondary > :last-child {
   margin: 0;
 }
 
-.c3.button--secondary p {
+.c4.button--secondary p {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
@@ -119,18 +119,24 @@ exports[`CookiePolicy renders correctly 1`] = `
   <div
     className="cookie-policy"
   >
-    <div
-      className="cookie-policy__body"
+    <h3
+      className="c1 cookie-policy__title"
+      color="black"
+    />
+    <span
+      className="c2 cookie-policy__text"
+      color="black"
+      fontSize="16px"
     >
       <span
-        className="c1 cookie-policy__body__text"
+        className="c2 cookie-policy__text__body"
         color="black"
         fontSize="16px"
       >
         We use cookies to ensure that we give you the best experience on our website.
          
         <a
-          className="c2"
+          className="c3"
           href="#"
           target="_blank"
         >
@@ -139,9 +145,9 @@ exports[`CookiePolicy renders correctly 1`] = `
          
         and let us know that you agree to cookies.
       </span>
-    </div>
+    </span>
     <button
-      className="c3 button cookie-policy__accept-button"
+      className="c4 button cookie-policy__accept-button"
       height="fit-content"
       onClick={[Function]}
       type="button"
@@ -152,7 +158,7 @@ exports[`CookiePolicy renders correctly 1`] = `
       </p>
     </button>
     <button
-      className="c3 button cookie-policy__decline-button"
+      className="c4 button cookie-policy__decline-button"
       height="fit-content"
       onClick={[Function]}
       type="button"

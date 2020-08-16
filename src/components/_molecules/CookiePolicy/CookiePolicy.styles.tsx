@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { pxToRem, padding, flexRow } from '@faxi/web-css-utilities';
+import { pxToRem, padding } from '@faxi/web-css-utilities';
 
 type CookiePolicyStylingProps = {
   backgroundColor?: string;
@@ -10,22 +10,25 @@ type CookiePolicyStylingProps = {
 
 export const Container = styled.div`
   .cookie-policy {
-    ${flexRow('center', 'center')};
     ${padding(pxToRem('20px'), pxToRem('50px'))};
     background-color: ${(props: CookiePolicyStylingProps) =>
       `${props.backgroundColor}`};
 
-    &__body {
-      margin-right: ${pxToRem('35px')};
-      &__text,
-      &__text > * {
+    &__title,
+    &__text {
+      display: block;
+      margin-bottom: ${pxToRem('20px')};
+      color: ${(props: CookiePolicyStylingProps) => `${props.textColor}`};
+      > *,
+      a {
         color: ${(props: CookiePolicyStylingProps) => `${props.textColor}`};
       }
     }
 
     &__accept-button,
     &__decline-button {
-      white-space: nowrap;
+      ${padding(pxToRem('10px'), pxToRem('35px'))};
+      margin-right: ${pxToRem('20px')};
       background-color: ${(props: CookiePolicyStylingProps) =>
         `${props.buttonBackground}`};
       color: ${(props: CookiePolicyStylingProps) => `${props.buttonColor}`};

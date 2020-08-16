@@ -14,8 +14,10 @@ import CookiePolicy from './CookiePolicy.component.tsx';
 <Preview>
   <Story name="default">
     <CookiePolicy
+      title={'Cookie Policy'}
       text={<Text.Body>We use cookies to ensure that we give you the best experience on our website. <Text.Link href="#" target="_blank">Read our privacy policy</Text.Link> and let us know that you agree to cookies.</Text.Body>}
-      acceptButtonContent={'AGREE TO COOKIES'}
+      acceptButtonContent={<p>Accept</p>}
+      declineButtonContent={<p>Reject</p>}
       userAction={action('cookie-click')}
     />
   </Story>

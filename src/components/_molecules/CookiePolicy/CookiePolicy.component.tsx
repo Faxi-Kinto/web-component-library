@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Styled from './CookiePolicy.styles';
+import Text from '../../_atoms/Text';
 import Button from '../../_atoms/Button';
 import classNames from 'classnames';
 
@@ -8,6 +9,7 @@ export type CookieStatus = {
 };
 
 export type CookiePolicyProps = {
+  cookieClassName?: string;
   title?: string;
   text?: JSX.Element;
   backgroundColor?: string;
@@ -15,6 +17,7 @@ export type CookiePolicyProps = {
   buttonBackground?: string;
   buttonColor?: string;
   textClassName?: string;
+  cookieTitleClassName?: string;
   acceptedCookies?: boolean;
   acceptButtonContent?: React.ReactNode;
   declineButtonContent?: React.ReactNode;
@@ -25,15 +28,18 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
   props: CookiePolicyProps
 ): JSX.Element => {
   const {
+    title,
     text,
     acceptButtonContent,
     declineButtonContent,
     backgroundColor = '#00708d',
     textColor = '#fff',
-    buttonBackground = 'transparent',
-    buttonColor = '#fff',
+    buttonBackground = '#fff',
+    buttonColor = '#00708d',
     textClassName,
     userAction,
+    cookieClassName,
+    cookieTitleClassName,
   } = props;
 
   const [isShowing, setIsShowing] = useState(true);
@@ -71,16 +77,25 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
       buttonColor={buttonColor}
     >
       {isShowing ? (
-        <div className="cookie-policy">
-          <div className="cookie-policy__body">
+        <div className={classNames(['cookie-policy', cookieClassName])}>
+          <Text.Heading
+            level="3"
+            className={classNames([
+              'cookie-policy__title',
+              cookieTitleClassName,
+            ])}
+          >
+            {title}
+          </Text.Heading>
+          <Text.Body className="cookie-policy__text">
             {text &&
               React.cloneElement(text, {
                 className: classNames([
-                  'cookie-policy__body__text',
+                  'cookie-policy__text__body',
                   textClassName,
                 ]),
               })}
-          </div>
+          </Text.Body>
           <Button
             className="cookie-policy__accept-button"
             onClick={acceptCookies}
