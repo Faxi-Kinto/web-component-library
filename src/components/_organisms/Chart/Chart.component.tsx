@@ -19,7 +19,7 @@ export type ChartProps = {
   chartHeight: number | string;
   colors: string[]; // line colors
   gradientToColors: string[];
-  title: string;
+  title?: string;
   chartType: 'line'; // limit types here if more types available
   strokeWidths: number[];
   xAxisCssClass?: string;
@@ -34,7 +34,7 @@ export type ChartProps = {
 
 const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
   const {
-    title,
+    title = '',
     chartHeight,
     chartType,
     series,
