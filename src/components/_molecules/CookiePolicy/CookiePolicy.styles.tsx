@@ -9,11 +9,10 @@ type CookiePolicyStylingProps = {
 };
 
 export const Container = styled.div`
+  ${padding(pxToRem('20px'), pxToRem('50px'))};
+  background-color: ${(props: CookiePolicyStylingProps) =>
+    `${props.backgroundColor}`};
   .cookie-policy {
-    ${padding(pxToRem('20px'), pxToRem('50px'))};
-    background-color: ${(props: CookiePolicyStylingProps) =>
-      `${props.backgroundColor}`};
-
     &__title,
     &__text {
       display: block;
