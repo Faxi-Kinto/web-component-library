@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import * as Styled from './CookiePolicy.styles';
 import Text from '../../_atoms/Text';
 import Button from '../../_atoms/Button';
@@ -75,9 +75,10 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
       textColor={textColor}
       buttonBackground={buttonBackground}
       buttonColor={buttonColor}
+      className={classNames(['cookie-policy', cookieClassName])}
     >
       {isShowing ? (
-        <div className={classNames(['cookie-policy', cookieClassName])}>
+        <Fragment>
           <Text.Heading
             level="3"
             className={classNames([
@@ -108,7 +109,7 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
           >
             {declineButtonContent}
           </Button>
-        </div>
+        </Fragment>
       ) : null}
     </Styled.Container>
   );
