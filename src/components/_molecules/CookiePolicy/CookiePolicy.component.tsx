@@ -50,20 +50,10 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
 
   const [isShowing, setIsShowing] = useState(true);
 
-  const deleteCookies = () => {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const cook = cookies[i].split('=');
-      document.cookie = cook[0] + '=;expires=Thu, 21 Sep 1979 00:00:01 UTC;';
-    }
-  };
-
   const declineCookies = () => {
     userAction && userAction({ acceptedCookies: false });
     if (isShowing) {
       setIsShowing(!isShowing);
-      localStorage.setItem('showBanner', 'declined');
-      deleteCookies();
     }
   };
 
@@ -71,7 +61,6 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
     userAction && userAction({ acceptedCookies: true });
     if (isShowing) {
       setIsShowing(!isShowing);
-      localStorage.setItem('showBanner', 'accepted');
     }
   };
 

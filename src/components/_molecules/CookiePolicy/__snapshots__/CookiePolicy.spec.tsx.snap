@@ -26,29 +26,20 @@ exports[`CookiePolicy renders correctly 1`] = `
 
 .c0 .cookie-policy__wrapper {
   padding: 1.25rem 3.125rem 1.25rem 3.125rem;
-  background-color: #00708d;
+  background-color: #00708d || 'white;      &__title,      &__text {        display: block;        margin-bottom: 1.25rem;        color: #fff || 'black;
 }
 
-.c0 .cookie-policy__wrapper__title,
-.c0 .cookie-policy__wrapper__text {
-  display: block;
-  margin-bottom: 1.25rem;
-  color: #fff;
+.c0 .cookie-policy__wrapper > *,
+.c0 .cookie-policy__wrapper a {
+  color: #fff || 'black';
 }
 
-.c0 .cookie-policy__wrapper__title > *,
-.c0 .cookie-policy__wrapper__text > *,
-.c0 .cookie-policy__wrapper__title a,
-.c0 .cookie-policy__wrapper__text a {
-  color: #fff;
-}
-
-.c0 .cookie-policy__wrapper__accept-button,
-.c0 .cookie-policy__wrapper__decline-button {
+.c0 .cookie-policy__accept-button,
+.c0 .cookie-policy__decline-button {
   padding: 0.625rem 2.1875rem 0.625rem 2.1875rem;
   margin-right: 1.25rem;
-  background-color: #fff;
-  color: #00708d;
+  background-color: #fff || 'white';
+  color: #00708d || 'black';
 }
 
 .c4 {
