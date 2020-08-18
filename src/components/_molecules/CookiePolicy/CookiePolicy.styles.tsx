@@ -13,18 +13,18 @@ export const Container = styled.div`
     &__wrapper {
       ${padding(pxToRem('20px'), pxToRem('50px'))};
       background-color: ${(props: CookiePolicyStylingProps) =>
-        `${props.backgroundColor} || 'white`};
+        props.backgroundColor || 'white'};
 
       &__title,
       &__text {
         display: block;
         margin-bottom: ${pxToRem('20px')};
         color: ${(props: CookiePolicyStylingProps) =>
-          `${props.textColor} || 'black`};
+          props.textColor || 'black'};
         > *,
         a {
           color: ${(props: CookiePolicyStylingProps) =>
-            `${props.textColor} || 'black'`};
+            props.textColor || 'black'};
         }
       }
 
@@ -33,9 +33,9 @@ export const Container = styled.div`
         ${padding(pxToRem('10px'), pxToRem('35px'))};
         margin-right: ${pxToRem('20px')};
         background-color: ${(props: CookiePolicyStylingProps) =>
-          `${props.buttonBackground} || 'white'`};
+          props.buttonBackground || 'white'};
         color: ${(props: CookiePolicyStylingProps) =>
-          `${props.buttonColor} || 'black'`};
+          props.buttonColor || 'black'};
       }
     }
   }
