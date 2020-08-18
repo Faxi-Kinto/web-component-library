@@ -9,28 +9,34 @@ type CookiePolicyStylingProps = {
 };
 
 export const Container = styled.div`
-  ${padding(pxToRem('20px'), pxToRem('50px'))};
-  background-color: ${(props: CookiePolicyStylingProps) =>
-    `${props.backgroundColor}`};
   .cookie-policy {
-    &__title,
-    &__text {
-      display: block;
-      margin-bottom: ${pxToRem('20px')};
-      color: ${(props: CookiePolicyStylingProps) => `${props.textColor}`};
-      > *,
-      a {
-        color: ${(props: CookiePolicyStylingProps) => `${props.textColor}`};
-      }
-    }
-
-    &__accept-button,
-    &__decline-button {
-      ${padding(pxToRem('10px'), pxToRem('35px'))};
-      margin-right: ${pxToRem('20px')};
+    &__wrapper {
+      ${padding(pxToRem('20px'), pxToRem('50px'))};
       background-color: ${(props: CookiePolicyStylingProps) =>
-        `${props.buttonBackground}`};
-      color: ${(props: CookiePolicyStylingProps) => `${props.buttonColor}`};
+        props.backgroundColor || 'white'};
+
+      &__title,
+      &__text {
+        display: block;
+        margin-bottom: ${pxToRem('20px')};
+        color: ${(props: CookiePolicyStylingProps) =>
+          props.textColor || 'black'};
+        > *,
+        a {
+          color: ${(props: CookiePolicyStylingProps) =>
+            props.textColor || 'black'};
+        }
+      }
+
+      &__accept-button,
+      &__decline-button {
+        ${padding(pxToRem('10px'), pxToRem('35px'))};
+        margin-right: ${pxToRem('20px')};
+        background-color: ${(props: CookiePolicyStylingProps) =>
+          props.buttonBackground || 'white'};
+        color: ${(props: CookiePolicyStylingProps) =>
+          props.buttonColor || 'black'};
+      }
     }
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import * as Styled from './CookiePolicy.styles';
 import Text from '../../_atoms/Text';
 import Button from '../../_atoms/Button';
@@ -16,10 +16,13 @@ export type CookiePolicyProps = {
   textColor?: string;
   buttonBackground?: string;
   buttonColor?: string;
-  textClassName?: string;
+  textBodyClassName?: string;
+  textWrapperClassName?: string;
   cookieTitleClassName?: string;
   acceptedCookies?: boolean;
   acceptButtonContent?: React.ReactNode;
+  acceptButtonClassName?: string;
+  declineButtonClassName?: string;
   declineButtonContent?: React.ReactNode;
   userAction?: (cookieStatus: CookieStatus) => {};
 };
@@ -36,28 +39,21 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
     textColor = '#fff',
     buttonBackground = '#fff',
     buttonColor = '#00708d',
-    textClassName,
+    textBodyClassName,
     userAction,
     cookieClassName,
     cookieTitleClassName,
+    textWrapperClassName,
+    acceptButtonClassName,
+    declineButtonClassName,
   } = props;
 
   const [isShowing, setIsShowing] = useState(true);
-
-  const deleteCookies = () => {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const cook = cookies[i].split('=');
-      document.cookie = cook[0] + '=;expires=Thu, 21 Sep 1979 00:00:01 UTC;';
-    }
-  };
 
   const declineCookies = () => {
     userAction && userAction({ acceptedCookies: false });
     if (isShowing) {
       setIsShowing(!isShowing);
-      localStorage.setItem('showBanner', 'declined');
-      deleteCookies();
     }
   };
 
@@ -65,7 +61,6 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
     userAction && userAction({ acceptedCookies: true });
     if (isShowing) {
       setIsShowing(!isShowing);
-      localStorage.setItem('showBanner', 'accepted');
     }
   };
 
@@ -78,38 +73,49 @@ const CookiePolicy: React.FC<CookiePolicyProps> = (
       className={classNames(['cookie-policy', cookieClassName])}
     >
       {isShowing ? (
-        <Fragment>
+        <div className="cookie-policy__wrapper">
           <Text.Heading
             level="3"
             className={classNames([
-              'cookie-policy__title',
+              'cookie-policy__wrapper__title',
               cookieTitleClassName,
             ])}
           >
             {title}
           </Text.Heading>
-          <Text.Body className="cookie-policy__text">
+          <Text.Body
+            className={classNames([
+              'cookie-policy__wrapper__text',
+              textWrapperClassName,
+            ])}
+          >
             {text &&
               React.cloneElement(text, {
                 className: classNames([
-                  'cookie-policy__text__body',
-                  textClassName,
+                  'cookie-policy__wrapper__text__body',
+                  textBodyClassName,
                 ]),
               })}
           </Text.Body>
           <Button
-            className="cookie-policy__accept-button"
+            className={classNames([
+              'cookie-policy__wrapper__accept-button',
+              acceptButtonClassName,
+            ])}
             onClick={acceptCookies}
           >
             {acceptButtonContent}
           </Button>
           <Button
-            className="cookie-policy__decline-button"
+            className={classNames([
+              'cookie-policy__wrapper__decline-button',
+              declineButtonClassName,
+            ])}
             onClick={declineCookies}
           >
             {declineButtonContent}
           </Button>
-        </Fragment>
+        </div>
       ) : null}
     </Styled.Container>
   );
