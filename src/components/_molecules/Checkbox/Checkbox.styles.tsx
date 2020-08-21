@@ -32,7 +32,9 @@ export const Container = styled.label`
     display: inline-block;
     box-sizing: border-box;
     border: ${(props: CheckboxStylingProps) =>
-      `${props.borderColor} solid ${pxToRem('1px')}`};
+      props.borderColor
+        ? `${pxToRem('1px')} solid ${props.borderColor}`
+        : `${pxToRem('1px')} solid black`};
     ${positionAbsolute('0', '', '', '0')};
     ${(props: CheckboxStylingProps) =>
       props.size

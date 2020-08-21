@@ -1,6 +1,13 @@
-import React, { useState, ChangeEvent, useMemo, ReactNode } from 'react';
+import React, {
+  useState,
+  ChangeEvent,
+  useMemo,
+  ReactNode,
+  Fragment,
+} from 'react';
 import * as Styled from './Checkbox.styles';
 import Text from '../../_atoms/Text';
+import classNames from 'classnames';
 
 /**
  * @name Checkbox
@@ -21,8 +28,9 @@ export type CheckboxProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   borderColor?: string;
   errorColor?: string;
-  icon: ReactNode;
+  icon: JSX.Element;
   size?: string;
+  iconClassName?: string;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (
@@ -36,9 +44,10 @@ const Checkbox: React.FC<CheckboxProps> = (
     error,
     labelPosition,
     errorColor = 'red',
-    borderColor = 'black',
+    borderColor,
     icon,
     size,
+    iconClassName,
   } = props;
   const [stateChecked, setChecked] = useState(Boolean(value));
 
@@ -77,7 +86,17 @@ const Checkbox: React.FC<CheckboxProps> = (
           value={`${Boolean(value || stateChecked)}`}
           onChange={handleInputOnChange}
         />
-        {value || stateChecked ? icon : null}
+        {value || stateChecked ? (
+          <Fragment>
+            {icon &&
+              React.cloneElement(icon, {
+                className: classNames([
+                  'checkbox__input-wrapper__input__icon',
+                  iconClassName,
+                ]),
+              })}
+          </Fragment>
+        ) : null}
       </div>
       {labelEl}
     </Styled.Container>
