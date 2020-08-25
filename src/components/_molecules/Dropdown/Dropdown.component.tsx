@@ -77,7 +77,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   } = props;
   const { error } = props as any;
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
 
   const [containerRef, setContainerRef] = useState<HTMLDivElement>();

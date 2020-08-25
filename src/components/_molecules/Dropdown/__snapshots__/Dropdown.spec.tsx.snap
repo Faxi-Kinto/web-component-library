@@ -153,7 +153,7 @@ exports[`Dropdown renders correctly 1`] = `
 
 <div>
   <div
-    className="c0 dropdown-container dropdown-container--open"
+    className="c0 dropdown-container dropdown-container--close"
     onBlur={[Function]}
     onClick={[Function]}
     tabIndex={-1}
@@ -162,41 +162,6 @@ exports[`Dropdown renders correctly 1`] = `
       className="dropdown-container__placeholder"
     >
       Placeholder
-    </div>
-    <div
-      className="dropdown-container__options"
-      role="list"
-    >
-      <div
-        className="dropdown-container__options__option"
-        data-listitem-label="Show all members"
-        onClick={[Function]}
-        role="listitem"
-      >
-        <span>
-          Show all members
-        </span>
-      </div>
-      <div
-        className="dropdown-container__options__option"
-        data-listitem-label="option2option2option2option2option2"
-        onClick={[Function]}
-        role="listitem"
-      >
-        <span>
-          option2option2option2option2option2
-        </span>
-      </div>
-      <div
-        className="dropdown-container__options__option"
-        data-listitem-label="option3"
-        onClick={[Function]}
-        role="listitem"
-      >
-        <span>
-          option3
-        </span>
-      </div>
     </div>
   </div>
 </div>
