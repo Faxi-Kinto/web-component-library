@@ -77,7 +77,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   } = props;
   const { error } = props as any;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [upwards, setUpwards] = useState(false);
 
   const [containerRef, setContainerRef] = useState<HTMLDivElement>();
@@ -139,6 +139,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     return (
       <div
         key={index}
+        data-listitem-label={option.text}
         onClick={() => {
           setCurrentSelected({ ...option });
           onChange && onChange(option.value);
