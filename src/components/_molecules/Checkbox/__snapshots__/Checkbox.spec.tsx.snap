@@ -63,15 +63,7 @@ exports[`Checkbox renders correctly 1`] = `
 }
 
 .c0.checkbox--disabled {
-  color: #C6CDCF;
-}
-
-.c0.checkbox--disabled:before {
-  border: #C6CDCF solid 0.0625rem;
-}
-
-.c0.checkbox--disabled span {
-  color: #C6CDCF;
+  opacity: 0.5;
 }
 
 .c0 .checkbox__input-wrapper {

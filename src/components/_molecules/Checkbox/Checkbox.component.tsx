@@ -21,7 +21,6 @@ export type CheckboxProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   borderColor?: string;
   errorColor?: string;
-  disableColor?: string;
   icon: ReactNode;
   size?: string;
   disabled?: boolean;
@@ -39,7 +38,6 @@ const Checkbox: React.FC<CheckboxProps> = (
     labelPosition,
     errorColor = 'red',
     borderColor = 'black',
-    disableColor = '#C6CDCF',
     icon,
     size,
     disabled,
@@ -65,7 +63,6 @@ const Checkbox: React.FC<CheckboxProps> = (
     <Styled.Container
       borderColor={borderColor}
       errorColor={errorColor}
-      disableColor={disableColor}
       size={size}
       className={`checkbox${label ? ' checkbox--has-label' : ''}${
         value || stateChecked ? ' checkbox--checked' : ''
