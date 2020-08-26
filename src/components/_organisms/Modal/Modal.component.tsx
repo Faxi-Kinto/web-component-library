@@ -13,7 +13,7 @@ export type ModalProps = {
   headerClassName?: string;
   bodyClassName?: string;
   footerClassName?: string;
-  position?: 'center' | 'top-center';
+  position?: 'center' | 'top-center' | 'bottom';
 };
 
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {

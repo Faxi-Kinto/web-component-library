@@ -21,8 +21,10 @@ export type CheckboxProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   borderColor?: string;
   errorColor?: string;
+  disableColor?: string;
   icon: ReactNode;
   size?: string;
+  disabled?: boolean;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (
@@ -37,8 +39,10 @@ const Checkbox: React.FC<CheckboxProps> = (
     labelPosition,
     errorColor = 'red',
     borderColor = 'black',
+    disableColor = '#C6CDCF',
     icon,
     size,
+    disabled,
   } = props;
   const [stateChecked, setChecked] = useState(Boolean(value));
 
@@ -61,12 +65,13 @@ const Checkbox: React.FC<CheckboxProps> = (
     <Styled.Container
       borderColor={borderColor}
       errorColor={errorColor}
+      disableColor={disableColor}
       size={size}
       className={`checkbox${label ? ' checkbox--has-label' : ''}${
         value || stateChecked ? ' checkbox--checked' : ''
       }${error ? ' checkbox--has-error ' : ''}${
         label && labelPosition === 'left' ? ' checkbox--left' : ''
-      }`}
+      }${disabled ? ' checkbox--disabled' : ''}`}
     >
       <div className="checkbox__input-wrapper">
         <input
@@ -76,6 +81,7 @@ const Checkbox: React.FC<CheckboxProps> = (
           checked={Boolean(value || stateChecked)}
           value={`${Boolean(value || stateChecked)}`}
           onChange={handleInputOnChange}
+          disabled={disabled}
         />
         {value || stateChecked ? icon : null}
       </div>

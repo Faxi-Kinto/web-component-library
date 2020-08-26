@@ -9,6 +9,7 @@ import {
 type CheckboxStylingProps = {
   borderColor?: string;
   errorColor?: string;
+  disableColor?: string;
   size?: string;
 };
 
@@ -78,6 +79,17 @@ export const Container = styled.label`
         &__input-wrapper {
           ${positionAbsolute('0', '0', '', 'auto')};
         }
+      }
+    }
+
+    &--disabled {
+      color: ${(props: CheckboxStylingProps) => `${props.disableColor}`};
+      &:before {
+        border: ${(props: CheckboxStylingProps) => `${props.disableColor}`}
+          solid ${pxToRem('1px')};
+      }
+      span {
+        color: ${(props: CheckboxStylingProps) => `${props.disableColor}`};
       }
     }
   }

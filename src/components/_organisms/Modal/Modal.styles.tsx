@@ -43,5 +43,10 @@ export const Container = styled.div`
       left: 50%;
       transform: translateX(-50%);
     }
+    .bottom {
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
   }
 `;

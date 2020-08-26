@@ -28,7 +28,7 @@ This is an implementation of the Modal Component
         body={<span>"Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community."</span>}
         footer={<Button type="submit" onClick={()=>{isShowing===true ? setIsShowing(false) : null}}>Ok</Button>}
         onClickOutOfModal={()=>{setIsShowing(false)}}
-        position="center"
+        position="bottom"
         headerClassName='header'
         />
     </div>)
