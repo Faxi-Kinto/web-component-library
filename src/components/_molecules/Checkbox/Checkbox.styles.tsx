@@ -80,6 +80,10 @@ export const Container = styled.label`
         }
       }
     }
+
+    &--disabled {
+      opacity: 0.5;
+    }
   }
 
   .checkbox {
