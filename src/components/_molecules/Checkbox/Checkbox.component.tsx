@@ -1,11 +1,10 @@
 import React, { useState, ChangeEvent, useMemo, ReactNode } from 'react';
 import * as Styled from './Checkbox.styles';
 import Text from '../../_atoms/Text';
+import classNames from 'classnames';
 
 /**
  * @name Checkbox
- *
- * [Insert Component Description]
  *
  * @returns {JSX}
  */
@@ -64,11 +63,14 @@ const Checkbox: React.FC<CheckboxProps> = (
       borderColor={borderColor}
       errorColor={errorColor}
       size={size}
-      className={`checkbox${label ? ' checkbox--has-label' : ''}${
-        value || stateChecked ? ' checkbox--checked' : ''
-      }${error ? ' checkbox--has-error ' : ''}${
-        label && labelPosition === 'left' ? ' checkbox--left' : ''
-      }${disabled ? ' checkbox--disabled' : ''}`}
+      className={classNames([
+        'checkbox',
+        { 'checkbox--has-label': label },
+        { 'checkbox--checked': value || stateChecked },
+        { 'checkbox--has-error': error },
+        { 'checkbox--left': label && labelPosition === 'left' },
+        { 'checkbox--disabled': disabled },
+      ])}
     >
       <div className="checkbox__input-wrapper">
         <input

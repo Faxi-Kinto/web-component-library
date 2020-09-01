@@ -4,8 +4,6 @@ import * as Styled from './Label.styles';
 /**
  * @name Label
  *
- * [Insert Component Description]
- *
  * @returns {JSX}
  */
 

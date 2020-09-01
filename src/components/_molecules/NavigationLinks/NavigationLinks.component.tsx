@@ -1,11 +1,13 @@
 import React from 'react';
 import * as Styled from './NavigationLinks.styles';
+import classNames from 'classnames';
 
 /**
  * @name NavigationLinks
  *
  * @returns {JSX}
  */
+
 export type NavigationLinksProps = {
   links: NavLink[];
   secondary?: boolean;
@@ -25,9 +27,12 @@ const NavigationLinks: React.FC<NavigationLinksProps> = (
   const { links, secondary, vertical, color, className } = props;
   return (
     <Styled.Nav
-      className={`nav${secondary ? ' nav--secondary' : ''}${
-        vertical ? ' nav--vertical' : ''
-      }${className ? ' ' + className : ''}`}
+      className={classNames([
+        'nav',
+        { 'nav--secondary': secondary },
+        { 'nav--vertical': vertical },
+        className,
+      ])}
       color={color}
     >
       {links.map((link, index) => (

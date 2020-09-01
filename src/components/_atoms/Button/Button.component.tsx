@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Styled from './Button.styles';
+import classNames from 'classnames';
 
 /**
  * @name Button
@@ -41,9 +42,11 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
       height={height}
       background={background}
       fontColor={fontColor}
-      className={`button${secondary ? ' button--secondary' : ''}${
-        className ? ' ' + className : ''
-      }`}
+      className={classNames([
+        'button',
+        { 'button--secondary': secondary },
+        className,
+      ])}
       onClick={onClick}
       type={type}
     >

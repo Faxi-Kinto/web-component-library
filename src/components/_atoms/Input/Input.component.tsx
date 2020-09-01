@@ -1,11 +1,10 @@
 import React, { useState, ChangeEvent, useMemo } from 'react';
 import * as Styled from './Input.styles';
 import Label from '../Label';
+import classNames from 'classnames';
 
 /**
  * @name Input
- *
- * Straightforward input field
  *
  * @returns {JSX}
  */
@@ -20,6 +19,7 @@ export type InputProps = {
   type?: string;
   onHandleCapsLock?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
+  className?: string;
 };
 
 const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
@@ -33,6 +33,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     type = 'text',
     onHandleCapsLock,
     autoFocus,
+    className,
     ...rest
   } = props;
   const [inputValue, setInputValue] = useState<string>('');
@@ -64,7 +65,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     }
   };
 
-  function handleOnChange(event: ChangeEvent<HTMLInputElement>): void {
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     if (onChange) {
       onChange(event.target.value);
     } else if (onHandleCapsLock) {
@@ -72,7 +73,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     } else {
       setInputValue(event.target.value);
     }
-  }
+  };
 
   return (
     <Styled.InputContainer>
@@ -80,7 +81,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
       <input
         {...id}
         {...rest}
-        className={`input${error ? ' input--error' : ''}`}
+        className={classNames(['input', { 'input--error': error }, className])}
         type={type}
         value={currentValue || inputValue}
         placeholder={placeholder}

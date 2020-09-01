@@ -8,7 +8,7 @@ Object {
       className="modal-wrapper"
     >
       <div
-        className="modal-wrapper__content  "
+        className="modal-wrapper__content"
       >
         <div>
           <span>

@@ -34,15 +34,18 @@ export const Container = styled.div`
       ${flexColumn()};
       background-color: white;
     }
+
     .center {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
     .top-center {
       left: 50%;
       transform: translateX(-50%);
     }
+
     .bottom {
       top: 100%;
       left: 50%;

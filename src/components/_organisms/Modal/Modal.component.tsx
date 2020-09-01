@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as Styled from './Modal.styles';
 import ReactDOM from 'react-dom';
+import classNames from 'classnames';
 
 export type ModalProps = {
   header?: React.ReactNode;
@@ -57,9 +58,11 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
       <Styled.Container>
         <div className="modal-wrapper">
           <div
-            className={`modal-wrapper__content ${className ? className : ''} ${
-              position ? position : ''
-            }`}
+            className={classNames([
+              'modal-wrapper__content',
+              className,
+              position,
+            ])}
             ref={myRef}
           >
             <div className={headerClassName}>{header}</div>
