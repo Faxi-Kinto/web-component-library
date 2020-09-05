@@ -13,9 +13,11 @@ export const Nav = styled.nav`
     ${flexColumn('center', 'flex-start')};
     ${marginChildren(`0 0 ${pxToRem('24px')} 0`)};
   `)};
+
   > a {
     color: ${(props: NavigationLinksStylingProps) => props.color};
     font-weight: 500;
+    font-size: inherit;
     text-decoration: none;
 
     span {

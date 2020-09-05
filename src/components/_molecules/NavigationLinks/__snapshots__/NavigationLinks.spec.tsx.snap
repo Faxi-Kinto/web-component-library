@@ -4,6 +4,7 @@ exports[`NavigationLinks renders correctly 1`] = `
 .c0 > a {
   color: black;
   font-weight: 500;
+  font-size: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
