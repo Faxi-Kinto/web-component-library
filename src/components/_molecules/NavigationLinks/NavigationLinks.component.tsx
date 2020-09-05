@@ -10,7 +10,6 @@ import classNames from 'classnames';
 
 export type NavigationLinksProps = {
   links: NavLink[];
-  secondary?: boolean;
   vertical?: boolean;
   color: string;
   className?: string;
@@ -24,15 +23,10 @@ export type NavLink = {
 const NavigationLinks: React.FC<NavigationLinksProps> = (
   props: NavigationLinksProps
 ): JSX.Element => {
-  const { links, secondary, vertical, color, className } = props;
+  const { links, vertical, color, className } = props;
   return (
     <Styled.Nav
-      className={classNames([
-        'nav',
-        { 'nav--secondary': secondary },
-        { 'nav--vertical': vertical },
-        className,
-      ])}
+      className={classNames(['nav', { 'nav--vertical': vertical }, className])}
       color={color}
     >
       {links.map((link, index) => (

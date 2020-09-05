@@ -16,8 +16,6 @@ export const Nav = styled.nav`
 
   > a {
     color: ${(props: NavigationLinksStylingProps) => props.color};
-    font-weight: 500;
-    font-size: inherit;
     text-decoration: none;
 
     span {
@@ -34,23 +32,10 @@ export const Nav = styled.nav`
     &--vertical {
       ${marginChildren(`0 0 ${pxToRem('15px')} 0`)};
       ${flexColumn('center', 'center')};
-
       text-decoration: underline;
-      font-size: ${pxToRem('18px')};
-
-      > a {
-        font-weight: inherit;
-      }
 
       .nav__delimiter {
         display: none;
-      }
-    }
-
-    &--secondary {
-      > a {
-        font-weight: normal;
-        font-size: ${pxToRem('14px')};
       }
     }
   }

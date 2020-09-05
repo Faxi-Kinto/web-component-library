@@ -3,8 +3,6 @@
 exports[`NavigationLinks renders correctly 1`] = `
 .c0 > a {
   color: black;
-  font-weight: 500;
-  font-size: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -35,7 +33,6 @@ exports[`NavigationLinks renders correctly 1`] = `
   align-items: center;
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  font-size: 1.125rem;
 }
 
 .c0.nav--vertical > * {
@@ -46,17 +43,8 @@ exports[`NavigationLinks renders correctly 1`] = `
   margin: 0;
 }
 
-.c0.nav--vertical > a {
-  font-weight: inherit;
-}
-
 .c0.nav--vertical .nav__delimiter {
   display: none;
-}
-
-.c0.nav--secondary > a {
-  font-weight: normal;
-  font-size: 0.875rem;
 }
 
 @media (max-width:767px) {
