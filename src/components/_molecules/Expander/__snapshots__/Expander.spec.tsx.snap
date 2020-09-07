@@ -58,10 +58,6 @@ exports[`Expander renders correctly 1`] = `
   height: fit-content;
   background: white;
   color: black;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c1 p {

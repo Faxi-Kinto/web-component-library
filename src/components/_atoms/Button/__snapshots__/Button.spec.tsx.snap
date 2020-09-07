@@ -9,10 +9,6 @@ exports[`Button renders correctly 1`] = `
   height: 2.8125rem;
   background: white;
   color: black;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c0 p {

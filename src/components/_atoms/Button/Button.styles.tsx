@@ -28,7 +28,6 @@ export const Button = styled.button`
     props.background ? props.background : 'white'};
   color: ${(props: ButtonStylingProps) =>
     props.fontColor ? props.fontColor : 'black'};
-  user-select: none;
 
   p {
     margin: 0;
