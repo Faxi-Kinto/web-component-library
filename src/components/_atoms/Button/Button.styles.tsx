@@ -50,5 +50,9 @@ export const Button = styled.button`
         text-decoration: underline;
       }
     }
+
+    &--disabled {
+      opacity: 0.5;
+    }
   }
 `;

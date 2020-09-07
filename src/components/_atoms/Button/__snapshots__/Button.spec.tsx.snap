@@ -59,8 +59,13 @@ exports[`Button renders correctly 1`] = `
   text-decoration: underline;
 }
 
+.c0.button--disabled {
+  opacity: 0.5;
+}
+
 <button
   className="c0 button"
+  disabled={false}
   height="2.8125rem"
   type="button"
   width="21.875rem"

@@ -63,8 +63,13 @@ exports[`CapturePDFButton renders correctly 1`] = `
   text-decoration: underline;
 }
 
+.c0.button--disabled {
+  opacity: 0.5;
+}
+
 <button
   className="c0 button no-print"
+  disabled={false}
   height="fit-content"
   onClick={[Function]}
   type="button"

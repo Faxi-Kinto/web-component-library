@@ -14,16 +14,24 @@ You can provide your own checked state icon
 #### Default
 <Preview>
   <Story name="default">
-    <Checkbox disabled value={true} label='rest' icon={
+    <Checkbox label='Click me' icon={
       <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
       } />
   </Story>
 </Preview>
 
-
-#### With Label
+#### Disabled
 <Preview>
-  <Story name="With label and size of 50px">
+  <Story name="disabled">
+    <Checkbox disabled value={true} label='Can`t click me' icon={
+      <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
+      } />
+  </Story>
+</Preview>
+
+#### With label and size 50px
+<Preview>
+  <Story name="label and size 50px">
     <Checkbox label="Click me!" icon={
       <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
       }  size="50px" />
@@ -32,7 +40,7 @@ You can provide your own checked state icon
 
 #### With link
 <Preview>
-  <Story name="With link">
+  <Story name="link">
     <Checkbox label={
       <Text.Body>I accept&nbsp;
         <Text.Link href="https://google.com">terms</Text.Link>
@@ -44,8 +52,8 @@ You can provide your own checked state icon
 
 #### With error
 <Preview>
-  <Story name="With error">
-    <Checkbox error label={'This won\'t work'} icon={
+  <Story name="error">
+    <Checkbox error label='This has error border' icon={
       <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
       }  />
   </Story>
@@ -54,8 +62,8 @@ You can provide your own checked state icon
 
 #### Label left
 <Preview>
-  <Story name="Label left">
-    <Checkbox label={'This is left'} labelPosition={'left'} icon={
+  <Story name="left">
+    <Checkbox label='This is left' labelPosition='left' icon={
       <img style={{width: '70%'}} src="assets/icons/checkmark.svg" />
       }  />
   </Story>

@@ -22,6 +22,7 @@ export interface ButtonProps {
   height?: string;
   background?: string;
   fontColor?: string;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
@@ -35,16 +36,19 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
     height = 'fit-content',
     background = 'white',
     fontColor = 'black',
+    disabled = false,
   } = props;
   return (
     <Styled.Button
       width={width}
       height={height}
+      disabled={disabled}
       background={background}
       fontColor={fontColor}
       className={classNames([
         'button',
         { 'button--secondary': secondary },
+        { 'button--disabled': disabled },
         className,
       ])}
       onClick={onClick}

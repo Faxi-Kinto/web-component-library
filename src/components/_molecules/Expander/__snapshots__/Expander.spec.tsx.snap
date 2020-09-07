@@ -108,6 +108,10 @@ exports[`Expander renders correctly 1`] = `
   text-decoration: underline;
 }
 
+.c1.button--disabled {
+  opacity: 0.5;
+}
+
 <div
   className="c0 expander-card"
 >
@@ -116,6 +120,7 @@ exports[`Expander renders correctly 1`] = `
   >
     <button
       className="c1 button button--secondary expander-card__header__button"
+      disabled={false}
       height="fit-content"
       onClick={[Function]}
       type="button"
