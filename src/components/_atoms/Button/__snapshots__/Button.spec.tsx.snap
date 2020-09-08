@@ -61,6 +61,7 @@ exports[`Button renders correctly 1`] = `
 
 .c0.button--disabled {
   opacity: 0.5;
+  cursor: not-allowed;
 }
 
 <button

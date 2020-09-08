@@ -110,6 +110,7 @@ exports[`Expander renders correctly 1`] = `
 
 .c1.button--disabled {
   opacity: 0.5;
+  cursor: not-allowed;
 }
 
 <div
