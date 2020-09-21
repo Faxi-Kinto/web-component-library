@@ -7,48 +7,45 @@ export type ExpanderStylingProps = {
   textColor?: string;
 };
 
-export const Container = styled.div<ExpanderStylingProps>`
-  max-width: ${pxToRem('500px')};
+export const Container = styled.details<ExpanderStylingProps>`
   width: 100%;
+  overflow: hidden;
 
-  .expander-card {
-    &__header {
-      &__button {
-        span {
-          font-size: ${(props: ExpanderStylingProps) => props.headerSize};
-          color: ${(props: ExpanderStylingProps) =>
-            props.headerColor ? props.headerColor : 'black'};
-        }
-      }
+  &.animate-on-height {
+    transition: height 300ms;
+  }
 
-      &__wrapper {
-        position: relative;
-        &__icon {
-          position: absolute;
-          top: ${pxToRem('-3px')};
-          transition: all 400ms linear;
-          &--open {
-            transform: rotate(180deg);
-          }
-        }
-      }
+  > summary {
+    cursor: pointer;
+    user-select: none;
+    list-style-type: none;
+
+    &:focus {
+      outline: none;
     }
 
-    &__box {
-      transition: height 300ms ease-in-out;
-      height: 0;
-      overflow: hidden;
+    &::marker {
+      display: none;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  > p {
+    ${padding(pxToRem('35px'), '0')};
+    margin: 0;
+  }
+
+  .expander {
+    &__icon {
+      display: inline-block;
+      margin-left: ${pxToRem('12px')};
+      transition: transform 300ms;
 
       &--open {
-        visibility: visible;
-        height: ${pxToRem('150px')};
-      }
-
-      &__body {
-        ${padding(pxToRem('35px'), '0')};
-        color: ${(props: ExpanderStylingProps) =>
-          props.textColor ? props.textColor : 'black'};
-        transition: 300ms;
+        transform: rotateZ(180deg);
       }
     }
   }

@@ -1,19 +1,15 @@
-import React, { ReactNode, useState } from 'react';
+/* eslint-disable react/no-find-dom-node */
+import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import * as Styled from './Expander.styles';
-import Button from '../../_atoms/Button';
 import classNames from 'classnames';
 
 export type ExpanderProps = {
   title: string;
   body: ReactNode;
+  open?: boolean;
   icon?: JSX.Element;
   iconClassName?: string;
   headerClassName?: string;
-  buttonClassName?: string;
-  bodyClassName?: string;
-  headerColor?: string;
-  headerSize?: string;
-  textColor?: string;
 };
 
 const Expander: React.FC<ExpanderProps> = (
@@ -22,58 +18,85 @@ const Expander: React.FC<ExpanderProps> = (
   const {
     title,
     body,
-    icon,
+    icon: propIcon,
+    open: propOpen = false,
     iconClassName,
-    headerClassName,
-    buttonClassName,
-    headerColor,
-    headerSize,
-    textColor,
   } = props;
+  const mainRef = useRef<HTMLDivElement>(null);
+  const iconRef = useRef<HTMLDivElement>(null);
+  const isFirstRun = useRef(true);
 
-  const [isShown, setIsShown] = useState(false);
+  const [open, setOpen] = useState(propOpen);
 
-  const handleExpander = () => {
-    setIsShown(!isShown);
-  };
+  useEffect(() => {
+    const element = mainRef.current;
+    const icon = iconRef.current;
+
+    // const wrapperOpenClass = 'expander--open';
+    const iconOpenClass = 'expander__icon--open';
+
+    if (!element) return;
+
+    if (isFirstRun.current) {
+      /** if `propOpen` is set to true, we handle that without animation */
+      isFirstRun.current = false;
+      element[open ? 'setAttribute' : 'removeAttribute']('open', '');
+      icon?.classList[open ? 'add' : 'remove'](iconOpenClass);
+      return;
+    }
+
+    const first = element.getBoundingClientRect();
+
+    element[open ? 'setAttribute' : 'removeAttribute']('open', '');
+    icon?.classList[open ? 'add' : 'remove'](iconOpenClass);
+
+    const last = element.getBoundingClientRect();
+
+    element[open ? 'removeAttribute' : 'setAttribute']('open', '');
+
+    element.style.height = `${first.height}px`;
+
+    requestAnimationFrame(() => {
+      if (open) element.setAttribute('open', '');
+
+      element.classList.add('animate-on-height');
+      element.style.height = `${last.height}px`;
+    });
+
+    const cleanup = () => {
+      if (!open) element.removeAttribute('open');
+
+      element.removeAttribute('style');
+      element.classList.remove('animate-on-height');
+      element.removeEventListener('transitionend', cleanup);
+    };
+
+    element.addEventListener('transitionend', cleanup);
+  }, [open]);
+
+  const icon = useMemo(() => {
+    if (!propIcon) return null;
+    return (
+      <span className="expander__icon" ref={iconRef}>
+        {React.cloneElement(propIcon, {
+          className: classNames([iconClassName]),
+        })}
+      </span>
+    );
+  }, [propIcon, iconClassName]);
 
   return (
-    <Styled.Container
-      className="expander-card"
-      headerColor={headerColor}
-      headerSize={headerSize}
-      textColor={textColor}
-    >
-      <div className={classNames(['expander-card__header', headerClassName])}>
-        <Button
-          secondary
-          className={classNames([
-            'expander-card__header__button',
-            buttonClassName,
-          ])}
-          onClick={handleExpander}
-        >
-          <span>{title}</span>
-          <div className="expander-card__header__wrapper">
-            {icon &&
-              React.cloneElement(icon, {
-                className: classNames([
-                  'expander-card__header__wrapper__icon',
-                  iconClassName,
-                  { 'expander-card__header__wrapper__icon--open': isShown },
-                ]),
-              })}
-          </div>
-        </Button>
-      </div>
-      <div
-        className={classNames([
-          'expander-card__box',
-          { 'expander-card__box--open': isShown },
-        ])}
+    <Styled.Container ref={mainRef}>
+      <summary
+        onClick={ev => {
+          ev.preventDefault();
+          setOpen(old => !old);
+        }}
       >
-        <div className="expander-card__box__body">{body}</div>
-      </div>
+        {title}
+        {icon}
+      </summary>
+      <p>{body}</p>
     </Styled.Container>
   );
 };
