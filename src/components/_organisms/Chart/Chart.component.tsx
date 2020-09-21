@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export type ChartSeries = {
   name: string;
-  data: (number | any)[];
+  data: { x: Date; y: number }[];
 };
 
 export type TitleStyle = {
@@ -29,7 +29,7 @@ export type ChartProps = {
   xAxisMinMiliseconds: number;
   xAxisMaxMiliseconds: number;
   markerStrokeColors: string[];
-  yAxisTickAmount?: number;
+  yAxisTickInterval?: number;
 };
 
 const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
@@ -48,8 +48,22 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     xAxisMinMiliseconds,
     xAxisMaxMiliseconds,
     markerStrokeColors,
-    yAxisTickAmount = 3,
+    yAxisTickInterval = 3,
   } = props;
+
+  const findYChartTick = () => {
+    //finding the chart pick
+    const yValues: [number] = [0];
+    series[0].data.map(obj => {
+      return yValues.push(obj.y);
+    });
+    const max = Math.max(...yValues);
+
+    if (yAxisTickInterval > max || max > 20) {
+      return 1;
+    }
+    return max / yAxisTickInterval + 1;
+  };
 
   const state = {
     options: {
@@ -109,7 +123,8 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
         curve: 'smooth',
       },
       yaxis: {
-        tickAmount: yAxisTickAmount,
+        // showForNullSeries: false,
+        tickAmount: findYChartTick(),
         labels: {
           offsetX: 0,
           formatter: (num: number) => {
