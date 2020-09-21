@@ -2,160 +2,81 @@
 
 exports[`Expander renders correctly 1`] = `
 .c0 {
-  max-width: 31.25rem;
   width: 100%;
-}
-
-.c0 .expander-card__header__button span {
-  color: black;
-}
-
-.c0 .expander-card__header__wrapper {
-  position: relative;
-}
-
-.c0 .expander-card__header__wrapper__icon {
-  position: absolute;
-  top: -0.1875rem;
-  -webkit-transition: all 400ms linear;
-  transition: all 400ms linear;
-}
-
-.c0 .expander-card__header__wrapper__icon--open {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-.c0 .expander-card__box {
-  -webkit-transition: height 300ms ease-in-out;
-  transition: height 300ms ease-in-out;
-  height: 0;
   overflow: hidden;
 }
 
-.c0 .expander-card__box--open {
-  visibility: visible;
-  height: 9.375rem;
+.c0.animate-on-height {
+  -webkit-transition: height 300ms;
+  transition: height 300ms;
 }
 
-.c0 .expander-card__box__body {
-  padding: 2.1875rem 0 2.1875rem 0;
-  color: black;
-  -webkit-transition: 300ms;
-  transition: 300ms;
-}
-
-.c1 {
-  border: none;
+.c0 > summary {
   cursor: pointer;
-  font: inherit;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  background: white;
-  color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  list-style-type: none;
 }
 
-.c1 p {
-  margin: 0;
-}
-
-.c1:focus {
+.c0 > summary:focus {
   outline: none;
 }
 
-.c1.button--secondary {
-  background: transparent;
-  font-size: 0.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 0;
+.c0 > summary::marker {
+  display: none;
 }
 
-.c1.button--secondary > * {
-  margin: 0 0.75rem 0 0;
+.c0 > summary::-webkit-details-marker {
+  display: none;
 }
 
-.c1.button--secondary > :last-child {
+.c0 > p {
+  padding: 2.1875rem 0 2.1875rem 0;
   margin: 0;
 }
 
-.c1.button--secondary p {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+.c0 .expander__icon {
+  display: inline-block;
+  margin-left: 0.75rem;
+  -webkit-transition: -webkit-transform 300ms;
+  -webkit-transition: transform 300ms;
+  transition: transform 300ms;
 }
 
-.c1.button--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.c0 .expander__icon--open {
+  -webkit-transform: rotateZ(180deg);
+  -ms-transform: rotateZ(180deg);
+  transform: rotateZ(180deg);
 }
 
-<div
-  className="c0 expander-card"
+<details
+  className="c0"
 >
-  <div
-    className="expander-card__header"
+  <summary
+    onClick={[Function]}
   >
-    <button
-      className="c1 button button--secondary expander-card__header__button"
-      disabled={false}
-      height="fit-content"
-      onClick={[Function]}
-      type="button"
-      width="fit-content"
+    Explanation
+    <span
+      className="expander__icon"
     >
-      <span>
-        Explanation
-      </span>
-      <div
-        className="expander-card__header__wrapper"
-      >
-        <img
-          alt=""
-          className="expander-card__header__wrapper__icon"
-          src="assets/icons/angle-down.svg"
-          style={
-            Object {
-              "width": "14px",
-            }
+      <img
+        alt=""
+        className=""
+        src="assets/icons/angle-down.svg"
+        style={
+          Object {
+            "width": "14px",
           }
-        />
-      </div>
-    </button>
-  </div>
-  <div
-    className="expander-card__box"
-  >
-    <div
-      className="expander-card__box__body"
-    >
-      This graph shows the number of users who have successfully joined your community. 
+        }
+      />
+    </span>
+  </summary>
+  <p>
+    This graph shows the number of users who have successfully joined your community. 
   The higher the number, the easier it is for people to find someone else to share their journeys with. 
   Increase it by inviting more people or talk to your account manager about how you can promote your community.
-    </div>
-  </div>
-</div>
+  </p>
+</details>
 `;
