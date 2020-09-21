@@ -55,7 +55,7 @@ test('Chart renders correctly', () => {
       xAxisMinMiliseconds={new Date(1593993600000).getTime()}
       xAxisMaxMiliseconds={new Date(1596672000000).getTime()}
       markerStrokeColors={['#00A5B5']}
-      yAxisTickAmount={2}
+      yAxisTickInterval={2}
     />
   );
 
