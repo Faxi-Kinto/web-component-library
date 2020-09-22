@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { pxToRem, padding } from '@faxi/web-css-utilities';
+import { pxToRem } from '@faxi/web-css-utilities';
 
 export type ExpanderStylingProps = {
   headerColor?: string;
@@ -19,6 +19,8 @@ export const Container = styled.details<ExpanderStylingProps>`
     cursor: pointer;
     user-select: none;
     list-style-type: none;
+    display: flex;
+    align-items: center;
 
     &:focus {
       outline: none;
@@ -34,8 +36,7 @@ export const Container = styled.details<ExpanderStylingProps>`
   }
 
   > p {
-    ${padding(pxToRem('35px'), '0')};
-    margin: 0;
+    margin: 1rem 0 0;
   }
 
   .expander {
