@@ -48,7 +48,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     xAxisMinMiliseconds,
     xAxisMaxMiliseconds,
     markerStrokeColors,
-    yAxisTickInterval = 3,
+    yAxisTickInterval = 2,
   } = props;
 
   const findYChartTick = () => {
@@ -59,8 +59,9 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     });
     const max = Math.max(...yValues);
 
-    if (yAxisTickInterval > max || max > 20) {
-      return 1;
+    //when chart pick is gratter then 20 set default to 3
+    if (yAxisTickInterval > max || max > 20 || yAxisTickInterval === 0) {
+      return 3;
     }
     return max / yAxisTickInterval + 1;
   };
