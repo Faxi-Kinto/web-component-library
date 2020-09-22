@@ -27,20 +27,7 @@ const Expander: React.FC<ExpanderProps> = (
 
   const [open, setOpen] = useState(propOpen);
 
-  const firstRef = useRef<DOMRect>();
-  const lastRef = useRef<DOMRect>();
   const transitionListenerRef = useRef<() => void>();
-
-  useEffect(() => {
-    const element = mainRef.current;
-
-    if (!element) return;
-
-    firstRef.current = element.getBoundingClientRect();
-    element.setAttribute('open', '');
-    lastRef.current = element.getBoundingClientRect();
-    element.removeAttribute('open');
-  }, [title, body]);
 
   useEffect(() => {
     const element = mainRef.current;
@@ -53,17 +40,20 @@ const Expander: React.FC<ExpanderProps> = (
       element[open ? 'setAttribute' : 'removeAttribute']('open', '');
       return;
     }
+    const first = element.getBoundingClientRect();
 
-    const first = !open ? lastRef.current : firstRef.current;
-    const last = !open ? firstRef.current : lastRef.current;
+    element[open ? 'setAttribute' : 'removeAttribute']('open', '');
 
-    element.style.height = `${first!.height}px`;
+    const last = element.getBoundingClientRect();
 
+    element[open ? 'removeAttribute' : 'setAttribute']('open', '');
+
+    element.style.height = `${first.height}px`;
     requestAnimationFrame(() => {
       if (open) element.setAttribute('open', '');
 
       element.classList.add('animate-on-height');
-      element.style.height = `${last!.height}px`;
+      element.style.height = `${last.height}px`;
     });
 
     if (transitionListenerRef.current) {
