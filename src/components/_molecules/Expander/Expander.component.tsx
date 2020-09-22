@@ -23,17 +23,27 @@ const Expander: React.FC<ExpanderProps> = (
     iconClassName,
   } = props;
   const mainRef = useRef<HTMLDivElement>(null);
-  const iconRef = useRef<HTMLDivElement>(null);
   const isFirstRun = useRef(true);
 
   const [open, setOpen] = useState(propOpen);
 
+  const firstRef = useRef<DOMRect>();
+  const lastRef = useRef<DOMRect>();
+  const transitionListenerRef = useRef<() => void>();
+
   useEffect(() => {
     const element = mainRef.current;
-    const icon = iconRef.current;
 
-    // const wrapperOpenClass = 'expander--open';
-    const iconOpenClass = 'expander__icon--open';
+    if (!element) return;
+
+    firstRef.current = element.getBoundingClientRect();
+    element.setAttribute('open', '');
+    lastRef.current = element.getBoundingClientRect();
+    element.removeAttribute('open');
+  }, [title, body]);
+
+  useEffect(() => {
+    const element = mainRef.current;
 
     if (!element) return;
 
@@ -41,49 +51,52 @@ const Expander: React.FC<ExpanderProps> = (
       /** if `propOpen` is set to true, we handle that without animation */
       isFirstRun.current = false;
       element[open ? 'setAttribute' : 'removeAttribute']('open', '');
-      icon?.classList[open ? 'add' : 'remove'](iconOpenClass);
       return;
     }
 
-    const first = element.getBoundingClientRect();
+    const first = !open ? lastRef.current : firstRef.current;
+    const last = !open ? firstRef.current : lastRef.current;
 
-    element[open ? 'setAttribute' : 'removeAttribute']('open', '');
-    icon?.classList[open ? 'add' : 'remove'](iconOpenClass);
-
-    const last = element.getBoundingClientRect();
-
-    element[open ? 'removeAttribute' : 'setAttribute']('open', '');
-
-    element.style.height = `${first.height}px`;
+    element.style.height = `${first!.height}px`;
 
     requestAnimationFrame(() => {
       if (open) element.setAttribute('open', '');
 
       element.classList.add('animate-on-height');
-      element.style.height = `${last.height}px`;
+      element.style.height = `${last!.height}px`;
     });
 
-    const cleanup = () => {
+    if (transitionListenerRef.current) {
+      element.removeEventListener(
+        'transitionend',
+        transitionListenerRef.current
+      );
+    }
+
+    transitionListenerRef.current = () => {
       if (!open) element.removeAttribute('open');
 
       element.removeAttribute('style');
       element.classList.remove('animate-on-height');
-      element.removeEventListener('transitionend', cleanup);
+      element.removeEventListener(
+        'transitionend',
+        transitionListenerRef.current!
+      );
     };
 
-    element.addEventListener('transitionend', cleanup);
+    element.addEventListener('transitionend', transitionListenerRef.current);
   }, [open]);
 
   const icon = useMemo(() => {
     if (!propIcon) return null;
     return (
-      <span className="expander__icon" ref={iconRef}>
+      <span className={`expander__icon${open ? ' expander__icon--open' : ''}`}>
         {React.cloneElement(propIcon, {
           className: classNames([iconClassName]),
         })}
       </span>
     );
-  }, [propIcon, iconClassName]);
+  }, [open, propIcon, iconClassName]);
 
   return (
     <Styled.Container ref={mainRef}>
