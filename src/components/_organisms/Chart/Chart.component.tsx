@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export type ChartSeries = {
   name: string;
-  data: { x: Date; y: number }[];
+  data: { x: number; y: string }[];
 };
 
 export type TitleStyle = {
@@ -55,7 +55,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     //finding the chart pick
     const yValues: [number] = [0];
     series[0].data.map(obj => {
-      return yValues.push(obj.y);
+      return yValues.push(+obj.y);
     });
     const max = Math.max(...yValues);
 
