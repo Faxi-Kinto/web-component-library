@@ -2,6 +2,7 @@
 import React, {
   ReactNode,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -9,6 +10,8 @@ import React, {
 import * as Styled from './Expander.styles';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
+import uniqid from 'uniqid';
+import debounce from 'lodash.debounce';
 
 export type ExpanderProps = {
   title: string;
@@ -29,6 +32,7 @@ const Expander: React.FC<ExpanderProps> = (
     open: propOpen = false,
     iconClassName,
   } = props;
+  const id = useRef(uniqid());
   const mainRef = useRef<HTMLDetailsElement>();
   const first = useRef<number>();
   const last = useRef<{
@@ -56,13 +60,27 @@ const Expander: React.FC<ExpanderProps> = (
     const newOpen = !open;
 
     element.style.transition = 'none';
-    last.current.lower = element.getBoundingClientRect().height;
+    last.current[
+      newOpen ? 'lower' : 'upper'
+    ] = element.getBoundingClientRect().height;
     element[newOpen ? 'setAttribute' : 'removeAttribute']('open', '');
-    last.current.upper = element.getBoundingClientRect().height;
+    last.current[
+      newOpen ? 'upper' : 'lower'
+    ] = element.getBoundingClientRect().height;
     element[newOpen ? 'removeAttribute' : 'setAttribute']('open', '');
     element.style.transition = '';
     setOpen(old => old);
   }, [open]);
+
+  useEffect(() => {
+    const debouncedCalculateLast = debounce(calculateLast, 150);
+
+    window.addEventListener('resize', debouncedCalculateLast);
+
+    return () => {
+      window.removeEventListener('resize', debouncedCalculateLast);
+    };
+  }, [calculateLast]);
 
   const toggle = useCallback((ev: React.MouseEvent) => {
     ev.preventDefault();
@@ -90,6 +108,7 @@ const Expander: React.FC<ExpanderProps> = (
         onExited={() => mainRef.current?.removeAttribute('open')}
       >
         <Styled.Container
+          className={id.current}
           ref={container => {
             if (!mainRef.current && container) {
               mainRef.current = container as HTMLDetailsElement;
@@ -98,7 +117,7 @@ const Expander: React.FC<ExpanderProps> = (
           }}
         >
           <style>{`
-          details { 
+          details.${id.current} { 
             --first:${first.current}px; 
             --last: ${open ? last.current.upper : last.current.lower}px; 
             }`}</style>
