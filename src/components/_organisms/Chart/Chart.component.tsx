@@ -61,7 +61,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
 
     //when chart pick is gratter then 20 set default to 3
     if (yAxisTickInterval > max || max > 20 || yAxisTickInterval === 0) {
-      return 3;
+      return 1;
     }
     return max / yAxisTickInterval + 1;
   };
