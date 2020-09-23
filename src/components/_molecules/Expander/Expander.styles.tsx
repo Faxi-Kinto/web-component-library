@@ -35,8 +35,6 @@ export const Container = styled.details<ExpanderStylingProps>`
     cursor: pointer;
     user-select: none;
     list-style-type: none;
-    display: flex;
-    align-items: center;
 
     &:focus {
       outline: none;
@@ -56,6 +54,11 @@ export const Container = styled.details<ExpanderStylingProps>`
   }
 
   .expander {
+    &__content {
+      display: flex;
+      align-items: center;
+    }
+
     &__icon {
       display: inline-block;
       margin-left: ${pxToRem('12px')};

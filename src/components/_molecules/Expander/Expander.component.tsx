@@ -120,8 +120,10 @@ const Expander: React.FC<ExpanderProps> = (
             --last: ${!open ? last.current.lower : last.current.upper}px; 
             }`}</style>
           <summary onClick={toggle}>
-            {title}
-            {icon}
+            <div className="expander__content">
+              {title}
+              {icon}
+            </div>
           </summary>
           <p>{body}</p>
         </Styled.Container>

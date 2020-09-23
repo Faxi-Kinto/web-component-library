@@ -33,14 +33,6 @@ exports[`Expander renders correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   list-style-type: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c0 > summary:focus {
@@ -57,6 +49,17 @@ exports[`Expander renders correctly 1`] = `
 
 .c0 > p {
   margin: 1rem 0 0;
+}
+
+.c0 .expander__content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 .expander__icon {
@@ -86,21 +89,25 @@ exports[`Expander renders correctly 1`] = `
   <summary
     onClick={[Function]}
   >
-    Explanation
-    <span
-      className="expander__icon"
+    <div
+      className="expander__content"
     >
-      <img
-        alt=""
-        className=""
-        src="assets/icons/angle-down.svg"
-        style={
-          Object {
-            "width": "14px",
+      Explanation
+      <span
+        className="expander__icon"
+      >
+        <img
+          alt=""
+          className=""
+          src="assets/icons/angle-down.svg"
+          style={
+            Object {
+              "width": "14px",
+            }
           }
-        }
-      />
-    </span>
+        />
+      </span>
+    </div>
   </summary>
   <p>
     This graph shows the number of users who have successfully joined your community. 
