@@ -34,13 +34,32 @@ const Expander: React.FC<ExpanderProps> = (
   } = props;
   const id = useRef(uniqid());
   const mainRef = useRef<HTMLDetailsElement>();
+  const initialOpenRef = useRef(propOpen);
   const first = useRef<number>();
-  const last = useRef<{
-    lower: number;
-    upper: number;
-  }>({ lower: 0, upper: 0 });
+  const last = useRef<{ lower: number; upper: number }>({
+    lower: 0,
+    upper: 0,
+  });
 
   const [open, setOpen] = useState(propOpen);
+
+  const calculateLast = useCallback((newOpen: boolean) => {
+    const element = mainRef.current;
+    if (!element) return;
+
+    last.current[
+      newOpen ? 'lower' : 'upper'
+    ] = element.getBoundingClientRect().height;
+    element[newOpen ? 'setAttribute' : 'removeAttribute']('open', '');
+    last.current[
+      newOpen ? 'upper' : 'lower'
+    ] = element.getBoundingClientRect().height;
+    element[newOpen ? 'removeAttribute' : 'setAttribute']('open', '');
+  }, []);
+
+  useEffect(() => {
+    requestAnimationFrame(() => calculateLast(!initialOpenRef.current));
+  }, [calculateLast]);
 
   const icon = useMemo(() => {
     if (!propIcon) return null;
@@ -53,27 +72,11 @@ const Expander: React.FC<ExpanderProps> = (
     );
   }, [open, propIcon, iconClassName]);
 
-  const calculateLast = useCallback(() => {
-    const element = mainRef.current;
-    if (!element) return;
-
-    const newOpen = !open;
-
-    element.style.transition = 'none';
-    last.current[
-      newOpen ? 'lower' : 'upper'
-    ] = element.getBoundingClientRect().height;
-    element[newOpen ? 'setAttribute' : 'removeAttribute']('open', '');
-    last.current[
-      newOpen ? 'upper' : 'lower'
-    ] = element.getBoundingClientRect().height;
-    element[newOpen ? 'removeAttribute' : 'setAttribute']('open', '');
-    element.style.transition = '';
-    setOpen(old => old);
-  }, [open]);
-
   useEffect(() => {
-    const debouncedCalculateLast = debounce(calculateLast, 150);
+    const debouncedCalculateLast = debounce(
+      () => calculateLast(mainRef.current?.getAttribute('open') === null),
+      150
+    );
 
     window.addEventListener('resize', debouncedCalculateLast);
 
@@ -109,17 +112,12 @@ const Expander: React.FC<ExpanderProps> = (
       >
         <Styled.Container
           className={id.current}
-          ref={container => {
-            if (!mainRef.current && container) {
-              mainRef.current = container as HTMLDetailsElement;
-              calculateLast();
-            }
-          }}
+          ref={container => (mainRef.current = container as HTMLDetailsElement)}
         >
           <style>{`
           details.${id.current} { 
             --first:${first.current}px; 
-            --last: ${open ? last.current.upper : last.current.lower}px; 
+            --last: ${!open ? last.current.lower : last.current.upper}px; 
             }`}</style>
           <summary onClick={toggle}>
             {title}
