@@ -11,8 +11,24 @@ export const Container = styled.details<ExpanderStylingProps>`
   width: 100%;
   overflow: hidden;
 
-  &.animate-on-height {
-    transition: height 300ms;
+  &.expander {
+    &-enter {
+      height: var(--first);
+    }
+
+    &-enter-active {
+      height: var(--last);
+      transition: height 300ms;
+    }
+
+    &-exit {
+      height: var(--first);
+    }
+
+    &-exit-active {
+      height: var(--last);
+      transition: height 300ms;
+    }
   }
 
   > summary {

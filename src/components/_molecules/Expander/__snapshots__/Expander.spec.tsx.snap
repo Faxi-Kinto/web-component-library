@@ -6,7 +6,22 @@ exports[`Expander renders correctly 1`] = `
   overflow: hidden;
 }
 
-.c0.animate-on-height {
+.c0.expander-enter {
+  height: var(--first);
+}
+
+.c0.expander-enter-active {
+  height: var(--last);
+  -webkit-transition: height 300ms;
+  transition: height 300ms;
+}
+
+.c0.expander-exit {
+  height: var(--first);
+}
+
+.c0.expander-exit-active {
+  height: var(--last);
   -webkit-transition: height 300ms;
   transition: height 300ms;
 }
@@ -61,6 +76,13 @@ exports[`Expander renders correctly 1`] = `
 <details
   className="c0"
 >
+  <style>
+    
+          details { 
+            --first:undefinedpx; 
+            --last: 0px; 
+            }
+  </style>
   <summary
     onClick={[Function]}
   >
