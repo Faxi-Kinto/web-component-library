@@ -5,8 +5,6 @@ import { mapNamePropToFaNames } from '../../Icon';
 /**
  * @name Icon
  *
- * [Insert Component Description]
- *
  * @returns {JSX}
  */
 
@@ -15,7 +13,7 @@ export type IconProps<T> = {
   size?: string;
   color?: string;
   className?: string;
-  onClick?: Function;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 const Icon = <T,>(props: IconProps<T>): JSX.Element => {
@@ -24,11 +22,7 @@ const Icon = <T,>(props: IconProps<T>): JSX.Element => {
   const iconName = mapNamePropToFaNames<T>(name);
 
   return (
-    <Styled.Container
-      size={size}
-      className={className}
-      onClick={onClick && onClick()}
-    >
+    <Styled.Container size={size} className={className} onClick={onClick}>
       <FontAwesomeIcon color={color} size={'1x'} icon={iconName} />
     </Styled.Container>
   );

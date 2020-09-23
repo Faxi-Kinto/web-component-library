@@ -2,9 +2,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Expander from './Expander.component';
 
-jest.mock('uniqid', () => ({
-  default: () => 'someid',
-}));
+jest.mock('uniqid', () => () => {
+  return 'uniq';
+});
+
 test('Expander renders correctly', () => {
   const component = renderer.create(
     <Expander

@@ -5,8 +5,6 @@ import classNames from 'classnames';
 /**
  * @name Button
  *
- * [Insert Component Description]
- *
  * @returns {JSX}
  */
 

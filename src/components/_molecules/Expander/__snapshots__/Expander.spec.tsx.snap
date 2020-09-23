@@ -74,11 +74,11 @@ exports[`Expander renders correctly 1`] = `
 }
 
 <details
-  className="c0 d99gn7pauokffb1dxl"
+  className="c0 uniq"
 >
   <style>
     
-          details.d99gn7pauokffb1dxl { 
+          details.uniq { 
             --first:undefinedpx; 
             --last: 0px; 
             }
