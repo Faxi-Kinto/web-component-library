@@ -65,9 +65,9 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
             ])}
             ref={myRef}
           >
-            <div className={headerClassName}>{header}</div>
-            <div className={bodyClassName}>{body}</div>
-            <div className={footerClassName}>{footer}</div>
+            {header && <div className={headerClassName}>{header}</div>}
+            {body && <div className={bodyClassName}>{body}</div>}
+            {footer && <div className={footerClassName}>{footer}</div>}
           </div>
         </div>
       </Styled.Container>,
