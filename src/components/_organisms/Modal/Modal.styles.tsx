@@ -1,10 +1,5 @@
 import styled from 'styled-components';
-import {
-  positionAbsolute,
-  size,
-  flexColumn,
-  pxToRem,
-} from '@faxi/web-css-utilities';
+import { positionAbsolute, size, flexColumn } from '@faxi/web-css-utilities';
 import { modalZIndex } from '@faxi/web-css-utilities/constants';
 
 export const Container = styled.div`
@@ -20,9 +15,8 @@ export const Container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1001;
-    width: 100%;
-    height: 100%;
+    z-index: ${modalZIndex + 1};
+    ${size('100%')};
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
@@ -30,7 +24,6 @@ export const Container = styled.div`
 
     &__content {
       position: relative;
-      ${size(pxToRem('725px'), pxToRem('310px'))};
       ${flexColumn()};
       background-color: white;
     }
