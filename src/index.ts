@@ -29,6 +29,12 @@ export { default as Error } from './components/_organisms/Error';
 export { default as Modal } from './components/_organisms/Modal';
 
 /*
+ * Layouts
+ */
+export { ContentContainer } from './components/_layouts/ContentContainer';
+export { ListView } from './components/_layouts/ListView';
+
+/*
  * Prop Types
  */
 export { CheckboxProps } from './components/_molecules/Checkbox/Checkbox.component';
