@@ -15,13 +15,26 @@ export type ErrorProps = {
   ErrorTexts?: Record<ErrorType, ErrorItems>;
   icon?: JSX.Element;
   errorMessageTitle?: string;
-};
+} & Styled.ErrorStylingProps;
 
 const Error: React.FC<ErrorProps> = (props: ErrorProps): JSX.Element => {
-  const { errorType = '404', icon, ErrorTexts, errorMessageTitle } = props;
+  const {
+    errorType = '404',
+    icon,
+    ErrorTexts,
+    errorMessageTitle,
+    errorMessageTitleColor,
+    errorMessageDescriptionColor,
+    errorLinksPhoneColor,
+  } = props;
 
   return (
-    <Styled.Error className="error">
+    <Styled.Error
+      className="error"
+      errorMessageTitleColor={errorMessageTitleColor}
+      errorMessageDescriptionColor={errorMessageDescriptionColor}
+      errorLinksPhoneColor={errorLinksPhoneColor}
+    >
       {icon &&
         React.cloneElement(icon, {
           className: 'error__logo',

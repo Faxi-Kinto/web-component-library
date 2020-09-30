@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { pxToRem, marginChildren } from '@faxi/web-css-utilities';
 import { ListView } from '../../_layouts/ListView';
 
-type ErrorStylingProps = {
+export type ErrorStylingProps = {
   errorMessageTitleColor?: string;
   errorMessageDescriptionColor?: string;
   errorLinksPhoneColor?: string;
