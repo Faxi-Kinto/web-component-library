@@ -24,6 +24,7 @@ export { default as Expander } from './components/_molecules/Expander';
  * Organisms
  */
 export { default as Chart } from './components/_organisms/Chart';
+export { default as Error } from './components/_organisms/Error';
 export { default as Modal } from './components/_organisms/Modal';
 
 /*
@@ -38,6 +39,8 @@ export { CheckboxProps } from './components/_molecules/Checkbox/Checkbox.compone
  */
 export { DropdownOption } from './components/_molecules/Dropdown/Dropdown.component';
 export { DropdownProps } from './components/_molecules/Dropdown/Dropdown.component';
+export { ErrorItems } from './components/_organisms/Error/Error.component';
+export { ErrorType } from './components/_organisms/Error/Error.component';
 export { NavLink } from './components/_molecules/NavigationLinks/NavigationLinks.component';
 
 export const GlobalStyle = createGlobalStyle`

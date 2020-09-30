@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+}
+
+.c0 > :first-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 > * {
+  margin: 0 0 2.25rem 0;
+}
+
+.c0 > :last-child {
+  margin: 0;
+}
+
+.c0 .error__logo {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0 .error__message {
+  font-weight: 500;
+}
+
+.c0 .error__message > * {
+  margin: 0 0 0.9375rem 0;
+}
+
+.c0 .error__message > :last-child {
+  margin: 0;
+}
+
+.c0 .error__message__title {
+  color: black;
+  font-weight: 500;
+}
+
+.c0 .error__message__description {
+  font-size: 1.25rem;
+  color: black;
+}
+
+.c0 .error__links {
+  font-weight: 200;
+}
+
+.c0 .error__links > * {
+  margin: 0 0 0.9375rem 0;
+}
+
+.c0 .error__links > :last-child {
+  margin: 0;
+}
+
+.c0 .error__links__nav-links {
+  font-size: 1.25rem;
+}
+
+.c0 .error__links__phone {
+  font-size: 1.25rem;
+  color: black;
+}
+
+.c0 .error__links__message {
+  font-size: 1.25rem;
+}
+
+.c1 {
+  padding: 0;
+  margin: 0;
+  font-size: 2.125rem;
+  line-height: 2.9375rem;
+  font-weight: bold;
+  color: black;
+}
+
+<div
+  className="c0 error"
+>
+  <div
+    className="error__message"
+  >
+    <h1
+      className="c1 error__message__title"
+      color="black"
+    />
+  </div>
+</div>
+`;
