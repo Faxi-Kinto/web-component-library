@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+
 /*
  * Atoms
  */
@@ -30,15 +31,16 @@ export { default as Modal } from './components/_organisms/Modal';
 /*
  * Prop Types
  */
+export { CheckboxProps } from './components/_molecules/Checkbox/Checkbox.component';
+export { DropdownProps } from './components/_molecules/Dropdown/Dropdown.component';
+export { ErrorProps } from './components/_organisms/Error/Error.component';
 export { IconProps } from './components/_atoms/Icon/Icon.component';
 export { InputProps } from './components/_atoms/Input/Input.component';
-export { CheckboxProps } from './components/_molecules/Checkbox/Checkbox.component';
 
 /*
  * Types
  */
 export { DropdownOption } from './components/_molecules/Dropdown/Dropdown.component';
-export { DropdownProps } from './components/_molecules/Dropdown/Dropdown.component';
 export { ErrorItems } from './components/_organisms/Error/Error.component';
 export { ErrorType } from './components/_organisms/Error/Error.component';
 export { NavLink } from './components/_molecules/NavigationLinks/NavigationLinks.component';
