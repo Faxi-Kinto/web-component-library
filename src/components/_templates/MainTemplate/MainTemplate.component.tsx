@@ -42,10 +42,7 @@ const MainTemplate: React.FC<MainTemplateProps> = (
 
       <div className="template__footer-background"></div>
 
-      {footer &&
-        React.cloneElement(footer, {
-          className: 'template__footer',
-        })}
+      {footer && <div className="template__footer">{footer}</div>}
     </Styled.GridView>
   );
 };
