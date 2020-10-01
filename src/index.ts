@@ -35,6 +35,11 @@ export { ContentContainer } from './components/_layouts/ContentContainer';
 export { ListView } from './components/_layouts/ListView';
 
 /*
+ * Templates
+ */
+export { default as MainTemplate } from './components/_templates/MainTemplate';
+
+/*
  * Prop Types
  */
 export { CheckboxProps } from './components/_molecules/Checkbox/Checkbox.component';
