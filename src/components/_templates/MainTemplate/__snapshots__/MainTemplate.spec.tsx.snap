@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainTemplate renders correctly 1`] = `
+.c0 {
+  display: grid;
+  grid-template-columns: auto 0.7fr auto;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: '. top .' '. center .' '. bottom .';
+  min-height: 100%;
+}
+
+.c0 .template__header {
+  grid-area: top;
+  padding: 1.5rem 0;
+  display: grid;
+}
+
+.c0 .template__header > * {
+  margin: 0 0 1.5rem 0;
+}
+
+.c0 .template__header > :last-child {
+  margin: 0;
+}
+
+.c0 .template__header__button {
+  justify-self: end;
+}
+
+.c0 .template__header__progress {
+  justify-self: center;
+}
+
+.c0 .template__hero-image {
+  grid-area: 2 / 1 / 3 / 4;
+}
+
+.c0 .template__children {
+  grid-area: center;
+  display: grid;
+}
+
+.c0 .template__children--end {
+  -webkit-box-pack: end;
+  -webkit-justify-content: end;
+  -ms-flex-pack: end;
+  justify-content: end;
+}
+
+.c0 .template__children__background {
+  background: rgba(255,255,255,0.95);
+  height: 100%;
+}
+
+.c0 .template__children__background form {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: initial;
+  -webkit-justify-content: initial;
+  -ms-flex-pack: initial;
+  justify-content: initial;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+}
+
+.c0 .template__children__background form > :first-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+.c0 .template__children__background form > * {
+  margin: 0 0 1.5rem 0;
+}
+
+.c0 .template__children__background form > :last-child {
+  margin: 0;
+}
+
+.c0 .template__children__background form .continue-button {
+  margin-top: 1.5rem;
+}
+
+.c0 .template__children__background--asymmetric-small {
+  width: 36rem;
+  padding: 1.5rem 9.0625rem 2.5rem 5rem;
+}
+
+.c0 .template__footer-background {
+  grid-area: 3 / 1 / 3 / 4;
+  background-color: white;
+}
+
+.c0 .template__footer {
+  grid-area: bottom;
+}
+
+.c1 {
+  height: 100%;
+  background: url('') no-repeat center center fixed;
+  background-size: cover;
+}
+
+@media (max-width:767px) {
+  .c0 {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'top' 'center' 'bottom';
+  }
+}
+
+@media (max-width:767px) {
+  .c0 .template__header {
+    padding: 1.5rem 0.75rem 1.5rem 0.75rem;
+  }
+}
+
+@media (max-width:767px) {
+  .c0 .template__hero-image {
+    display: none;
+  }
+}
+
+@media (max-width:767px) {
+  .c0 .template__children {
+    display: block;
+  }
+}
+
+@media (max-width:767px) {
+  .c0 .template__children__background {
+    padding: 0 1.875rem 1.875rem 1.875rem;
+    width: 100%;
+  }
+}
+
+@media (max-width:767px) {
+  .c0 .template__footer-background {
+    margin-top: 3.75rem;
+  }
+}
+
+@media (max-width:767px) {
+  .c0 .template__footer {
+    margin-top: 3.75rem;
+  }
+}
+
+<div
+  className="c0 template"
+>
+  <div
+    className="c1 template__hero-image"
+  />
+  <div
+    className="template__children"
+  >
+    <div
+      className="template__children__background"
+    >
+      Insert some JSX here!
+    </div>
+  </div>
+  <div
+    className="template__footer-background"
+  />
+</div>
+`;

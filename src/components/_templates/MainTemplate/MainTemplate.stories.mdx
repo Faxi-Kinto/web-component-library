@@ -1,0 +1,26 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+import MainTemplate from './';
+
+<Meta title="Core|Templates/MainTemplate" />
+
+# MainTemplate
+
+This is an example usage of template's layout, no functionalities except visual should be reviewed.
+Please browse only the canvas section for this story.
+
+#### Default
+
+<Preview>
+  <Story name="default">
+    <div style={{ height: '120vh' }}>
+      <MainTemplate parallaxUrl="">
+        <span>Content fills full center grid area</span>
+      </MainTemplate>
+    </div>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={MainTemplate} />
