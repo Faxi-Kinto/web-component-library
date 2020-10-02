@@ -4,10 +4,10 @@ exports[`Modal renders correctly 1`] = `
 Object {
   "$$typeof": Symbol(react.portal),
   "children": <ForwardRef(styled.div)
-    className="modal modal--center"
+    className="wcl-modal wcl-modal--center"
   >
     <div
-      className="modal__content"
+      className="wcl-modal__content"
     >
       <div>
         <span>

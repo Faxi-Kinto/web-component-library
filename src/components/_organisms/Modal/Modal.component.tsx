@@ -67,16 +67,16 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     ReactDOM.createPortal(
       <Styled.ModalStyles
         className={classNames([
-          'modal',
-          { 'modal--banner': isBanner },
-          { 'modal--top': position === 'top' },
-          { 'modal--center': position === 'center' },
-          { 'modal--bottom': position === 'bottom' },
+          'wcl-modal',
+          { 'wcl-modal--banner': isBanner },
+          { 'wcl-modal--top': position === 'top' },
+          { 'wcl-modal--center': position === 'center' },
+          { 'wcl-modal--bottom': position === 'bottom' },
           className,
         ])}
       >
         <div
-          className={classNames(['modal__content', contentClassName])}
+          className={classNames(['wcl-modal__content', contentClassName])}
           ref={myRef}
         >
           {header && <div className={headerClassName}>{header}</div>}

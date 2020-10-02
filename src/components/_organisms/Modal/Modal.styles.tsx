@@ -11,20 +11,20 @@ export const ModalStyles = styled.div`
   flex-direction: column;
   align-items: center;
 
-  &.modal {
+  &.wcl-modal {
     &--banner {
       background: unset;
       height: fit-content;
 
-      &.modal--top {
+      &.wcl-modal--top {
         /* unnecessary, defined by default */
       }
 
-      &.modal--center {
+      &.wcl-modal--center {
         top: 50%;
       }
 
-      &.modal--bottom {
+      &.wcl-modal--bottom {
         ${positionAbsolute('unset', '', '0', '0')};
       }
     }
@@ -42,7 +42,7 @@ export const ModalStyles = styled.div`
     }
   }
 
-  .modal {
+  .wcl-modal {
     &__content {
       position: relative;
       ${flexColumn()};
