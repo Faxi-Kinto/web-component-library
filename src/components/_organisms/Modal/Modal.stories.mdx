@@ -21,15 +21,15 @@ This is an implementation of the Modal Component
       const [isShowing, setIsShowing] = useState(false)
       return (
       <div>
-       <Button onClick={()=>{setIsShowing(true); action('modal-open') }}>Open Modal</Button>
+       <Button onClick={()=>{setIsShowing(!isShowing); action('modal-open') }}>Open Modal</Button>
        <Modal
         toggled={isShowing}  
         header={<span>Confirmation</span>}
         body={<span>"Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community."</span>}
         footer={<Button type="submit" onClick={()=>{isShowing===true ? setIsShowing(false) : null}}>Ok</Button>}
         onClickOutOfModal={()=>{setIsShowing(false)}}
-        position="center"
-        headerClassName='header'
+        position="bottom"
+        isBanner
         />
     </div>)
     }}

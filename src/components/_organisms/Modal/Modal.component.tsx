@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import * as Styled from './Modal.styles';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
@@ -9,12 +9,14 @@ export type ModalProps = {
   footer?: React.ReactNode;
   toggled: boolean;
   className?: string;
+  contentClassName?: string;
   parent?: HTMLElement;
   onClickOutOfModal?: () => void;
   headerClassName?: string;
   bodyClassName?: string;
   footerClassName?: string;
-  position?: 'center' | 'top-center' | 'bottom';
+  position?: 'top' | 'center' | 'bottom';
+  isBanner?: boolean;
 };
 
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
@@ -24,53 +26,64 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     footer,
     toggled,
     className,
+    contentClassName,
     parent,
     headerClassName,
     bodyClassName,
     footerClassName,
     onClickOutOfModal,
-    position,
+    position = 'center',
+    isBanner = false,
   } = props;
   const myRef = useRef<HTMLDivElement>(null);
 
   const [isShown, setIsShown] = useState(toggled);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent): void => {
+  const handleClickOutside = useCallback(
+    (e: MouseEvent): void => {
       if (!isShown) return;
       if (!myRef.current?.contains(e.target as Node)) {
         onClickOutOfModal && onClickOutOfModal();
       }
-    };
+    },
+    [isShown, onClickOutOfModal]
+  );
+
+  useEffect(() => {
     setIsShown(toggled);
     if (isShown) {
       document.body.style.overflow = 'hidden';
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return (): void => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'unset';
-    };
-  }, [toggled, isShown, onClickOutOfModal]);
+    if (!isBanner) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return (): void => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.body.style.overflow = 'unset';
+      };
+    }
+  }, [toggled, isShown, onClickOutOfModal, isBanner, handleClickOutside]);
 
   return isShown ? (
     ReactDOM.createPortal(
-      <Styled.Container>
-        <div className="modal-wrapper">
-          <div
-            className={classNames([
-              'modal-wrapper__content',
-              className,
-              position,
-            ])}
-            ref={myRef}
-          >
-            {header && <div className={headerClassName}>{header}</div>}
-            {body && <div className={bodyClassName}>{body}</div>}
-            {footer && <div className={footerClassName}>{footer}</div>}
-          </div>
+      <Styled.ModalStyles
+        className={classNames([
+          'modal',
+          { 'modal--banner': isBanner },
+          { 'modal--top': position === 'top' },
+          { 'modal--center': position === 'center' },
+          { 'modal--bottom': position === 'bottom' },
+          className,
+        ])}
+      >
+        <div
+          className={classNames(['modal__content', contentClassName])}
+          ref={myRef}
+        >
+          {header && <div className={headerClassName}>{header}</div>}
+          {body && <div className={bodyClassName}>{body}</div>}
+          {footer && <div className={footerClassName}>{footer}</div>}
         </div>
-      </Styled.Container>,
+      </Styled.ModalStyles>,
       parent ? parent : document.body
     )
   ) : (
