@@ -3,28 +3,26 @@
 exports[`Modal renders correctly 1`] = `
 Object {
   "$$typeof": Symbol(react.portal),
-  "children": <ForwardRef(styled.div)>
+  "children": <ForwardRef(styled.div)
+    className="modal modal--center"
+  >
     <div
-      className="modal-wrapper"
+      className="modal__content"
     >
-      <div
-        className="modal-wrapper__content"
-      >
-        <div>
-          <span>
-            Test
-          </span>
-        </div>
-        <div>
-          <span>
-            test body
-          </span>
-        </div>
-        <div>
-          <button>
-            test
-          </button>
-        </div>
+      <div>
+        <span>
+          Test
+        </span>
+      </div>
+      <div>
+        <span>
+          test body
+        </span>
+      </div>
+      <div>
+        <button>
+          test
+        </button>
       </div>
     </div>
   </ForwardRef(styled.div)>,

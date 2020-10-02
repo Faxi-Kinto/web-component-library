@@ -2,47 +2,50 @@ import styled from 'styled-components';
 import { positionAbsolute, size, flexColumn } from '@faxi/web-css-utilities';
 import { modalZIndex } from '@faxi/web-css-utilities/constants';
 
-export const Container = styled.div`
+export const ModalStyles = styled.div`
   ${positionAbsolute('0', '', '', '0')};
   z-index: ${modalZIndex};
   ${size('100%')};
-  /* In case we have nested modals */
-  & + div {
-    opacity: 1;
+  background-color: #00000050;
+  display: flex;
+  flex-direction: column;
+
+  &.modal {
+    &--banner {
+      background: unset;
+      height: fit-content;
+
+      &.modal--top {
+        /* unnecessary, defined by default */
+      }
+
+      &.modal--center {
+        top: 50%;
+      }
+
+      &.modal--bottom {
+        ${positionAbsolute('unset', '', '0', '0')};
+      }
+    }
+
+    &--top {
+      justify-content: flex-start;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--bottom {
+      justify-content: flex-end;
+    }
   }
 
-  .modal-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: ${modalZIndex + 1};
-    ${size('100%')};
-    overflow-x: hidden;
-    overflow-y: auto;
-    outline: 0;
-    background-color: #00000050;
-
+  .modal {
     &__content {
       position: relative;
       ${flexColumn()};
       background-color: white;
-    }
-
-    .center {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .top-center {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .bottom {
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%, -100%);
     }
   }
 `;
