@@ -9,6 +9,7 @@ export const ModalStyles = styled.div`
   background-color: #00000050;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   &.modal {
     &--banner {
