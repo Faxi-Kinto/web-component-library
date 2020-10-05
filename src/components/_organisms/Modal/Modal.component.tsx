@@ -51,7 +51,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
 
   useEffect(() => {
     setIsShown(toggled);
-    if (isShown) {
+    if (isShown && !isBanner) {
       document.body.style.overflow = 'hidden';
     }
     if (!isBanner) {
