@@ -48,6 +48,7 @@ export { DropdownProps } from './components/_molecules/Dropdown/Dropdown.compone
 export { ErrorProps } from './components/_organisms/Error/Error.component';
 export { IconProps } from './components/_atoms/Icon/Icon.component';
 export { InputProps } from './components/_atoms/Input/Input.component';
+export { TextAreaProps } from './components/_atoms/TextArea/TextArea.component';
 
 /*
  * Types

@@ -3,6 +3,7 @@
 exports[`TextArea renders correctly 1`] = `
 .c0 {
   width: 100%;
+  font-family: inherit;
 }
 
 .c0 > * {
