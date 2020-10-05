@@ -1,0 +1,69 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import TextArea from './';
+
+<Meta title="Core|Atoms/TextArea" />
+
+# TextArea Component
+
+## Implementation
+
+#### Default
+
+<Preview>
+  <Story name="default" decorators={[withKnobs]}>
+    <TextArea
+      error={boolean('Error', false)}
+      placeholder={text('Placeholder text', '')}
+    />
+  </Story>
+</Preview>
+
+#### With Error
+
+<Preview>
+  <Story name="error">
+    <TextArea error={true} />
+  </Story>
+</Preview>
+
+#### With Placeholder
+
+<Preview>
+  <Story name="placeholder">
+    <TextArea placeholder="Type value here" error={false} />
+  </Story>
+</Preview>
+
+#### With Label
+
+<Preview>
+  <Story name="label">
+    <TextArea label="With label" name="labeled input" error={false} />
+  </Story>
+</Preview>
+
+#### With Both Placeholder & Label
+
+<Preview>
+  <Story name="placeholder and label">
+    <TextArea
+      label="With label"
+      placeholder="and also placeholder"
+      name="test input"
+      error={false}
+    />
+  </Story>
+</Preview>
+
+## TextArea Props
+
+<Props of={TextArea} />
+
+## Notes
+
+- Default error value is set to false, so if omitted the field will render without error border
+
+- With onChange prop you can set the state to the inputField from parent components.
+
+- onnHandleCapslook prop is used for the password molecule, to inform component when caps-lock is pressed.

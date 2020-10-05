@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea renders correctly 1`] = `
+.c0 {
+  width: 100%;
+}
+
+.c0 > * {
+  margin: 0 0 0.625rem 0;
+}
+
+.c0 > :last-child {
+  margin: 0;
+}
+
+.c0 > textarea {
+  width: 100%;
+  height: 2.8125rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  outline: none;
+}
+
+.c0 > textarea:focus,
+.c0 > textarea.textarea--error {
+  box-shadow: none;
+}
+
+<div
+  className="c0"
+>
+  <textarea
+    className="textarea textarea--error"
+    onChange={[Function]}
+    value="Test value"
+  />
+</div>
+`;

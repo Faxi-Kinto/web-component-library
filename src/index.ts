@@ -11,6 +11,7 @@ export { default as Label } from './components/_atoms/Label';
 export { default as ParallaxBackground } from './components/_atoms/ParallaxBackground';
 export { default as Spinner } from './components/_atoms/Spinner';
 export { default as Text } from './components/_atoms/Text';
+export { default as TextArea } from './components/_atoms/TextArea';
 
 /*
  * Molecules
