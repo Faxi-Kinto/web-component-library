@@ -12,9 +12,10 @@ export const TextAreaStyled = styled.div`
     outline: none;
     font-family: inherit;
 
-    &:focus,
-    &.textarea--error {
-      box-shadow: none;
+    &.textarea {
+      &--noresize {
+        resize: none;
+      }
     }
   }
 `;

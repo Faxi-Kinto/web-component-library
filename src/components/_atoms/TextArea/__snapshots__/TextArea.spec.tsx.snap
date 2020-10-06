@@ -21,9 +21,8 @@ exports[`TextArea renders correctly 1`] = `
   font-family: inherit;
 }
 
-.c0 > textarea:focus,
-.c0 > textarea.textarea--error {
-  box-shadow: none;
+.c0 > textarea.textarea--noresize {
+  resize: none;
 }
 
 <div

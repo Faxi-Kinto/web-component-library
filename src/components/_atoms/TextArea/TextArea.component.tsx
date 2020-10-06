@@ -18,6 +18,7 @@ export type TextAreaProps = {
   error?: boolean;
   autoFocus?: boolean;
   className?: string;
+  noresize?: boolean;
 };
 
 const TextArea: React.FC<TextAreaProps> = (
@@ -32,6 +33,7 @@ const TextArea: React.FC<TextAreaProps> = (
     error = false,
     autoFocus,
     className,
+    noresize = false,
     ...rest
   } = props;
   const [inputValue, setTextAreaValue] = useState<string>('');
@@ -70,6 +72,7 @@ const TextArea: React.FC<TextAreaProps> = (
         className={classNames([
           'textarea',
           { 'textarea--error': error },
+          { 'textarea--noresize': noresize },
           className,
         ])}
         value={value || inputValue}
