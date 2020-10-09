@@ -19,6 +19,7 @@ export type TextAreaProps = {
   autoFocus?: boolean;
   className?: string;
   noresize?: boolean;
+  maxLength?: number;
 };
 
 const TextArea: React.FC<TextAreaProps> = (
@@ -34,6 +35,7 @@ const TextArea: React.FC<TextAreaProps> = (
     autoFocus,
     className,
     noresize = false,
+    maxLength,
     ...rest
   } = props;
   const [inputValue, setTextAreaValue] = useState<string>('');
@@ -79,6 +81,7 @@ const TextArea: React.FC<TextAreaProps> = (
         placeholder={placeholder}
         autoFocus={autoFocus}
         onChange={handleOnChange}
+        maxLength={maxLength}
       />
     </Styled.TextAreaStyled>
   );
