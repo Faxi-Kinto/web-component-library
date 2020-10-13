@@ -16,7 +16,8 @@ export type DropdownOption = {
 };
 
 export type DropdownProps<T = {}> = T & {
-  optionList: DropdownOption[];
+  optionList?: DropdownOption[];
+  children?: JSX.Element;
   label?: string;
   description?: string;
   placeholder?: string;
@@ -48,6 +49,7 @@ export type DropdownProps<T = {}> = T & {
 const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const {
     optionList,
+    children,
     label,
     description,
     placeholder,
@@ -84,7 +86,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
 
   const propSelected = useMemo(() => {
-    return optionList.find(el => el.value === value);
+    return optionList?.find(el => el.value === value);
   }, [optionList, value]);
 
   const [currentSelected, setCurrentSelected] = useState(propSelected);
@@ -117,7 +119,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
             { 'dropdown-container__options--upwards': upwards },
             {
               'dropdown-container__options--overflow-auto':
-                optionList.length > 5,
+                optionList && optionList.length > 5,
             },
           ])}
           role="list"
@@ -127,7 +129,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
             }
           }}
         >
-          {optionList.map((option: DropdownOption, index: number) =>
+          {optionList?.map((option: DropdownOption, index: number) =>
             renderOption(option, index)
           )}
         </div>
@@ -210,10 +212,10 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
             <div className="dropdown-container__placeholder">{placeholder}</div>
           ) : (
             <Fragment>
-              {optionList[0].icon}
+              {optionList && optionList[0].icon}
               {!iconMode && (
                 <div className="dropdown-container__selected-main">
-                  {optionList[0].text}
+                  {optionList && optionList[0].text}
                 </div>
               )}
             </Fragment>
@@ -235,7 +237,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
               toggleIconClassName,
             ]),
           })}
-        {renderOptions()}
+        {optionList ? renderOptions() : children}
       </Styled.Container>
       {description && <div className={descriptionClassName}>{description}</div>}
       {errorState && <div className={errorClassName}>{error}</div>}
