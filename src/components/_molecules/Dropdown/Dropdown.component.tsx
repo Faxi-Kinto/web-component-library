@@ -21,10 +21,10 @@ export type DropdownProps<T = {}> = T & {
   label?: string;
   description?: string;
   placeholder?: string;
-  value?: DropdownOption | string;
+  value?: DropdownOption;
   toggleIcon?: JSX.Element;
   toggleIconClassName?: string;
-  onChange?: (value: string) => void;
+  onChange?: (value: DropdownOption) => void;
   className?: string;
   containerClassName?: string;
   optionClassName?: string;
@@ -86,7 +86,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
 
   const propSelected = useMemo(() => {
-    return optionList?.find(el => el.value === value);
+    return optionList?.find(el => el === value);
   }, [optionList, value]);
 
   const [currentSelected, setCurrentSelected] = useState(propSelected);
@@ -111,30 +111,28 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   }, [containerRef, optionsRef]);
 
   const renderOptions = () => {
-    if (isOpen) {
-      return (
-        <div
-          className={classNames([
-            'dropdown-container__options',
-            { 'dropdown-container__options--upwards': upwards },
-            {
-              'dropdown-container__options--overflow-auto':
-                optionList && optionList.length > 5,
-            },
-          ])}
-          role="list"
-          ref={reference => {
-            if (reference) {
-              setOptionsRef(reference);
-            }
-          }}
-        >
-          {optionList?.map((option: DropdownOption, index: number) =>
-            renderOption(option, index)
-          )}
-        </div>
-      );
-    }
+    return (
+      <div
+        className={classNames([
+          'dropdown-container__options',
+          { 'dropdown-container__options--upwards': upwards },
+          {
+            'dropdown-container__options--overflow-auto':
+              optionList && optionList.length > 5,
+          },
+        ])}
+        role="list"
+        ref={reference => {
+          if (reference) {
+            setOptionsRef(reference);
+          }
+        }}
+      >
+        {optionList?.map((option: DropdownOption, index: number) =>
+          renderOption(option, index)
+        )}
+      </div>
+    );
   };
 
   const renderOption = (option: DropdownOption, index: number) => {
@@ -144,7 +142,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
         data-listitem-label={option.text}
         onClick={() => {
           setCurrentSelected({ ...option });
-          onChange && onChange(option.value);
+          onChange && onChange(option);
         }}
         className={classNames([
           'dropdown-container__options__option',
@@ -237,7 +235,19 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
               toggleIconClassName,
             ]),
           })}
-        {optionList ? renderOptions() : children}
+        {isOpen &&
+          (optionList
+            ? renderOptions()
+            : children &&
+              React.cloneElement(children, {
+                className: classNames([
+                  'dropdown-container__options',
+                  { 'dropdown-container__options--upwards': upwards },
+                  {
+                    'dropdown-container__options--overflow-auto': optionList,
+                  },
+                ]),
+              }))}
       </Styled.Container>
       {description && <div className={descriptionClassName}>{description}</div>}
       {errorState && <div className={errorClassName}>{error}</div>}
