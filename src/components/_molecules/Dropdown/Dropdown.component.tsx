@@ -4,11 +4,31 @@ import React, {
   ReactNode,
   Fragment,
   useMemo,
+  useRef,
 } from 'react';
 import * as Styled from './Dropdown.styles';
 import classNames from 'classnames';
 import Label from '../../_atoms/Label/Label.component';
-import { useVisible } from 'hooks';
+
+const useVisible = (initialValue: boolean) => {
+  const [isVisible, setIsVisible] = useState(initialValue);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: any) => {
+    if (null !== ref)
+      if (ref.current && !ref.current.contains(event.target))
+        setIsVisible(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, []);
+
+  return { ref, isVisible, setIsVisible };
+};
 
 export type DropdownOption = {
   text: string;
