@@ -8,6 +8,7 @@ import React, {
 import * as Styled from './Dropdown.styles';
 import classNames from 'classnames';
 import Label from '../../_atoms/Label/Label.component';
+import { useVisible } from 'hooks';
 
 export type DropdownOption = {
   text: string;
@@ -79,11 +80,12 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   } = props;
   const { error } = props as any;
 
-  const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
 
   const [containerRef, setContainerRef] = useState<HTMLDivElement>();
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
+
+  const { ref, isVisible, setIsVisible } = useVisible(false);
 
   const propSelected = useMemo(() => {
     return optionList?.find(el => el === value);
@@ -160,12 +162,8 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     );
   };
 
-  const handleOpenDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div className={containerClassName}>
+    <div className={containerClassName} ref={ref}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <Styled.Container
         ref={reference => {
@@ -173,26 +171,27 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
             setContainerRef(reference);
           }
         }}
-        onClick={() => handleOpenDropdown()}
+        onClick={() => {
+          setIsVisible(children ? true : !isVisible);
+        }}
         className={classNames([
           'dropdown-container',
           {
             'dropdown-container--icon-mode': iconMode,
           },
           {
-            'dropdown-container--open': isOpen,
-            'dropdown-container--close': !isOpen,
+            'dropdown-container--open': isVisible,
+            'dropdown-container--close': !isVisible,
           },
           {
             'dropdown-container--error': errorState,
           },
           {
-            'dropdown-container--unset-min-width': !isOpen && iconMode,
+            'dropdown-container--unset-min-width': !isVisible && iconMode,
           },
           className,
         ])}
         tabIndex={-1}
-        onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
         backgroundColor={backgroundColor}
         dropdownOpenBorderColor={dropdownOpenBorderColor}
@@ -235,7 +234,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
               toggleIconClassName,
             ]),
           })}
-        {isOpen &&
+        {isVisible &&
           (optionList
             ? renderOptions()
             : children &&

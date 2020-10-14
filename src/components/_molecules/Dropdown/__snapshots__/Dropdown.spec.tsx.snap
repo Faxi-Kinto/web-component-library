@@ -154,7 +154,6 @@ exports[`Dropdown renders correctly 1`] = `
 <div>
   <div
     className="c0 dropdown-container dropdown-container--close"
-    onBlur={[Function]}
     onClick={[Function]}
     tabIndex={-1}
   >
