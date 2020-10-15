@@ -4,31 +4,10 @@ import React, {
   ReactNode,
   Fragment,
   useMemo,
-  useRef,
 } from 'react';
 import * as Styled from './Dropdown.styles';
 import classNames from 'classnames';
 import Label from '../../_atoms/Label/Label.component';
-
-const useVisible = (initialValue: boolean) => {
-  const [isVisible, setIsVisible] = useState(initialValue);
-  const ref = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (event: any) => {
-    if (null !== ref)
-      if (ref.current && !ref.current.contains(event.target))
-        setIsVisible(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true);
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
-  }, []);
-
-  return { ref, isVisible, setIsVisible };
-};
 
 export type DropdownOption = {
   text: string;
@@ -42,10 +21,10 @@ export type DropdownProps<T = {}> = T & {
   label?: string;
   description?: string;
   placeholder?: string;
-  value?: DropdownOption;
+  value?: DropdownOption | string;
   toggleIcon?: JSX.Element;
   toggleIconClassName?: string;
-  onChange?: (value: DropdownOption) => void;
+  onChange?: (value: string) => void;
   className?: string;
   containerClassName?: string;
   optionClassName?: string;
@@ -100,15 +79,14 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   } = props;
   const { error } = props as any;
 
+  const [isOpen, setIsOpen] = useState(false);
   const [upwards, setUpwards] = useState(false);
 
   const [containerRef, setContainerRef] = useState<HTMLDivElement>();
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
 
-  const { ref, isVisible, setIsVisible } = useVisible(false);
-
   const propSelected = useMemo(() => {
-    return optionList?.find(el => el === value);
+    return optionList?.find(el => el.value === value);
   }, [optionList, value]);
 
   const [currentSelected, setCurrentSelected] = useState(propSelected);
@@ -133,28 +111,30 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   }, [containerRef, optionsRef]);
 
   const renderOptions = () => {
-    return (
-      <div
-        className={classNames([
-          'dropdown-container__options',
-          { 'dropdown-container__options--upwards': upwards },
-          {
-            'dropdown-container__options--overflow-auto':
-              optionList && optionList.length > 5,
-          },
-        ])}
-        role="list"
-        ref={reference => {
-          if (reference) {
-            setOptionsRef(reference);
-          }
-        }}
-      >
-        {optionList?.map((option: DropdownOption, index: number) =>
-          renderOption(option, index)
-        )}
-      </div>
-    );
+    if (isOpen) {
+      return (
+        <div
+          className={classNames([
+            'dropdown-container__options',
+            { 'dropdown-container__options--upwards': upwards },
+            {
+              'dropdown-container__options--overflow-auto':
+                optionList && optionList.length > 5,
+            },
+          ])}
+          role="list"
+          ref={reference => {
+            if (reference) {
+              setOptionsRef(reference);
+            }
+          }}
+        >
+          {optionList?.map((option: DropdownOption, index: number) =>
+            renderOption(option, index)
+          )}
+        </div>
+      );
+    }
   };
 
   const renderOption = (option: DropdownOption, index: number) => {
@@ -164,7 +144,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
         data-listitem-label={option.text}
         onClick={() => {
           setCurrentSelected({ ...option });
-          onChange && onChange(option);
+          onChange && onChange(option.value);
         }}
         className={classNames([
           'dropdown-container__options__option',
@@ -182,8 +162,12 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     );
   };
 
+  const handleOpenDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className={containerClassName} ref={ref}>
+    <div className={containerClassName}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <Styled.Container
         ref={reference => {
@@ -191,27 +175,26 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
             setContainerRef(reference);
           }
         }}
-        onClick={() => {
-          setIsVisible(children ? true : !isVisible);
-        }}
+        onClick={() => handleOpenDropdown()}
         className={classNames([
           'dropdown-container',
           {
             'dropdown-container--icon-mode': iconMode,
           },
           {
-            'dropdown-container--open': isVisible,
-            'dropdown-container--close': !isVisible,
+            'dropdown-container--open': isOpen,
+            'dropdown-container--close': !isOpen,
           },
           {
             'dropdown-container--error': errorState,
           },
           {
-            'dropdown-container--unset-min-width': !isVisible && iconMode,
+            'dropdown-container--unset-min-width': !isOpen && iconMode,
           },
           className,
         ])}
         tabIndex={-1}
+        onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
         backgroundColor={backgroundColor}
         dropdownOpenBorderColor={dropdownOpenBorderColor}
@@ -254,19 +237,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
               toggleIconClassName,
             ]),
           })}
-        {isVisible &&
-          (optionList
-            ? renderOptions()
-            : children &&
-              React.cloneElement(children, {
-                className: classNames([
-                  'dropdown-container__options',
-                  { 'dropdown-container__options--upwards': upwards },
-                  {
-                    'dropdown-container__options--overflow-auto': optionList,
-                  },
-                ]),
-              }))}
+        {optionList ? renderOptions() : children}
       </Styled.Container>
       {description && <div className={descriptionClassName}>{description}</div>}
       {errorState && <div className={errorClassName}>{error}</div>}
