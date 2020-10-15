@@ -16,6 +16,7 @@ export type InputProps = {
   label?: string;
   onChange?: (value: string) => void;
   error?: boolean;
+  disabled?: boolean;
   type?: string;
   onHandleCapsLock?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
@@ -31,6 +32,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     onChange,
     error = false,
     type = 'text',
+    disabled = false,
     onHandleCapsLock,
     autoFocus,
     className,
@@ -81,10 +83,16 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
       <input
         {...id}
         {...rest}
-        className={classNames(['input', { 'input--error': error }, className])}
+        className={classNames([
+          'input',
+          { 'input--error': error },
+          { 'input--disabled': disabled },
+          className,
+        ])}
         type={type}
         value={currentValue || inputValue}
         placeholder={placeholder}
+        disabled={disabled}
         autoFocus={autoFocus}
         onChange={handleOnChange}
         onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) =>

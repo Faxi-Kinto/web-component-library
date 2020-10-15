@@ -25,11 +25,16 @@ exports[`Input renders correctly 1`] = `
   box-shadow: none;
 }
 
+.c0 > input--disabled {
+  cursor: not-allowed;
+}
+
 <div
   className="c0"
 >
   <input
     className="input input--error"
+    disabled={false}
     onChange={[Function]}
     onKeyPress={[Function]}
     type="text"

@@ -15,5 +15,9 @@ export const InputContainer = styled.div`
     &.input--error {
       box-shadow: none;
     }
+
+    &--disabled {
+      cursor: not-allowed;
+    }
   }
 `;
