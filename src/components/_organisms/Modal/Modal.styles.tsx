@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { positionAbsolute, size, flexColumn } from '@faxi/web-css-utilities';
+import {
+  positionAbsolute,
+  size,
+  flexColumn,
+  positionFixed,
+} from '@faxi/web-css-utilities';
 import { modalZIndex } from '@faxi/web-css-utilities/constants';
 
 export const ModalStyles = styled.div`
@@ -25,7 +30,7 @@ export const ModalStyles = styled.div`
       }
 
       &.wcl-modal--bottom {
-        ${positionAbsolute('unset', '', '0', '0')};
+        ${positionFixed('unset', '', '0', '0')};
       }
     }
 
@@ -46,7 +51,6 @@ export const ModalStyles = styled.div`
     &__content {
       position: relative;
       ${flexColumn()};
-      background-color: white;
     }
   }
 `;
