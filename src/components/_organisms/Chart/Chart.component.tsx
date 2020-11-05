@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 export type ChartSeries = {
   name: string;
@@ -25,7 +25,6 @@ export type ChartProps = {
   xAxisCssClass?: string;
   yAxisCssClass?: string;
   titleStyle?: TitleStyle;
-  xAxisTickCount?: number;
   xAxisMinMiliseconds: number;
   xAxisMaxMiliseconds: number;
   markerStrokeColors: string[];
@@ -44,14 +43,13 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     xAxisCssClass = '',
     yAxisCssClass = '',
     titleStyle = {},
-    xAxisTickCount = 2,
     xAxisMinMiliseconds,
     xAxisMaxMiliseconds,
     markerStrokeColors,
     yAxisTickInterval = 2,
   } = props;
 
-  const findYChartTick = () => {
+  const calculateYAxisTickAmount = () => {
     //finding the chart pick
     const yValues: [number] = [0];
     series[0].data.map(obj => {
@@ -64,6 +62,19 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
       return 1;
     }
     return max / yAxisTickInterval + 1;
+  };
+
+  const calculateXAxisTickAmount = () => {
+    const xStartPlusOneDay = new Date(xAxisMinMiliseconds);
+    xStartPlusOneDay.setDate(xStartPlusOneDay.getDate() + 1);
+
+    return series[0].data.length === 2 ||
+      dayjs(new Date(xStartPlusOneDay)).isSame(
+        new Date(xAxisMaxMiliseconds),
+        'day'
+      )
+      ? 1
+      : 2;
   };
 
   const state = {
@@ -125,7 +136,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
       },
       yaxis: {
         // showForNullSeries: false,
-        tickAmount: findYChartTick(),
+        tickAmount: calculateYAxisTickAmount(),
         labels: {
           offsetX: 0,
           formatter: (num: number) => {
@@ -143,13 +154,13 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
       },
       xaxis: {
         type: 'datetime',
-        tickAmount: xAxisTickCount,
+        tickAmount: calculateXAxisTickAmount(),
         min: xAxisMinMiliseconds,
         max: xAxisMaxMiliseconds,
         labels: {
           rotateAlways: true,
           formatter: (_: any, timestamp: string | number | Date) => {
-            return moment(new Date(timestamp)).format('DD MMM');
+            return dayjs(new Date(timestamp)).format('DD MMM');
           },
           style: {
             cssClass: xAxisCssClass,
