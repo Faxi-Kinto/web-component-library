@@ -19,7 +19,6 @@ export { default as TextArea } from './components/_atoms/TextArea';
 export { default as Checkbox } from './components/_molecules/Checkbox';
 export { default as Dropdown } from './components/_molecules/Dropdown';
 export { default as NavigationLinks } from './components/_molecules/NavigationLinks';
-export { default as CapturePDFButton } from './components/_molecules/CapturePDFButton';
 export { default as Expander } from './components/_molecules/Expander';
 
 /*

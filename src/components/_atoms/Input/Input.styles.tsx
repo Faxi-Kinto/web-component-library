@@ -14,6 +14,7 @@ export const InputContainer = styled.div`
     &:focus,
     &.input--error {
       box-shadow: none;
+      border: ${pxToRem('0.5px')} solid #eb4820;
     }
 
     &--disabled {

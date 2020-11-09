@@ -34,11 +34,11 @@ exports[`Checkbox renders correctly 1`] = `
 }
 
 .c0.checkbox--has-error {
-  color: red;
+  color: #eb4820;
 }
 
 .c0.checkbox--has-error:before {
-  border: red solid 0.0625rem;
+  border: #eb4820 solid 0.0625rem;
 }
 
 .c0.checkbox--left > :last-child {

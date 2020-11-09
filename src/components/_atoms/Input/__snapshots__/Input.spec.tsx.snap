@@ -23,6 +23,7 @@ exports[`Input renders correctly 1`] = `
 .c0 > input:focus,
 .c0 > input.input--error {
   box-shadow: none;
+  border: 0.03125rem solid #eb4820;
 }
 
 .c0 > input--disabled {

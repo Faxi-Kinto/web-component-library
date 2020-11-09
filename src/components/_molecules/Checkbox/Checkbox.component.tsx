@@ -35,7 +35,7 @@ const Checkbox: React.FC<CheckboxProps> = (
     label,
     error,
     labelPosition,
-    errorColor = 'red',
+    errorColor = '#eb4820',
     borderColor = 'black',
     icon,
     size,
