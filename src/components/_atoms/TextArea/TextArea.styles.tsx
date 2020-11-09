@@ -16,6 +16,10 @@ export const TextAreaStyled = styled.div`
       &--noresize {
         resize: none;
       }
+
+      &--error {
+        border: ${pxToRem('0.5px')} solid #eb4820;
+      }
     }
   }
 `;

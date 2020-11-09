@@ -25,6 +25,10 @@ exports[`TextArea renders correctly 1`] = `
   resize: none;
 }
 
+.c0 > textarea.textarea--error {
+  border: 0.03125rem solid #eb4820;
+}
+
 <div
   className="c0"
 >

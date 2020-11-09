@@ -1,8 +1,54 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-
-import Error from './';
+import { withKnobs, select } from '@storybook/addon-knobs';
+import Text from '../../_atoms/Text';
+import NavigationLinks, {
+  NavLink,
+} from '../../_molecules/NavigationLinks/NavigationLinks.component';
+import Error, { ErrorItems, ErrorType } from './Error.component';
 
 <Meta title="Core|Organisms/Error" />
+
+export const errorLinks = [
+  { name: 'Home', route: '' },
+  { name: 'About', route: '' },
+  { name: 'Enterprise', route: '' },
+  { name: 'FAQ', route: '' },
+];
+
+export const ErrorTexts = {
+  '400': {
+    description: 'Network error',
+    message: 'Network error message',
+    jsx: (
+      <Text.Link className="error__links__phone" href="tel:+111111111">
+        (+1) 11111111
+      </Text.Link>
+    ),
+  },
+  '404': {
+    description: 'Not found',
+    message: 'Not found message',
+    jsx: <NavigationLinks links={errorLinks} vertical />,
+  },
+  '500': {
+    description: 'Server error',
+    message: 'Server error message',
+    jsx: (
+      <Text.Link className="error__links__phone" href="tel:+111111111">
+        (+1) 11111111
+      </Text.Link>
+    ),
+  },
+};
+
+export const label = 'ErrorTypes';
+export const options = {
+  400: '400',
+  404: '404',
+  500: '500',
+};
+export const defaultValue = '404';
+export const groupId = 'GROUP-ID1';
 
 # Error Component
 
@@ -11,8 +57,12 @@ import Error from './';
 #### Default
 
 <Preview>
-  <Story name="default">
-    <Error />
+  <Story name="default" decorators={[withKnobs]}>
+    <Error
+      errorType={select(label, options, defaultValue, groupId)}
+      ErrorTexts={ErrorTexts}
+      errorMessageTitle="An error occured"
+    />
   </Story>
 </Preview>
 

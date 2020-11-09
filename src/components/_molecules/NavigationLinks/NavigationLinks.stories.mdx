@@ -5,47 +5,22 @@ import NavigationLinks from './';
 
 # NavigationLinks Component
 
-It contains links, each follows you to the desired route.
-
-<!-- TODO ADD STORYBOOK ACTIONS INSTEAD OF ROUTING HERE -->
-
 ## Implementation
 
 #### Primary
 
 <Preview>
   <Story name="primary">
-    <div style={{backgroundColor: '#00708D', width: 'fit-content' }}>
-      <NavigationLinks
-        links={[
-          { name: 'About', route: '' },
-          { name: 'Pricing', route: '' },
-          { name: 'FAQs', route: '' },
-          { name: 'News', route: '' },
-          { name: 'Contact us', route: '' },
-        ]}
-        color="white"
-      />
-    </div>
-  </Story>
-</Preview>
-
-#### Dark
-
-<Preview>
-  <Story name="dark">
-    <div style={{backgroundColor: 'white', width: 'fit-content' }}>
-      <NavigationLinks
-        links={[
-          { name: 'About', route: '' },
-          { name: 'Pricing', route: '' },
-          { name: 'FAQs', route: '' },
-          { name: 'News', route: '' },
-          { name: 'Contact us', route: '' },
-        ]}
-        color='black'
-      />
-    </div>
+    <NavigationLinks
+      links={[
+        { name: 'About', route: '' },
+        { name: 'Pricing', route: '' },
+        { name: 'FAQ', route: '' },
+        { name: 'News', route: '' },
+        { name: 'Contact us', route: '' },
+      ]}
+      color="black"
+    />
   </Story>
 </Preview>
 

@@ -1,6 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error renders correctly 1`] = `
+.c1 {
+  padding: 0;
+  margin: 0;
+  font-size: 2.125rem;
+  line-height: 2.9375rem;
+  font-weight: bold;
+  color: black;
+}
+
+.c2 > a {
+  color: red;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 > a span:first-child {
+  padding-right: 0.375rem;
+}
+
+.c2 > a:not(:last-child) {
+  margin-right: 0.375rem;
+}
+
+.c2.nav--vertical {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c2.nav--vertical > * {
+  margin: 0 0 0.9375rem 0;
+}
+
+.c2.nav--vertical > :last-child {
+  margin: 0;
+}
+
+.c2.nav--vertical .nav__delimiter {
+  display: none;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -89,13 +144,38 @@ exports[`Error renders correctly 1`] = `
   font-size: 1.25rem;
 }
 
-.c1 {
-  padding: 0;
-  margin: 0;
-  font-size: 2.125rem;
-  line-height: 2.9375rem;
-  font-weight: bold;
-  color: black;
+@media (max-width:767px) {
+  .c2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+
+  .c2 > * {
+    margin: 0 0 1.5rem 0;
+  }
+
+  .c2 > :last-child {
+    margin: 0;
+  }
+}
+
+@media (max-width:767px) {
+  .c2 .nav__delimiter {
+    display: none;
+  }
 }
 
 <div
@@ -107,7 +187,71 @@ exports[`Error renders correctly 1`] = `
     <h1
       className="c1 error__message__title"
       color="black"
-    />
+    >
+      An error occured
+    </h1>
+    <span
+      className="error__message__description"
+    >
+      Not found
+    </span>
+  </div>
+  <div
+    className="error__links"
+  >
+    <div
+      className="error__links__message"
+    >
+      Not found
+    </div>
+    <nav
+      className="c2 nav nav--vertical"
+      color="red"
+    >
+      <a
+        href=""
+      >
+        <span>
+          Home
+        </span>
+        <span
+          className="nav__delimiter"
+        >
+          |
+        </span>
+      </a>
+      <a
+        href=""
+      >
+        <span>
+          About
+        </span>
+        <span
+          className="nav__delimiter"
+        >
+          |
+        </span>
+      </a>
+      <a
+        href=""
+      >
+        <span>
+          Enterprise
+        </span>
+        <span
+          className="nav__delimiter"
+        >
+          |
+        </span>
+      </a>
+      <a
+        href=""
+      >
+        <span>
+          FAQ
+        </span>
+      </a>
+    </nav>
   </div>
 </div>
 `;
