@@ -16,7 +16,7 @@ export type TitleStyle = {
 
 export type ChartProps = {
   series: ChartSeries[];
-  chartHeight: number | string;
+  height?: string;
   colors: string[]; // line colors
   gradientToColors: string[];
   title?: string;
@@ -36,7 +36,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     title = '',
     chartType,
     series,
-    chartHeight,
+    height = '100%',
     colors,
     strokeWidths,
     gradientToColors,
@@ -189,7 +189,7 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
     <ReactApexChart
       options={state.options}
       series={state.options.series}
-      height={chartHeight}
+      height={height}
     />
   );
 };

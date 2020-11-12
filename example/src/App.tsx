@@ -8,7 +8,7 @@ const App = () => {
     <div style={{ width: '500px' }}>
       <Chart
         title="Number of messages"
-        chartHeight="100%"
+        height="100%"
         chartType="line"
         series={[
           {

@@ -8,7 +8,7 @@ test('Chart renders correctly', () => {
   const component = renderer.render(
     <Chart
       title="Number of messages"
-      chartHeight="100%"
+      height="100%"
       chartType="line"
       series={[
         {
