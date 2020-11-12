@@ -2,11 +2,10 @@
 
 exports[`Chart renders correctly 1`] = `
 <r
-  height="auto"
+  height="100%"
   options={
     Object {
       "chart": Object {
-        "height": "100%",
         "toolbar": Object {
           "show": false,
         },

@@ -34,9 +34,9 @@ export type ChartProps = {
 const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
   const {
     title = '',
-    chartHeight,
     chartType,
     series,
+    chartHeight,
     colors,
     strokeWidths,
     gradientToColors,
@@ -85,7 +85,6 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
         style: titleStyle,
       },
       chart: {
-        height: chartHeight,
         type: chartType,
         toolbar: {
           show: false,
@@ -187,7 +186,11 @@ const Chart: React.FC<ChartProps> = (props: ChartProps): JSX.Element => {
   };
 
   return (
-    <ReactApexChart options={state.options} series={state.options.series} />
+    <ReactApexChart
+      options={state.options}
+      series={state.options.series}
+      height={chartHeight}
+    />
   );
 };
 
