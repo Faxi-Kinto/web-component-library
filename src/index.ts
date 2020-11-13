@@ -24,7 +24,6 @@ export { default as Expander } from './components/_molecules/Expander';
 /*
  * Organisms
  */
-export { default as Chart } from './components/_organisms/Chart';
 export { default as Error } from './components/_organisms/Error';
 export { default as Modal } from './components/_organisms/Modal';
 
