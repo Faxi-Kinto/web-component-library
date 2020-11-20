@@ -13,6 +13,7 @@ export type NavigationLinksProps = {
   vertical?: boolean;
   color: string;
   className?: string;
+  target?: string;
 };
 
 export type NavLink = {
@@ -23,14 +24,14 @@ export type NavLink = {
 const NavigationLinks: React.FC<NavigationLinksProps> = (
   props: NavigationLinksProps
 ): JSX.Element => {
-  const { links, vertical, color, className } = props;
+  const { links, vertical, color, className, target } = props;
   return (
     <Styled.Nav
       className={classNames(['nav', { 'nav--vertical': vertical }, className])}
       color={color}
     >
       {links.map((link, index) => (
-        <a key={index} href={link.route}>
+        <a key={index} href={link.route} target={target}>
           <span>{link.name}</span>
           {index !== links.length - 1 ? (
             <span className="nav__delimiter">|</span>
