@@ -51,6 +51,12 @@ exports[`Expander renders correctly 1`] = `
   margin: 1rem 0 0;
 }
 
+.c0:not(.expander--instant) .expander__icon {
+  -webkit-transition: -webkit-transform 300ms;
+  -webkit-transition: transform 300ms;
+  transition: transform 300ms;
+}
+
 .c0 .expander__content {
   display: -webkit-box;
   display: -webkit-flex;
@@ -65,9 +71,6 @@ exports[`Expander renders correctly 1`] = `
 .c0 .expander__icon {
   display: inline-block;
   margin-left: 0.75rem;
-  -webkit-transition: -webkit-transform 300ms;
-  -webkit-transition: transform 300ms;
-  transition: transform 300ms;
 }
 
 .c0 .expander__icon--open {

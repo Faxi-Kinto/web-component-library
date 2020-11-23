@@ -15,6 +15,7 @@ import debounce from 'lodash.debounce';
 
 export type ExpanderProps = {
   title: string;
+  animate?: boolean;
   body: ReactNode;
   open?: boolean;
   icon?: JSX.Element;
@@ -28,6 +29,7 @@ const Expander: React.FC<ExpanderProps> = (
   const {
     title,
     body,
+    animate = true,
     icon: propIcon,
     open: propOpen = false,
     iconClassName,
@@ -104,14 +106,17 @@ const Expander: React.FC<ExpanderProps> = (
     <>
       <CSSTransition
         timeout={300}
-        in={open}
+        in={animate && open}
         classNames="expander"
         // must show the content in order to animate it
         onExiting={() => mainRef.current?.setAttribute('open', '')}
         onExited={() => mainRef.current?.removeAttribute('open')}
       >
         <Styled.Container
-          className={id.current}
+          className={classNames([
+            id.current,
+            { 'expander--instant': !animate },
+          ])}
           ref={container => (mainRef.current = container as HTMLDetailsElement)}
         >
           <style>{`

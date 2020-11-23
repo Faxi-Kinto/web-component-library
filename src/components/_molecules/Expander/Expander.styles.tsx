@@ -53,6 +53,12 @@ export const Container = styled.details<ExpanderStylingProps>`
     margin: 1rem 0 0;
   }
 
+  &:not(.expander--instant) {
+    .expander__icon {
+      transition: transform 300ms;
+    }
+  }
+
   .expander {
     &__content {
       display: flex;
@@ -62,7 +68,6 @@ export const Container = styled.details<ExpanderStylingProps>`
     &__icon {
       display: inline-block;
       margin-left: ${pxToRem('12px')};
-      transition: transform 300ms;
 
       &--open {
         transform: rotateZ(180deg);
