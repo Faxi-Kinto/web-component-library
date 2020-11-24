@@ -4,6 +4,7 @@ import {
   pxToRem,
   flexRow,
   marginChildren,
+  padding,
 } from '@faxi/web-css-utilities';
 
 type ButtonStylingProps = {
@@ -14,6 +15,7 @@ type ButtonStylingProps = {
 };
 
 export const Button = styled.button`
+  ${padding('15px', '45px')};
   border: none;
   cursor: pointer;
   font: inherit;
