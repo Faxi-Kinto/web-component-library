@@ -4,30 +4,14 @@ import {
   pxToRem,
   flexRow,
   marginChildren,
+  padding,
 } from '@faxi/web-css-utilities';
 
-type ButtonStylingProps = {
-  width?: string;
-  height?: string;
-  background?: string;
-  fontColor?: string;
-};
-
 export const Button = styled.button`
+  ${padding(pxToRem('15px'), pxToRem('50px'))};
   border: none;
   cursor: pointer;
   font: inherit;
-  ${(props: ButtonStylingProps) =>
-    `
-    ${size(
-      props.width ? props.width : 'fit-content',
-      props.height ? props.height : props.width ? props.width : 'fit-content'
-    )};
-  `};
-  background: ${(props: ButtonStylingProps) =>
-    props.background ? props.background : 'white'};
-  color: ${(props: ButtonStylingProps) =>
-    props.fontColor ? props.fontColor : 'black'};
 
   p {
     margin: 0;

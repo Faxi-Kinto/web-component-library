@@ -2,13 +2,10 @@
 
 exports[`Button renders correctly 1`] = `
 .c0 {
+  padding: 0.9375rem 3.125rem 0.9375rem 3.125rem;
   border: none;
   cursor: pointer;
   font: inherit;
-  width: 21.875rem;
-  height: 2.8125rem;
-  background: white;
-  color: black;
 }
 
 .c0 p {
@@ -67,9 +64,7 @@ exports[`Button renders correctly 1`] = `
 <button
   className="c0 button"
   disabled={false}
-  height="2.8125rem"
   type="button"
-  width="21.875rem"
 >
   Button
 </button>
