@@ -8,18 +8,12 @@ import classNames from 'classnames';
  * @returns {JSX}
  */
 
-export type ButtonType = 'submit' | 'reset' | 'button';
-
 export interface ButtonProps {
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   secondary?: boolean;
-  type?: ButtonType;
+  type?: 'submit' | 'reset' | 'button';
   className?: string;
-  width?: string;
-  height?: string;
-  background?: string;
-  fontColor?: string;
   disabled?: boolean;
 }
 
@@ -30,19 +24,11 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
     onClick,
     type,
     className,
-    width,
-    height,
-    background = 'white',
-    fontColor = 'black',
     disabled = false,
   } = props;
   return (
     <Styled.Button
-      width={width}
-      height={height}
       disabled={disabled}
-      background={background}
-      fontColor={fontColor}
       className={classNames([
         'button',
         { 'button--secondary': secondary },
