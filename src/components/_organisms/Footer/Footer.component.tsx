@@ -6,7 +6,7 @@ import { NavLink } from '../../_molecules/NavigationLinks/NavigationLinks.compon
 
 export type FooterProps = {
   logoSrc?: string;
-  copyrights?: string;
+  copyrights?: JSX.Element | JSX.Element[];
   className?: string;
   secondaryLinks?: NavLink[];
 };
