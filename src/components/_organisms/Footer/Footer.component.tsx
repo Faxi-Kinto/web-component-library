@@ -2,29 +2,7 @@ import React from 'react';
 import * as Styled from './Footer.styles';
 import NavigationLinks from '../../_molecules/NavigationLinks';
 import Image from '../../_atoms/Image';
-
-type Country = {
-  name: string;
-  code: string;
-  translation_key: string;
-  dial_code: string;
-};
-
-export type Platform = {
-  id: number;
-  name: string;
-  domain: string;
-  uri: string;
-  default_language: string;
-  default_country_code: string;
-  available_languages: string[];
-  countries: Country[];
-};
-
-export type NavLink = {
-  name: string;
-  route: string;
-};
+import { NavLink } from '../../_molecules/NavigationLinks/NavigationLinks.component';
 
 export type FooterProps = {
   logoSrc?: string;
@@ -49,15 +27,15 @@ const Footer: React.FC<FooterProps> = (props: FooterProps): JSX.Element => {
             className="footer__container__logo"
             src={logoSrc}
             alt="Footer logo"
-            width={'185px'}
-            height={'95px'}
+            width="185px"
+            height="95px"
           />
         )}
         <div className="footer__container__links-and-rights">
           <NavigationLinks
             links={secondaryLinks}
             color="white"
-            target={'_blank'}
+            target="_blank"
           />
           {/* <SocialLinks
             iconSize={pxToRem(`${windowWidth > 768 ? '19px' : '32px'}`)}

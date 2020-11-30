@@ -11,6 +11,7 @@ export const Footer = styled.footer`
   .footer {
     &__container {
       ${flexColumn('space-between')};
+
       ${phablet(css`
         ${flexColumn('initial', 'initial')};
         ${marginChildren(`0 0 ${pxToRem('40px')} 0`)};
@@ -18,10 +19,12 @@ export const Footer = styled.footer`
 
       &__logo {
         margin-bottom: ${pxToRem('45px')};
+
         ${laptop(css`
           width: ${pxToRem('150px')};
           height: ${pxToRem('75px')};
         `)};
+
         ${phablet(css`
           width: ${pxToRem('100px')};
           height: ${pxToRem('50px')};
@@ -36,6 +39,7 @@ export const Footer = styled.footer`
         ${laptop(css`
           font-size: ${pxToRem('16px')};
         `)};
+
         ${phablet(css`
           ${flexColumn('initial', 'flex-start')};
           font-size: ${pxToRem('14px')};
@@ -50,6 +54,7 @@ export const Footer = styled.footer`
         ${laptop(css`
           font-size: ${pxToRem('16px')};
         `)};
+
         ${phablet(css`
           text-align: center;
           width: 100%;
