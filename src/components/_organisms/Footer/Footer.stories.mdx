@@ -1,0 +1,42 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Footer from './';
+
+<Meta title="Core|Organisms/Footer" />
+
+# Footer Component
+
+## Implementation
+
+#### Default
+
+<Preview style={{ background: '#00708D' }}>
+  <Story name="default">
+      <div
+        style={{
+        backgroundColor: '#00708D',
+      }}
+    >
+      <Footer 
+        logoSrc = "assets/icons/LogoMobile.svg" 
+        copyrights="KINTO JOIN © 2020 All rights reserved to the KINTO GROUP" 
+        secondaryLinks={[
+          {
+            name: 'Privacy and Policy',
+            route: `/`,
+          },
+          {
+            name: 'Terms and Condition',
+            route: `/`,
+          },
+          {
+            name: 'Cookie Policy',
+            route: `/`,
+          }]}
+       />
+    </div>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Footer} />
