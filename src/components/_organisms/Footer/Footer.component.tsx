@@ -13,7 +13,7 @@ export type FooterProps = {
 
 const Footer: React.FC<FooterProps> = (props: FooterProps): JSX.Element => {
   const {
-    logoSrc,
+    logoSrc = 'assets/icons/kinto.svg',
     copyrights,
     className,
     secondaryLinks = [{ name: '', route: '' }],
@@ -22,15 +22,13 @@ const Footer: React.FC<FooterProps> = (props: FooterProps): JSX.Element => {
   return (
     <Styled.Footer className={className}>
       <div className="footer__container">
-        {logoSrc && (
-          <Image
-            className="footer__container__logo"
-            src={logoSrc}
-            alt="Footer logo"
-            width="185px"
-            height="95px"
-          />
-        )}
+        <Image
+          className="footer__container__logo"
+          src={logoSrc}
+          alt="Footer logo"
+          width="185px"
+          height="95px"
+        />
         <div className="footer__container__links-and-rights">
           <NavigationLinks
             links={secondaryLinks}

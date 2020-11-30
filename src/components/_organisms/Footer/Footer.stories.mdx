@@ -9,31 +9,25 @@ import Footer from './';
 
 #### Default
 
-<Preview style={{ background: '#00708D' }}>
+<Preview>
   <Story name="default">
-      <div
-        style={{
-        backgroundColor: '#00708D',
-      }}
-    >
-      <Footer 
-        logoSrc = "assets/icons/LogoMobile.svg" 
-        copyrights="KINTO JOIN © 2020 All rights reserved to the KINTO GROUP" 
-        secondaryLinks={[
-          {
-            name: 'Privacy and Policy',
-            route: `/`,
-          },
-          {
-            name: 'Terms and Condition',
-            route: `/`,
-          },
-          {
-            name: 'Cookie Policy',
-            route: `/`,
-          }]}
-       />
-    </div>
+    <Footer
+      copyrights="KINTO JOIN © 2020 All rights reserved to the KINTO GROUP"
+      secondaryLinks={[
+        {
+          name: 'Privacy and Policy',
+          route: `/`,
+        },
+        {
+          name: 'Terms and Condition',
+          route: `/`,
+        },
+        {
+          name: 'Cookie Policy',
+          route: `/`,
+        },
+      ]}
+    />
   </Story>
 </Preview>
 
