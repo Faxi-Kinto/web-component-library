@@ -209,7 +209,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           },
           className,
         ])}
-        // tabIndex={-1}
+        tabIndex={-1}
         onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
         backgroundColor={backgroundColor}
