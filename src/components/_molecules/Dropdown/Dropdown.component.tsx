@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   Fragment,
   useMemo,
+  useRef,
 } from 'react';
 import * as Styled from './Dropdown.styles';
 import classNames from 'classnames';
@@ -96,19 +97,34 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
     [currentSelected, propSelected]
   );
 
+  const rootContainerRef: any = useRef(null);
+
   useEffect(() => {
-    if (optionsRef && containerRef) {
+    if (optionsRef && containerRef && rootContainerRef) {
+      const parentElement: HTMLElement = rootContainerRef.current
+        ?.parentNode as HTMLElement;
+      const parentBottom: number = parentElement?.getBoundingClientRect()
+        ?.bottom;
+
+      const parentHeight: number = parentElement?.getBoundingClientRect()
+        ?.height;
+
       if (
         containerRef.getBoundingClientRect()?.bottom! +
           optionsRef?.getBoundingClientRect()?.height >
-        window.innerHeight!
+          window.innerHeight! ||
+        // In case that parent is scrollable, dropdown will not increase parent's height instead it will open upwards
+        (containerRef.getBoundingClientRect()?.bottom! +
+          optionsRef?.getBoundingClientRect()?.height >
+          parentBottom &&
+          optionsRef?.getBoundingClientRect()?.height < parentHeight)
       ) {
         setUpwards(true);
       } else {
         setUpwards(false);
       }
     }
-  }, [containerRef, optionsRef]);
+  }, [containerRef, optionsRef, rootContainerRef]);
 
   const renderOptions = () => {
     if (isOpen) {
@@ -167,7 +183,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
   };
 
   return (
-    <div className={containerClassName}>
+    <div className={containerClassName} ref={rootContainerRef}>
       {label && <Label className={labelClassName}>{label}</Label>}
       <Styled.Container
         ref={reference => {
@@ -193,7 +209,7 @@ const Dropdown = <T,>(props: DropdownProps<T>): JSX.Element => {
           },
           className,
         ])}
-        tabIndex={-1}
+        // tabIndex={-1}
         onBlur={() => setIsOpen(false)}
         borderColor={borderColor}
         backgroundColor={backgroundColor}
