@@ -15,6 +15,7 @@ export interface ButtonProps {
   type?: 'submit' | 'reset' | 'button';
   className?: string;
   disabled?: boolean;
+  id?: string;
 }
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
@@ -25,6 +26,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
     type,
     className,
     disabled = false,
+    id,
   } = props;
   return (
     <Styled.Button
@@ -37,6 +39,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
       ])}
       onClick={onClick}
       type={type}
+      id={id}
     >
       {children}
     </Styled.Button>
