@@ -112,6 +112,7 @@ const TagsInput: React.FC<TagsInputProps> = (
       const { key } = ev;
 
       if (key === 'Enter' || (spaceSeparates && key === ' ')) {
+        ev.stopPropagation();
         const trimmedVal = inputValue.trim();
         if (trimmedVal) addTag(trimmedVal);
       }
