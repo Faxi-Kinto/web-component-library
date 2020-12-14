@@ -1,0 +1,54 @@
+import TagsInput from './';
+import { action } from '@storybook/addon-actions';
+
+<Meta title="Core|Molecules/TagsInput" />
+
+# TagsInput Component
+
+## Implementation
+
+### Primary
+
+<Preview>
+  <Story name="primary">
+    <TagsInput label="Email" onChange={action('tags-change')} />
+  </Story>
+</Preview>
+
+### Prefilled
+
+<Preview>
+  <Story name="prefilled">
+    <TagsInput
+      label="Email"
+      initialTags={['some@email.com', 'test']}
+    />
+  </Story>
+</Preview>
+
+### With validation
+
+<Preview>
+  <Story name="with validation">
+    <TagsInput
+      label="Email"
+      validateTag={tag => (tag.includes('@') ? '' : 'Invalid email')}
+    />
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={TagsInput} />
+
+### Prefilled with validaiton
+
+<Preview>
+  <Story name="prefilled with validation">
+    <TagsInput
+      label="Email"
+      initialTags={['some@email.com', 'test']}
+      validateTag={tag => (tag.includes('@') ? '' : 'Invalid email')}
+    />
+  </Story>
+</Preview>
