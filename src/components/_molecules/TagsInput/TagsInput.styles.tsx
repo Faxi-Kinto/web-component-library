@@ -53,6 +53,7 @@ export const Container = styled.div`
       input {
         ${size('140px', '25px')};
 
+        font: inherit;
         color: #95a1a6;
         border: none;
 
@@ -121,8 +122,7 @@ export const Container = styled.div`
     }
 
     &__placeholder {
-      ${positionAbsolute('5px')};
-
+      position: absolute;
       color: #95a1a6;
       opacity: 0.5;
     }

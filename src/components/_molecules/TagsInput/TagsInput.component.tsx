@@ -51,6 +51,7 @@ const createTagsFromStrings = (
 
 type TagsInputProps = {
   placeholder: string;
+  className?: string;
   label?: string;
   initialTags?: string[];
   spaceSeparates?: boolean;
@@ -63,6 +64,7 @@ const TagsInput: React.FC<TagsInputProps> = (
 ): JSX.Element => {
   const {
     initialTags,
+    className,
     label,
     spaceSeparates = true,
     placeholder = 'Add email',
@@ -136,7 +138,7 @@ const TagsInput: React.FC<TagsInputProps> = (
   );
 
   return (
-    <Styled.Container>
+    <Styled.Container className={className}>
       {label && (
         <Label
           className={classNames({ 'tags-label--error': !!tagError })}

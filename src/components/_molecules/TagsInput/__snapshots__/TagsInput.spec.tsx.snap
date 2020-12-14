@@ -54,6 +54,7 @@ exports[`TagInput renders correctly 1`] = `
 .c0 .tags-input__wrapper input {
   width: 140px;
   height: 25px;
+  font: inherit;
   color: #95a1a6;
   border: none;
 }
@@ -147,7 +148,6 @@ exports[`TagInput renders correctly 1`] = `
 
 .c0 .tags-input__placeholder {
   position: absolute;
-  top: 5px;
   color: #95a1a6;
   opacity: 0.5;
 }
