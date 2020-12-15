@@ -9,6 +9,7 @@ exports[`TagInput renders correctly 1`] = `
 }
 
 .c0 label {
+  display: block;
   margin-bottom: 1.5rem;
 }
 

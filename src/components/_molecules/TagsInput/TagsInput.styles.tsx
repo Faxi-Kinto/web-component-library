@@ -16,6 +16,7 @@ export const Container = styled.div`
   }
 
   label {
+    display: block;
     margin-bottom: ${pxToRem('24px')};
   }
 
