@@ -1,8 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import * as Styled from './TagsInput.styles';
-import { Label } from '../../_atoms/Label/Label.styles';
-import useEffectSkipFirst from '../../../hooks/useEffectSkipFirst';
 
 type ValidateFn = (value: string) => React.ReactNode | undefined;
 
@@ -13,8 +11,10 @@ type Tag = {
 
 type TagsState = Record<string, Tag>;
 
-const removeInvalidTags = (tags: string[] = []) =>
-  Array.from(new Set(tags.filter(Boolean)));
+const removeInvalidTags = (tags: string | string[] = []) => {
+  const refinedTags = typeof tags === 'string' ? tags.split(',') : tags;
+  return Array.from(new Set(refinedTags.filter(Boolean)));
+};
 
 const createKeyForTag = (tag: string) => {
   const milisecSum = Array.from(Date.now().toString()).reduce(
@@ -82,30 +82,49 @@ const TagsInput: React.FC<TagsInputProps> = (
 
   const addTag = useCallback(
     (value: string) => {
-      setTags(old =>
-        Object.values(old)
-          .map(({ value: v }) => v)
-          .includes(value)
-          ? old
-          : { ...old, ...createTagsFromStrings([value], validateTag) }
-      );
+      setTags(old => {
+        if (
+          Object.values(old)
+            .map(({ value: v }) => v)
+            .includes(value)
+        )
+          return old;
+        else {
+          const newTags = {
+            ...old,
+            ...createTagsFromStrings([value], validateTag),
+          };
+          requestAnimationFrame(() =>
+            onChange?.(Object.values(newTags).map(tag => tag.value))
+          );
+
+          return newTags;
+        }
+      });
       setInputValue('');
     },
-    [validateTag]
+    [validateTag, onChange]
   );
 
-  const removeTag = useCallback((key?: string) => {
-    setTags(old => {
-      const newTags = { ...old };
-      if (key) {
-        delete newTags[key];
+  const removeTag = useCallback(
+    (key?: string) => {
+      setTags(old => {
+        const newTags = { ...old };
+        if (key) {
+          delete newTags[key];
+          onChange?.(Object.values(newTags).map(tag => tag.value));
+          return newTags;
+        }
+        const tagKeys = Object.keys(old);
+        delete newTags[tagKeys[tagKeys.length - 1]];
+        requestAnimationFrame(() =>
+          onChange?.(Object.values(newTags).map(tag => tag.value))
+        );
         return newTags;
-      }
-      const tagKeys = Object.keys(old);
-      delete newTags[tagKeys[tagKeys.length - 1]];
-      return newTags;
-    });
-  }, []);
+      });
+    },
+    [onChange]
+  );
 
   const onKeyDown = useCallback(
     (ev: React.KeyboardEvent) => {
@@ -128,11 +147,6 @@ const TagsInput: React.FC<TagsInputProps> = (
     [addTag, removeTag, inputValue, spaceSeparates]
   );
 
-  useEffectSkipFirst(
-    () => onChange?.(Object.values(tags).map(({ value }) => value)),
-    [onChange, tags]
-  );
-
   const tagError = useMemo(
     () => Object.entries(tags).find(entry => Boolean(entry[1].error)),
     [tags]
@@ -141,12 +155,12 @@ const TagsInput: React.FC<TagsInputProps> = (
   return (
     <Styled.Container className={className}>
       {label && (
-        <Label
+        <label
           className={classNames({ 'tags-label--error': !!tagError })}
           onClick={() => inputRef.current?.focus()}
         >
           {label}
-        </Label>
+        </label>
       )}
       {tagError && <div className="tags-error">{tagError?.[1].error}</div>}
       <div className="tags-input" onClick={() => inputRef.current?.focus()}>
