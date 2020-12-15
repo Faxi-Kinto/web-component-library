@@ -131,7 +131,7 @@ const TagsInput: React.FC<TagsInputProps> = (
       const { key } = ev;
 
       if (key === 'Enter' || (spaceSeparates && key === ' ')) {
-        ev.stopPropagation();
+        ev.preventDefault();
         const trimmedVal = inputValue.trim();
         if (trimmedVal) addTag(trimmedVal);
       }
@@ -174,7 +174,7 @@ const TagsInput: React.FC<TagsInputProps> = (
               key={key}
             >
               <span>{value}</span>
-              <button onClick={() => removeTag(key)}>
+              <button type="button" onClick={() => removeTag(key)}>
                 <i className="close" />
               </button>
             </div>
