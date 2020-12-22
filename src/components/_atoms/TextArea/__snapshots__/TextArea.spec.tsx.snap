@@ -15,7 +15,7 @@ exports[`TextArea renders correctly 1`] = `
 
 .c0 > textarea {
   width: 100%;
-  height: 2.8125rem;
+  min-height: 2.8125rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
   outline: none;
   font-family: inherit;
@@ -23,6 +23,14 @@ exports[`TextArea renders correctly 1`] = `
 
 .c0 > textarea.textarea--noresize {
   resize: none;
+}
+
+.c0 > textarea.textarea--horizontal-resize {
+  resize: horizontal;
+}
+
+.c0 > textarea.textarea--vertical-resize {
+  resize: vertical;
 }
 
 .c0 > textarea.textarea--error {
