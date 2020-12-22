@@ -7,7 +7,7 @@ export const TextAreaStyled = styled.div`
 
   > textarea {
     width: 100%;
-    height: ${pxToRem('45px')};
+    min-height: ${pxToRem('45px')};
     ${padding(pxToRem('8px'), pxToRem('16px'))};
     outline: none;
     font-family: inherit;
@@ -15,6 +15,14 @@ export const TextAreaStyled = styled.div`
     &.textarea {
       &--noresize {
         resize: none;
+      }
+
+      &--horizontal-resize {
+        resize: horizontal;
+      }
+
+      &--vertical-resize {
+        resize: vertical;
       }
 
       &--error {
