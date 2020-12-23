@@ -63,6 +63,9 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     onClickHeading,
   } = props;
 
+  const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [upwards, setUpwards] = useState(false);
 
@@ -119,12 +122,14 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         isOpen &&
         event.target &&
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        optionsRef &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        !optionsRef.contains(event.target as Node)
       ) {
         setIsOpen(false);
       }
     },
-    [isOpen]
+    [isOpen, optionsRef]
   );
 
   useEffect(() => {
@@ -133,9 +138,6 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
   }, [handleClickOutside]);
-
-  const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (type === 'select' && optionsRef && dropdownRef && dropdownRef.current) {
