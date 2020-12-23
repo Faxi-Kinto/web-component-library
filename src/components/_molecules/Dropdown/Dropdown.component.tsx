@@ -179,10 +179,13 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           type === 'select'
             ? {
                 top: !upwards
-                  ? `${pxToRem(dropdownTop + dropdownHeight - 1 + 'px')}`
+                  ? `${pxToRem(
+                      dropdownTop + dropdownHeight + window.scrollY - 1 + 'px'
+                    )}`
                   : optionsRef
                   ? `${pxToRem(
                       dropdownTop +
+                        window.scrollY +
                         1 -
                         optionsRef.getBoundingClientRect().height +
                         'px'
