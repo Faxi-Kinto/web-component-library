@@ -53,7 +53,10 @@ export { TextAreaProps } from './components/_atoms/TextArea/TextArea.component';
 /*
  * Types
  */
-export { DropdownOption } from './components/_molecules/Dropdown/Dropdown.component';
+export {
+  IDropdown,
+  IDropdownOption,
+} from './components/_molecules/Dropdown/Dropdown.component';
 export { ErrorItems } from './components/_organisms/Error/Error.component';
 export { ErrorType } from './components/_organisms/Error/Error.component';
 export { NavLink } from './components/_molecules/NavigationLinks/NavigationLinks.component';
