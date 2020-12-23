@@ -25,6 +25,7 @@ export type IDropdown = {
 
 export type DropdownProps = FieldProps<IDropdownOption, DropdownOnChange> & {
   options: IDropdownOption[];
+  className?: string;
   placeholder?: string;
   disabled?: boolean;
   type: 'select' | 'expander';
@@ -44,6 +45,7 @@ const emptyOption: IDropdownOption = {
 
 const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const {
+    className,
     description,
     error,
     errorState,
@@ -236,6 +238,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           'wcl-dropdown',
           { 'wcl-dropdown--select': type === 'select' },
           { 'wcl-dropdown--expander': type === 'expander' },
+          className,
         ])}
       >
         <div
