@@ -19,7 +19,10 @@ export type TextAreaProps = {
   autoFocus?: boolean;
   className?: string;
   noresize?: boolean;
+  verticalResize?: boolean;
+  horizontalResize?: boolean;
   maxLength?: number;
+  rows?: number;
 };
 
 const TextArea: React.FC<TextAreaProps> = (
@@ -35,7 +38,10 @@ const TextArea: React.FC<TextAreaProps> = (
     autoFocus,
     className,
     noresize = false,
+    verticalResize = false,
+    horizontalResize = false,
     maxLength,
+    rows,
     ...rest
   } = props;
   const [inputValue, setTextAreaValue] = useState<string>('');
@@ -75,6 +81,8 @@ const TextArea: React.FC<TextAreaProps> = (
           'textarea',
           { 'textarea--error': error },
           { 'textarea--noresize': noresize },
+          { 'textarea--horizontal-resize': horizontalResize },
+          { 'textarea--vertical-resize': verticalResize },
           className,
         ])}
         value={value || inputValue}
@@ -82,6 +90,7 @@ const TextArea: React.FC<TextAreaProps> = (
         autoFocus={autoFocus}
         onChange={handleOnChange}
         maxLength={maxLength}
+        rows={rows}
       />
     </Styled.TextAreaStyled>
   );

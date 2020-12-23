@@ -2,6 +2,14 @@
 
 exports[`Dropdown renders correctly 1`] = `
 .c0 {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0 .wcl-dropdown__heading {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -17,149 +25,36 @@ exports[`Dropdown renders correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 2.8125rem;
-  position: relative;
-  min-width: 15.625rem;
-  border: 0.0625rem solid black;
-  background: white;
-  padding: 0.625rem 1.875rem;
-  cursor: pointer;
-  font-size: 1.125rem;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
 }
 
-.c0:focus {
-  outline: 0;
-}
-
-.c0 .dropdown-container__placeholder {
-  color: black;
-  padding-right: 0.75rem;
-}
-
-.c0 .dropdown-container__selected-main {
-  padding-right: 0.75rem;
-}
-
-.c0 .dropdown-container__options {
-  z-index: 1;
+.c0 .wcl-dropdown__options--select {
   position: absolute;
-  top: 2.75rem;
-  right: 0;
-  border: 0.0625rem solid black;
-  border-top: none;
-  background: white;
   width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: initial;
-  -webkit-justify-content: initial;
-  -ms-flex-pack: initial;
-  justify-content: initial;
-  -webkit-align-items: initial;
-  -webkit-box-align: initial;
-  -ms-flex-align: initial;
-  align-items: initial;
 }
 
-.c0 .dropdown-container__options--upwards {
-  position: absolute;
-  top: inherit;
-  right: 0;
-  bottom: 2.75rem;
-  left: 0;
-  border-top: 0.0625rem solid black;
-  border-bottom: none;
+.c0 .wcl-dropdown__options__option {
+  padding: 1.5rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
 }
 
-.c0 .dropdown-container__options--overflow-auto {
-  height: 17.625rem;
-  overflow-y: auto;
-  overflow-x: hidden;
+.c0.wcl-dropdown--select {
+  position: relative;
 }
 
-.c0 .dropdown-container__options__option {
-  border-bottom: 0.0625rem solid gray;
-  cursor: pointer;
-  padding: 0.625rem 1.875rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  word-break: break-all;
-}
-
-.c0 .dropdown-container__options__option:last-of-type {
-  border-bottom: none;
-}
-
-.c0 .dropdown-container__options__option:hover {
-  background: gray;
-}
-
-.c0 .dropdown-container__options__option--selected {
-  border: 0.0625rem solid black;
-  margin: -0.0625rem -0.0625rem 0;
-  background: lightgray;
-}
-
-.c0 .dropdown-container__options__option--selected:hover {
-  background: gray;
-}
-
-.c0.dropdown-container--open {
-  border: 0.0625rem solid gray;
-}
-
-.c0.dropdown-container--open .dropdown-container__arrow {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-.c0.dropdown-container--error {
-  border: 0.0625rem solid gray;
-}
-
-.c0.dropdown-container--icon-mode {
-  border: none;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c0.dropdown-container--icon-mode .dropdown-container__options > div:first-child {
-  border-top: 0.0625rem solid gray;
-}
-
-.c0.dropdown-container--unset-min-width {
-  min-width: unset;
-}
-
-<div>
+<div
+  className="c0 wcl-dropdown wcl-dropdown--select"
+>
   <div
-    className="c0 dropdown-container dropdown-container--close"
-    onBlur={[Function]}
+    className="wcl-dropdown__heading"
     onClick={[Function]}
-    tabIndex={-1}
   >
     <div
-      className="dropdown-container__placeholder"
+      className="wcl-dropdown__heading__label"
     >
       Placeholder
     </div>
