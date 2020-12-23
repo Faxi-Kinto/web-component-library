@@ -1,13 +1,14 @@
 import React, {
+  Fragment,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
-import * as Styled from './Dropdown.styles';
 import { pxToRem } from '@faxi/web-css-utilities';
 import classNames from 'classnames';
+import ReactDOM from 'react-dom';
 import { FieldProps } from '../FieldProps';
 
 export type IDropdownOption = {
@@ -27,6 +28,8 @@ export type DropdownProps = FieldProps<IDropdownOption, DropdownOnChange> & {
   placeholder?: string;
   disabled?: boolean;
   type: 'select' | 'expander';
+  description?: string;
+  errorState?: boolean;
   iconJsx?: JSX.Element;
   noOptionsProvidedLabel?: string;
   iconOpenName?: string;
@@ -41,6 +44,9 @@ const emptyOption: IDropdownOption = {
 
 const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const {
+    description,
+    error,
+    errorState,
     options,
     placeholder,
     value,
@@ -52,8 +58,9 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     onChange,
     onClickHeading,
   } = props;
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [stateValue, setStateValue] = useState<IDropdownOption>();
+  const [upwards, setUpwards] = useState(false);
 
   useEffect(() => {
     if (noOptionsProvidedLabel) {
@@ -65,23 +72,16 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     return options.find(option => option === value);
   }, [options, value]);
 
+  const [stateValue, setStateValue] = useState(preSelectedValue);
+
   const actualValue = useMemo(() => {
     return (
-      preSelectedValue ||
       stateValue ||
+      preSelectedValue ||
       (!placeholder && options[0]) ||
       emptyOption
     );
   }, [options, placeholder, preSelectedValue, stateValue]);
-
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (stateValue && onChange && actualValue) {
-      onChange(actualValue);
-      setIsOpen(false);
-    }
-  }, [actualValue, onChange, stateValue]);
 
   // ESCAPE BUTTON
   const onKeyUpEsc = useCallback(
@@ -99,6 +99,15 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       window.removeEventListener('keyup', onKeyUpEsc);
     };
   }, [onKeyUpEsc]);
+
+  const onChangeCallback = useCallback(
+    (option: IDropdownOption) => {
+      setStateValue(option);
+      onChange?.(option);
+      setIsOpen(false);
+    },
+    [onChange]
+  );
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
@@ -121,60 +130,147 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     };
   }, [handleClickOutside]);
 
-  return (
-    <Styled.Dropdown
-      ref={dropdownRef}
-      className={classNames([
-        'wcl-dropdown',
-        { 'wcl-dropdown--select': type === 'select' },
-        { 'wcl-dropdown--expander': type === 'expander' },
-      ])}
-    >
+  const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (optionsRef && dropdownRef && dropdownRef.current) {
+      if (
+        optionsRef.getBoundingClientRect().height +
+          dropdownRef.current.getBoundingClientRect().bottom >
+        window.innerHeight
+      ) {
+        setUpwards(true);
+      } else {
+        setUpwards(false);
+      }
+    }
+  }, [optionsRef]);
+
+  const renderOptions = (): JSX.Element => {
+    let dropdownTop = 0;
+    let dropdownLeft = 0;
+    let dropdownWidth = 0;
+    let dropdownHeight = 0;
+    if (dropdownRef.current) {
+      const {
+        top,
+        left,
+        width,
+        height,
+      } = dropdownRef.current?.getBoundingClientRect();
+      dropdownTop = top;
+      dropdownLeft = left;
+      dropdownWidth = width;
+      dropdownHeight = height;
+    }
+    return (
       <div
-        className="wcl-dropdown__heading"
-        onClick={ev => {
-          onClickHeading && onClickHeading(ev);
-          setIsOpen(!isOpen);
+        className={classNames([
+          'wcl-dropdown__options',
+          {
+            'wcl-dropdown__options--select': type === 'select',
+          },
+          {
+            'wcl-dropdown__options--upwards': upwards,
+          },
+        ])}
+        style={
+          type === 'select'
+            ? {
+                top: !upwards
+                  ? `${pxToRem(dropdownTop + dropdownHeight - 1 + 'px')}`
+                  : optionsRef
+                  ? `${pxToRem(
+                      dropdownTop +
+                        1 -
+                        optionsRef.getBoundingClientRect().height +
+                        'px'
+                    )}`
+                  : 'initial',
+                left: `${pxToRem(dropdownLeft + 'px')}`,
+                width: `${pxToRem(dropdownWidth + 'px')}`,
+              }
+            : {}
+        }
+        ref={reference => {
+          if (reference) {
+            setOptionsRef(reference);
+          }
         }}
       >
-        <div className="wcl-dropdown__heading__label">
-          {placeholder || actualValue.label}
-        </div>
-        {iconJsx &&
-          React.cloneElement(iconJsx, {
-            className: 'wcl-dropdown__heading__icon',
-            name: isOpen ? iconOpenName : iconClosedName,
-            size: pxToRem('20px'),
-          })}
-      </div>
-      {isOpen && (
-        <div
-          className={classNames([
-            'wcl-dropdown__options',
-            {
-              'wcl-dropdown__options--select': type === 'select',
-            },
-          ])}
-        >
-          {options.map((option, index) => {
-            return (
-              <div
-                key={index}
-                className={classNames(['wcl-dropdown__options__option'], {
+        {options.map((option, index) => {
+          return (
+            <div
+              key={index}
+              className={classNames(
+                ['wcl-dropdown__options__option'],
+                {
                   'wcl-dropdown__options__option--selected':
                     option.value === actualValue.value,
-                })}
-                onClick={() => {
-                  setStateValue(option);
-                }}
-              >
-                {option.label}
-              </div>
-            );
-          })}
+                },
+                {
+                  'wcl-dropdown__options__option--select': type === 'select',
+                }
+              )}
+              onClick={() => {
+                onChangeCallback(option);
+              }}
+            >
+              {option.label}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  return (
+    <Fragment>
+      <div
+        ref={dropdownRef}
+        className={classNames([
+          'wcl-dropdown',
+          { 'wcl-dropdown--select': type === 'select' },
+          { 'wcl-dropdown--expander': type === 'expander' },
+        ])}
+      >
+        <div
+          className={classNames([
+            'wcl-dropdown__heading',
+            {
+              'wcl-dropdown__heading--select': type === 'select',
+            },
+            {
+              'wcl-dropdown__heading--is-open': isOpen,
+            },
+            {
+              'wcl-dropdown__heading--upwards': upwards,
+            },
+          ])}
+          onClick={ev => {
+            onClickHeading && onClickHeading(ev);
+            setIsOpen(!isOpen);
+          }}
+        >
+          <div className="wcl-dropdown__heading__label">
+            {placeholder || actualValue.label}
+          </div>
+          {iconJsx &&
+            React.cloneElement(iconJsx, {
+              className: 'wcl-dropdown__heading__icon',
+              name: isOpen ? iconOpenName : iconClosedName,
+              size: pxToRem('20px'),
+            })}
         </div>
-      )}
-    </Styled.Dropdown>
+        {isOpen &&
+          (type === 'expander'
+            ? renderOptions()
+            : ReactDOM.createPortal(renderOptions(), document.body))}
+      </div>
+      {description && <div>{description}</div>}
+      {errorState && <div>{error}</div>}
+    </Fragment>
   );
 };
 

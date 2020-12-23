@@ -16,7 +16,7 @@ import Dropdown from './';
       type="select"
       options={[
         {
-          label: 'Show all members',
+          label: 'Option 1',
           value: 'o1',
         },
         { label: 'option2option2option2option2option2', value: 'o2' },
@@ -46,30 +46,21 @@ import Dropdown from './';
 #### Icon mode, with label
 
 <Preview>
-  <Story name="icon mode and label">
+  <Story name="expander">
     <Dropdown
-      type="select"
+      type="expander"
       options={[
         {
           label: 'Option 1',
           value: 'o1',
-          icon: (
-            <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
-          ),
         },
         {
           label: 'Option 2',
           value: 'o2',
-          icon: (
-            <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
-          ),
         },
         {
           label: 'Option 3',
           value: 'op3',
-          icon: (
-            <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
-          ),
         },
       ]}
       label="Icon mode here"

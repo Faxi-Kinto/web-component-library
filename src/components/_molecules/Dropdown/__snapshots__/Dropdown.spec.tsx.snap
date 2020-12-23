@@ -1,56 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown renders correctly 1`] = `
-.c0 {
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c0 .wcl-dropdown__heading {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 1rem 1.5rem;
-}
-
-.c0 .wcl-dropdown__options--select {
-  position: absolute;
-  width: 100%;
-}
-
-.c0 .wcl-dropdown__options__option {
-  padding: 1.5rem;
-  font-weight: 500;
-  position: relative;
-  overflow: hidden;
-}
-
-.c0.wcl-dropdown--select {
-  position: relative;
-}
-
 <div
-  className="c0 wcl-dropdown wcl-dropdown--select"
+  className="wcl-dropdown wcl-dropdown--select"
 >
   <div
-    className="wcl-dropdown__heading"
+    className="wcl-dropdown__heading wcl-dropdown__heading--select"
     onClick={[Function]}
   >
     <div

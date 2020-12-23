@@ -1,3 +1,4 @@
+import { flexRow, pxToRem } from '@faxi/web-css-utilities';
 import { createGlobalStyle } from 'styled-components';
 
 /*
@@ -62,7 +63,69 @@ export { ErrorType } from './components/_organisms/Error/Error.component';
 export { NavLink } from './components/_molecules/NavigationLinks/NavigationLinks.component';
 
 export const GlobalStyle = createGlobalStyle`
-    @import url('./styles.css');
+  @import url('./styles.css');
+
+  .wcl-dropdown {
+    cursor: pointer;
+    user-select: none;
+
+    &--select {
+      position: relative;
+    }
+
+    &__heading {
+      ${flexRow('space-between', 'center')};
+      font-weight: bold;
+      font-size: ${pxToRem('16px')};
+      padding: ${pxToRem('16px')} ${pxToRem('24px')};
+
+      &--select {
+        padding: ${pxToRem('10px')} ${pxToRem('24px')};
+      }
+
+      &--is-open {
+
+        &.wcl-dropdown__heading--upwards {
+        }
+      }
+
+      &__icon {
+      }
+    }
+
+    &__options {
+
+      &--select {
+        position: absolute;
+        width: 100%;
+        border-top: none;
+        z-index: 9999; 
+        max-height: ${pxToRem('300px')};
+        overflow: auto;
+      }
+
+      &--upwards {
+        border-bottom: none;
+      }
+
+      &__option {
+        padding: ${pxToRem('24px')};
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+
+        &--selected {
+
+          &.wcl-dropdown__options__option--select {
+          }
+        }
+
+        &--select {
+          padding: ${pxToRem('10px')} ${pxToRem('24px')};
+        }
+      }
+    }
+  }
 `;
 
 export * from './components/Icon';
