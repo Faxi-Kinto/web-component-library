@@ -11,16 +11,19 @@ import Dropdown from './';
 
 <Preview>
   <Story name="default">
+    <div style={{display: 'flex'}}>
     <Dropdown
-      optionList={[
+      type="select"
+      options={[
         {
-          text: 'Show all members',
+          label: 'Show all members',
           value: 'o1',
         },
-        { text: 'option2option2option2option2option2', value: 'o2' },
-        { text: 'option3', value: 'op3' },
+        { label: 'option2option2option2option2option2', value: 'o2' },
+        { label: 'option3', value: 'op3' },
       ]}
     />
+    </div>
   </Story>
 </Preview>
 
@@ -29,10 +32,11 @@ import Dropdown from './';
 <Preview>
   <Story name="placeholder">
     <Dropdown
-      optionList={[
-        { text: 'Show all members', value: 'o1' },
-        { text: 'option2option2option2option2option2', value: 'o2' },
-        { text: 'option3', value: 'op3' },
+      type="select"
+      options={[
+        { label: 'Show all members', value: 'o1' },
+        { label: 'option2option2option2option2option2', value: 'o2' },
+        { label: 'option3', value: 'op3' },
       ]}
       placeholder="Placeholder"
     />
@@ -44,23 +48,24 @@ import Dropdown from './';
 <Preview>
   <Story name="icon mode and label">
     <Dropdown
-      optionList={[
+      type="select"
+      options={[
         {
-          text: 'Option 1',
+          label: 'Option 1',
           value: 'o1',
           icon: (
             <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
           ),
         },
         {
-          text: 'Option 2',
+          label: 'Option 2',
           value: 'o2',
           icon: (
             <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
           ),
         },
         {
-          text: 'Option 3',
+          label: 'Option 3',
           value: 'op3',
           icon: (
             <img style={{ width: '30px' }} src="assets/icons/checkmark.svg" />
