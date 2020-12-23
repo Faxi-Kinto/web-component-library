@@ -138,7 +138,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (optionsRef && dropdownRef && dropdownRef.current) {
+    if (type === 'select' && optionsRef && dropdownRef && dropdownRef.current) {
       if (
         optionsRef.getBoundingClientRect().height +
           dropdownRef.current.getBoundingClientRect().bottom >
@@ -149,7 +149,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         setUpwards(false);
       }
     }
-  }, [optionsRef]);
+  }, [optionsRef, type]);
 
   const renderOptions = (): JSX.Element => {
     let dropdownTop = 0;
