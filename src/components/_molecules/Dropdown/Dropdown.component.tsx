@@ -35,7 +35,9 @@ export type DropdownProps = FieldProps<IDropdownOption, DropdownOnChange> & {
   noOptionsProvidedLabel?: string;
   iconOpenName?: string;
   iconClosedName?: string;
-  onClickHeading?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {};
+  onClickHeading?: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
 };
 
 const emptyOption: IDropdownOption = {
