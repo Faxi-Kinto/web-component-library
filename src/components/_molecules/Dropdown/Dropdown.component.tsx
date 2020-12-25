@@ -35,6 +35,8 @@ export type DropdownProps = FieldProps<IDropdownOption, DropdownOnChange> & {
   noOptionsProvidedLabel?: string;
   iconOpenName?: string;
   iconClosedName?: string;
+  iconSize?: string;
+  iconClassName?: string;
   onClickHeading?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => void;
@@ -59,6 +61,8 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     noOptionsProvidedLabel,
     iconOpenName,
     iconClosedName,
+    iconSize,
+    iconClassName,
     onChange,
     onClickHeading,
   } = props;
@@ -268,9 +272,12 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           </div>
           {iconJsx &&
             React.cloneElement(iconJsx, {
-              className: 'wcl-dropdown__heading__icon',
+              className: classNames(
+                'wcl-dropdown__heading__icon',
+                iconClassName
+              ),
               name: isOpen ? iconOpenName : iconClosedName,
-              size: pxToRem('20px'),
+              size: iconSize || pxToRem('20px'),
             })}
         </div>
         {isOpen &&
