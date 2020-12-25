@@ -164,6 +164,7 @@ exports[`TagInput renders correctly 1`] = `
       className="tags-input__wrapper"
     >
       <input
+        onBlur={[Function]}
         onChange={[Function]}
         onKeyDown={[Function]}
         value=""
