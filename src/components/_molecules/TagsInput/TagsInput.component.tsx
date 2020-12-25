@@ -183,6 +183,7 @@ const TagsInput: React.FC<TagsInputProps> = (
             ref={inputRef}
             value={inputValue}
             onChange={ev => setInputValue(ev.target.value)}
+            onBlur={ev => addTag(ev.target.value.trim())}
             onKeyDown={onKeyDown}
           />
 
