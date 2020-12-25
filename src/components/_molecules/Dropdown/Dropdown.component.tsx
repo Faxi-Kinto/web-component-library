@@ -9,7 +9,6 @@ import React, {
 import { pxToRem } from '@faxi/web-css-utilities';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
-import { FieldProps } from '../FieldProps';
 
 export type IDropdownOption = {
   label: string;
@@ -23,19 +22,19 @@ export type IDropdown = {
   onChange: DropdownOnChange;
 };
 
-export type DropdownProps = FieldProps<IDropdownOption, DropdownOnChange> & {
+export type DropdownProps = {
   options: IDropdownOption[];
-  className?: string;
-  placeholder?: string;
-  disabled?: boolean;
   type: 'select' | 'expander';
-  description?: string;
-  errorState?: boolean;
+  className?: string;
+  disabled?: boolean;
+  iconClassName?: string;
   iconJsx?: JSX.Element;
-  noOptionsProvidedLabel?: string;
   iconName?: string;
   iconSize?: string;
-  iconClassName?: string;
+  noOptionsProvidedLabel?: string;
+  placeholder?: string;
+  value?: IDropdownOption;
+  onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => void;
@@ -48,19 +47,16 @@ const emptyOption: IDropdownOption = {
 
 const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const {
-    className,
-    description,
-    error,
-    errorState,
     options,
-    placeholder,
-    value,
     type,
+    className,
+    iconClassName,
     iconJsx,
-    noOptionsProvidedLabel,
     iconName,
     iconSize,
-    iconClassName,
+    noOptionsProvidedLabel,
+    placeholder,
+    value,
     onChange,
     onClickHeading,
   } = props;
@@ -285,8 +281,6 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
             ? renderOptions()
             : ReactDOM.createPortal(renderOptions(), document.body))}
       </div>
-      {description && <div>{description}</div>}
-      {errorState && <div>{error}</div>}
     </Fragment>
   );
 };
