@@ -85,13 +85,10 @@ export const GlobalStyle = createGlobalStyle`
         padding: ${pxToRem('10px')} ${pxToRem('24px')};
       }
 
-      &--is-open {
-
-        &.wcl-dropdown__heading--upwards {
-        }
-      }
-
       &__icon {
+        &--open {
+          transform: rotate(180deg);
+        }
       }
     }
 
@@ -115,12 +112,6 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 500;
         position: relative;
         overflow: hidden;
-
-        &--selected {
-
-          &.wcl-dropdown__options__option--select {
-          }
-        }
 
         &--select {
           padding: ${pxToRem('10px')} ${pxToRem('24px')};
