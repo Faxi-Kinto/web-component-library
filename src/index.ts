@@ -63,7 +63,9 @@ export { ErrorType } from './components/_organisms/Error/Error.component';
 export { NavLink } from './components/_molecules/NavigationLinks/NavigationLinks.component';
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('./styles.css');
+  * {
+    box-sizing: border-box;
+  }
 
   .wcl-dropdown {
     cursor: pointer;
