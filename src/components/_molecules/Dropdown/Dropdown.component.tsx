@@ -29,8 +29,6 @@ export type DropdownProps = {
   disabled?: boolean;
   iconClassName?: string;
   iconJsx?: JSX.Element;
-  iconName?: string;
-  iconSize?: string;
   noOptionsProvidedLabel?: string;
   placeholder?: string;
   value?: IDropdownOption;
@@ -52,8 +50,6 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     className,
     iconClassName,
     iconJsx,
-    iconName,
-    iconSize,
     noOptionsProvidedLabel,
     placeholder,
     value,
@@ -262,18 +258,15 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
           }}
         >
           <div className="wcl-dropdown__heading__label">
-            {actualValue !== emptyOption ? placeholder : actualValue.label}
+            {actualValue === emptyOption ? placeholder : actualValue.label}
           </div>
           {iconJsx &&
-            iconName &&
             React.cloneElement(iconJsx, {
               className: classNames(
                 'wcl-dropdown__heading__icon',
                 { 'wcl-dropdown__heading__icon--open': isOpen },
                 iconClassName
               ),
-              name: iconName,
-              size: iconSize || pxToRem('20px'),
             })}
         </div>
         {isOpen &&
