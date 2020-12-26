@@ -97,14 +97,9 @@ export const GlobalStyle = createGlobalStyle`
       &--select {
         position: absolute;
         width: 100%;
-        border-top: none;
         z-index: 9999; 
         max-height: ${pxToRem('300px')};
         overflow: auto;
-      }
-
-      &--upwards {
-        border-bottom: none;
       }
 
       &__option {
