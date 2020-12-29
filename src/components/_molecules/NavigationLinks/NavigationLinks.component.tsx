@@ -19,6 +19,7 @@ export type NavigationLinksProps = {
 export type NavLink = {
   name: string;
   route: string;
+  id?: string;
 };
 
 const NavigationLinks: React.FC<NavigationLinksProps> = (
@@ -31,7 +32,7 @@ const NavigationLinks: React.FC<NavigationLinksProps> = (
       color={color}
     >
       {links.map((link, index) => (
-        <a key={index} href={link.route} target={target}>
+        <a key={index} id={link.id} href={link.route} target={target}>
           <span>{link.name}</span>
           {index !== links.length - 1 ? (
             <span className="nav__delimiter">|</span>

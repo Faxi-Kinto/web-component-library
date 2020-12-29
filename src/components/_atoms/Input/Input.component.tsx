@@ -21,6 +21,7 @@ export type InputProps = {
   onHandleCapsLock?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
   className?: string;
+  id?: string;
 };
 
 const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
@@ -36,6 +37,7 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     onHandleCapsLock,
     autoFocus,
     className,
+    id,
     ...rest
   } = props;
   const [inputValue, setInputValue] = useState<string>('');
@@ -43,21 +45,28 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
   const currentValue = onHandleCapsLock ? value?.replace(/\s/g, '') : value;
 
   const htmlFor = useMemo(() => {
-    if (name)
+    if (id)
+      return {
+        htmlFor: id,
+      };
+    else if (name)
       return {
         htmlFor: name,
       };
     return {};
-  }, [name]);
+  }, [id, name]);
 
-  const id = useMemo(() => {
-    if (name)
+  const ID = useMemo(() => {
+    if (id)
+      return {
+        id: id,
+      };
+    else if (name)
       return {
         id: name,
-        name,
       };
     return {};
-  }, [name]);
+  }, [id, name]);
 
   const checkCapsLockStatus = (
     event: React.KeyboardEvent<HTMLInputElement>
@@ -81,8 +90,9 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     <Styled.InputContainer>
       {label && <Label {...htmlFor}>{label}</Label>}
       <input
-        {...id}
+        {...ID}
         {...rest}
+        name={name}
         className={classNames([
           'input',
           { 'input--error': error },
