@@ -11,15 +11,6 @@ export const InputContainer = styled.div`
     ${padding(pxToRem('8px'), pxToRem('16px'))};
     outline: none;
 
-    &:focus,
-    &.input--error {
-      box-shadow: none;
-    }
-
-    &.input--error {
-      border: ${pxToRem('0.5px')} solid #eb4820;
-    }
-
     &--disabled {
       cursor: not-allowed;
     }

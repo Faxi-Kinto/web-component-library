@@ -20,15 +20,6 @@ exports[`Input renders correctly 1`] = `
   outline: none;
 }
 
-.c0 > input:focus,
-.c0 > input.input--error {
-  box-shadow: none;
-}
-
-.c0 > input.input--error {
-  border: 0.03125rem solid #eb4820;
-}
-
 .c0 > input--disabled {
   cursor: not-allowed;
 }
