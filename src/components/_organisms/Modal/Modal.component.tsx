@@ -17,6 +17,7 @@ export type ModalProps = {
   footerClassName?: string;
   position?: 'top' | 'center' | 'bottom';
   isBanner?: boolean;
+  id?: string;
 };
 
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
@@ -34,6 +35,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     onClickOutOfModal,
     position = 'center',
     isBanner = false,
+    id,
   } = props;
   const myRef = useRef<HTMLDivElement>(null);
 
@@ -66,6 +68,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
   return isShown ? (
     ReactDOM.createPortal(
       <Styled.ModalStyles
+        id={id}
         className={classNames([
           'wcl-modal',
           { 'wcl-modal--banner': isBanner },

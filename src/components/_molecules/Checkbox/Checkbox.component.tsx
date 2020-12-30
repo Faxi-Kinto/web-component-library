@@ -23,6 +23,7 @@ export type CheckboxProps = {
   icon: ReactNode;
   size?: string;
   disabled?: boolean;
+  id?: string;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (
@@ -40,6 +41,7 @@ const Checkbox: React.FC<CheckboxProps> = (
     icon,
     size,
     disabled,
+    id,
   } = props;
   const [stateChecked, setChecked] = useState(Boolean(value));
 
@@ -76,6 +78,7 @@ const Checkbox: React.FC<CheckboxProps> = (
         <input
           className="checkbox__input-wrapper__input"
           type="checkbox"
+          id={id}
           name={name}
           checked={Boolean(value || stateChecked)}
           value={`${Boolean(value || stateChecked)}`}
