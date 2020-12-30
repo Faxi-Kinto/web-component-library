@@ -1,5 +1,7 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
+import uniqid from 'uniqid';
+
 import * as Styled from './TagsInput.styles';
 
 type ValidateFn = (value: string) => React.ReactNode | undefined;
@@ -14,14 +16,6 @@ type TagsState = Record<string, Tag>;
 const removeInvalidTags = (tags: string | string[] = []) => {
   const refinedTags = typeof tags === 'string' ? tags.split(',') : tags;
   return Array.from(new Set(refinedTags.filter(Boolean)));
-};
-
-const createKeyForTag = (tag: string) => {
-  const milisecSum = Array.from(Date.now().toString()).reduce(
-    (acc, digit: string) => acc + +digit,
-    0
-  );
-  return `${tag.slice(0, 1)}${tag.slice(-1)}${milisecSum}`;
 };
 
 const validateTag = (tag: string, validate: ValidateFn | ValidateFn[]) => {
@@ -40,7 +34,7 @@ const createTagsFromStrings = (
   validate?: ValidateFn | ValidateFn[]
 ): TagsState =>
   removeInvalidTags(strings).reduce((acc, tag) => {
-    const key = createKeyForTag(tag);
+    const key = uniqid();
 
     acc[key] = {
       value: tag,
