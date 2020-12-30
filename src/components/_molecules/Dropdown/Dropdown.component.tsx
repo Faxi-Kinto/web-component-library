@@ -32,6 +32,7 @@ export type DropdownProps = FieldProps<IDropdownOption, DropdownOnChange> & {
   iconOpenName?: string;
   iconClosedName?: string;
   onClickHeading?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {};
+  id?: string;
 };
 
 const emptyOption: IDropdownOption = {
@@ -51,6 +52,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     iconClosedName,
     onChange,
     onClickHeading,
+    id,
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [stateValue, setStateValue] = useState<IDropdownOption>();
@@ -124,6 +126,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <Styled.Dropdown
       ref={dropdownRef}
+      id={id}
       className={classNames([
         'wcl-dropdown',
         { 'wcl-dropdown--select': type === 'select' },
