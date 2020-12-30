@@ -36,6 +36,7 @@ export type DropdownProps = {
   onClickHeading?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => void;
+  id?: string;
 };
 
 const emptyOption: IDropdownOption = {
@@ -55,6 +56,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     value,
     onChange,
     onClickHeading,
+    id,
   } = props;
 
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
@@ -175,6 +177,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
             'wcl-dropdown__options--upwards': type === 'select' && upwards,
           },
         ])}
+        id={id}
         style={
           type === 'select'
             ? {
