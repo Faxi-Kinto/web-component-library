@@ -4,11 +4,11 @@ import {
   Icon,
   IconProps,
 } from 'web-component-library';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconPack, IconProp } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 
-setLibraries([fab, far]);
+setLibraries([fab, far] as IconPack[]);
 
 export type IName = 'twitter' | 'eye';
 
