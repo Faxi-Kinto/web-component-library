@@ -8,38 +8,39 @@ import classNames from 'classnames';
  * @returns {JSX}
  */
 
-export interface ButtonProps {
+export type ButtonProps = {
   children?: React.ReactNode;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  secondary?: boolean;
-  type?: 'submit' | 'reset' | 'button';
   className?: string;
   disabled?: boolean;
   id?: string;
-}
+  secondary?: boolean;
+  type?: 'submit' | 'reset' | 'button';
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
   const {
     children,
-    secondary,
-    onClick,
-    type,
     className,
     disabled = false,
     id,
+    secondary,
+    type = 'button',
+    onClick,
   } = props;
+
   return (
     <Styled.Button
-      disabled={disabled}
       className={classNames([
         'button',
         { 'button--secondary': secondary },
         { 'button--disabled': disabled },
         className,
       ])}
-      onClick={onClick}
-      type={type}
+      disabled={disabled}
       id={id}
+      type={type}
+      onClick={onClick}
     >
       {children}
     </Styled.Button>
@@ -48,6 +49,5 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
 
 Button.defaultProps = {
   type: 'button',
-} as Partial<ButtonProps>;
-
+};
 export default Button;

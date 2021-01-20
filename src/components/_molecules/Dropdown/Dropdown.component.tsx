@@ -23,20 +23,20 @@ export type IDropdown = {
 };
 
 export type DropdownProps = {
-  options: IDropdownOption[];
-  type: 'select' | 'expander';
   className?: string;
   disabled?: boolean;
   iconClassName?: string;
   iconJsx?: JSX.Element;
+  id?: string;
   noOptionsProvidedLabel?: string;
+  options: IDropdownOption[];
   placeholder?: string;
+  type: 'select' | 'expander';
   value?: IDropdownOption;
   onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => void;
-  id?: string;
 };
 
 const emptyOption: IDropdownOption = {
@@ -44,19 +44,21 @@ const emptyOption: IDropdownOption = {
   value: '',
 };
 
-const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
+const Dropdown: React.FC<DropdownProps> = (
+  props: DropdownProps
+): JSX.Element => {
   const {
-    options,
-    type,
     className,
     iconClassName,
     iconJsx,
+    id,
     noOptionsProvidedLabel,
+    options,
     placeholder,
+    type,
     value,
     onChange,
     onClickHeading,
-    id,
   } = props;
 
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();

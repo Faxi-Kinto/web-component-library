@@ -10,34 +10,34 @@ import classNames from 'classnames';
  */
 
 export type InputProps = {
-  name?: string;
-  value?: string;
-  placeholder?: string;
-  label?: string;
-  onChange?: (value: string) => void;
-  error?: boolean;
-  disabled?: boolean;
-  type?: string;
-  onHandleCapsLock?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
   className?: string;
+  disabled?: boolean;
+  error?: boolean;
   id?: string;
+  label?: string;
+  name?: string;
+  placeholder?: string;
+  type?: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  onHandleCapsLock?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
   const {
-    name,
-    value,
-    placeholder,
-    label,
-    onChange,
-    error = false,
-    type = 'text',
-    disabled = false,
-    onHandleCapsLock,
     autoFocus,
     className,
+    disabled = false,
+    error = false,
     id,
+    label,
+    name,
+    placeholder,
+    type = 'text',
+    value,
+    onChange,
+    onHandleCapsLock,
     ...rest
   } = props;
   const [inputValue, setInputValue] = useState<string>('');
@@ -90,24 +90,24 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     <Styled.InputContainer>
       {label && <Label {...htmlFor}>{label}</Label>}
       <input
-        {...ID}
-        {...rest}
-        name={name}
+        autoFocus={autoFocus}
         className={classNames([
           'input',
           { 'input--error': error },
           { 'input--disabled': disabled },
           className,
         ])}
+        disabled={disabled}
+        {...ID}
+        name={name}
+        placeholder={placeholder}
         type={type}
         value={currentValue || inputValue}
-        placeholder={placeholder}
-        disabled={disabled}
-        autoFocus={autoFocus}
         onChange={handleOnChange}
         onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) =>
           checkCapsLockStatus(event)
         }
+        {...rest}
       />
     </Styled.InputContainer>
   );

@@ -10,20 +10,20 @@ import * as Styled from './Spinner.styles';
  */
 
 export type SpinnerProps = {
-  color: string;
-  size: number;
   backgroundColor?: string;
   className?: string;
+  color: string;
+  size: number;
 };
 
 const Spinner: React.FC<SpinnerProps> = (props: SpinnerProps): JSX.Element => {
-  const { color, size, backgroundColor = 'transparent', className } = props;
+  const { backgroundColor = 'transparent', className, color, size } = props;
   return (
     <Styled.Spinner
-      color={color}
-      size={size}
       backgroundColor={backgroundColor && backgroundColor}
       className={`spinner${className ? ' ' + className : ''}`}
+      color={color}
+      size={size}
     >
       <div className="spinner-part top">
         <div className="spinner-rotator" />

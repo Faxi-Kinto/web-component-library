@@ -9,12 +9,12 @@ import * as Styled from './Label.styles';
 
 export interface LabelProps {
   children?: React.ReactNode;
-  htmlFor?: string;
   className?: string;
+  htmlFor?: string;
 }
 
 const Label: React.FC<LabelProps> = (props: LabelProps): JSX.Element => {
-  const { children, htmlFor, className } = props;
+  const { children, className, htmlFor } = props;
   return (
     <Styled.Label htmlFor={htmlFor} className={className}>
       {children}

@@ -14,26 +14,27 @@ import uniqid from 'uniqid';
 import debounce from 'lodash.debounce';
 
 export type ExpanderProps = {
-  title: string;
   animate?: boolean;
   body: ReactNode;
-  open?: boolean;
+  headerClassName?: string;
   icon?: JSX.Element;
   iconClassName?: string;
-  headerClassName?: string;
+  open?: boolean;
+  title: string;
 };
 
 const Expander: React.FC<ExpanderProps> = (
   props: ExpanderProps
 ): JSX.Element => {
   const {
-    title,
-    body,
     animate = true,
+    body,
     icon: propIcon,
-    open: propOpen = false,
     iconClassName,
+    open: propOpen = false,
+    title,
   } = props;
+
   const id = useRef(uniqid());
   const mainRef = useRef<HTMLDetailsElement>();
   const initialOpenRef = useRef(propOpen);

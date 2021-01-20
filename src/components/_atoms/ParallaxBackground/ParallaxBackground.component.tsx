@@ -10,16 +10,16 @@ import * as Styled from './ParallaxBackground.styles';
  */
 
 export type ParallaxBackgroundProps = {
-  url: string;
   className?: string;
+  url: string;
 };
 
 const ParallaxBackground: React.FC<ParallaxBackgroundProps> = (
   props: ParallaxBackgroundProps
 ): JSX.Element => {
-  const { url, className } = props;
+  const { className, url } = props;
 
-  return <Styled.Background url={url} className={className} />;
+  return <Styled.Background className={className} url={url} />;
 };
 
 export default ParallaxBackground;

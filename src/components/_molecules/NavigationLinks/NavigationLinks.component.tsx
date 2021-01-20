@@ -9,23 +9,23 @@ import classNames from 'classnames';
  */
 
 export type NavigationLinksProps = {
-  links: NavLink[];
-  vertical?: boolean;
-  color: string;
   className?: string;
+  color: string;
+  links: NavLink[];
   target?: string;
+  vertical?: boolean;
 };
 
 export type NavLink = {
+  id?: string;
   name: string;
   route: string;
-  id?: string;
 };
 
 const NavigationLinks: React.FC<NavigationLinksProps> = (
   props: NavigationLinksProps
 ): JSX.Element => {
-  const { links, vertical, color, className, target } = props;
+  const { className, color, links, target, vertical } = props;
   return (
     <Styled.Nav
       className={classNames(['nav', { 'nav--vertical': vertical }, className])}

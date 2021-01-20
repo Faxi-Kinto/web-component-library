@@ -10,38 +10,38 @@ import classNames from 'classnames';
  */
 
 export type TextAreaProps = {
-  name?: string;
-  value?: string;
-  placeholder?: string;
-  label?: string;
-  onChange?: (value: string) => void;
-  error?: boolean;
   autoFocus?: boolean;
   className?: string;
-  noresize?: boolean;
-  verticalResize?: boolean;
+  error?: boolean;
   horizontalResize?: boolean;
+  label?: string;
   maxLength?: number;
+  name?: string;
+  noresize?: boolean;
+  placeholder?: string;
   rows?: number;
+  value?: string;
+  verticalResize?: boolean;
+  onChange?: (value: string) => void;
 };
 
 const TextArea: React.FC<TextAreaProps> = (
   props: TextAreaProps
 ): JSX.Element => {
   const {
-    name,
-    value,
-    placeholder,
-    label,
-    onChange,
-    error = false,
     autoFocus,
     className,
-    noresize = false,
-    verticalResize = false,
+    error = false,
     horizontalResize = false,
+    label,
     maxLength,
+    name,
+    noresize = false,
+    placeholder,
     rows,
+    value,
+    verticalResize = false,
+    onChange,
     ...rest
   } = props;
   const [inputValue, setTextAreaValue] = useState<string>('');
@@ -75,8 +75,7 @@ const TextArea: React.FC<TextAreaProps> = (
     <Styled.TextAreaStyled>
       {label && <Label {...htmlFor}>{label}</Label>}
       <textarea
-        {...id}
-        {...rest}
+        autoFocus={autoFocus}
         className={classNames([
           'textarea',
           { 'textarea--error': error },
@@ -85,12 +84,13 @@ const TextArea: React.FC<TextAreaProps> = (
           { 'textarea--vertical-resize': verticalResize },
           className,
         ])}
-        value={value || inputValue}
-        placeholder={placeholder}
-        autoFocus={autoFocus}
-        onChange={handleOnChange}
         maxLength={maxLength}
+        placeholder={placeholder}
         rows={rows}
+        value={value || inputValue}
+        {...id}
+        {...rest}
+        onChange={handleOnChange}
       />
     </Styled.TextAreaStyled>
   );

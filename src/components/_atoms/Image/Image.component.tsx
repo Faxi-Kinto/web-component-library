@@ -21,35 +21,35 @@ type ImageObjectFit =
   | 'unset';
 
 export type ImageProps = {
-  src?: string;
   alt: string;
-  width?: string;
+  className?: string;
   height?: string;
   objectFit?: ImageObjectFit;
-  className?: string;
+  src?: string;
+  width?: string;
   onClick?: (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => void;
   onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 };
 
 const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
   const {
-    src,
     alt,
-    width,
+    className,
     height,
     objectFit,
-    className,
+    src,
+    width,
     onClick,
     onError,
   } = props;
 
   return (
     <Styled.Image
-      src={src}
       alt={alt}
-      width={width || defaultWidth}
-      height={height || defaultHeight}
       className={className}
+      height={height || defaultHeight}
+      width={width || defaultWidth}
+      src={src}
       style={{ objectFit }}
       onClick={onClick}
       onError={onError}

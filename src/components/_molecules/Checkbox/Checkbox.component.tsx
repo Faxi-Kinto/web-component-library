@@ -12,36 +12,36 @@ import classNames from 'classnames';
 type LabelPosition = 'left' | 'right';
 
 export type CheckboxProps = {
-  error?: boolean;
-  name?: string;
-  value?: boolean;
-  label?: React.ReactNode;
-  labelPosition?: LabelPosition;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   borderColor?: string;
+  disabled?: boolean;
+  error?: boolean;
   errorColor?: string;
   icon: ReactNode;
-  size?: string;
-  disabled?: boolean;
   id?: string;
+  label?: React.ReactNode;
+  labelPosition?: LabelPosition;
+  name?: string;
+  size?: string;
+  value?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (
   props: CheckboxProps
 ): JSX.Element => {
   const {
+    borderColor = 'black',
+    disabled,
+    error,
+    errorColor = '#eb4820',
+    icon,
+    id,
+    label,
+    labelPosition,
+    name,
+    size,
     value,
     onChange,
-    name,
-    label,
-    error,
-    labelPosition,
-    errorColor = '#eb4820',
-    borderColor = 'black',
-    icon,
-    size,
-    disabled,
-    id,
   } = props;
   const [stateChecked, setChecked] = useState(Boolean(value));
 
@@ -63,8 +63,6 @@ const Checkbox: React.FC<CheckboxProps> = (
   return (
     <Styled.Container
       borderColor={borderColor}
-      errorColor={errorColor}
-      size={size}
       className={classNames([
         'checkbox',
         { 'checkbox--has-label': label },
@@ -73,27 +71,25 @@ const Checkbox: React.FC<CheckboxProps> = (
         { 'checkbox--left': label && labelPosition === 'left' },
         { 'checkbox--disabled': disabled },
       ])}
+      errorColor={errorColor}
+      size={size}
     >
       <div className="checkbox__input-wrapper">
         <input
+          checked={Boolean(value || stateChecked)}
           className="checkbox__input-wrapper__input"
-          type="checkbox"
+          disabled={disabled}
           id={id}
           name={name}
-          checked={Boolean(value || stateChecked)}
+          type="checkbox"
           value={`${Boolean(value || stateChecked)}`}
           onChange={handleInputOnChange}
-          disabled={disabled}
         />
         {value || stateChecked ? icon : null}
       </div>
       {labelEl}
     </Styled.Container>
   );
-};
-
-Checkbox.defaultProps = {
-  label: '',
 };
 
 export default Checkbox;
