@@ -244,6 +244,7 @@ const Dropdown: React.FC<DropdownProps> = (
           { 'wcl-dropdown--expander': type === 'expander' },
           className,
         ])}
+        data-value={actualValue.value}
       >
         <div
           className={classNames([

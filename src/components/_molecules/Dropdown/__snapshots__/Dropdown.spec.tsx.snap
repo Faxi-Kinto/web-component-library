@@ -3,6 +3,7 @@
 exports[`Dropdown renders correctly 1`] = `
 <div
   className="wcl-dropdown wcl-dropdown--select"
+  data-value=""
 >
   <div
     className="wcl-dropdown__heading wcl-dropdown__heading--select"
