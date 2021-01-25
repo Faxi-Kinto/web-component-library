@@ -221,7 +221,7 @@ const Dropdown: React.FC<DropdownProps> = (
                   'wcl-dropdown__options__option--select': type === 'select',
                 }
               )}
-              data-value={value}
+              data-value={option.value}
               onClick={() => {
                 onChangeCallback(option);
               }}
