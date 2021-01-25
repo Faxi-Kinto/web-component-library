@@ -8,6 +8,8 @@ export type ToggleButtonProps = {
   toggleOnLabel?: string;
   toggleOffLabel?: string;
   initialValue?: boolean;
+  primaryColor?: string;
+  secondaryColor?: string;
 };
 
 const ToggleButton: React.FC<ToggleButtonProps> = (
@@ -20,6 +22,8 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
     toggleOnLabel,
     toggleOffLabel,
     initialValue,
+    primaryColor,
+    secondaryColor,
   } = props;
   const [stateChecked, setChecked] = useState(Boolean(initialValue));
 
@@ -28,7 +32,11 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
     onChange && onChange(event);
   };
   return (
-    <Styled.Container className={className}>
+    <Styled.Container
+      className={className}
+      primaryColor={primaryColor}
+      secondaryColor={secondaryColor}
+    >
       <label className="toggle">
         <input
           type="checkbox"

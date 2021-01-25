@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { pxToRem } from '@faxi/web-css-utilities';
 import { mobile } from '@faxi/web-css-utilities/breakpoints';
+import { ToggleButtonProps } from './ToggleButton.component';
 
 export const Container = styled.div`
   display: flex;
@@ -51,9 +52,9 @@ export const Container = styled.div`
     }
 
     input:checked + .slider {
-      background-color: #dceeef;
+      background-color: ${(props: ToggleButtonProps) => props.secondaryColor};
       &:before {
-        background-color: #81c8d1;
+        background-color: ${(props: ToggleButtonProps) => props.primaryColor};
       }
     }
 
