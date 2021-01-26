@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useMemo } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import * as Styled from './TextArea.styles';
 import Label from '../Label';
 import classNames from 'classnames';
@@ -48,30 +48,6 @@ const TextArea: React.FC<TextAreaProps> = (
   } = props;
   const [inputValue, setTextAreaValue] = useState<string>('');
 
-  const htmlFor = useMemo(() => {
-    if (id)
-      return {
-        htmlFor: id,
-      };
-    else if (name)
-      return {
-        htmlFor: name,
-      };
-    return {};
-  }, [id, name]);
-
-  const ID = useMemo(() => {
-    if (id)
-      return {
-        id: id,
-      };
-    else if (name)
-      return {
-        id: name,
-      };
-    return {};
-  }, [id, name]);
-
   const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     if (onChange) {
       onChange(event.target.value);
@@ -82,11 +58,10 @@ const TextArea: React.FC<TextAreaProps> = (
 
   return (
     <Styled.TextAreaStyled>
-      {label && <Label {...htmlFor}>{label}</Label>}
+      {label && <Label htmlFor={id || name}>{label}</Label>}
       <textarea
         autoFocus={autoFocus}
-        {...ID}
-        {...rest}
+        id={id || name}
         name={name}
         className={classNames([
           'textarea',
@@ -100,7 +75,6 @@ const TextArea: React.FC<TextAreaProps> = (
         placeholder={placeholder}
         rows={rows}
         value={value || inputValue}
-        {...id}
         {...rest}
         onChange={handleOnChange}
       />
