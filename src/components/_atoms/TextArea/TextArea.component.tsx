@@ -14,6 +14,7 @@ export type TextAreaProps = {
   className?: string;
   error?: boolean;
   horizontalResize?: boolean;
+  id?: string;
   label?: string;
   maxLength?: number;
   name?: string;
@@ -33,6 +34,7 @@ const TextArea: React.FC<TextAreaProps> = (
     className,
     error = false,
     horizontalResize = false,
+    id,
     label,
     maxLength,
     name,
@@ -47,21 +49,28 @@ const TextArea: React.FC<TextAreaProps> = (
   const [inputValue, setTextAreaValue] = useState<string>('');
 
   const htmlFor = useMemo(() => {
-    if (name)
+    if (id)
+      return {
+        htmlFor: id,
+      };
+    else if (name)
       return {
         htmlFor: name,
       };
     return {};
-  }, [name]);
+  }, [id, name]);
 
-  const id = useMemo(() => {
-    if (name)
+  const ID = useMemo(() => {
+    if (id)
+      return {
+        id: id,
+      };
+    else if (name)
       return {
         id: name,
-        name,
       };
     return {};
-  }, [name]);
+  }, [id, name]);
 
   const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     if (onChange) {
@@ -76,6 +85,9 @@ const TextArea: React.FC<TextAreaProps> = (
       {label && <Label {...htmlFor}>{label}</Label>}
       <textarea
         autoFocus={autoFocus}
+        {...ID}
+        {...rest}
+        name={name}
         className={classNames([
           'textarea',
           { 'textarea--error': error },

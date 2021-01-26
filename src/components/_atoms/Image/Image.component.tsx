@@ -24,6 +24,7 @@ export type ImageProps = {
   alt: string;
   className?: string;
   height?: string;
+  id?: string;
   objectFit?: ImageObjectFit;
   src?: string;
   width?: string;
@@ -36,6 +37,7 @@ const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
     alt,
     className,
     height,
+    id,
     objectFit,
     src,
     width,
@@ -45,6 +47,7 @@ const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
 
   return (
     <Styled.Image
+      id={id}
       alt={alt}
       className={className}
       height={height || defaultHeight}

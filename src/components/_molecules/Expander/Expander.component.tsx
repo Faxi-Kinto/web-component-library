@@ -16,6 +16,7 @@ import debounce from 'lodash.debounce';
 export type ExpanderProps = {
   animate?: boolean;
   body: ReactNode;
+  contentId?: string;
   headerClassName?: string;
   icon?: JSX.Element;
   iconClassName?: string;
@@ -29,6 +30,7 @@ const Expander: React.FC<ExpanderProps> = (
   const {
     animate = true,
     body,
+    contentId,
     icon: propIcon,
     iconClassName,
     open: propOpen = false,
@@ -126,7 +128,7 @@ const Expander: React.FC<ExpanderProps> = (
             --last: ${!open ? last.current.lower : last.current.upper}px; 
             }`}</style>
           <summary onClick={toggle}>
-            <div className="expander__content">
+            <div className="expander__content" id={contentId}>
               {title}
               {icon}
             </div>

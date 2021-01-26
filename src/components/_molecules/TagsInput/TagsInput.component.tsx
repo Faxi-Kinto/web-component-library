@@ -51,6 +51,7 @@ type TagsInputProps = {
   spaceSeparates?: boolean;
   validateTag?: ValidateFn | ValidateFn[];
   onChange?: (tags: string[]) => void;
+  id?: string;
 };
 
 const TagsInput: React.FC<TagsInputProps> = (
@@ -64,6 +65,7 @@ const TagsInput: React.FC<TagsInputProps> = (
     placeholder = 'Add email',
     validateTag,
     onChange,
+    id,
   } = props;
 
   const [tags, setTags] = useState<TagsState>(
@@ -174,6 +176,7 @@ const TagsInput: React.FC<TagsInputProps> = (
             </div>
           ))}
           <input
+            id={id}
             ref={inputRef}
             value={inputValue}
             onChange={ev => setInputValue(ev.target.value)}
