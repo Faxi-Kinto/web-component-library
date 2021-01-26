@@ -1,0 +1,40 @@
+import { useState } from 'react';
+import ToggleButton from './';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+<Meta title="Core|Molecules/ToggleButton" />
+
+# ToggleButton Component
+
+#### Default
+
+<Preview>
+  <Story name="default">
+    <ToggleButton
+      toggleOnLabel="Enabled"
+      toggleOffLabel="Disabled"
+      primaryColor="#00708D"
+      secondaryColor="#00708D99"
+    />
+  </Story>
+</Preview>
+
+#### External state
+
+<Preview>
+  <Story name="external state">
+    {() => {
+      const [toggled, setToggled] = useState(false);
+      return (
+        <ToggleButton
+          toggleOnLabel="Enabled"
+          toggleOffLabel="Disabled"
+          primaryColor="#00708D"
+          secondaryColor="#00708D99"
+          value={toggled}
+          onChange={() => setToggled(!toggled)}
+        />
+      );
+    }}
+  </Story>
+</Preview>
