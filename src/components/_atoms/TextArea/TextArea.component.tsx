@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useMemo } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import * as Styled from './TextArea.styles';
 import Label from '../Label';
 import classNames from 'classnames';
@@ -10,67 +10,43 @@ import classNames from 'classnames';
  */
 
 export type TextAreaProps = {
-  name?: string;
-  value?: string;
-  placeholder?: string;
-  label?: string;
-  onChange?: (value: string) => void;
-  error?: boolean;
   autoFocus?: boolean;
   className?: string;
-  noresize?: boolean;
-  verticalResize?: boolean;
+  error?: boolean;
   horizontalResize?: boolean;
-  maxLength?: number;
-  rows?: number;
   id?: string;
+  label?: string;
+  maxLength?: number;
+  name?: string;
+  noresize?: boolean;
+  placeholder?: string;
+  rows?: number;
+  value?: string;
+  verticalResize?: boolean;
+  onChange?: (value: string) => void;
 };
 
 const TextArea: React.FC<TextAreaProps> = (
   props: TextAreaProps
 ): JSX.Element => {
   const {
-    name,
-    value,
-    placeholder,
-    label,
-    onChange,
-    error = false,
     autoFocus,
     className,
-    noresize = false,
-    verticalResize = false,
+    error = false,
     horizontalResize = false,
-    maxLength,
-    rows,
     id,
+    label,
+    maxLength,
+    name,
+    noresize = false,
+    placeholder,
+    rows,
+    value,
+    verticalResize = false,
+    onChange,
     ...rest
   } = props;
   const [inputValue, setTextAreaValue] = useState<string>('');
-
-  const htmlFor = useMemo(() => {
-    if (id)
-      return {
-        htmlFor: id,
-      };
-    else if (name)
-      return {
-        htmlFor: name,
-      };
-    return {};
-  }, [id, name]);
-
-  const ID = useMemo(() => {
-    if (id)
-      return {
-        id: id,
-      };
-    else if (name)
-      return {
-        id: name,
-      };
-    return {};
-  }, [id, name]);
 
   const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     if (onChange) {
@@ -82,10 +58,10 @@ const TextArea: React.FC<TextAreaProps> = (
 
   return (
     <Styled.TextAreaStyled>
-      {label && <Label {...htmlFor}>{label}</Label>}
+      {label && <Label htmlFor={id || name}>{label}</Label>}
       <textarea
-        {...ID}
         {...rest}
+        id={id || name}
         name={name}
         className={classNames([
           'textarea',
