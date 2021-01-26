@@ -177,7 +177,6 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
             'wcl-dropdown__options--upwards': type === 'select' && upwards,
           },
         ])}
-        id={id}
         style={
           type === 'select'
             ? {
@@ -234,6 +233,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <Fragment>
       <div
+        id={id}
         ref={dropdownRef}
         className={classNames([
           'wcl-dropdown',

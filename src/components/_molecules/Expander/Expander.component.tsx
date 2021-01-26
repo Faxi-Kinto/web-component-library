@@ -21,6 +21,7 @@ export type ExpanderProps = {
   icon?: JSX.Element;
   iconClassName?: string;
   headerClassName?: string;
+  contentId?: string;
 };
 
 const Expander: React.FC<ExpanderProps> = (
@@ -33,6 +34,7 @@ const Expander: React.FC<ExpanderProps> = (
     icon: propIcon,
     open: propOpen = false,
     iconClassName,
+    contentId,
   } = props;
   const id = useRef(uniqid());
   const mainRef = useRef<HTMLDetailsElement>();
@@ -125,7 +127,7 @@ const Expander: React.FC<ExpanderProps> = (
             --last: ${!open ? last.current.lower : last.current.upper}px; 
             }`}</style>
           <summary onClick={toggle}>
-            <div className="expander__content">
+            <div className="expander__content" id={contentId}>
               {title}
               {icon}
             </div>

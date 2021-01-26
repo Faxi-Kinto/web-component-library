@@ -29,6 +29,7 @@ export type ImageProps = {
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => void;
   onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
+  id?: string;
 };
 
 const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
@@ -41,10 +42,12 @@ const Image: React.FC<ImageProps> = (props: ImageProps): JSX.Element => {
     className,
     onClick,
     onError,
+    id,
   } = props;
 
   return (
     <Styled.Image
+      id={id}
       src={src}
       alt={alt}
       width={width || defaultWidth}

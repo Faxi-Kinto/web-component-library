@@ -23,6 +23,7 @@ export type TextAreaProps = {
   horizontalResize?: boolean;
   maxLength?: number;
   rows?: number;
+  id?: string;
 };
 
 const TextArea: React.FC<TextAreaProps> = (
@@ -42,26 +43,34 @@ const TextArea: React.FC<TextAreaProps> = (
     horizontalResize = false,
     maxLength,
     rows,
+    id,
     ...rest
   } = props;
   const [inputValue, setTextAreaValue] = useState<string>('');
 
   const htmlFor = useMemo(() => {
-    if (name)
+    if (id)
+      return {
+        htmlFor: id,
+      };
+    else if (name)
       return {
         htmlFor: name,
       };
     return {};
-  }, [name]);
+  }, [id, name]);
 
-  const id = useMemo(() => {
-    if (name)
+  const ID = useMemo(() => {
+    if (id)
+      return {
+        id: id,
+      };
+    else if (name)
       return {
         id: name,
-        name,
       };
     return {};
-  }, [name]);
+  }, [id, name]);
 
   const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     if (onChange) {
@@ -75,8 +84,9 @@ const TextArea: React.FC<TextAreaProps> = (
     <Styled.TextAreaStyled>
       {label && <Label {...htmlFor}>{label}</Label>}
       <textarea
-        {...id}
+        {...ID}
         {...rest}
+        name={name}
         className={classNames([
           'textarea',
           { 'textarea--error': error },
