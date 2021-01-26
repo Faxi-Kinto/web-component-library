@@ -1,15 +1,15 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useMemo } from 'react';
 import * as Styled from './ToggleButton.styles';
 
 export type ToggleButtonProps = {
   className?: string;
   name?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  toggleOnLabel?: string;
-  toggleOffLabel?: string;
-  initialValue?: boolean;
   primaryColor?: string;
   secondaryColor?: string;
+  toggleOffLabel?: string;
+  toggleOnLabel?: string;
+  value?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const ToggleButton: React.FC<ToggleButtonProps> = (
@@ -18,19 +18,28 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
   const {
     className,
     name,
-    onChange,
-    toggleOnLabel,
-    toggleOffLabel,
-    initialValue,
     primaryColor,
     secondaryColor,
+    toggleOffLabel,
+    toggleOnLabel,
+    value,
+    onChange,
   } = props;
-  const [stateChecked, setChecked] = useState(Boolean(initialValue));
+  const [localValue, setLocalValue] = useState(Boolean(value));
+
+  const actualValue = useMemo(() => {
+    return value !== undefined ? value : localValue;
+  }, [localValue, value]);
 
   const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setChecked(!stateChecked);
-    onChange && onChange(event);
+    if (value === undefined) {
+      setLocalValue(!localValue);
+    }
+    if (onChange) {
+      onChange(event);
+    }
   };
+
   return (
     <Styled.Container
       className={className}
@@ -41,14 +50,13 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
         <input
           type="checkbox"
           name={name}
-          checked={stateChecked}
-          value={`${Boolean(stateChecked)}`}
+          checked={actualValue}
           onChange={handleInputOnChange}
         />
         <span className="slider"></span>
       </label>
       <span className="label">
-        {stateChecked ? toggleOnLabel : toggleOffLabel}
+        {actualValue ? toggleOnLabel : toggleOffLabel}
       </span>
     </Styled.Container>
   );
