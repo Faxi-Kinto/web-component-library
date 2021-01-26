@@ -52,6 +52,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
           name={name}
           checked={actualValue}
           onChange={handleInputOnChange}
+          value={`${Boolean(actualValue)}`}
         />
         <span className="slider"></span>
       </label>
