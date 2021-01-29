@@ -38,3 +38,21 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
     }}
   </Story>
 </Preview>
+
+#### External state
+
+<Preview>
+  <Story name="disabled">
+    {() => {
+      return (
+        <ToggleButton
+          toggleOnLabel="Enabled"
+          toggleOffLabel="Disabled"
+          primaryColor="#00708D"
+          secondaryColor="#00708D99"
+          disabled
+        />
+      );
+    }}
+  </Story>
+</Preview>

@@ -1,8 +1,10 @@
 import React, { useState, ChangeEvent, useMemo } from 'react';
 import * as Styled from './ToggleButton.styles';
+import classNames from 'classnames';
 
 export type ToggleButtonProps = {
   className?: string;
+  disabled?: boolean;
   name?: string;
   primaryColor?: string;
   secondaryColor?: string;
@@ -17,6 +19,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
 ): JSX.Element => {
   const {
     className,
+    disabled,
     name,
     primaryColor,
     secondaryColor,
@@ -32,6 +35,9 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
   }, [localValue, value]);
 
   const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    if (disabled) {
+      return;
+    }
     if (value === undefined) {
       setLocalValue(!localValue);
     }
@@ -41,25 +47,30 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
   };
 
   return (
-    <Styled.Container
-      className={className}
+    <Styled.ToggleButtonStyled
+      className={classNames('wcl-toggle', className)}
       primaryColor={primaryColor}
       secondaryColor={secondaryColor}
     >
-      <label className="toggle">
+      <label className="wcl-toggle__toggle">
         <input
           type="checkbox"
           name={name}
           checked={actualValue}
           onChange={handleInputOnChange}
           value={`${Boolean(actualValue)}`}
+          disabled={disabled}
         />
-        <span className="slider"></span>
+        <span
+          className={classNames('wcl-toggle__toggle__slider', {
+            'wcl-toggle__toggle__slider--disabled': disabled,
+          })}
+        ></span>
       </label>
-      <span className="label">
+      <span className="wcl-toggle__label">
         {actualValue ? toggleOnLabel : toggleOffLabel}
       </span>
-    </Styled.Container>
+    </Styled.ToggleButtonStyled>
   );
 };
 
