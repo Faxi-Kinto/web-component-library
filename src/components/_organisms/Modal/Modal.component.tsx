@@ -60,7 +60,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
       document.addEventListener('mousedown', handleClickOutside);
       return (): void => {
         document.removeEventListener('mousedown', handleClickOutside);
-        document.body.style.overflow = 'unset';
+        document.body.style.overflow = '';
       };
     }
   }, [toggled, isShown, onClickOutOfModal, isBanner, handleClickOutside]);
