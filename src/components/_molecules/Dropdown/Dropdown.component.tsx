@@ -13,6 +13,7 @@ import ReactDOM from 'react-dom';
 export type IDropdownOption = {
   label: string;
   value: string;
+  id?: string;
 };
 
 type DropdownOnChange = (event: IDropdownOption) => void;
@@ -209,6 +210,7 @@ const Dropdown: React.FC<DropdownProps> = (
         {options.map((option, index) => {
           return (
             <div
+              id={option.id}
               key={index}
               className={classNames(
                 ['wcl-dropdown__options__option'],
