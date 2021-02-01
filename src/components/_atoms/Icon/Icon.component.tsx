@@ -14,15 +14,21 @@ export type IconProps<T> = {
   color?: string;
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  id?: string;
 };
 
 const Icon = <T,>(props: IconProps<T>): JSX.Element => {
-  const { size, color, name, className, onClick } = props;
+  const { size, color, name, className, onClick, id } = props;
 
   const iconName = mapNamePropToFaNames<T>(name);
 
   return (
-    <Styled.Container size={size} className={className} onClick={onClick}>
+    <Styled.Container
+      id={id}
+      size={size}
+      className={className}
+      onClick={onClick}
+    >
       <FontAwesomeIcon color={color} size={'1x'} icon={iconName} />
     </Styled.Container>
   );

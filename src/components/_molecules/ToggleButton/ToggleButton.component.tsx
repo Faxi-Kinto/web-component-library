@@ -12,6 +12,7 @@ export type ToggleButtonProps = {
   toggleOnLabel?: string;
   value?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  id?: string;
 };
 
 const ToggleButton: React.FC<ToggleButtonProps> = (
@@ -27,6 +28,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
     toggleOnLabel,
     value,
     onChange,
+    id,
   } = props;
   const [localValue, setLocalValue] = useState(Boolean(value));
 
@@ -54,6 +56,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = (
     >
       <label className="wcl-toggle__toggle">
         <input
+          id={id}
           type="checkbox"
           name={name}
           checked={actualValue}
