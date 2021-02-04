@@ -57,7 +57,7 @@ const TextArea: React.FC<TextAreaProps> = (
   };
 
   return (
-    <Styled.TextAreaStyled>
+    <Styled.TextAreaStyled className={className}>
       {label && <Label htmlFor={id || name}>{label}</Label>}
       <textarea
         autoFocus={autoFocus}
@@ -69,7 +69,6 @@ const TextArea: React.FC<TextAreaProps> = (
           { 'textarea--noresize': noresize },
           { 'textarea--horizontal-resize': horizontalResize },
           { 'textarea--vertical-resize': verticalResize },
-          className,
         ])}
         maxLength={maxLength}
         placeholder={placeholder}
