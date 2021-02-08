@@ -177,7 +177,8 @@ const Dropdown: React.FC<DropdownProps> = (
             'wcl-dropdown__options--select': type === 'select',
           },
           {
-            'wcl-dropdown__options--upwards': type === 'select' && upwards,
+            'wcl-dropdown__options--upwards':
+              type === 'select' && upwards && isOpen,
           },
         ])}
         style={
@@ -258,7 +259,8 @@ const Dropdown: React.FC<DropdownProps> = (
               'wcl-dropdown__heading--open': isOpen,
             },
             {
-              'wcl-dropdown__heading--upwards': type === 'select' && upwards,
+              'wcl-dropdown__heading--upwards':
+                type === 'select' && upwards && isOpen,
             },
           ])}
           onClick={ev => {
