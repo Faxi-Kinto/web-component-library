@@ -44,28 +44,30 @@ const createTagsFromStrings = (
   }, {} as TagsState);
 
 type TagsInputProps = {
-  placeholder: string;
+  autoFocus?: boolean;
   className?: string;
-  label?: string;
+  id?: string;
   initialTags?: string[];
+  label?: string;
+  placeholder: string;
   spaceSeparates?: boolean;
   validateTag?: ValidateFn | ValidateFn[];
   onChange?: (tags: string[]) => void;
-  id?: string;
 };
 
 const TagsInput: React.FC<TagsInputProps> = (
   props: TagsInputProps
 ): JSX.Element => {
   const {
-    initialTags,
+    autoFocus,
     className,
+    id,
+    initialTags,
     label,
-    spaceSeparates = true,
     placeholder = 'Add email',
+    spaceSeparates = true,
     validateTag,
     onChange,
-    id,
   } = props;
 
   const [tags, setTags] = useState<TagsState>(
@@ -176,6 +178,7 @@ const TagsInput: React.FC<TagsInputProps> = (
             </div>
           ))}
           <input
+            autoFocus={autoFocus}
             id={id}
             ref={inputRef}
             value={inputValue}
