@@ -103,15 +103,11 @@ export const GlobalStyle = createGlobalStyle`
       }
 
       &__option {
-        padding: ${pxToRem('20px')};
+        padding: ${pxToRem('10px')} ${pxToRem('20px')};
         font-weight: 500;
         position: relative;
         overflow: hidden;
         cursor: pointer;
-
-        &--select {
-          padding: ${pxToRem('10px')} ${pxToRem('20px')};
-        }
       }
     }
   }
