@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import Modal from "./Modal.component.tsx";
 import Button from "../../_atoms/Button/Button.component.tsx"
-import Dropdown from "../../_molecules/Dropdown/Dropdown.component.tsx"
 
 <Meta title="Core|Organisms/Modal" />
 
@@ -26,21 +25,28 @@ This is an implementation of the Modal Component
        <Modal
         toggled={isShowing}  
         header={<span>Confirmation</span>}
-        body={<div style={{height:"200px", width:"400px", overflow:"auto"}}>
+        body={<div style={{height:"200px", width:"400px", overflow:"auto", backgroundColor:"red"}}>
                 <span>"Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community.Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community.Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community.Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community.Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community.Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community.Your community has been successfully registered. A verification link has been sent to your email account. Please verify your email in order to access the created community."</span>   
-                <Dropdown
-                  optionList={[
-                    { text: 'Show all members', value: 'o1' },
-                    { text: 'option2option2option2option2option2', value: 'o2' },
-                    { text: 'option3', value: 'op3' },
-                  ]}
-                  placeholder="Placeholder"
-                />
              </div>}
         footer={<Button type="submit" onClick={()=>{isShowing===true ? setIsShowing(false) : null}}>Ok</Button>}
         onClickOutOfModal={()=>{setIsShowing(false)}}
         position="top"
-        isBanner
+        customKeyboardEvents={
+          [
+            {
+              keyCodes: ['ShiftLeft', 'KeyA'],
+              callbackFn: () => {
+                setIsShowing(true);
+              },
+            },
+            {
+              keyCodes: ['Escape'],
+              callbackFn: () => {
+                setIsShowing(false);
+              },
+            },
+          ]
+        }
         />
     </div>)
     }}
