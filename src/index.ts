@@ -80,10 +80,10 @@ export const GlobalStyle = createGlobalStyle`
       ${flexRow('space-between', 'center')};
       font-weight: bold;
       font-size: ${pxToRem('16px')};
-      padding: ${pxToRem('16px')} ${pxToRem('24px')};
+      padding: ${pxToRem('10px')} ${pxToRem('20px')};
 
       &--select {
-        padding: ${pxToRem('10px')} ${pxToRem('24px')};
+        padding: ${pxToRem('10px')} ${pxToRem('20px')};
       }
 
       &__icon {
@@ -94,7 +94,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &__options {
-
       &--select {
         position: absolute;
         width: 100%;
@@ -104,14 +103,14 @@ export const GlobalStyle = createGlobalStyle`
       }
 
       &__option {
-        padding: ${pxToRem('24px')};
+        padding: ${pxToRem('20px')};
         font-weight: 500;
         position: relative;
         overflow: hidden;
         cursor: pointer;
 
         &--select {
-          padding: ${pxToRem('10px')} ${pxToRem('24px')};
+          padding: ${pxToRem('10px')} ${pxToRem('20px')};
         }
       }
     }
