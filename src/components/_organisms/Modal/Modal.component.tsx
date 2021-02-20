@@ -3,6 +3,11 @@ import * as Styled from './Modal.styles';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
+export type CustomKeyboardEvent = {
+  keyCodes: string[];
+  callbackFn: () => void;
+};
+
 export type ModalProps = {
   header?: React.ReactNode;
   body?: React.ReactNode;
@@ -18,6 +23,7 @@ export type ModalProps = {
   position?: 'top' | 'center' | 'bottom';
   isBanner?: boolean;
   id?: string;
+  customKeyboardEvents?: CustomKeyboardEvent[];
 };
 
 const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
@@ -36,6 +42,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     position = 'center',
     isBanner = false,
     id,
+    customKeyboardEvents,
   } = props;
   const myRef = useRef<HTMLDivElement>(null);
 
@@ -51,19 +58,61 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     [isShown, onClickOutOfModal]
   );
 
+  const keysPressed: Record<string, boolean> = {};
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      keysPressed[event.code] = true;
+
+      customKeyboardEvents?.forEach((event: CustomKeyboardEvent) => {
+        if (
+          JSON.stringify(event.keyCodes) ===
+          JSON.stringify(Object.keys(keysPressed))
+        ) {
+          event?.callbackFn();
+        }
+      });
+    },
+    [customKeyboardEvents, keysPressed]
+  );
+
+  const handleKeyUp = useCallback(
+    (event: KeyboardEvent) => {
+      delete keysPressed[event.code];
+    },
+    [keysPressed]
+  );
+
   useEffect(() => {
     setIsShown(toggled);
+  }, [toggled]);
+
+  useEffect(() => {
     if (isShown && !isBanner) {
       document.body.style.overflow = 'hidden';
     }
     if (!isBanner) {
       document.addEventListener('mousedown', handleClickOutside);
+      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('keyup', handleKeyUp);
+
       return (): void => {
         document.removeEventListener('mousedown', handleClickOutside);
+        window.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener('keyup', handleKeyUp);
+
         document.body.style.overflow = '';
       };
     }
-  }, [toggled, isShown, onClickOutOfModal, isBanner, handleClickOutside]);
+  }, [
+    toggled,
+    isShown,
+    onClickOutOfModal,
+    isBanner,
+    handleClickOutside,
+    handleKeyDown,
+    handleKeyUp,
+  ]);
 
   return isShown ? (
     ReactDOM.createPortal(
