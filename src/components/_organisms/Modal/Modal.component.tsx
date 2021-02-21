@@ -58,18 +58,18 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     [isShown, onClickOutOfModal]
   );
 
-  const keysPressed: Record<string, boolean> = {};
+  const keysPressed: string[] = [];
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      keysPressed[event.code] = true;
+      keysPressed.push(event.code);
 
       customKeyboardEvents?.forEach((event: CustomKeyboardEvent) => {
         if (
-          JSON.stringify(event.keyCodes) ===
-          JSON.stringify(Object.keys(keysPressed))
+          keysPressed.length === event.keyCodes.length &&
+          keysPressed.every((value, index) => value === event.keyCodes[index])
         ) {
-          event?.callbackFn();
+          event.callbackFn();
         }
       });
     },
@@ -78,20 +78,16 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
 
   const handleKeyUp = useCallback(
     (event: KeyboardEvent) => {
-      delete keysPressed[event.code];
+      keysPressed.splice(keysPressed.indexOf(event.code), 1);
     },
     [keysPressed]
   );
 
   useEffect(() => {
     setIsShown(toggled);
-  }, [toggled]);
 
-  useEffect(() => {
-    if (isShown && !isBanner) {
+    if (isShown) {
       document.body.style.overflow = 'hidden';
-    }
-    if (!isBanner) {
       document.addEventListener('mousedown', handleClickOutside);
       window.addEventListener('keydown', handleKeyDown);
       window.addEventListener('keyup', handleKeyUp);
