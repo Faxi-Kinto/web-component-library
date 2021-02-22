@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useMemo, RefObject } from 'react';
+import React, { useState, ChangeEvent, useMemo } from 'react';
 import * as Styled from './Input.styles';
 import Label from '../Label';
 import classNames from 'classnames';
@@ -20,12 +20,14 @@ export type InputProps = {
   placeholder?: string;
   type?: string;
   value?: string;
-  ref?: RefObject<HTMLInputElement>;
   onChange?: (value: string) => void;
   onHandleCapsLock?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
-const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
+const Input: React.FC<InputProps> = React.forwardRef<
+  HTMLInputElement,
+  InputProps
+>((props: InputProps, ref) => {
   const {
     autoFocus,
     className,
@@ -37,7 +39,6 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
     placeholder,
     type = 'text',
     value,
-    ref,
     onChange,
     onHandleCapsLock,
     ...rest
@@ -114,6 +115,6 @@ const Input: React.FC<InputProps> = (props: InputProps): JSX.Element => {
       />
     </Styled.InputContainer>
   );
-};
+});
 
 export default Input;
