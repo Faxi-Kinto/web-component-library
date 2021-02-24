@@ -145,29 +145,41 @@ const TagsInput: React.FC<TagsInputProps> = (
     [addTag, removeTag, inputValue, spaceSeparates]
   );
 
-  const tagError = useMemo(
-    () => Object.entries(tags).find(entry => Boolean(entry[1].error)),
+  const tagErrors = useMemo(
+    () =>
+      Object.entries(tags).reduce((errors, [key, { error }]) => {
+        if (error) {
+          errors[key] = error;
+        }
+        return errors;
+      }, {} as Record<string, React.ReactNode>),
     [tags]
   );
+
+  const tagErrorsArray = useMemo(() => Object.values(tagErrors), [tagErrors]);
 
   return (
     <Styled.Container className={className}>
       {label && (
         <label
-          className={classNames({ 'tags-label--error': !!tagError })}
+          className={classNames({
+            'tags-label--error': !!tagErrorsArray.length,
+          })}
           onClick={() => inputRef.current?.focus()}
         >
           {label}
         </label>
       )}
-      {tagError && <div className="tags-error">{tagError?.[1].error}</div>}
+      {!!tagErrorsArray.length && (
+        <div className="tags-error">{tagErrorsArray[0]}</div>
+      )}
       <div className="tags-input" onClick={() => inputRef.current?.focus()}>
         <div className="tags-input__wrapper">
           {Object.entries(tags).map(([key, { value }]) => (
             <div
               className={classNames([
                 'tags-input__entry',
-                { 'tags-input__entry--error': tagError?.[0] === key },
+                { 'tags-input__entry--error': !!tagErrors[key] },
               ])}
               key={key}
             >
