@@ -11,6 +11,7 @@ import classNames from 'classnames';
 
 export type InputProps = {
   autoFocus?: boolean;
+  autoComplete?: 'on' | 'off';
   className?: string;
   disabled?: boolean;
   error?: boolean;
@@ -29,6 +30,7 @@ export type InputProps = {
 const Input: React.FC<InputProps> = (props: InputProps) => {
   const {
     autoFocus,
+    autoComplete,
     className,
     disabled = false,
     error = false,
@@ -83,6 +85,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
       {label && <Label {...htmlFor}>{label}</Label>}
       <input
         autoFocus={autoFocus}
+        autoComplete={autoComplete}
         className={classNames([
           'input',
           { 'input--error': error },
