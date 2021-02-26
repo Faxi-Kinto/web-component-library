@@ -31,9 +31,8 @@ exports[`Input renders correctly 1`] = `
     className="input input--error"
     disabled={false}
     onChange={[Function]}
-    onKeyPress={[Function]}
     type="text"
-    value="Test value"
+    value=""
   />
 </div>
 `;

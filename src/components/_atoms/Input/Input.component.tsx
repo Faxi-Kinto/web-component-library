@@ -21,7 +21,7 @@ export type InputProps = {
   type?: string;
   value?: string;
   onChange?: (value: string) => void;
-  onHandleCapsLock?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClick?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
 };
@@ -39,14 +39,12 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     type = 'text',
     value,
     onChange,
-    onHandleCapsLock,
+    onClick,
     onFocus,
     onBlur,
     ...rest
   } = props;
   const [inputValue, setInputValue] = useState<string>('');
-
-  const currentValue = onHandleCapsLock ? value?.replace(/\s/g, '') : value;
 
   const htmlFor = useMemo(() => {
     if (id)
@@ -72,19 +70,9 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     return {};
   }, [id, name]);
 
-  const checkCapsLockStatus = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    if (onHandleCapsLock) {
-      onHandleCapsLock(event);
-    }
-  };
-
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     if (onChange) {
       onChange(event.target.value);
-    } else if (onHandleCapsLock) {
-      setInputValue(event.target.value.replace(/\s/g, ''));
     } else {
       setInputValue(event.target.value);
     }
@@ -106,11 +94,9 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
         name={name}
         placeholder={placeholder}
         type={type}
-        value={currentValue || inputValue}
+        value={inputValue}
+        onClick={onClick}
         onChange={handleOnChange}
-        onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) =>
-          checkCapsLockStatus(event)
-        }
         onFocus={onFocus}
         onBlur={onBlur}
         {...rest}
