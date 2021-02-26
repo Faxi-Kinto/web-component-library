@@ -94,7 +94,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
         name={name}
         placeholder={placeholder}
         type={type}
-        value={inputValue}
+        value={value || inputValue}
         onClick={onClick}
         onChange={handleOnChange}
         onFocus={onFocus}
