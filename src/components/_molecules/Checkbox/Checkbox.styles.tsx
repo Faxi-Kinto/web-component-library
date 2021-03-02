@@ -9,6 +9,7 @@ import {
 type CheckboxStylingProps = {
   borderColor?: string;
   errorColor?: string;
+  boxShadowColor?: string;
   size?: string;
 };
 
@@ -77,6 +78,15 @@ export const Container = styled.label`
       .checkbox {
         &__input-wrapper {
           ${positionAbsolute('0', '0', '', 'auto')};
+        }
+      }
+    }
+
+    &--checked {
+      .checkbox {
+        &__input-wrapper {
+          box-shadow: 0px 1px 6px
+            ${(props: CheckboxStylingProps) => `${props.boxShadowColor}`};
         }
       }
     }

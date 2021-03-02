@@ -16,6 +16,7 @@ export type CheckboxProps = {
   disabled?: boolean;
   error?: boolean;
   errorColor?: string;
+  boxShadowColor?: string;
   icon: ReactNode;
   id?: string;
   label?: React.ReactNode;
@@ -34,6 +35,7 @@ const Checkbox: React.FC<CheckboxProps> = (
     disabled,
     error,
     errorColor = '#eb4820',
+    boxShadowColor = '#499dc7',
     icon,
     id,
     label,
@@ -73,6 +75,7 @@ const Checkbox: React.FC<CheckboxProps> = (
       ])}
       errorColor={errorColor}
       size={size}
+      boxShadowColor={boxShadowColor}
     >
       <div className="checkbox__input-wrapper">
         <input

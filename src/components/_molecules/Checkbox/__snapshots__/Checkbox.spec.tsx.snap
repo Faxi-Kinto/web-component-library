@@ -62,6 +62,10 @@ exports[`Checkbox renders correctly 1`] = `
   left: auto;
 }
 
+.c0.checkbox--checked .checkbox__input-wrapper {
+  box-shadow: 0px 1px 6px #499dc7;
+}
+
 .c0.checkbox--disabled {
   opacity: 0.5;
 }
