@@ -21,6 +21,7 @@ export type InputProps = {
   placeholder?: string;
   type?: string;
   value?: string;
+  readOnly?: boolean;
   onChange?: (value: string) => void;
   onClick?: () => void;
   onFocus?: () => void;
@@ -40,6 +41,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     placeholder,
     type = 'text',
     value,
+    readOnly,
     onChange,
     onClick,
     onFocus,
@@ -102,6 +104,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
         onChange={handleOnChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        readOnly={readOnly}
         {...rest}
       />
     </Styled.InputContainer>
