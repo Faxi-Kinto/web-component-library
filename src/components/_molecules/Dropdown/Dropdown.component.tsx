@@ -34,7 +34,7 @@ export type DropdownProps = {
   placeholder?: string;
   type: 'select' | 'expander';
   value?: IDropdownOption;
-  parent?: HTMLElement;
+  renderInBody?: boolean;
   onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -59,7 +59,7 @@ const Dropdown: React.FC<DropdownProps> = (
     placeholder,
     type,
     value,
-    parent,
+    renderInBody = true,
     onChange,
     onClickHeading,
   } = props;
@@ -188,18 +188,21 @@ const Dropdown: React.FC<DropdownProps> = (
             ? {
                 top: !upwards
                   ? `${pxToRem(
-                      dropdownTop + dropdownHeight + window.scrollY - 1 + 'px'
+                      dropdownHeight +
+                        (renderInBody ? dropdownTop + window.scrollY - 1 : 0) +
+                        'px'
                     )}`
                   : optionsRef
                   ? `${pxToRem(
                       dropdownTop +
-                        window.scrollY +
-                        1 -
+                        (renderInBody ? window.scrollY + 1 : 0) -
                         optionsRef.getBoundingClientRect().height +
                         'px'
                     )}`
                   : 'initial',
-                left: `${pxToRem(dropdownLeft + 'px')}`,
+                left: renderInBody
+                  ? `${pxToRem(dropdownLeft + 'px')}`
+                  : 'initial',
                 width: `${pxToRem(dropdownWidth + 'px')}`,
               }
             : {}
@@ -283,9 +286,9 @@ const Dropdown: React.FC<DropdownProps> = (
             })}
         </div>
         {isOpen &&
-          (type === 'expander'
+          (type === 'expander' || !renderInBody
             ? renderOptions()
-            : ReactDOM.createPortal(renderOptions(), parent || document.body))}
+            : ReactDOM.createPortal(renderOptions(), document.body))}
       </div>
     </Fragment>
   );
