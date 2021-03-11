@@ -34,6 +34,7 @@ export type DropdownProps = {
   placeholder?: string;
   type: 'select' | 'expander';
   value?: IDropdownOption;
+  parent?: HTMLElement;
   onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -58,6 +59,7 @@ const Dropdown: React.FC<DropdownProps> = (
     placeholder,
     type,
     value,
+    parent,
     onChange,
     onClickHeading,
   } = props;
@@ -283,7 +285,7 @@ const Dropdown: React.FC<DropdownProps> = (
         {isOpen &&
           (type === 'expander'
             ? renderOptions()
-            : ReactDOM.createPortal(renderOptions(), document.body))}
+            : ReactDOM.createPortal(renderOptions(), parent || document.body))}
       </div>
     </Fragment>
   );
