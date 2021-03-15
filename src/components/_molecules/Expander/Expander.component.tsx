@@ -1,8 +1,10 @@
 /* eslint-disable react/no-find-dom-node */
 import React, {
+  forwardRef,
   ReactNode,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -16,7 +18,9 @@ import debounce from 'lodash.debounce';
 export type ExpanderProps = {
   animate?: boolean;
   body: ReactNode;
+  bodyAs?: 'p' | 'div';
   contentId?: string;
+  className?: string;
   headerClassName?: string;
   icon?: JSX.Element;
   iconClassName?: string;
@@ -24,17 +28,24 @@ export type ExpanderProps = {
   title: string;
 };
 
-const Expander: React.FC<ExpanderProps> = (
-  props: ExpanderProps
+export type ExpanderRef = {
+  toggle: () => void;
+};
+
+const Expander: React.ForwardRefRenderFunction<ExpanderRef, ExpanderProps> = (
+  props,
+  ref
 ): JSX.Element => {
   const {
     animate = true,
     body,
     contentId,
     icon: propIcon,
+    className,
     iconClassName,
     open: propOpen = false,
     title,
+    bodyAs = 'p',
   } = props;
 
   const id = useRef(uniqid());
@@ -62,10 +73,6 @@ const Expander: React.FC<ExpanderProps> = (
     element[newOpen ? 'removeAttribute' : 'setAttribute']('open', '');
   }, []);
 
-  useEffect(() => {
-    requestAnimationFrame(() => calculateLast(!initialOpenRef.current));
-  }, [calculateLast]);
-
   const icon = useMemo(() => {
     if (!propIcon) return null;
     return (
@@ -76,6 +83,37 @@ const Expander: React.FC<ExpanderProps> = (
       </span>
     );
   }, [open, propIcon, iconClassName]);
+
+  const toggle = useCallback((ev?: React.MouseEvent) => {
+    ev?.preventDefault();
+    setOpen(old => {
+      const newOpen = !old;
+
+      const element = mainRef.current;
+      if (!element) return old;
+
+      first.current = element?.getBoundingClientRect().height;
+      element[newOpen ? 'setAttribute' : 'removeAttribute']('open', '');
+
+      return newOpen;
+    });
+  }, []);
+
+  const bodyRenderAs = useMemo(() => {
+    return React.createElement(bodyAs, {}, body);
+  }, [body, bodyAs]);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      toggle,
+    }),
+    [toggle]
+  );
+
+  useEffect(() => {
+    requestAnimationFrame(() => calculateLast(!initialOpenRef.current));
+  }, [calculateLast]);
 
   useEffect(() => {
     const debouncedCalculateLast = debounce(
@@ -89,21 +127,6 @@ const Expander: React.FC<ExpanderProps> = (
       window.removeEventListener('resize', debouncedCalculateLast);
     };
   }, [calculateLast]);
-
-  const toggle = useCallback((ev: React.MouseEvent) => {
-    ev.preventDefault();
-    setOpen(old => {
-      const newOpen = !old;
-
-      const element = mainRef.current;
-      if (!element) return old;
-
-      first.current = element?.getBoundingClientRect().height;
-      element[newOpen ? 'setAttribute' : 'removeAttribute']('open', '');
-
-      return newOpen;
-    });
-  }, []);
 
   return (
     <>
@@ -119,6 +142,7 @@ const Expander: React.FC<ExpanderProps> = (
           className={classNames([
             id.current,
             { 'expander--instant': !animate },
+            className,
           ])}
           ref={container => (mainRef.current = container as HTMLDetailsElement)}
         >
@@ -133,11 +157,11 @@ const Expander: React.FC<ExpanderProps> = (
               {icon}
             </div>
           </summary>
-          <p>{body}</p>
+          {bodyRenderAs}
         </Styled.Container>
       </CSSTransition>
     </>
   );
 };
 
-export default Expander;
+export default forwardRef(Expander);
