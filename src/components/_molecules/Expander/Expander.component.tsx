@@ -106,9 +106,10 @@ const Expander: React.ForwardRefRenderFunction<ExpanderRef, ExpanderProps> = (
   useImperativeHandle(
     ref,
     () => ({
+      open,
       toggle,
     }),
-    [toggle]
+    [open, toggle]
   );
 
   useEffect(() => {
