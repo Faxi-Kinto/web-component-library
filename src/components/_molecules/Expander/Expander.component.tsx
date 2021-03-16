@@ -29,6 +29,7 @@ export type ExpanderProps = {
 };
 
 export type ExpanderRef = {
+  open: boolean;
   toggle: () => void;
 };
 
