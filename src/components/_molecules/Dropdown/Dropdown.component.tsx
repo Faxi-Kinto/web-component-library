@@ -81,6 +81,10 @@ const Dropdown: React.FC<DropdownProps> = (
   }, [options, value]);
   const [stateValue, setStateValue] = useState(preSelectedValue);
 
+  useEffect(() => {
+    setStateValue(preSelectedValue);
+  }, [preSelectedValue]);
+
   const actualValue = useMemo(() => {
     return (
       stateValue ||
