@@ -77,9 +77,8 @@ const Dropdown: React.FC<DropdownProps> = (
   }, [noOptionsProvidedLabel]);
 
   const preSelectedValue = useMemo(() => {
-    return options.find(option => option === value);
+    return options.find(option => option.value === value?.value);
   }, [options, value]);
-
   const [stateValue, setStateValue] = useState(preSelectedValue);
 
   const actualValue = useMemo(() => {
