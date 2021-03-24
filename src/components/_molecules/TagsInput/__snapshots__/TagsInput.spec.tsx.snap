@@ -167,6 +167,7 @@ exports[`TagInput renders correctly 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onKeyDown={[Function]}
+        onPaste={[Function]}
         value=""
       />
       <span

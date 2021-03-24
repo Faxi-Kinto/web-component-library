@@ -125,7 +125,6 @@ const TagsInput: React.FC<TagsInputProps> = (
   const onKeyDown = useCallback(
     (ev: React.KeyboardEvent) => {
       const { key } = ev;
-
       if (key === 'Enter' || (spaceSeparates && key === ' ')) {
         ev.preventDefault();
         const trimmedVal = inputValue.trim();
@@ -141,6 +140,23 @@ const TagsInput: React.FC<TagsInputProps> = (
       }
     },
     [addTag, removeTag, inputValue, spaceSeparates]
+  );
+
+  const onPaste = useCallback(
+    (e: React.ClipboardEvent) => {
+      const pastedValue = e.clipboardData.getData('text');
+
+      if (pastedValue.includes(' ')) {
+        const splitPastedValue = pastedValue
+          .split(/(\s+)/)
+          .filter(e => e.trim().length > 0);
+        splitPastedValue.forEach(item => {
+          addTag(item);
+        });
+        e.preventDefault();
+      }
+    },
+    [addTag]
   );
 
   const tagError = useMemo(
@@ -179,9 +195,14 @@ const TagsInput: React.FC<TagsInputProps> = (
             id={id}
             ref={inputRef}
             value={inputValue}
-            onChange={ev => setInputValue(ev.target.value)}
+            onChange={ev =>
+              setInputValue(
+                ev.target.value.includes(' ') ? ' ' : ev.target.value
+              )
+            }
             onBlur={ev => addTag(ev.target.value.trim())}
             onKeyDown={onKeyDown}
+            onPaste={onPaste}
           />
 
           {!Object.keys(tags).length && !inputValue && (
