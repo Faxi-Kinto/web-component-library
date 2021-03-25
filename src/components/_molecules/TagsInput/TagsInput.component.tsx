@@ -148,7 +148,7 @@ const TagsInput: React.FC<TagsInputProps> = (
 
       if (pastedValue.includes(' ')) {
         const splitPastedValue = pastedValue
-          .split(/(\s+)/)
+          .split(/[\s,]+/)
           .filter(e => e.trim().length > 0);
         splitPastedValue.forEach(item => {
           addTag(item);
