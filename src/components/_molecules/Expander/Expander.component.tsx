@@ -25,7 +25,8 @@ export type ExpanderProps = {
   icon?: JSX.Element;
   iconClassName?: string;
   open?: boolean;
-  title: string;
+  title?: string;
+  header?: ReactNode;
 };
 
 export type ExpanderRef = {
@@ -47,6 +48,7 @@ const Expander: React.ForwardRefRenderFunction<ExpanderRef, ExpanderProps> = (
     open: propOpen = false,
     title,
     bodyAs = 'p',
+    header,
   } = props;
 
   const id = useRef(uniqid());
@@ -151,10 +153,11 @@ const Expander: React.ForwardRefRenderFunction<ExpanderRef, ExpanderProps> = (
           <style>{`
           details.${id.current} { 
             --first:${first.current}px; 
-            --last: ${!open ? last.current.lower : last.current.upper}px; 
+            --last: ${!open ? last.current.lower : last.current.upper}px;
             }`}</style>
           <summary onClick={toggle}>
             <div className="expander__content" id={contentId}>
+              {header}
               {title}
               {icon}
             </div>
