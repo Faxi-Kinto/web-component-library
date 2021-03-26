@@ -86,7 +86,7 @@ exports[`Expander renders correctly 1`] = `
     
           details.uniq { 
             --first:undefinedpx; 
-            --last: 0px; 
+            --last: 0px;
             }
   </style>
   <summary
