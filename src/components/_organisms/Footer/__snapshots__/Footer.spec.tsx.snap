@@ -67,11 +67,11 @@ exports[`Footer renders correctly 1`] = `
 }
 
 .c1 > a span:first-child {
-  padding-right: 0.375rem;
+  padding-right: 0.9375rem;
 }
 
 .c1 > a:not(:last-child) {
-  margin-right: 0.375rem;
+  margin-right: 0.9375rem;
 }
 
 .c1.nav--vertical {

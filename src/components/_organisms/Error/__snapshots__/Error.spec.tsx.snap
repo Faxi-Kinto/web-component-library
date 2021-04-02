@@ -16,11 +16,11 @@ exports[`Error renders correctly 1`] = `
 }
 
 .c2 > a span:first-child {
-  padding-right: 0.375rem;
+  padding-right: 0.9375rem;
 }
 
 .c2 > a:not(:last-child) {
-  margin-right: 0.375rem;
+  margin-right: 0.9375rem;
 }
 
 .c2.nav--vertical {

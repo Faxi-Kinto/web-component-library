@@ -15,11 +15,11 @@ export const Nav = styled.nav`
 
     span {
       &:first-child {
-        padding-right: ${pxToRem('6px')};
+        padding-right: ${pxToRem('15px')};
       }
     }
     &:not(:last-child) {
-      margin-right: ${pxToRem('6px')};
+      margin-right: ${pxToRem('15px')};
     }
   }
 
