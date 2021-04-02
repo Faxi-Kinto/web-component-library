@@ -11,9 +11,7 @@ test('NavigationLinks renders correctly', () => {
     { name: 'Test 4', route: '' },
   ] as NavLink[];
 
-  const component = renderer.create(
-    <NavigationLinks links={data} color="black" />
-  );
+  const component = renderer.create(<NavigationLinks links={data} />);
 
   const tree = component.toJSON();
 
