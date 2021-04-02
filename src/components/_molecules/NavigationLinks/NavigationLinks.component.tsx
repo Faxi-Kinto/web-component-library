@@ -10,7 +10,6 @@ import classNames from 'classnames';
 
 export type NavigationLinksProps = {
   className?: string;
-  color: string;
   links: NavLink[];
   target?: string;
   vertical?: boolean;
@@ -25,11 +24,10 @@ export type NavLink = {
 const NavigationLinks: React.FC<NavigationLinksProps> = (
   props: NavigationLinksProps
 ): JSX.Element => {
-  const { className, color, links, target, vertical } = props;
+  const { className, links, target, vertical } = props;
   return (
     <Styled.Nav
       className={classNames(['nav', { 'nav--vertical': vertical }, className])}
-      color={color}
     >
       {links.map((link, index) => (
         <a key={index} id={link.id} href={link.route} target={target}>

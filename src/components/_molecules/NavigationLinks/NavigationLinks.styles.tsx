@@ -4,10 +4,6 @@ import { phablet } from '@faxi/web-css-utilities/breakpoints';
 import { flexColumn } from '@faxi/web-css-utilities';
 import { marginChildren } from '@faxi/web-css-utilities';
 
-type NavigationLinksStylingProps = {
-  color: string;
-};
-
 export const Nav = styled.nav`
   ${phablet(css`
     ${flexColumn('center', 'flex-start')};
@@ -15,7 +11,6 @@ export const Nav = styled.nav`
   `)};
 
   > a {
-    color: ${(props: NavigationLinksStylingProps) => props.color};
     text-decoration: none;
 
     span {

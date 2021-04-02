@@ -62,7 +62,6 @@ exports[`Footer renders correctly 1`] = `
 }
 
 .c1 > a {
-  color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -235,7 +234,6 @@ exports[`Footer renders correctly 1`] = `
     >
       <nav
         className="c1 nav"
-        color="white"
       >
         <a
           href=""

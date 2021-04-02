@@ -32,11 +32,7 @@ const Footer: React.FC<FooterProps> = (props: FooterProps): JSX.Element => {
           />
         )}
         <div className="footer__container__links-and-rights">
-          <NavigationLinks
-            links={secondaryLinks}
-            color="white"
-            target="_blank"
-          />
+          <NavigationLinks links={secondaryLinks} target="_blank" />
           {/* <SocialLinks
             iconSize={pxToRem(`${windowWidth > 768 ? '19px' : '32px'}`)}
             color={theme.palette.HALF_BAKED}
