@@ -23,7 +23,7 @@ test('Error renders correctly', () => {
     '404': {
       description: 'Not found',
       message: 'Not found',
-      jsx: <NavigationLinks links={errorLinks} vertical color="red" />,
+      jsx: <NavigationLinks links={errorLinks} vertical />,
     },
     '500': {
       description: 'Server error',
