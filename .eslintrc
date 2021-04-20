@@ -15,7 +15,6 @@
   },
   "rules": {
     "react/prop-types": "off",
-    "react/display-name": "off",
     "@typescript-eslint/no-empty-function": [
       "error",
       { "allow": ["arrowFunctions"] }
@@ -23,7 +22,21 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "no-case-declarations": "off"
+    "@typescript-eslint/camelcase": "off",
+    "no-case-declarations": "off",
+    "react/display-name": "off",
+    "import/no-anonymous-default-export": [
+      "error",
+      {
+        "allowArray": false,
+        "allowArrowFunction": false,
+        "allowAnonymousClass": false,
+        "allowAnonymousFunction": false,
+        "allowCallExpression": true,
+        "allowLiteral": false,
+        "allowObject": true
+      }
+    ]
   },
   "overrides": [
     {

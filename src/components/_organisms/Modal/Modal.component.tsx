@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react';
 import * as Styled from './Modal.styles';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
@@ -58,7 +64,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps): JSX.Element => {
     [isShown, onClickOutOfModal]
   );
 
-  const keysPressed: string[] = [];
+  const keysPressed = useMemo<string[]>(() => [], []);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
