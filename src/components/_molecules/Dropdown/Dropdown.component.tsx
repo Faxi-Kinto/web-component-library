@@ -1,5 +1,6 @@
 import React, {
   Fragment,
+  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -11,7 +12,7 @@ import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 
 export type IDropdownOption = {
-  label: string;
+  label: ReactNode;
   value: string;
   id?: string;
 };
