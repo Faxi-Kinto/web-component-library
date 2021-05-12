@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 export type IDropdownOption = {
   label: ReactNode;
   value: string;
+  searchValue?: string;
   id?: string;
 };
 
@@ -36,6 +37,14 @@ export type DropdownProps = {
   type: 'select' | 'expander';
   value?: IDropdownOption;
   renderInBody?: boolean;
+  searchable?: boolean;
+  initSearch?: string;
+  asyncSearch?: boolean;
+  searchInputProps?: React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  >;
+  onSearchTermChange?: (term: string) => void;
   onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -61,6 +70,11 @@ const Dropdown: React.FC<DropdownProps> = (
     type,
     value,
     renderInBody = true,
+    searchable = false,
+    initSearch = '',
+    asyncSearch = false,
+    searchInputProps,
+    onSearchTermChange,
     onChange,
     onClickHeading,
   } = props;
@@ -70,6 +84,15 @@ const Dropdown: React.FC<DropdownProps> = (
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [upwards, setUpwards] = useState(false);
+  const [searchValue, setSearchValue] = useState(initSearch);
+  const [filteredOptions, setFilteredOptions] = useState<IDropdownOption[]>(
+    options
+  );
+
+  const finalOptions = useMemo(
+    () => (searchable && !asyncSearch ? filteredOptions : options),
+    [asyncSearch, filteredOptions, options, searchable]
+  );
 
   useEffect(() => {
     if (noOptionsProvidedLabel) {
@@ -164,6 +187,53 @@ const Dropdown: React.FC<DropdownProps> = (
     }
   }, [optionsRef, renderInBody, type]);
 
+  const onSearchInput: React.ChangeEventHandler<HTMLInputElement> = useCallback(
+    ({ target: { value } }) => {
+      setSearchValue(value);
+      onSearchTermChange?.(value);
+    },
+    [onSearchTermChange]
+  );
+
+  const dropdownHeader = useMemo(() => {
+    return (
+      <>
+        {searchable && isOpen ? (
+          <div className="wcl-dropdown__heading__input-wrapper">
+            <input
+              autoFocus
+              value={searchValue}
+              onChange={onSearchInput}
+              {...searchInputProps}
+            />
+          </div>
+        ) : (
+          <div className="wcl-dropdown__heading__label">
+            {actualValue === emptyOption ? placeholder : actualValue.label}
+          </div>
+        )}
+        {iconJsx &&
+          React.cloneElement(iconJsx, {
+            className: classNames(
+              'wcl-dropdown__heading__icon',
+              { 'wcl-dropdown__heading__icon--open': isOpen },
+              iconClassName
+            ),
+          })}
+      </>
+    );
+  }, [
+    searchable,
+    actualValue,
+    placeholder,
+    iconJsx,
+    isOpen,
+    iconClassName,
+    searchValue,
+    searchInputProps,
+    onSearchInput,
+  ]);
+
   const renderOptions = (): JSX.Element => {
     let dropdownTop = 0;
     let dropdownLeft = 0;
@@ -223,7 +293,7 @@ const Dropdown: React.FC<DropdownProps> = (
           }
         }}
       >
-        {options.map((option, index) => {
+        {finalOptions.map((option, index) => {
           return (
             <div
               id={option.id}
@@ -250,6 +320,36 @@ const Dropdown: React.FC<DropdownProps> = (
       </div>
     );
   };
+
+  useEffect(() => {
+    if (!searchable || asyncSearch) return;
+    if (searchValue === '') setFilteredOptions(options);
+
+    setFilteredOptions(
+      options.filter(option =>
+        RegExp(
+          ` ${searchValue.trim().replace(/[^a-z]/gi, '')} `
+            .split('')
+            .join('.*')
+            .trim(),
+          'gi'
+        ).test(
+          option.searchValue ||
+            (typeof option.label === 'string' ? option.label : option.value)
+        )
+      )
+    );
+  }, [asyncSearch, options, searchValue, searchable]);
+
+  useEffect(() => {
+    if (searchable)
+      setSearchValue(
+        actualValue.searchValue ||
+          (typeof actualValue.label === 'string'
+            ? actualValue.label
+            : actualValue.value)
+      );
+  }, [searchable, actualValue]);
 
   return (
     <Fragment>
@@ -283,17 +383,7 @@ const Dropdown: React.FC<DropdownProps> = (
             setIsOpen(!isOpen);
           }}
         >
-          <div className="wcl-dropdown__heading__label">
-            {actualValue === emptyOption ? placeholder : actualValue.label}
-          </div>
-          {iconJsx &&
-            React.cloneElement(iconJsx, {
-              className: classNames(
-                'wcl-dropdown__heading__icon',
-                { 'wcl-dropdown__heading__icon--open': isOpen },
-                iconClassName
-              ),
-            })}
+          {dropdownHeader}
         </div>
         {isOpen &&
           (type === 'expander' || !renderInBody

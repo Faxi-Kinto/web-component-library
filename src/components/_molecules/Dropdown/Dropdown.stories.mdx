@@ -19,8 +19,8 @@ import Dropdown from './';
           label: 'Option 1',
           value: 'o1',
         },
-        { label: 'option2option2option2option2option2', value: 'o2' },
-        { label: 'option3', value: 'op3' },
+        { label: 'Translation', value: 'o2' },
+        { label: 'Choose this one', value: 'op3' },
       ]}
       renderInBody={false}
       value={{label: 'option3', value: 'op3'}}
@@ -68,6 +68,29 @@ import Dropdown from './';
       label="Icon mode here"
       iconMode
     />
+  </Story>
+</Preview>
+
+#### Default
+
+<Preview>
+  <Story name="search">
+    <div style={{display: 'flex'}}>
+    <Dropdown
+      type="select"
+      searchable
+      options={[
+        {
+          label: 'Option 1',
+          value: 'o1',
+        },
+        { label: 'Translation', value: 'o2' },
+        { label: 'Choose this one', value: 'op3' },
+      ]}
+      renderInBody={false}
+      value={{label: 'option3', value: 'op3'}}
+    />
+    </div>
   </Story>
 </Preview>
 
