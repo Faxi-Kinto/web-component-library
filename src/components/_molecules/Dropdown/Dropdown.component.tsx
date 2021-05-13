@@ -44,6 +44,10 @@ export type DropdownProps = {
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >;
+  optionsElProps?: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  >;
   onSearchTermChange?: (term: string) => void;
   onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
@@ -74,10 +78,17 @@ const Dropdown: React.FC<DropdownProps> = (
     initSearch = '',
     asyncSearch = false,
     searchInputProps,
+    optionsElProps,
     onSearchTermChange,
     onChange,
     onClickHeading,
   } = props;
+
+  const {
+    className: optionsElClassName,
+    style: optionsElStyle,
+    ...optionsElRestProps
+  } = optionsElProps || {};
 
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -253,18 +264,17 @@ const Dropdown: React.FC<DropdownProps> = (
     }
     return (
       <div
-        className={classNames([
+        className={classNames(
           'wcl-dropdown__options',
           {
             'wcl-dropdown__options--select': type === 'select',
-          },
-          {
             'wcl-dropdown__options--upwards':
               type === 'select' && upwards && isOpen,
           },
-        ])}
-        style={
-          type === 'select'
+          optionsElClassName
+        )}
+        style={{
+          ...(type === 'select'
             ? {
                 top: !upwards
                   ? `${pxToRem(
@@ -285,13 +295,15 @@ const Dropdown: React.FC<DropdownProps> = (
                   : 'initial',
                 width: `${pxToRem(dropdownWidth + 'px')}`,
               }
-            : {}
-        }
+            : {}),
+          ...optionsElStyle,
+        }}
         ref={reference => {
           if (reference) {
             setOptionsRef(reference);
           }
         }}
+        {...optionsElRestProps}
       >
         {finalOptions.map((option, index) => {
           return (
