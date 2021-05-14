@@ -7,7 +7,7 @@ export const InputContainer = styled.div`
 
   > input {
     width: 100%;
-    height: ${pxToRem('45px')};
+    height: ${pxToRem('46px')};
     ${padding(pxToRem('8px'), pxToRem('16px'))};
     outline: none;
 
