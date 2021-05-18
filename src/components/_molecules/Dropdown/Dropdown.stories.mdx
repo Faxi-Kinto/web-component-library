@@ -81,13 +81,18 @@ import Dropdown from './';
       searchable
       options={[
         {
-          label: 'Option 1',
+          label: <div>Unassigned</div>,
+          value: 'o1',
+          searchValue: 'Unassigned',
+        },
+        {
+          label: <div>Option 1</div>,
+          searchValue: 'Option 1',
           value: 'o1',
         },
         { label: 'Translation', value: 'o2' },
         { label: 'Choose this one', value: 'op3' },
       ]}
-      renderInBody={false}
       value={{label: 'option3', value: 'op3'}}
     />
     </div>

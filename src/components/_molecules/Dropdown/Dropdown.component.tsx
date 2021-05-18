@@ -10,6 +10,7 @@ import React, {
 import { pxToRem } from '@faxi/web-css-utilities';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
+import * as Styled from './Dropdown.styles';
 
 export type IDropdownOption = {
   label: ReactNode;
@@ -39,6 +40,7 @@ export type DropdownProps = {
   renderInBody?: boolean;
   searchable?: boolean;
   initSearch?: string;
+  searchInputPrefix?: ReactNode;
   asyncSearch?: boolean;
   searchInputProps?: React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
@@ -79,6 +81,7 @@ const Dropdown: React.FC<DropdownProps> = (
     asyncSearch = false,
     searchInputProps,
     optionsElProps,
+    searchInputPrefix = null,
     onSearchTermChange,
     onChange,
     onClickHeading,
@@ -157,13 +160,16 @@ const Dropdown: React.FC<DropdownProps> = (
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
+      const target = event.target as Node;
+      const { current: dropdown } = dropdownRef;
+
       if (
         isOpen &&
-        event.target &&
-        dropdownRef.current &&
+        target &&
+        dropdown &&
         optionsRef &&
-        !dropdownRef.current.contains(event.target as Node) &&
-        !optionsRef.contains(event.target as Node)
+        !dropdown.contains(target as Node) &&
+        !optionsRef.contains(target as Node)
       ) {
         setIsOpen(false);
       }
@@ -209,20 +215,20 @@ const Dropdown: React.FC<DropdownProps> = (
   const dropdownHeader = useMemo(() => {
     return (
       <>
-        {searchable && isOpen ? (
-          <div className="wcl-dropdown__heading__input-wrapper">
+        {searchable && isOpen && (
+          <Styled.InputWrapper className="wcl-dropdown__heading__input-wrapper">
+            {searchInputPrefix}
             <input
               autoFocus
               value={searchValue}
               onChange={onSearchInput}
               {...searchInputProps}
             />
-          </div>
-        ) : (
-          <div className="wcl-dropdown__heading__label">
-            {actualValue === emptyOption ? placeholder : actualValue.label}
-          </div>
+          </Styled.InputWrapper>
         )}
+        <div className="wcl-dropdown__heading__label">
+          {actualValue === emptyOption ? placeholder : actualValue.label}
+        </div>
         {iconJsx &&
           React.cloneElement(iconJsx, {
             className: classNames(
@@ -242,10 +248,11 @@ const Dropdown: React.FC<DropdownProps> = (
     iconClassName,
     searchValue,
     searchInputProps,
+    searchInputPrefix,
     onSearchInput,
   ]);
 
-  const renderOptions = (): JSX.Element => {
+  const optionsEl = useMemo((): JSX.Element => {
     let dropdownTop = 0;
     let dropdownLeft = 0;
     let dropdownWidth = 0;
@@ -331,7 +338,19 @@ const Dropdown: React.FC<DropdownProps> = (
         })}
       </div>
     );
-  };
+  }, [
+    actualValue.value,
+    finalOptions,
+    isOpen,
+    onChangeCallback,
+    optionsElClassName,
+    optionsElRestProps,
+    optionsElStyle,
+    optionsRef,
+    renderInBody,
+    type,
+    upwards,
+  ]);
 
   useEffect(() => {
     if (!searchable || asyncSearch) return;
@@ -354,13 +373,7 @@ const Dropdown: React.FC<DropdownProps> = (
   }, [asyncSearch, options, searchValue, searchable]);
 
   useEffect(() => {
-    if (searchable)
-      setSearchValue(
-        actualValue.searchValue ||
-          (typeof actualValue.label === 'string'
-            ? actualValue.label
-            : actualValue.value)
-      );
+    if (searchable) setSearchValue('');
   }, [searchable, actualValue]);
 
   return (
@@ -399,8 +412,8 @@ const Dropdown: React.FC<DropdownProps> = (
         </div>
         {isOpen &&
           (type === 'expander' || !renderInBody
-            ? renderOptions()
-            : ReactDOM.createPortal(renderOptions(), document.body))}
+            ? optionsEl
+            : ReactDOM.createPortal(optionsEl, document.body))}
       </div>
     </Fragment>
   );
