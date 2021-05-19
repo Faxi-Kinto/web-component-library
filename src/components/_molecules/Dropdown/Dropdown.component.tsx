@@ -50,6 +50,7 @@ export type DropdownProps = {
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   >;
+  emptyState?: ReactNode;
   onSearchTermChange?: (term: string) => void;
   onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
@@ -82,6 +83,7 @@ const Dropdown: React.FC<DropdownProps> = (
     searchInputProps,
     optionsElProps,
     searchInputPrefix = null,
+    emptyState = null,
     onSearchTermChange,
     onChange,
     onClickHeading,
@@ -312,6 +314,7 @@ const Dropdown: React.FC<DropdownProps> = (
         }}
         {...optionsElRestProps}
       >
+        {finalOptions.length === 0 && emptyState}
         {finalOptions.map((option, index) => {
           return (
             <div
@@ -342,7 +345,6 @@ const Dropdown: React.FC<DropdownProps> = (
     actualValue.value,
     finalOptions,
     isOpen,
-    onChangeCallback,
     optionsElClassName,
     optionsElRestProps,
     optionsElStyle,
@@ -350,6 +352,8 @@ const Dropdown: React.FC<DropdownProps> = (
     renderInBody,
     type,
     upwards,
+    emptyState,
+    onChangeCallback,
   ]);
 
   useEffect(() => {
