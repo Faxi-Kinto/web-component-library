@@ -288,12 +288,14 @@ const Dropdown: React.FC<DropdownProps> = (
                 top: !upwards
                   ? `${pxToRem(
                       dropdownHeight +
+                        4 +
                         (renderInBody ? dropdownTop + window.scrollY : 0) +
                         'px'
                     )}`
                   : optionsRef
                   ? `${pxToRem(
-                      dropdownTop +
+                      dropdownTop -
+                        4 +
                         (renderInBody ? window.scrollY : 0) -
                         optionsRef.getBoundingClientRect().height +
                         'px'
