@@ -51,6 +51,7 @@ export type DropdownProps = {
     HTMLDivElement
   >;
   emptyState?: ReactNode;
+  setOptionsRef?: (el: HTMLDivElement) => void;
   onSearchTermChange?: (term: string) => void;
   onChange?: (option: IDropdownOption) => void;
   onClickHeading?: (
@@ -87,6 +88,7 @@ const Dropdown: React.FC<DropdownProps> = (
     onSearchTermChange,
     onChange,
     onClickHeading,
+    setOptionsRef: setOptionsRefProp,
   } = props;
 
   const {
@@ -312,6 +314,7 @@ const Dropdown: React.FC<DropdownProps> = (
         ref={reference => {
           if (reference) {
             setOptionsRef(reference);
+            setOptionsRefProp?.(reference);
           }
         }}
         {...optionsElRestProps}
@@ -344,17 +347,18 @@ const Dropdown: React.FC<DropdownProps> = (
       </div>
     );
   }, [
-    actualValue.value,
-    finalOptions,
-    isOpen,
-    optionsElClassName,
-    optionsElRestProps,
-    optionsElStyle,
-    optionsRef,
-    renderInBody,
     type,
     upwards,
+    isOpen,
+    optionsElClassName,
+    renderInBody,
+    optionsRef,
+    optionsElStyle,
+    optionsElRestProps,
+    finalOptions,
     emptyState,
+    setOptionsRefProp,
+    actualValue.value,
     onChangeCallback,
   ]);
 
