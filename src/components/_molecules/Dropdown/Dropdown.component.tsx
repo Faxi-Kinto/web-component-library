@@ -34,7 +34,8 @@ export type DropdownProps = {
   id?: string;
   noOptionsProvidedLabel?: string;
   options: IDropdownOption[];
-  placeholder?: string;
+  placeholder?: ReactNode;
+  opened?: boolean;
   type: 'select' | 'expander';
   value?: IDropdownOption;
   renderInBody?: boolean;
@@ -75,6 +76,7 @@ const Dropdown: React.FC<DropdownProps> = (
     noOptionsProvidedLabel,
     options,
     placeholder,
+    opened = false,
     type,
     value,
     renderInBody = true,
@@ -100,7 +102,7 @@ const Dropdown: React.FC<DropdownProps> = (
   const [optionsRef, setOptionsRef] = useState<HTMLDivElement>();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(opened);
   const [upwards, setUpwards] = useState(false);
   const [searchValue, setSearchValue] = useState(initSearch);
   const [filteredOptions, setFilteredOptions] = useState<IDropdownOption[]>(
