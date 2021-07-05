@@ -76,6 +76,11 @@ export const GlobalStyle = createGlobalStyle`
       position: relative;
     }
 
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
     &__heading {
       ${flexRow('space-between', 'center')};
       font-weight: bold;

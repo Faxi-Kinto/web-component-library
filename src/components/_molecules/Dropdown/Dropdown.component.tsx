@@ -91,6 +91,7 @@ const Dropdown: React.FC<DropdownProps> = (
     onChange,
     onClickHeading,
     setOptionsRef: setOptionsRefProp,
+    disabled = false,
   } = props;
 
   const {
@@ -397,6 +398,7 @@ const Dropdown: React.FC<DropdownProps> = (
           'wcl-dropdown',
           { 'wcl-dropdown--select': type === 'select' },
           { 'wcl-dropdown--expander': type === 'expander' },
+          { 'wcl-dropdown--disabled': disabled },
           className,
         ])}
         data-value={actualValue.value}
