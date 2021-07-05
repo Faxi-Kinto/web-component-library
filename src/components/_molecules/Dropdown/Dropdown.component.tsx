@@ -134,10 +134,11 @@ const Dropdown: React.FC<DropdownProps> = (
     return (
       stateValue ||
       preSelectedValue ||
+      value ||
       (!placeholder && options[0]) ||
       emptyOption
     );
-  }, [options, placeholder, preSelectedValue, stateValue]);
+  }, [options, placeholder, preSelectedValue, stateValue, value]);
 
   // ESCAPE BUTTON
   const onKeyUpEsc = useCallback(
